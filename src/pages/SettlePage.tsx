@@ -20,6 +20,9 @@ export function SettlePage({ mode = 'traveler', onContinue, onSkip, onViewProgre
   const soulColor = mode === 'abyss' ? '#FFFFFF' : '#F5C66A'
   // 强调行颜色：深渊/骑士 绿 +1000 XP，旅者普通白
   const accentColor = mode === 'traveler' ? '#FFFFFF' : '#4ADE80'
+  // 按钮底色与字色：骑士金底深字，深渊紫底白字，旅者绿底白字
+  const ctaBg = mode === 'knight' ? '#F0AD53' : theme.accent
+  const ctaColor = mode === 'knight' ? '#17130F' : '#F3EDE2'
 
   return (
     <div className={styles.screen}>
@@ -60,10 +63,8 @@ export function SettlePage({ mode = 'traveler', onContinue, onSkip, onViewProgre
       </ul>
 
       {s.badge && (
-        <div className={styles.badge} style={{ borderColor: theme.glow }}>
-          <p className={styles.badgeTitle} style={{ color: '#F5C66A' }}>
-            {s.badge.title}
-          </p>
+        <div className={styles.badge}>
+          <p className={styles.badgeTitle}>{s.badge.title}</p>
           <p className={styles.badgeSub}>{s.badge.sub}</p>
         </div>
       )}
@@ -77,7 +78,7 @@ export function SettlePage({ mode = 'traveler', onContinue, onSkip, onViewProgre
         <button
           type="button"
           className={styles.cta}
-          style={{ background: theme.accent }}
+          style={{ background: ctaBg, color: ctaColor }}
           onClick={onContinue}
         >
           继续征途

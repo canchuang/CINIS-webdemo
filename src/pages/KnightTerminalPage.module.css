@@ -1,88 +1,86 @@
-﻿.screen {
+.screen {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   height: 100%;
   padding: 0 var(--pad) 22px;
-  background: #14131a;
-  color: #ede9f5;
+  background: #17130f;
+  color: #f3ede2;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-.top {
-  width: 100%;
-  padding-top: 10px;
-}
-
-.back {
-  font-size: 26px;
-  line-height: 1;
-  color: #ede9f5;
-  padding: 0 10px 0 0;
-}
-
 .kicker {
   margin: 16px 0 14px;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: #e0b45c;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #ffa45c;
 }
 
+/* 立绘卡：#FFFFFF@6% / r16 / h212 */
 .hero {
   width: 100%;
+  height: 212px;
   border-radius: 16px;
-  background: #1c1a26;
+  background: rgba(255, 255, 255, 0.06);
   display: grid;
   place-items: center;
-  padding: 12px 0;
+  overflow: hidden;
 }
 
 .hero img {
-  width: 180px;
+  width: 234px;
   height: auto;
-  filter: saturate(0.85);
 }
 
 .title {
-  margin: 16px 0 0;
+  margin: 18px 0 0;
   font-size: 24px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
+  font-weight: 700;
+  line-height: 28px;
+  color: #f3ede2;
+  text-align: center;
 }
 
 .reason {
   margin: 8px 0 0;
   font-size: 12px;
-  color: #9a94ae;
+  line-height: 19px;
+  color: #a08974;
+  text-align: center;
 }
 
 .lossLabel {
-  margin: 18px 0 0;
-  font-size: 11px;
-  letter-spacing: 1px;
-  color: #9a94ae;
+  margin: 16px 0 0;
+  font-size: 12px;
+  line-height: 19px;
+  color: #a08974;
+  text-align: center;
 }
 
 .lossNum {
-  margin: 2px 0 0;
-  font-size: 42px;
-  font-weight: 800;
-  color: #e0526a;
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 47px;
+  color: #ff3158;
   letter-spacing: -1px;
+  text-align: center;
 }
 
 .lossNote {
   margin: 6px 0 0;
   font-size: 11px;
-  color: #9a94ae;
+  line-height: 17px;
+  color: #a08974;
   text-align: center;
 }
 
 .rows {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 .row {
@@ -90,19 +88,20 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  padding: 11px 0;
-  border-bottom: 1px solid rgba(237, 233, 245, 0.08);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(243, 237, 226, 0.08);
 }
 
 .rowLabel {
   flex: none;
-  font-size: 13px;
-  color: #9a94ae;
+  font-size: 12px;
+  color: #a08974;
 }
 
 .rowValue {
   font-size: 13px;
-  color: #ede9f5;
+  font-weight: 500;
+  color: #f3ede2;
   text-align: right;
 }
 
@@ -115,27 +114,29 @@
   padding-top: 26px;
 }
 
+/* 换个模式：透明底 + 细描边，h46 */
 .btnSecondary {
   width: 100%;
-  padding: 15px 0;
+  height: 46px;
   border-radius: 999px;
-  border: 1px solid rgba(237, 233, 245, 0.18);
+  border: 1px solid rgba(243, 237, 226, 0.22);
   background: transparent;
-  color: #ede9f5;
+  color: #f3ede2;
   font-size: 15px;
   font-weight: 500;
 }
 
 .btnSecondary:active {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
 }
 
+/* 找回部分魂火：金底深字 */
 .btnPrimary {
   width: 100%;
-  padding: 16px 0;
+  padding: 15px 0;
   border-radius: 999px;
-  background: #e0b45c;
-  color: #241a05;
+  background: #f0ad53;
+  color: #17130f;
   font-size: 16px;
   font-weight: 700;
 }
@@ -147,6 +148,6 @@
 .foot {
   margin: 14px 0 0;
   font-size: 11px;
-  color: #6f6a80;
+  color: rgba(243, 237, 226, 0.35);
+  text-align: center;
 }
-
