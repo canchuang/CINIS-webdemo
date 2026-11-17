@@ -1,17 +1,32 @@
 .stage {
   height: 100%;
   display: flex;
-  justify-content: center;
-  background: #e9ecf1;
+  align-items: center;
+  justify-content: flex-start;
+  background: #eef1f6;
+}
+
+/* 左：手机预览区，靠左、上下居中 */
+.previewArea {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 0 0 32px;
+  height: 100%;
 }
 
 .phone {
   position: relative;
-  width: 100%;
-  max-width: 430px;
-  height: 100%;
+  width: 390px;
+  height: 844px;
   overflow: hidden;
   background: var(--bg);
+  border-radius: 40px;
+  box-shadow:
+    0 24px 70px rgba(22, 24, 29, 0.18),
+    0 0 0 1px rgba(22, 24, 29, 0.06);
+  flex: none;
 }
 
 .immersive {
@@ -21,6 +36,134 @@
 .fullBleed {
   width: 100%;
   height: 100%;
+}
+
+/* 右：标注面板，与手机垂直居中对齐 */
+.panel {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 40px 0 40px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.panelInner {
+  width: 100%;
+  max-width: 440px;
+  padding: 26px 28px 24px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 10px 36px rgba(22, 24, 29, 0.07);
+  border: 1px solid #e6eaf1;
+  max-height: 88vh;
+  overflow-y: auto;
+}
+
+.panelStage {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #fff1e6;
+  color: #d2601a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.panelTitle {
+  margin: 12px 0 0;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 800;
+  color: #16181d;
+  letter-spacing: -0.2px;
+}
+
+.panelSection {
+  margin-top: 22px;
+}
+
+.sectionLabel {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #8a93a6;
+  letter-spacing: 1px;
+}
+
+.panelList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.panelList li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 13px;
+  line-height: 21px;
+  color: #3c4657;
+}
+
+.panelList li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c9d2e0;
+}
+
+.actionList li::before {
+  background: #ff7a1a;
+}
+
+.actionList li {
+  color: #2c3648;
+}
+
+.panelHint {
+  margin: 22px 0 0;
+  padding-top: 14px;
+  border-top: 1px dashed #e6eaf1;
+  font-size: 11px;
+  line-height: 18px;
+  color: #9aa4b5;
+}
+
+/* 窄屏（手机）：纵向堆叠，隐藏标注面板 */
+@media (max-width: 900px) {
+  .stage {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .previewArea {
+    padding: 0;
+    flex: 1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .phone {
+    width: 100%;
+    max-width: 430px;
+    height: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .panel {
+    display: none;
+  }
 }
 
 /* 页面切换的轻微淡入，避免硬切 */
@@ -36,18 +179,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@media (min-width: 520px) {
-  .phone {
-    max-width: 390px;
-    height: 844px;
-    margin: 16px auto;
-    border-radius: 40px;
-    box-shadow:
-      0 24px 70px rgba(22, 24, 29, 0.18),
-      0 0 0 1px rgba(22, 24, 29, 0.06);
   }
 }
 

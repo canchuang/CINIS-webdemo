@@ -22,6 +22,7 @@ import { MePage } from './pages/MePage'
 import { OnboardingPage } from './pages/OnboardingPage'
 import { PrivacyPage } from './pages/PrivacyPage'
 import EditorPage from './pages/EditorPage'
+import { annotations } from './data/annotations'
 import { TrialConfirmPage } from './pages/TrialConfirmPage'
 import { NewGoalPage } from './pages/NewGoalPage'
 import { taskStore } from './data/taskStore'
@@ -295,36 +296,71 @@ export default function App() {
     'newGoal',
   ].includes(route)
 
+  const anno = annotations[route]
+
   return (
     <div className={styles.stage}>
-      <div className={`${styles.phone} ${isImmersive ? styles.immersive : ''}`}>
-        {isImmersive ? (
-          <div key={route} className={styles.fullBleed}>
-            {renderPage()}
-          </div>
-        ) : (
-          <Screen withNav={WITH_NAV.includes(route)}>
-            <div key={route} className={styles.pageEnter}>
+      {/* 左：手机预览 */}
+      <div className={styles.previewArea}>
+        <div className={`${styles.phone} ${isImmersive ? styles.immersive : ''}`}>
+          {isImmersive ? (
+            <div key={route} className={styles.fullBleed}>
               {renderPage()}
             </div>
-            {WITH_NAV.includes(route) && (
-              <BottomNav active={tab} onChange={(t) => setRoute(t)} />
-            )}
-            {sheet && (
-              <ChooseModeSheet
-                onClose={() => setSheet(false)}
-                onFocus={() => go('focus')}
-                onQuick={() => {
-                  const id = taskStore.getFocusing()
-                  if (id) taskStore.quickCheckin(mode, id)
-                  setSheet(false)
-                  setRoute('today')
-                }}
-              />
-            )}
-          </Screen>
-        )}
+          ) : (
+            <Screen withNav={WITH_NAV.includes(route)}>
+              <div key={route} className={styles.pageEnter}>
+                {renderPage()}
+              </div>
+              {WITH_NAV.includes(route) && (
+                <BottomNav active={tab} onChange={(t) => setRoute(t)} />
+              )}
+              {sheet && (
+                <ChooseModeSheet
+                  onClose={() => setSheet(false)}
+                  onFocus={() => go('focus')}
+                  onQuick={() => {
+                    const id = taskStore.getFocusing()
+                    if (id) taskStore.quickCheckin(mode, id)
+                    setSheet(false)
+                    setRoute('today')
+                  }}
+                />
+              )}
+            </Screen>
+          )}
+        </div>
       </div>
+
+      {/* 右：内容与功能标注 */}
+      <aside className={styles.panel}>
+        <div className={styles.panelInner}>
+          <span className={styles.panelStage}>{anno.stage}</span>
+          <h2 className={styles.panelTitle}>{anno.title}</h2>
+
+          <section className={styles.panelSection}>
+            <h3 className={styles.sectionLabel}>本页内容</h3>
+            <ul className={styles.panelList}>
+              {anno.content.map((c) => (
+                <li key={c}>{c}</li>
+              ))}
+            </ul>
+          </section>
+
+          {anno.actions.length > 0 && (
+            <section className={styles.panelSection}>
+              <h3 className={styles.sectionLabel}>可交互</h3>
+              <ul className={`${styles.panelList} ${styles.actionList}`}>
+                {anno.actions.map((a) => (
+                  <li key={a}>{a}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <p className={styles.panelHint}>提示：左侧可直接点击操作，右侧会随页面自动更新。</p>
+        </div>
+      </aside>
     </div>
   )
 }
