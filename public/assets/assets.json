@@ -1,0 +1,1712 @@
+{
+  "schemaVersion": 2,
+  "root": "1299:5713",
+  "rootName": "P22_阶段结算 · 骑士",
+  "roots": [
+    {
+      "id": "1299:5296",
+      "name": "P11_首页 · 旅者"
+    },
+    {
+      "id": "1299:4402",
+      "name": "P37_个人成长"
+    },
+    {
+      "id": "1299:4914",
+      "name": "P37B_角色档案"
+    },
+    {
+      "id": "1299:5531",
+      "name": "P25_首页 · 深渊"
+    },
+    {
+      "id": "1299:5680",
+      "name": "P15_阶段结算 · 旅者"
+    },
+    {
+      "id": "1299:5778",
+      "name": "P23_终止 · 骑士"
+    },
+    {
+      "id": "1299:5805",
+      "name": "P30_终止 · 深渊"
+    },
+    {
+      "id": "1299:5832",
+      "name": "P24_后续 · 骑士"
+    },
+    {
+      "id": "1299:5746",
+      "name": "P29_阶段结算 · 深渊"
+    },
+    {
+      "id": "1299:5859",
+      "name": "P31_后续 · 深渊"
+    },
+    {
+      "id": "1299:5713",
+      "name": "P22_阶段结算 · 骑士"
+    }
+  ],
+  "assets": [
+    {
+      "sourceIdentity": "figma-image:ec2d2fe7907c0f40400061b74fbfe3e3e49a9b97",
+      "contentDigest": "sha256:17ec7406f77adc2e7181eba72c00f8b7739e5bb029fda745dab3c7bed3b03b97",
+      "semanticLabel": "5defddbc66bfc6307360e8eeb486e3ad 2",
+      "file": "image-ec2d2fe7907c0f40400061b7.png",
+      "kind": "image",
+      "imageHash": "ec2d2fe7907c0f40400061b74fbfe3e3e49a9b97",
+      "optimizedForScale": 2,
+      "pixelWidth": 324,
+      "pixelHeight": 324,
+      "sourcePixelWidth": 1254,
+      "sourcePixelHeight": 1254,
+      "placements": [
+        {
+          "nodeId": "I1299:5324;287:1278",
+          "name": "5defddbc66bfc6307360e8eeb486e3ad 2",
+          "width": 128,
+          "height": 162,
+          "x": 204,
+          "y": 10,
+          "rootX": 228,
+          "rootY": 162,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5296",
+          "parent": "P11_首页 · 旅者 / Component 50",
+          "parentId": "1299:5324",
+          "absolutePosition": true,
+          "overhang": true
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:e92ec86976c8d77cd40fe52516f2ba93fb0882b17d135e4b657f6ff63b2f0dd2",
+      "contentDigest": "svg-visual-sha256:e92ec86976c8d77cd40fe52516f2ba93fb0882b17d135e4b657f6ff63b2f0dd2",
+      "semanticLabel": "nav/indicator",
+      "file": "nav-indicator.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1299:5318;211:13795",
+          "name": "nav/indicator",
+          "width": 88,
+          "height": 59,
+          "x": 8,
+          "y": 5,
+          "rootX": 24,
+          "rootY": 728,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5296",
+          "parent": "P11_首页 · 旅者 / nav",
+          "parentId": "1299:5318",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "I1299:5554;211:13795",
+          "name": "Rectangle 85",
+          "width": 88,
+          "height": 59,
+          "x": 8,
+          "y": 5,
+          "rootX": 24,
+          "rootY": 728,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊 / Group 25",
+          "parentId": "1299:5554",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:ef2a1cd1f836fae6878471b03ddd4754551f9cff0191844f795c14c50aa4bd15",
+      "contentDigest": "svg-visual-sha256:ef2a1cd1f836fae6878471b03ddd4754551f9cff0191844f795c14c50aa4bd15",
+      "semanticLabel": "tab/目标/icon",
+      "file": "tab-icon.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1299:5318;211:13791",
+          "name": "tab/目标/icon",
+          "width": 30,
+          "height": 29,
+          "x": 125,
+          "y": 17,
+          "rootX": 141,
+          "rootY": 740,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5296",
+          "parent": "P11_首页 · 旅者 / nav",
+          "parentId": "1299:5318",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "I1299:5554;211:13791",
+          "name": "tab/目标/icon",
+          "width": 30,
+          "height": 29,
+          "x": 125,
+          "y": 17,
+          "rootX": 141,
+          "rootY": 740,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊 / Group 25",
+          "parentId": "1299:5554",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:31933fe91ee547e59b78cf86be8f0ef8b5e77981df4beeb32f652a8556a0ed97",
+      "contentDigest": "svg-visual-sha256:31933fe91ee547e59b78cf86be8f0ef8b5e77981df4beeb32f652a8556a0ed97",
+      "semanticLabel": "tab/成长/icon",
+      "file": "tab-icon-31933fe9.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1299:5318;211:13793",
+          "name": "tab/成长/icon",
+          "width": 27,
+          "height": 26,
+          "x": 212,
+          "y": 17,
+          "rootX": 228,
+          "rootY": 740,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5296",
+          "parent": "P11_首页 · 旅者 / nav",
+          "parentId": "1299:5318",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "I1299:5554;211:13793",
+          "name": "tab/成长/icon",
+          "width": 27,
+          "height": 26,
+          "x": 212,
+          "y": 17,
+          "rootX": 228,
+          "rootY": 740,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊 / Group 25",
+          "parentId": "1299:5554",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:ea91d285e8e8200c84d6d0ec8561f86a890fc932a1ab9eacba1a167921926873",
+      "contentDigest": "svg-visual-sha256:ea91d285e8e8200c84d6d0ec8561f86a890fc932a1ab9eacba1a167921926873",
+      "semanticLabel": "nav",
+      "file": "nav.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1299:5318;211:13786",
+          "name": "Vector",
+          "width": 19,
+          "height": 20,
+          "x": 302,
+          "y": 21,
+          "rootX": 318,
+          "rootY": 744,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5296",
+          "parent": "P11_首页 · 旅者 / nav",
+          "parentId": "1299:5318",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "I1299:5554;211:13786",
+          "name": "Vector",
+          "width": 19,
+          "height": 20,
+          "x": 302,
+          "y": 21,
+          "rootX": 318,
+          "rootY": 744,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊 / Group 25",
+          "parentId": "1299:5554",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:3c2cd8a61a332a613852b99da356cf4ec8de5461244e04f3b18b3e7c9c8a2912",
+      "contentDigest": "svg-visual-sha256:3c2cd8a61a332a613852b99da356cf4ec8de5461244e04f3b18b3e7c9c8a2912",
+      "semanticLabel": "nav",
+      "file": "nav-3c2cd8a6.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1299:5318;341:1923",
+          "name": "Vector",
+          "width": 18,
+          "height": 15,
+          "x": 43,
+          "y": 27,
+          "rootX": 59,
+          "rootY": 750,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5296",
+          "parent": "P11_首页 · 旅者 / nav",
+          "parentId": "1299:5318",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "I1299:5554;341:1923",
+          "name": "Vector",
+          "width": 18,
+          "height": 15,
+          "x": 43,
+          "y": 27,
+          "rootX": 59,
+          "rootY": 750,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊 / Group 25",
+          "parentId": "1299:5554",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:7a2e5c40c7a3ec9a3b0c75e4ad8ab5f31f07a8aef1f02446d2698486071b9cc7",
+      "contentDigest": "svg-visual-sha256:7a2e5c40c7a3ec9a3b0c75e4ad8ab5f31f07a8aef1f02446d2698486071b9cc7",
+      "semanticLabel": "P11_首页 · 旅者",
+      "file": "p11.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5330",
+          "name": "Vector",
+          "width": 25,
+          "height": 10,
+          "x": 348,
+          "y": 19,
+          "rootX": 348,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5296",
+          "parent": "P11_首页 · 旅者",
+          "parentId": "1299:5296",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5567",
+          "name": "Vector",
+          "width": 25,
+          "height": 10,
+          "x": 348,
+          "y": 19,
+          "rootX": 348,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊",
+          "parentId": "1299:5531",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5570",
+          "name": "Vector",
+          "width": 25,
+          "height": 10,
+          "x": 348,
+          "y": 19,
+          "rootX": 348,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊",
+          "parentId": "1299:5531",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5804",
+          "name": "Vector",
+          "width": 25,
+          "height": 10,
+          "x": 348,
+          "y": 19,
+          "rootX": 348,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5778",
+          "parent": "P23_终止 · 骑士",
+          "parentId": "1299:5778",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5858",
+          "name": "Vector",
+          "width": 25,
+          "height": 10,
+          "x": 348,
+          "y": 19,
+          "rootX": 348,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5832",
+          "parent": "P24_后续 · 骑士",
+          "parentId": "1299:5832",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5883",
+          "name": "Vector",
+          "width": 25,
+          "height": 10,
+          "x": 348,
+          "y": 19,
+          "rootX": 348,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5859",
+          "parent": "P31_后续 · 深渊",
+          "parentId": "1299:5859",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5744",
+          "name": "Vector",
+          "width": 25,
+          "height": 10,
+          "x": 348,
+          "y": 19,
+          "rootX": 348,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5713",
+          "parent": "P22_阶段结算 · 骑士",
+          "parentId": "1299:5713",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:0e249a2378b8d8b1d05b88190679e0f73dd7370010a286f0ca957a5075604042",
+      "contentDigest": "svg-visual-sha256:0e249a2378b8d8b1d05b88190679e0f73dd7370010a286f0ca957a5075604042",
+      "semanticLabel": "nav",
+      "file": "nav-0e249a23.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1299:5318;341:1924",
+          "name": "Vector",
+          "width": 12,
+          "height": 17,
+          "x": 46,
+          "y": 20,
+          "rootX": 62,
+          "rootY": 743,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5296",
+          "parent": "P11_首页 · 旅者 / nav",
+          "parentId": "1299:5318",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "I1299:5554;341:1924",
+          "name": "Vector",
+          "width": 12,
+          "height": 17,
+          "x": 46,
+          "y": 20,
+          "rootX": 62,
+          "rootY": 743,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊 / Group 25",
+          "parentId": "1299:5554",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:0e202884be0b6a2f843840460c67d04a144d24fc7d13db5b182e814ed0e1c7fb",
+      "contentDigest": "svg-visual-sha256:0e202884be0b6a2f843840460c67d04a144d24fc7d13db5b182e814ed0e1c7fb",
+      "semanticLabel": "P11_首页 · 旅者",
+      "file": "p11-0e202884.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5328",
+          "name": "Vector",
+          "width": 18,
+          "height": 9,
+          "x": 304,
+          "y": 20,
+          "rootX": 304,
+          "rootY": 20,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5296",
+          "parent": "P11_首页 · 旅者",
+          "parentId": "1299:5296",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5565",
+          "name": "Vector",
+          "width": 18,
+          "height": 9,
+          "x": 304,
+          "y": 20,
+          "rootX": 304,
+          "rootY": 20,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊",
+          "parentId": "1299:5531",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5568",
+          "name": "Vector",
+          "width": 18,
+          "height": 9,
+          "x": 304,
+          "y": 20,
+          "rootX": 304,
+          "rootY": 20,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊",
+          "parentId": "1299:5531",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5802",
+          "name": "Vector",
+          "width": 18,
+          "height": 9,
+          "x": 304,
+          "y": 20,
+          "rootX": 304,
+          "rootY": 20,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5778",
+          "parent": "P23_终止 · 骑士",
+          "parentId": "1299:5778",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5856",
+          "name": "Vector",
+          "width": 18,
+          "height": 9,
+          "x": 304,
+          "y": 20,
+          "rootX": 304,
+          "rootY": 20,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5832",
+          "parent": "P24_后续 · 骑士",
+          "parentId": "1299:5832",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:e741052aac3ae91aef36bd35a49165b021e928e15c3eaafbf31550c7eb73e912",
+      "contentDigest": "svg-visual-sha256:e741052aac3ae91aef36bd35a49165b021e928e15c3eaafbf31550c7eb73e912",
+      "semanticLabel": "P11_首页 · 旅者",
+      "file": "p11-e741052a.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5329",
+          "name": "Vector",
+          "width": 14,
+          "height": 9,
+          "x": 328,
+          "y": 19,
+          "rootX": 328,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5296",
+          "parent": "P11_首页 · 旅者",
+          "parentId": "1299:5296",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5566",
+          "name": "Vector",
+          "width": 14,
+          "height": 9,
+          "x": 328,
+          "y": 19,
+          "rootX": 328,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊",
+          "parentId": "1299:5531",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5569",
+          "name": "Vector",
+          "width": 14,
+          "height": 9,
+          "x": 328,
+          "y": 19,
+          "rootX": 328,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊",
+          "parentId": "1299:5531",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5803",
+          "name": "Vector",
+          "width": 14,
+          "height": 9,
+          "x": 328,
+          "y": 19,
+          "rootX": 328,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5778",
+          "parent": "P23_终止 · 骑士",
+          "parentId": "1299:5778",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5857",
+          "name": "Vector",
+          "width": 14,
+          "height": 9,
+          "x": 328,
+          "y": 19,
+          "rootX": 328,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5832",
+          "parent": "P24_后续 · 骑士",
+          "parentId": "1299:5832",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5882",
+          "name": "Vector",
+          "width": 14,
+          "height": 9,
+          "x": 328,
+          "y": 19,
+          "rootX": 328,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5859",
+          "parent": "P31_后续 · 深渊",
+          "parentId": "1299:5859",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5743",
+          "name": "Vector",
+          "width": 14,
+          "height": 9,
+          "x": 328,
+          "y": 19,
+          "rootX": 328,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5713",
+          "parent": "P22_阶段结算 · 骑士",
+          "parentId": "1299:5713",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:d1672b1f9b3122b915e85ced959faa248c40cf7eeb49502d67ab3a3280abff14",
+      "contentDigest": "svg-visual-sha256:d1672b1f9b3122b915e85ced959faa248c40cf7eeb49502d67ab3a3280abff14",
+      "semanticLabel": "nav",
+      "file": "nav-d1672b1f.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1299:5318;341:2024",
+          "name": "Vector",
+          "width": 4,
+          "height": 7,
+          "x": 50,
+          "y": 26,
+          "rootX": 66,
+          "rootY": 749,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5296",
+          "parent": "P11_首页 · 旅者 / nav",
+          "parentId": "1299:5318",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "I1299:5554;341:2024",
+          "name": "Vector",
+          "width": 4,
+          "height": 7,
+          "x": 50,
+          "y": 26,
+          "rootX": 66,
+          "rootY": 749,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊 / Group 25",
+          "parentId": "1299:5554",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:c72f577283d78c2a25d179b537561413be4b1d3d",
+      "contentDigest": "sha256:d3491a1ae21ec18bfdd0aab8a31353c020339ba30bdc961265360d2f63b02d37",
+      "semanticLabel": "image 137",
+      "file": "image-c72f577283d78c2a25d179b5.png",
+      "kind": "image",
+      "imageHash": "c72f577283d78c2a25d179b537561413be4b1d3d",
+      "optimizedForScale": 2,
+      "pixelWidth": 684,
+      "pixelHeight": 298,
+      "sourcePixelWidth": 1542,
+      "sourcePixelHeight": 672,
+      "placements": [
+        {
+          "nodeId": "1299:4406",
+          "name": "image 137",
+          "width": 342,
+          "height": 149,
+          "x": 0,
+          "y": 0,
+          "rootX": 24,
+          "rootY": 117,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长 / Frame",
+          "parentId": "1299:4405",
+          "absolutePosition": false,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:3063ae913197c7d178f70f6c253809efaf324ede",
+      "contentDigest": "sha256:e8bf5cbc90878bd0cc9837139fa8166b148095d7ec2f914abd95c0b00c9cb8e0",
+      "semanticLabel": "image 132",
+      "file": "image-3063ae913197c7d178f70f6c.png",
+      "kind": "image",
+      "imageHash": "3063ae913197c7d178f70f6c253809efaf324ede",
+      "optimizedForScale": 2,
+      "pixelWidth": 90,
+      "pixelHeight": 90,
+      "sourcePixelWidth": 1254,
+      "sourcePixelHeight": 1254,
+      "placements": [
+        {
+          "nodeId": "1299:4459",
+          "name": "image 132",
+          "width": 45,
+          "height": 45,
+          "x": 140,
+          "y": 331,
+          "rootX": 140,
+          "rootY": 331,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长",
+          "parentId": "1299:4402",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:c3c3b3b4f827bb889fee4917b8a97ee0b003df2a",
+      "contentDigest": "sha256:fc5cbac94a38a7925de709c5a7e000a37c31c869615b4ee89fa547ebaed6f70f",
+      "semanticLabel": "image 130",
+      "file": "image-c3c3b3b4f827bb889fee4917.png",
+      "kind": "image",
+      "imageHash": "c3c3b3b4f827bb889fee4917b8a97ee0b003df2a",
+      "optimizedForScale": 2,
+      "pixelWidth": 90,
+      "pixelHeight": 90,
+      "sourcePixelWidth": 1254,
+      "sourcePixelHeight": 1254,
+      "placements": [
+        {
+          "nodeId": "1299:4460",
+          "name": "image 130",
+          "width": 45,
+          "height": 45,
+          "x": 82,
+          "y": 331,
+          "rootX": 82,
+          "rootY": 331,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长",
+          "parentId": "1299:4402",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:5d4f091d29447075134db058c3017c217c12cc02",
+      "contentDigest": "sha256:9e4cb067d0058180985bbe478dc9abd2ef7e1371f9efa98114ca4377e7796c16",
+      "semanticLabel": "image 131",
+      "file": "image-5d4f091d29447075134db058.png",
+      "kind": "image",
+      "imageHash": "5d4f091d29447075134db058c3017c217c12cc02",
+      "optimizedForScale": 2,
+      "pixelWidth": 90,
+      "pixelHeight": 90,
+      "sourcePixelWidth": 1254,
+      "sourcePixelHeight": 1254,
+      "placements": [
+        {
+          "nodeId": "1299:4461",
+          "name": "image 131",
+          "width": 45,
+          "height": 45,
+          "x": 24,
+          "y": 331,
+          "rootX": 24,
+          "rootY": 331,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长",
+          "parentId": "1299:4402",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:b916653c308c1976b9f92593afa91103e2668decbb6f3f0bc6b7ae0af03e1915",
+      "contentDigest": "svg-visual-sha256:b916653c308c1976b9f92593afa91103e2668decbb6f3f0bc6b7ae0af03e1915",
+      "semanticLabel": "tab/目标/icon",
+      "file": "tab-icon-b916653c.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1339:12148;1331:10355",
+          "name": "tab/目标/icon",
+          "width": 30,
+          "height": 28,
+          "x": 125,
+          "y": 16,
+          "rootX": 141,
+          "rootY": 739,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长 / Group 38",
+          "parentId": "1339:12148",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:83849fa5991c9402e9944d85f4c8d2e74fcbd44387093162f429272b1c34e325",
+      "contentDigest": "svg-visual-sha256:83849fa5991c9402e9944d85f4c8d2e74fcbd44387093162f429272b1c34e325",
+      "semanticLabel": "tab/成长/icon",
+      "file": "tab-icon-83849fa5.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1339:12148;1331:10357",
+          "name": "tab/成长/icon",
+          "width": 27,
+          "height": 25,
+          "x": 212,
+          "y": 16,
+          "rootX": 228,
+          "rootY": 739,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长 / Group 38",
+          "parentId": "1339:12148",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:2687922f6744391c78426a62b2e4058d738ad8be45bbc0eb3086c0c918a53324",
+      "contentDigest": "svg-visual-sha256:2687922f6744391c78426a62b2e4058d738ad8be45bbc0eb3086c0c918a53324",
+      "semanticLabel": "P37_个人成长",
+      "file": "p37.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1339:12148;1331:10350",
+          "name": "Vector",
+          "width": 19,
+          "height": 20,
+          "x": 302,
+          "y": 20,
+          "rootX": 318,
+          "rootY": 743,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长 / Group 38",
+          "parentId": "1339:12148",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:a1cd184b4fa2c6db3372a6035684f21414620f3c98b5204ca3a3b25bfcd9d788",
+      "contentDigest": "svg-visual-sha256:a1cd184b4fa2c6db3372a6035684f21414620f3c98b5204ca3a3b25bfcd9d788",
+      "semanticLabel": "P37_个人成长",
+      "file": "p37-a1cd184b.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1339:12148;1331:10359",
+          "name": "Vector",
+          "width": 18,
+          "height": 16,
+          "x": 43,
+          "y": 24,
+          "rootX": 59,
+          "rootY": 747,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长 / Group 38",
+          "parentId": "1339:12148",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:ec5376958e023d7aec54416b8a6f9bcaea60ebc9efd59e04cb378eecae406768",
+      "contentDigest": "svg-visual-sha256:ec5376958e023d7aec54416b8a6f9bcaea60ebc9efd59e04cb378eecae406768",
+      "semanticLabel": "P37_个人成长",
+      "file": "p37-ec537695.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:4446",
+          "name": "Vector",
+          "width": 25,
+          "height": 10,
+          "x": 348,
+          "y": 21,
+          "rootX": 348,
+          "rootY": 21,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长",
+          "parentId": "1299:4402",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:da0d9c959fc49e4bfdfaebad27face198c1f816d47dc97c0035375cd7efe0729",
+      "contentDigest": "svg-visual-sha256:da0d9c959fc49e4bfdfaebad27face198c1f816d47dc97c0035375cd7efe0729",
+      "semanticLabel": "P37_个人成长",
+      "file": "p37-da0d9c95.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "I1339:12148;1331:10360",
+          "name": "Vector",
+          "width": 14,
+          "height": 19,
+          "x": 45,
+          "y": 15,
+          "rootX": 61,
+          "rootY": 738,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长 / Group 38",
+          "parentId": "1339:12148",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:b3a0843933cace7a1be9adc54a2dfc87f9a6faa5f9d43c139951005a0d1ff4a6",
+      "contentDigest": "svg-visual-sha256:b3a0843933cace7a1be9adc54a2dfc87f9a6faa5f9d43c139951005a0d1ff4a6",
+      "semanticLabel": "P37_个人成长",
+      "file": "p37-b3a08439.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:4444",
+          "name": "Vector",
+          "width": 18,
+          "height": 10,
+          "x": 304,
+          "y": 21,
+          "rootX": 304,
+          "rootY": 21,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长",
+          "parentId": "1299:4402",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:f6b756ed18e0d31e6de0b1e71373057b54437ccefe79fecb96746df2de813e18",
+      "contentDigest": "svg-visual-sha256:f6b756ed18e0d31e6de0b1e71373057b54437ccefe79fecb96746df2de813e18",
+      "semanticLabel": "P37_个人成长",
+      "file": "p37-f6b756ed.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:4445",
+          "name": "Vector",
+          "width": 14,
+          "height": 10,
+          "x": 328,
+          "y": 20,
+          "rootX": 328,
+          "rootY": 20,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4402",
+          "parent": "P37_个人成长",
+          "parentId": "1299:4402",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:cc22b888b4213af305fbee9bc4ba223dd3c57853",
+      "contentDigest": "sha256:a50276617b81d9c9d5ee3ad9fcf6c75638a784c1bd4b47b1ad5403f720325584",
+      "semanticLabel": "image 74",
+      "file": "image-cc22b888b4213af305fbee9b.png",
+      "kind": "image",
+      "imageHash": "cc22b888b4213af305fbee9bc4ba223dd3c57853",
+      "optimizedForScale": 2,
+      "pixelWidth": 568,
+      "pixelHeight": 568,
+      "sourcePixelWidth": 2048,
+      "sourcePixelHeight": 2048,
+      "placements": [
+        {
+          "nodeId": "1299:4955",
+          "name": "image 74",
+          "width": 284,
+          "height": 284,
+          "x": 29,
+          "y": -12,
+          "rootX": 53,
+          "rootY": 132,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4914",
+          "parent": "P37B_角色档案 / Frame",
+          "parentId": "1299:4953",
+          "absolutePosition": true,
+          "overhang": true
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:37f750f43f6c0d86ee6e8db63b132f16c7714a8e",
+      "contentDigest": "sha256:ff672beab518e13ec68b61923ae5b9d637421058a81baede771a3f1125f0db7f",
+      "semanticLabel": "image 72",
+      "file": "image-37f750f43f6c0d86ee6e8db6.png",
+      "kind": "image",
+      "imageHash": "37f750f43f6c0d86ee6e8db63b132f16c7714a8e",
+      "optimizedForScale": 2,
+      "pixelWidth": 132,
+      "pixelHeight": 132,
+      "sourcePixelWidth": 1254,
+      "sourcePixelHeight": 1254,
+      "placements": [
+        {
+          "nodeId": "1299:4943",
+          "name": "image 72",
+          "width": 66,
+          "height": 66,
+          "x": 4,
+          "y": -3,
+          "rootX": 162,
+          "rootY": 655,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4914",
+          "parent": "P37B_角色档案 / Frame",
+          "parentId": "1299:4942",
+          "absolutePosition": true,
+          "overhang": true
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:5ff41e08c33b797d1a755a76dab710df12769a54",
+      "contentDigest": "sha256:5471ff38b819f22866ed400aab428bb0a7fbadfdca4dbfb5e2bcaee79608683a",
+      "semanticLabel": "chibi_knight4_transparent 2",
+      "file": "image-5ff41e08c33b797d1a755a76.png",
+      "kind": "image",
+      "imageHash": "5ff41e08c33b797d1a755a76dab710df12769a54",
+      "optimizedForScale": 2,
+      "pixelWidth": 124,
+      "pixelHeight": 124,
+      "sourcePixelWidth": 1920,
+      "sourcePixelHeight": 1920,
+      "placements": [
+        {
+          "nodeId": "1299:4947",
+          "name": "chibi_knight4_transparent 2",
+          "width": 62,
+          "height": 62,
+          "x": 6,
+          "y": -2,
+          "rootX": 282,
+          "rootY": 656,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4914",
+          "parent": "P37B_角色档案 / Frame",
+          "parentId": "1299:4946",
+          "absolutePosition": true,
+          "overhang": true
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:006e46ec313afc7c5c4c20428169a3700400509b",
+      "contentDigest": "sha256:def678280530d6cacf24b23a5e33642609c4f3221cae6b34bd6f59c599e7dc85",
+      "semanticLabel": "image 69",
+      "file": "image-006e46ec313afc7c5c4c2042.png",
+      "kind": "image",
+      "imageHash": "006e46ec313afc7c5c4c20428169a3700400509b",
+      "optimizedForScale": 2,
+      "pixelWidth": 112,
+      "pixelHeight": 132,
+      "sourcePixelWidth": 246,
+      "sourcePixelHeight": 289,
+      "placements": [
+        {
+          "nodeId": "1299:4939",
+          "name": "image 69",
+          "width": 56,
+          "height": 66,
+          "x": 9,
+          "y": -3,
+          "rootX": 49,
+          "rootY": 655,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:4914",
+          "parent": "P37B_角色档案 / Frame",
+          "parentId": "1299:4938",
+          "absolutePosition": true,
+          "overhang": true
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:2c0c0acc4a8973518536053036764c7c69432c7c",
+      "contentDigest": "sha256:bcff37fff36a96a6f9ebd95aef0fffb2c9d52f02dc8c7ef2be56e6c9544c02d9",
+      "semanticLabel": "chibi_knight2_transparent 2",
+      "file": "image-2c0c0acc4a89735185360530.png",
+      "kind": "image",
+      "imageHash": "2c0c0acc4a8973518536053036764c7c69432c7c",
+      "optimizedForScale": 2,
+      "pixelWidth": 336,
+      "pixelHeight": 336,
+      "sourcePixelWidth": 1920,
+      "sourcePixelHeight": 1920,
+      "placements": [
+        {
+          "nodeId": "I1299:5561;330:1873",
+          "name": "chibi_knight2_transparent 2",
+          "width": 168,
+          "height": 168,
+          "x": 185,
+          "y": -5,
+          "rootX": 209,
+          "rootY": 145,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5531",
+          "parent": "P25_首页 · 深渊 / home/challenge",
+          "parentId": "1299:5561",
+          "absolutePosition": true,
+          "overhang": true
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:d60f3cc4d2466bb6670494ea734d4d182823a1a7",
+      "contentDigest": "sha256:95f9a53a0abc5a0313951f3121523c90106342a139108b6a73af7f7efd883aeb",
+      "semanticLabel": "提灯跃动的精灵冒险家 2",
+      "file": "image-d60f3cc4d2466bb6670494ea.png",
+      "kind": "image",
+      "imageHash": "d60f3cc4d2466bb6670494ea734d4d182823a1a7",
+      "optimizedForScale": 2,
+      "pixelWidth": 402,
+      "pixelHeight": 402,
+      "sourcePixelWidth": 1254,
+      "sourcePixelHeight": 1254,
+      "placements": [
+        {
+          "nodeId": "1297:5404",
+          "name": "提灯跃动的精灵冒险家 2",
+          "width": 201,
+          "height": 201,
+          "x": 94,
+          "y": 102,
+          "rootX": 94,
+          "rootY": 102,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5680",
+          "parent": "P15_阶段结算 · 旅者",
+          "parentId": "1299:5680",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:083fed9fce21ff4c74fb1849b64ccaa197a922523b9b6198881491346dd0bbf5",
+      "contentDigest": "svg-visual-sha256:083fed9fce21ff4c74fb1849b64ccaa197a922523b9b6198881491346dd0bbf5",
+      "semanticLabel": "P15_阶段结算 · 旅者",
+      "file": "p15.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5712",
+          "name": "Vector",
+          "width": 25,
+          "height": 31,
+          "x": 246,
+          "y": 422,
+          "rootX": 246,
+          "rootY": 422,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5680",
+          "parent": "P15_阶段结算 · 旅者",
+          "parentId": "1299:5680",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5745",
+          "name": "Vector",
+          "width": 25,
+          "height": 31,
+          "x": 246,
+          "y": 423,
+          "rootX": 246,
+          "rootY": 423,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5713",
+          "parent": "P22_阶段结算 · 骑士",
+          "parentId": "1299:5713",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:bca241418e31cfd78f1371734c41b980026ff8656cc6b037bb5641af8b629350",
+      "contentDigest": "svg-visual-sha256:bca241418e31cfd78f1371734c41b980026ff8656cc6b037bb5641af8b629350",
+      "semanticLabel": "P15_阶段结算 · 旅者",
+      "file": "p15-bca24141.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5711",
+          "name": "Vector",
+          "width": 25,
+          "height": 10,
+          "x": 348,
+          "y": 19,
+          "rootX": 348,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5680",
+          "parent": "P15_阶段结算 · 旅者",
+          "parentId": "1299:5680",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:a0378f7cefe60852baa5d023387bd5c91806d8a7d6249f37f9a7d40fbad8b6b6",
+      "contentDigest": "svg-visual-sha256:a0378f7cefe60852baa5d023387bd5c91806d8a7d6249f37f9a7d40fbad8b6b6",
+      "semanticLabel": "P15_阶段结算 · 旅者",
+      "file": "p15-a0378f7c.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5709",
+          "name": "Vector",
+          "width": 18,
+          "height": 9,
+          "x": 304,
+          "y": 20,
+          "rootX": 304,
+          "rootY": 20,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5680",
+          "parent": "P15_阶段结算 · 旅者",
+          "parentId": "1299:5680",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:6d4e92ba6180fade9bd1bbfe800513bae175dcff88719150f603afd8931ad47d",
+      "contentDigest": "svg-visual-sha256:6d4e92ba6180fade9bd1bbfe800513bae175dcff88719150f603afd8931ad47d",
+      "semanticLabel": "P15_阶段结算 · 旅者",
+      "file": "p15-6d4e92ba.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5710",
+          "name": "Vector",
+          "width": 14,
+          "height": 9,
+          "x": 328,
+          "y": 19,
+          "rootX": 328,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5680",
+          "parent": "P15_阶段结算 · 旅者",
+          "parentId": "1299:5680",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:1bc6bdfcbc88523d912e2baabd1a1b1ffebb61e5",
+      "contentDigest": "sha256:48cfbf0264be2e373150c0b205472bee7c7f6219adbb019e64ed218620dda3f2",
+      "semanticLabel": "image 144",
+      "file": "image-1bc6bdfcbc88523d912e2baa.png",
+      "kind": "image",
+      "imageHash": "1bc6bdfcbc88523d912e2baabd1a1b1ffebb61e5",
+      "optimizedForScale": 2,
+      "pixelWidth": 468,
+      "pixelHeight": 468,
+      "sourcePixelWidth": 1024,
+      "sourcePixelHeight": 1024,
+      "placements": [
+        {
+          "nodeId": "1310:5412",
+          "name": "image 144",
+          "width": 234,
+          "height": 234,
+          "x": 78,
+          "y": 92,
+          "rootX": 78,
+          "rootY": 92,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5778",
+          "parent": "P23_终止 · 骑士",
+          "parentId": "1299:5778",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:977161d4f0d2971872267464d74cf72b2885e082",
+      "contentDigest": "sha256:0846f9fd7654b0f34b8d51d9033f40b6aa39ea2c16c3db3cee3b8bae6a875958",
+      "semanticLabel": "image 143",
+      "file": "image-977161d4f0d2971872267464.png",
+      "kind": "image",
+      "imageHash": "977161d4f0d2971872267464d74cf72b2885e082",
+      "optimizedForScale": 2,
+      "pixelWidth": 609,
+      "pixelHeight": 458,
+      "sourcePixelWidth": 1446,
+      "sourcePixelHeight": 1087,
+      "placements": [
+        {
+          "nodeId": "1297:5394",
+          "name": "image 143",
+          "width": 215,
+          "height": 229,
+          "x": 87,
+          "y": 81,
+          "rootX": 87,
+          "rootY": 81,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5805",
+          "parent": "P30_终止 · 深渊",
+          "parentId": "1299:5805",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:24e5415e4c237586ff4079601bfcf0ea6aaf08352ad11fc4eac7b29e96428019",
+      "contentDigest": "svg-visual-sha256:24e5415e4c237586ff4079601bfcf0ea6aaf08352ad11fc4eac7b29e96428019",
+      "semanticLabel": "P30_终止 · 深渊",
+      "file": "p30.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5831",
+          "name": "Vector",
+          "width": 25,
+          "height": 10,
+          "x": 348,
+          "y": 19,
+          "rootX": 348,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5805",
+          "parent": "P30_终止 · 深渊",
+          "parentId": "1299:5805",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5776",
+          "name": "Vector",
+          "width": 25,
+          "height": 10,
+          "x": 348,
+          "y": 19,
+          "rootX": 348,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5746",
+          "parent": "P29_阶段结算 · 深渊",
+          "parentId": "1299:5746",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:21080e5e1a477d4ae2b01057481b0d702a66b94dc2ccc8eb6a544a9633714ce7",
+      "contentDigest": "svg-visual-sha256:21080e5e1a477d4ae2b01057481b0d702a66b94dc2ccc8eb6a544a9633714ce7",
+      "semanticLabel": "P30_终止 · 深渊",
+      "file": "p30-21080e5e.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5829",
+          "name": "Vector",
+          "width": 18,
+          "height": 9,
+          "x": 304,
+          "y": 20,
+          "rootX": 304,
+          "rootY": 20,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5805",
+          "parent": "P30_终止 · 深渊",
+          "parentId": "1299:5805",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:d79ce0ae5749f55ec332dd1a3e1d1a5e7e1285184945585a80bf06721027d051",
+      "contentDigest": "svg-visual-sha256:d79ce0ae5749f55ec332dd1a3e1d1a5e7e1285184945585a80bf06721027d051",
+      "semanticLabel": "P30_终止 · 深渊",
+      "file": "p30-d79ce0ae.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5830",
+          "name": "Vector",
+          "width": 14,
+          "height": 9,
+          "x": 328,
+          "y": 19,
+          "rootX": 328,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5805",
+          "parent": "P30_终止 · 深渊",
+          "parentId": "1299:5805",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5775",
+          "name": "Vector",
+          "width": 14,
+          "height": 9,
+          "x": 328,
+          "y": 19,
+          "rootX": 328,
+          "rootY": 19,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5746",
+          "parent": "P29_阶段结算 · 深渊",
+          "parentId": "1299:5746",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:0826c84dc9841eb2482623f74db9cb1b6037f466",
+      "contentDigest": "sha256:1c56cdea61c795723077ca7ef03ab5257851f5520d7a508500dcad8bf24e81c4",
+      "semanticLabel": "image 143",
+      "file": "image-0826c84dc9841eb2482623f7.png",
+      "kind": "image",
+      "imageHash": "0826c84dc9841eb2482623f74db9cb1b6037f466",
+      "optimizedForScale": 2,
+      "pixelWidth": 600,
+      "pixelHeight": 450,
+      "sourcePixelWidth": 1448,
+      "sourcePixelHeight": 1086,
+      "placements": [
+        {
+          "nodeId": "1311:5417",
+          "name": "image 143",
+          "width": 200,
+          "height": 225,
+          "x": 95,
+          "y": 96,
+          "rootX": 95,
+          "rootY": 96,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5832",
+          "parent": "P24_后续 · 骑士",
+          "parentId": "1299:5832",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:977161d4f0d2971872267464d74cf72b2885e082",
+      "contentDigest": "sha256:76dcee8e2683e4a9d4d23d872035b2ea73cfa50dbfa14262e0d5ed508891a055",
+      "semanticLabel": "image 143",
+      "file": "image-977161d4f0d2971872267464-76dcee8e.png",
+      "kind": "image",
+      "imageHash": "977161d4f0d2971872267464d74cf72b2885e082",
+      "optimizedForScale": 2,
+      "pixelWidth": 540,
+      "pixelHeight": 406,
+      "sourcePixelWidth": 1446,
+      "sourcePixelHeight": 1087,
+      "placements": [
+        {
+          "nodeId": "1332:5432",
+          "name": "image 143",
+          "width": 264,
+          "height": 203,
+          "x": 39,
+          "y": 32,
+          "rootX": 63,
+          "rootY": 172,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5859",
+          "parent": "P31_后续 · 深渊 / Frame",
+          "parentId": "1299:5864",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:977161d4f0d2971872267464d74cf72b2885e082",
+      "contentDigest": "sha256:ccbc9f93919a9f919790e3891a25945d86ca7f6f24f517f8b07bc0f0066ae3f0",
+      "semanticLabel": "image 143",
+      "file": "image-977161d4f0d2971872267464-ccbc9f93.png",
+      "kind": "image",
+      "imageHash": "977161d4f0d2971872267464d74cf72b2885e082",
+      "optimizedForScale": 2,
+      "pixelWidth": 521,
+      "pixelHeight": 392,
+      "sourcePixelWidth": 1446,
+      "sourcePixelHeight": 1087,
+      "placements": [
+        {
+          "nodeId": "1297:5386",
+          "name": "image 143",
+          "width": 204,
+          "height": 196,
+          "x": 93,
+          "y": 99,
+          "rootX": 93,
+          "rootY": 99,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5746",
+          "parent": "P29_阶段结算 · 深渊",
+          "parentId": "1299:5746",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:d3bbace2aaf7770ed04a641cf11007b32125b99353bcfd58bd8e2965782312b2",
+      "contentDigest": "svg-visual-sha256:d3bbace2aaf7770ed04a641cf11007b32125b99353bcfd58bd8e2965782312b2",
+      "semanticLabel": "P29_阶段结算 · 深渊",
+      "file": "p29.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5777",
+          "name": "Vector",
+          "width": 25,
+          "height": 31,
+          "x": 250,
+          "y": 405,
+          "rootX": 250,
+          "rootY": 405,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5746",
+          "parent": "P29_阶段结算 · 深渊",
+          "parentId": "1299:5746",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:7dc39cfac48dea340950122b0be693bf632bc5586388251b2b365adbf4958cae",
+      "contentDigest": "svg-visual-sha256:7dc39cfac48dea340950122b0be693bf632bc5586388251b2b365adbf4958cae",
+      "semanticLabel": "P29_阶段结算 · 深渊",
+      "file": "p29-7dc39cfa.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5774",
+          "name": "Vector",
+          "width": 18,
+          "height": 9,
+          "x": 304,
+          "y": 20,
+          "rootX": 304,
+          "rootY": 20,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5746",
+          "parent": "P29_阶段结算 · 深渊",
+          "parentId": "1299:5746",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "svg-content:5091d8e181740b5387fc8331105f1a848c2682a89ef914864ff6d29aef5b282b",
+      "contentDigest": "svg-visual-sha256:5091d8e181740b5387fc8331105f1a848c2682a89ef914864ff6d29aef5b282b",
+      "semanticLabel": "P31_后续 · 深渊",
+      "file": "p31.svg",
+      "kind": "vector",
+      "placements": [
+        {
+          "nodeId": "1299:5881",
+          "name": "Vector",
+          "width": 18,
+          "height": 9,
+          "x": 304,
+          "y": 20,
+          "rootX": 304,
+          "rootY": 20,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5859",
+          "parent": "P31_后续 · 深渊",
+          "parentId": "1299:5859",
+          "absolutePosition": true,
+          "overhang": false
+        },
+        {
+          "nodeId": "1299:5742",
+          "name": "Vector",
+          "width": 18,
+          "height": 9,
+          "x": 304,
+          "y": 20,
+          "rootX": 304,
+          "rootY": 20,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5713",
+          "parent": "P22_阶段结算 · 骑士",
+          "parentId": "1299:5713",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    },
+    {
+      "sourceIdentity": "figma-image:8f689ba2b40f8890c31f7020cc46c6dcc5541456",
+      "contentDigest": "sha256:65b2e50334319603d48247353b4dcc7effd89b6f7f1c75c28852d0bfdcbf77a3",
+      "semanticLabel": "image 145",
+      "file": "image-8f689ba2b40f8890c31f7020.png",
+      "kind": "image",
+      "imageHash": "8f689ba2b40f8890c31f7020cc46c6dcc5541456",
+      "optimizedForScale": 2,
+      "pixelWidth": 414,
+      "pixelHeight": 414,
+      "sourcePixelWidth": 1024,
+      "sourcePixelHeight": 1024,
+      "placements": [
+        {
+          "nodeId": "1311:5415",
+          "name": "image 145",
+          "width": 207,
+          "height": 207,
+          "x": 91,
+          "y": 102,
+          "rootX": 91,
+          "rootY": 102,
+          "coordinateSpace": "export-root",
+          "rootId": "1299:5713",
+          "parent": "P22_阶段结算 · 骑士",
+          "parentId": "1299:5713",
+          "absolutePosition": true,
+          "overhang": false
+        }
+      ]
+    }
+  ]
+}

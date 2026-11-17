@@ -1,0 +1,108 @@
+.page {
+  padding-top: 8px;
+  padding-bottom: 28px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.fieldHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 13px;
+  color: var(--mute);
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--mute);
+}
+
+.name {
+  margin: 6px 0 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.day {
+  height: 40px;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink2);
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.dayOn {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 10px;
+  width: 160px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.stepBtn {
+  width: 48px;
+  height: 46px;
+  font-size: 20px;
+  color: var(--ink2);
+  background: var(--surface);
+}
+
+.stepBtn:active {
+  background: var(--line2);
+}
+
+.stepValue {
+  flex: 1;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4px;
+}
+
+.notice {
+  margin: 18px 0 0;
+  font-size: 12px;
+  line-height: 19px;
+  color: var(--mute);
+}
+
+.notice strong {
+  display: block;
+  font-size: 14px;
+  color: var(--ink2);
+  margin-bottom: 4px;
+}

@@ -1,0 +1,114 @@
+﻿.page {
+  padding-top: 8px;
+  padding-bottom: 28px;
+}
+
+.hero {
+  border-radius: 16px;
+  background: var(--line2);
+  display: grid;
+  place-items: center;
+  padding: 16px 0;
+  margin-bottom: 18px;
+}
+
+.hero img {
+  width: 230px;
+  height: auto;
+}
+
+.lead {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.leadSub {
+  margin: 8px 0 16px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--ink2);
+}
+
+.zeroCard {
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #fdf1f2;
+  border: 1px solid #f4d3d8;
+}
+
+.zeroLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--danger);
+}
+
+.zeroTitle {
+  margin: 6px 0 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #a32b40;
+}
+
+.zeroSub {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: #b9697a;
+}
+
+.keepCard {
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #eef7f2;
+  border: 1px solid #d5ebe0;
+}
+
+.keepLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1f6b53;
+}
+
+.keepValue {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #3f7a66;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.btnSecondary {
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink2);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btnSecondary:active {
+  background: var(--line2);
+}
+
+.btnPrimary {
+  width: 100%;
+  padding: 16px 0;
+  border-radius: 999px;
+  background: #3a3540;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btnPrimary:active {
+  opacity: 0.9;
+}
+

@@ -1,0 +1,217 @@
+﻿.screen {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--pad) 28px;
+  background: #100d19;
+  color: #f5f0fc;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.top {
+  padding-top: 12px;
+}
+
+.back {
+  font-size: 26px;
+  line-height: 1;
+  color: #f5f0fc;
+  padding: 0 10px 0 0;
+}
+
+.title {
+  margin: 10px 0 14px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.total {
+  align-self: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 198, 106, 0.35);
+  color: #ff873f;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.spotlight {
+  margin-top: 18px;
+  padding: 18px 12px 14px;
+  border-radius: 16px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(245, 198, 106, 0.12), transparent 65%),
+    #141018;
+  border: 1px solid #262030;
+}
+
+.spotRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.spotItem {
+  width: 76px;
+  height: 76px;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0.7;
+}
+
+.spotItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spotActive {
+  width: 96px;
+  height: 96px;
+  opacity: 1;
+  border: 1.5px solid #ff873f;
+  box-shadow: 0 0 22px rgba(245, 198, 106, 0.3);
+}
+
+.spotName {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.titles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #141018;
+  border: 1px solid #262030;
+}
+
+.titleItem {
+  flex: none;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ember {
+  background: rgba(255, 135, 63, 0.16);
+  color: #ff873f;
+}
+
+.accent {
+  background: rgba(196, 161, 255, 0.16);
+  color: #ff9a58;
+}
+
+.muted {
+  background: rgba(255, 255, 255, 0.05);
+  color: #6e6478;
+}
+
+.titleArrow {
+  margin-left: auto;
+  color: #6e6478;
+  font-size: 18px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 20px;
+  border-bottom: 1px solid #262030;
+}
+
+.tab {
+  position: relative;
+  padding: 8px 0 12px;
+  font-size: 14px;
+  color: #8e7f9d;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: transparent;
+}
+
+.tabOn {
+  color: #f5f0fc;
+  font-weight: 700;
+}
+
+.tabOn::after {
+  background: #ff873f;
+}
+
+.secHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 18px 0 12px;
+}
+
+.secLabel {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.secMeta {
+  font-size: 12px;
+  color: #8e7f9d;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 6px 10px;
+  border-radius: 12px;
+  background: #141018;
+  border: 1px solid #262030;
+}
+
+.cellBadge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.cellBadge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cellName {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #b7a4cd;
+}
+
+.foot {
+  margin: 22px 0 0;
+  text-align: center;
+  font-size: 11px;
+  color: #6e6478;
+}
+

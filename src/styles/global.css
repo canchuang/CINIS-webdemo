@@ -1,0 +1,123 @@
+﻿:root {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --ink: #16181d;
+  --ink2: #5f6773;
+  --mute: #98a2b3;
+  --disabled: #b6bcc7;
+  --line: #e4e7ec;
+  --line2: #eef0f4;
+
+  --primary: #ff7a1a;
+  --primary-soft: #fff1e6;
+  --primary-dim: rgba(255, 122, 26, 0.15);
+
+  --traveler-card: #15211c;
+  --traveler-text: #efeae1;
+  --traveler-text2: #8fa79b;
+  --traveler-accent: #287d68;
+  --traveler-line: #2a3a32;
+
+  --positive: #287d68;
+  --gold: #f5c66a;
+  --danger: #c4344b;
+  --ember: #ff873f;
+
+  --font-family: "OPPO Sans 4.0", -apple-system, BlinkMacSystemFont,
+    "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+
+  --pad: 24px;
+  --nav-h: 70px;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background: #e9ecf1;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+
+#root {
+  height: 100%;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ===== 系统页深色主题（作用域） =====
+   套在系统页根容器上，覆写全局变量：
+   深色底 + 橙色点缀。 */
+.darkSystem {
+  background: #100d16;
+  /* 铺满可滚动内容区，抵消 .content 的左右内边距 */
+  margin: 0 -24px;
+  padding: 0 24px 28px;
+  min-height: 100%;
+  box-sizing: border-box;
+  --bg: #100d16;
+  --surface: #1c1a24;
+  --ink: #f4efe7;
+  --ink2: #b7aec6;
+  --mute: #837a92;
+  --disabled: #5c5470;
+  --line: #2a2536;
+  --line2: #221e2d;
+  --primary: #ff873f;
+  --primary-soft: rgba(255, 135, 63, 0.14);
+  --primary-dim: rgba(255, 135, 63, 0.18);
+  --positive: #ff873f;
+  --gold: #f5c66a;
+  --danger: #e0526a;
+  color: var(--ink);
+}
+
+
+
+
+/* 系统页：让外层可滚动区也变深色，避免底部露白 */
+[class*='content']:has(.darkSystem) {
+  background: #100d16;
+}
+
+
+/* 深色系统页里的危险按钮：透明底 + 红描边 */
+.darkSystem [class*='btnDanger'] {
+  background: transparent;
+  border-color: rgba(224, 82, 106, 0.5);
+  color: #e0526a;
+}
+
+

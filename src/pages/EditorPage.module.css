@@ -1,0 +1,236 @@
+﻿.wrap {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: #f2f4f7;
+  color: #253045;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  z-index: 1000;
+}
+
+.topbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 52px;
+  padding: 0 18px;
+  background: #fff;
+  border-bottom: 1px solid #e3e8f0;
+}
+
+.back {
+  color: #5f6773;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.back:hover {
+  color: #ff7a1a;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.btnGhost {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid #d8dee9;
+  background: #fff;
+  color: #42506b;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btnGhost:hover {
+  border-color: #ff7a1a;
+  color: #ff7a1a;
+}
+
+.btnExport {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #ff7a1a;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btnExport:hover {
+  background: #3552cc;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.left {
+  flex: none;
+  width: 200px;
+  background: #fff;
+  border-right: 1px solid #e3e8f0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.right {
+  flex: none;
+  width: 280px;
+  background: #fff;
+  border-left: 1px solid #e3e8f0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.asideTitle {
+  flex: none;
+  padding: 12px 16px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #8a93a6;
+  letter-spacing: 1px;
+}
+
+.blocks {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 12px 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-content: start;
+}
+
+/* GrapesJS 鍖哄潡鍗＄墖缇庡寲 */
+.blocks :global(.gjs-block) {
+  width: 100% !important;
+  min-height: 64px;
+  margin: 0 !important;
+  border-radius: 10px;
+  border: 1px solid #e3e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 13px;
+  color: #42506b;
+  background: #f8fafc;
+  padding: 8px;
+}
+
+.blocks :global(.gjs-block:hover) {
+  border-color: #ff7a1a;
+  color: #ff7a1a;
+}
+
+.blocks :global(.gjs-block-label) {
+  font-size: 13px;
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: #eef1f6;
+}
+
+.tip {
+  flex: none;
+  padding: 10px 18px;
+  font-size: 12px;
+  color: #8a93a6;
+  background: #eef1f6;
+}
+
+.canvasScroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  padding: 12px 24px 32px;
+}
+
+.phoneFrame {
+  width: 390px;
+  flex: none;
+  height: 844px;
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 12px 40px rgba(20, 30, 60, 0.14);
+  overflow: hidden;
+  position: relative;
+}
+
+.gjsHost {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.selectors {
+  padding: 0 12px 8px;
+}
+
+.stylesPanel {
+  padding: 0 6px 12px;
+}
+
+.traits {
+  padding: 0 12px 16px;
+}
+
+.loading {
+  position: absolute;
+  inset: 52px 0 0;
+  display: grid;
+  place-items: center;
+  background: rgba(242, 244, 247, 0.9);
+  font-size: 14px;
+  color: #5f6773;
+  z-index: 10;
+}
+
+/* GrapesJS 鍐呴儴闈㈡澘瀵归綈 */
+.right :global(.gjs-sm-sector) {
+  font-size: 13px;
+}
+
+.right :global(.gjs-sm-sector-title) {
+  background: #f8fafc;
+  border-radius: 6px;
+}
+
+.right :global(.gjs-clm-tags) {
+  font-size: 13px;
+}
+
+/* 闅愯棌 GrapesJS 榛樿椤舵爮涓庡彸渚у唴寤哄伐鍏锋潯锛岄伩鍏嶉伄鎸＄敾甯?*/
+.wrap :global(.gjs-pn-panel) { display: none !important; }
+.wrap :global(.gjs-pn-views-container),
+.wrap :global(.gjs-pn-views),
+.wrap :global(.gjs-pn-options) { display: none !important; }
+.wrap :global(.gjs-cv-canvas) { top: 0 !important; width: 100% !important; }
+.wrap :global(.gjs-cv-canvas__frames) { top: 0 !important; }
+.wrap :global(.gjs-frame-wrapper) { left: 0 !important; right: 0 !important; margin: 0 auto !important; }
+/* 鐢诲竷鏀惧ぇ鎶婃墜杈硅窛 */
+.wrap :global(.gjs-cv-canvas) { padding: 0 !important; }
+

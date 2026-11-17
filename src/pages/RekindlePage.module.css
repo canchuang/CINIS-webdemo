@@ -1,0 +1,103 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding-top: 8px;
+  padding-bottom: 24px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 18px 16px;
+  border-radius: 14px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  text-align: left;
+  transition:
+    border-color 200ms ease,
+    background 200ms ease;
+}
+
+.optionActive {
+  border-color: var(--ink);
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(22, 24, 29, 0.06);
+}
+
+.radio {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid #cfd5de;
+  transition: border-color 200ms ease;
+}
+
+.radioOn {
+  border-color: var(--ink);
+  border-width: 5.5px;
+}
+
+.optText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.optTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.optSub {
+  font-size: 13px;
+  color: var(--mute);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.btnSecondary {
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink2);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btnSecondary:active {
+  background: var(--line2);
+}
+
+.btnPrimary {
+  width: 100%;
+  padding: 16px 0;
+  border-radius: 999px;
+  background: var(--traveler-accent, #287d68);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btnPrimary:active {
+  opacity: 0.9;
+}

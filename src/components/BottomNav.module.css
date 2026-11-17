@@ -1,0 +1,124 @@
+.nav {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 22px;
+  height: var(--nav-h);
+  background: var(--surface);
+  border: 1px solid #eceff5;
+  border-radius: var(--nav-h);
+  box-shadow: 0 6px 24px rgba(22, 24, 29, 0.06);
+  z-index: 20;
+}
+
+.list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100%;
+  padding: 0 6px;
+}
+
+/* 简洁实底橙色键位（不用玻璃质感） */
+.indicator {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: calc(100% - 12px);
+  border-radius: 999px;
+  background: var(--primary-dim);
+  /* 响应更快：位移 300ms，先加速后减速 */
+  transition:
+    transform 300ms cubic-bezier(0.65, 0, 0.35, 1),
+    width 300ms cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform, width;
+  pointer-events: none;
+}
+
+/* Q 弹：点任意 icon 都弹一下（放慢到 760ms，压扁拉宽再回弹） */
+/* Q 弹：点击时指示器压扁拉宽再回弹（scale 属性，不冲突 translate3d） */
+.pop {
+  animation: qPop 720ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes qPop {
+  0% {
+    scale: 1 1;
+  }
+  30% {
+    scale: 1.06 0.93;
+  }
+  60% {
+    scale: 0.975 1.045;
+  }
+  85% {
+    scale: 1.01 0.992;
+  }
+  100% {
+    scale: 1 1;
+  }
+}
+
+.item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 999px;
+  color: var(--mute);
+  transition: color 200ms ease;
+}
+
+.item:active {
+  transform: scale(0.96);
+  transition: transform 120ms ease;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  color: var(--mute);
+  opacity: 0.85;
+  transform: scale(1);
+  transform-origin: center;
+  will-change: transform;
+  transition:
+    color 220ms ease,
+    opacity 220ms ease,
+    transform 340ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.active .icon {
+  color: var(--primary);
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+.label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  transition: font-weight 200ms ease, color 200ms ease;
+}
+
+.active .label {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator,
+  .icon,
+  .item {
+    transition: none !important;
+  }
+  .pop {
+    animation: none !important;
+  }
+}
+

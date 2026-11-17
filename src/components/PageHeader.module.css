@@ -1,0 +1,53 @@
+.header {
+  padding-top: 4px;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 32px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 8px 4px 0;
+  color: var(--ink);
+  transition: opacity 160ms ease;
+}
+
+.back:active {
+  opacity: 0.5;
+}
+
+.chev {
+  font-size: 26px;
+  line-height: 1;
+  margin-top: -3px;
+}
+
+.backText {
+  font-size: 14px;
+  color: var(--ink2);
+}
+
+.right {
+  display: inline-flex;
+  align-items: center;
+}
+
+.title {
+  margin: 6px 0 14px;
+  font-size: 34px;
+  line-height: 42px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.titleLg {
+  font-size: 22px;
+  line-height: 30px;
+  letter-spacing: 0;
+}

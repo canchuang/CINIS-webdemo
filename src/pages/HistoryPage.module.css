@@ -1,0 +1,201 @@
+.page {
+  padding-top: 8px;
+  padding-bottom: 28px;
+}
+
+.rounds {
+  font-size: 13px;
+  color: var(--ink2);
+}
+
+.rounds strong {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-right: 2px;
+}
+
+.summary {
+  margin: -6px 0 12px;
+  font-size: 13px;
+  color: var(--mute);
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--line);
+}
+
+.filter {
+  position: relative;
+  padding: 8px 0 12px;
+  font-size: 14px;
+  color: var(--ink2);
+}
+
+.filter::after {
+  content: '';
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 1px;
+  background: transparent;
+}
+
+.filterOn {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.filterOn::after {
+  background: var(--ink);
+}
+
+.colHead {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 16px;
+  padding: 12px 0 8px;
+  font-size: 11px;
+  color: var(--mute);
+}
+
+.colHead span:last-child {
+  min-width: 48px;
+  text-align: right;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line2);
+}
+
+.itemHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.date {
+  font-size: 11px;
+  color: var(--mute);
+  font-variant-numeric: tabular-nums;
+}
+
+.soul {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ember);
+}
+
+.soulNeg {
+  color: #e0526a;
+}
+
+.itemBody {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.itemLeft {
+  min-width: 0;
+  flex: 1;
+}
+
+.itemName {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.itemSub {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.barWrap {
+  flex: none;
+  width: 130px;
+}
+
+.barCol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.barTrack {
+  height: 3px;
+  border-radius: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.barNeg {
+  background: #e0526a;
+}
+
+.barText {
+  text-align: right;
+  font-size: 11px;
+  color: var(--ink2);
+  font-variant-numeric: tabular-nums;
+}
+
+.empty {
+  padding: 30px 0;
+  text-align: center;
+  color: var(--mute);
+  font-size: 13px;
+}
+
+.totals {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--line2);
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.totalLabel {
+  font-size: 13px;
+  color: var(--ink2);
+}
+
+.totalValue {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.foot {
+  margin: 18px 0 0;
+  font-size: 11px;
+  color: var(--mute);
+}

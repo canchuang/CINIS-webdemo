@@ -1,0 +1,157 @@
+﻿.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--pad) 22px;
+  background: #100d19;
+  color: #f2ebff;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.top {
+  width: 100%;
+  padding-top: 10px;
+}
+
+.back {
+  font-size: 26px;
+  line-height: 1;
+  color: #f2ebff;
+  padding: 0 10px 0 0;
+}
+
+.kicker {
+  margin: 16px 0 14px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #c4a1ff;
+}
+
+.hero {
+  width: 100%;
+  border-radius: 12px;
+  background: #17131f;
+  display: grid;
+  place-items: center;
+  padding: 14px 0;
+  border: 1px solid #262030;
+}
+
+.hero img {
+  width: 260px;
+  height: auto;
+}
+
+.title {
+  margin: 16px 0 0;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.reason {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: #a594c7;
+}
+
+.lossLabel {
+  margin: 18px 0 0;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #a594c7;
+}
+
+.lossNum {
+  margin: 2px 0 0;
+  font-size: 40px;
+  font-weight: 800;
+  color: #e0526a;
+  letter-spacing: -0.5px;
+}
+
+.lossNum span {
+  margin: 0 6px;
+  color: #a594c7;
+  font-weight: 400;
+}
+
+.rows {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.keepHead {
+  padding-bottom: 8px;
+  font-size: 11px;
+  color: #6e6478;
+  letter-spacing: 1px;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(242, 235, 255, 0.08);
+}
+
+.rowLabel {
+  font-size: 13px;
+  color: #a594c7;
+}
+
+.rowValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f2ebff;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 26px;
+}
+
+.btnSecondary {
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 999px;
+  border: 1px solid rgba(242, 235, 255, 0.18);
+  background: transparent;
+  color: #f2ebff;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btnSecondary:active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btnPrimary {
+  width: 100%;
+  padding: 16px 0;
+  border-radius: 999px;
+  background: #7c3aed;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.btnPrimary:active {
+  opacity: 0.9;
+}
+
+.foot {
+  margin: 14px 0 0;
+  font-size: 11px;
+  color: #6e6478;
+}
+

@@ -1,0 +1,36 @@
+.stage {
+  /* 给倾斜与阴影留出空间，避免被父级裁切 */
+  perspective: 900px;
+  margin: 0 -4px;
+  position: relative;
+}
+
+/* 卡片后方的淡阴影层 */
+.shadow {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 20px;
+  bottom: -6px;
+  z-index: 0;
+  border-radius: 20px;
+  background: rgba(22, 24, 29, 0.17);
+  filter: blur(20px);
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+  /* transform 由 JS rAF 插值，这里不要 transition，否则会双重缓动变迟钝 */
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shadow {
+    transition: none;
+  }
+}

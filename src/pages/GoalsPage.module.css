@@ -1,0 +1,180 @@
+﻿.page {
+  padding-top: 8px;
+}
+
+.title {
+  margin: 0;
+  font-size: 34px;
+  line-height: 42px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.summary {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 16px 0 18px;
+  color: var(--ink2);
+  font-size: 14px;
+}
+
+.summary strong {
+  font-size: 34px;
+  line-height: 42px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+}
+
+/* 下划线标签，坐在一条通栏细线上 */
+.filters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 6px;
+}
+
+.filter {
+  position: relative;
+  padding: 8px 0 12px;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--ink2);
+  transition: color 180ms ease;
+}
+
+.filter::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 1px;
+  background: transparent;
+  transition: background 180ms ease;
+}
+
+.filterActive {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.filterActive::after {
+  background: var(--ink);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-bottom: 1px solid var(--line2);
+}
+
+.itemBtn {
+  display: block;
+  width: 100%;
+  padding: 16px 0 14px;
+  text-align: left;
+  transition: opacity 160ms ease;
+}
+
+.itemBtn:active {
+  opacity: 0.6;
+}
+
+.itemTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.itemTitle {
+  margin: 0;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.itemValue {
+  flex: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.itemMeta {
+  margin: 4px 0 10px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--mute);
+}
+
+.track {
+  height: 2px;
+  border-radius: 1px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 1px;
+  background: var(--primary);
+  transition: width 480ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pending .itemTitle {
+  color: var(--mute);
+}
+
+.pending .itemValue {
+  color: var(--mute);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.pending .itemMeta {
+  color: var(--disabled);
+}
+
+.pending .fill {
+  background: var(--line);
+}
+
+.empty {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--mute);
+  font-size: 14px;
+}
+
+.addBtn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 15px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink2);
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 160ms ease;
+}
+
+.addBtn:active {
+  background: var(--line2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill,
+  .filter,
+  .filter::after {
+    transition: none !important;
+  }
+}
+

@@ -1,0 +1,111 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding-top: 8px;
+  padding-bottom: 24px;
+}
+
+.card {
+  margin-top: 8px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #eef7f2;
+  border: 1px solid #d5ebe0;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f6b53;
+}
+
+.cardSub {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 20px;
+  color: #4a7a67;
+}
+
+.keepHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 22px 0 2px;
+}
+
+.keepLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--mute);
+}
+
+.keepHint {
+  font-size: 12px;
+  color: var(--disabled);
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line2);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.rowLabel {
+  font-size: 15px;
+  color: var(--ink2);
+}
+
+.rowValue {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.btnSecondary {
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink2);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btnSecondary:active {
+  background: var(--line2);
+}
+
+.btnPrimary {
+  width: 100%;
+  padding: 16px 0;
+  border-radius: 999px;
+  background: var(--traveler-accent, #287d68);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btnPrimary:active {
+  opacity: 0.9;
+}

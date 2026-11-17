@@ -1,0 +1,256 @@
+/* 浅色底：旅者 */
+.screen {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0 24px 22px;
+  background: #f5f7fb;
+  color: #16181d;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  --accent: #287d68;
+  --accent-soft: #e6f2ee;
+}
+
+/* 深色底：骑士 / 深渊 */
+.dark {
+  background: #100d16;
+  color: #efeaf5;
+}
+
+.accentGreen {
+  --accent: #287d68;
+  --accent-soft: #e6f2ee;
+}
+
+.accentGold {
+  --accent: #e0b45c;
+  --accent-soft: rgba(224, 180, 92, 0.12);
+}
+
+.accentPurple {
+  --accent: #a78bfa;
+  --accent-soft: rgba(167, 139, 250, 0.14);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+}
+
+.back {
+  font-size: 26px;
+  line-height: 1;
+  padding: 0 10px 0 0;
+  color: inherit;
+}
+
+.modeEn {
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.title {
+  margin: 26px 0 0;
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.sub {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 20px;
+  opacity: 0.6;
+}
+
+/* 模式卡 */
+.modeCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dark .modeCard {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.modeBadge {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.08);
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.dark .modeBadge {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.modeInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modeName {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.change {
+  align-self: flex-start;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.gate {
+  flex: none;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 设置行 */
+.sectionTitle {
+  margin: 22px 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0.55;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dark .row {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.rowLabel {
+  font-size: 14px;
+  opacity: 0.65;
+}
+
+.rowValue {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.rowAccent {
+  color: var(--accent);
+}
+
+/* 契约/代价 */
+.terms {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.term {
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+
+.termOk {
+  background: var(--accent-soft);
+}
+
+.termWarn {
+  background: rgba(224, 82, 106, 0.1);
+  border-left: 3px solid #e0526a;
+}
+
+.termTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.termWarn .termTitle {
+  color: #e0526a;
+}
+
+.termDetail {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 19px;
+  opacity: 0.7;
+}
+
+/* 按钮 */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.btnSecondary {
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 999px;
+  border: 1px solid rgba(127, 127, 127, 0.28);
+  background: transparent;
+  color: inherit;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btnPrimary {
+  width: 100%;
+  padding: 16px 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.accentGold .btnPrimary {
+  color: #241a05;
+}
+
+.accentPurple .btnPrimary {
+  color: #fff;
+}
+
+.btnPrimary:active,
+.btnSecondary:active {
+  opacity: 0.88;
+}

@@ -1,0 +1,101 @@
+/* 二级页通用构件，供各页面 module 通过 composes 复用 */
+
+/* 设置行：左标签右值 + 可选右箭头 */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line2);
+  text-align: left;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.rowLabel {
+  font-size: 15px;
+  color: var(--ink2);
+}
+
+.rowValue {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.arrow {
+  font-size: 17px;
+  line-height: 1;
+  color: #c4cad4;
+}
+
+/* 区块标题（浅灰小标题） */
+.sectionLabel {
+  margin: 18px 0 6px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  color: var(--mute);
+}
+
+/* 底部按钮组 */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.btnPrimary {
+  width: 100%;
+  padding: 16px 0;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  transition: transform 120ms ease, opacity 160ms ease;
+}
+
+.btnPrimary:active {
+  transform: scale(0.985);
+  opacity: 0.9;
+}
+
+.btnSecondary {
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink2);
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 160ms ease;
+}
+
+.btnSecondary:active {
+  background: var(--line2);
+}
+
+.btnDanger {
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 999px;
+  border: 1px solid #f0c9cf;
+  background: #fff;
+  color: var(--danger);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btnDanger:active {
+  background: #fdf1f2;
+}
