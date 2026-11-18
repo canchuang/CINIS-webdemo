@@ -166,3 +166,8 @@
 
 
 
+
+/* 深渊深色面板：压低顶部高光线强度 */
+.sheetDark {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
