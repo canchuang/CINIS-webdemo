@@ -1,33 +1,30 @@
 /**
- * 弹窗面板（sheet）特效样式与工具函数。
- * 通过 CSS 变量 + 条件类名，让同一套特效可复用到任意 sheet。
+ * 弹窗面板（sheet）特效：磨砂暖白背景。
+ * 用 CSS 变量驱动渐变底色 + backdrop-filter 模糊，让背后暖光自然透上来。
  */
 import type { CSSProperties } from 'react'
 import type { ModalBgConfig } from '../data/modalBg'
 import fx from './sheetFx.module.css'
 
+function hexToRgba(hex: string, alpha: number): string {
+  const h = hex.replace('#', '')
+  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h
+  const r = parseInt(full.slice(0, 2), 16)
+  const g = parseInt(full.slice(2, 4), 16)
+  const b = parseInt(full.slice(4, 6), 16)
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
 export function sheetFxStyle(c: ModalBgConfig): { className: string; style: CSSProperties } {
   if (!c.sheetFxEnabled) return { className: '', style: {} }
 
-  const cls = [fx.fx]
-  if (c.sheetTopLight) cls.push(fx.topLight)
-  if (c.sheetSheen) cls.push(fx.sheen)
-  if (c.sheetFloat) cls.push(fx.float)
-
-  // 辉光：用 --glow-color 与强度/扩散变量驱动 box-shadow
-  const glowAlpha = Math.round(c.sheetGlowStrength * 255)
-    .toString(16)
-    .padStart(2, '0')
-  const glow = `${c.sheetGlowColor}${glowAlpha}`
+  const top = hexToRgba(c.sheetBgTop, c.sheetBgOpacity)
+  const bottom = hexToRgba(c.sheetBgBottom, c.sheetBgOpacity)
 
   const style = {
-    ['--sheet-glow' as string]: glow,
-    ['--sheet-glow-spread' as string]: `${c.sheetGlowSpread}px`,
-    ['--sheet-sheen-speed' as string]: `${c.sheetSheenSpeed}s`,
-    ['--sheet-sheen-color' as string]: c.sheetSheenColor,
-    ['--sheet-float-amount' as string]: `${c.sheetFloatAmount}px`,
-    ['--sheet-float-speed' as string]: `${c.sheetFloatSpeed}s`,
+    ['--sheet-bg' as string]: `linear-gradient(to bottom, ${top} 0%, ${bottom} 100%)`,
+    ['--sheet-blur' as string]: `${c.sheetBlur}px`,
   } as CSSProperties
 
-  return { className: cls.join(' '), style }
+  return { className: fx.frost, style }
 }

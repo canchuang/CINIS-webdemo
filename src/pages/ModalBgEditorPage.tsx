@@ -39,19 +39,13 @@ const FIELDS: { group: string; items: Field[] }[] = [
     ],
   },
   {
-    group: '弹窗面板特效',
+    group: '弹窗面板特效（磨砂暖白）',
     items: [
       { key: 'sheetFxEnabled', label: '启用面板特效', type: 'toggle' },
-      { key: 'sheetGlowColor', label: '边缘辉光颜色', type: 'color' },
-      { key: 'sheetGlowStrength', label: '辉光强度', type: 'range', min: 0, max: 1, step: 0.01 },
-      { key: 'sheetGlowSpread', label: '辉光扩散(px)', type: 'range', min: 0, max: 60, step: 1 },
-      { key: 'sheetTopLight', label: '顶部高光线', type: 'toggle' },
-      { key: 'sheetSheen', label: '光泽扫过', type: 'toggle' },
-      { key: 'sheetSheenSpeed', label: '扫过周期（秒）', type: 'range', min: 0.8, max: 8, step: 0.1 },
-      { key: 'sheetSheenColor', label: '光泽颜色', type: 'color' },
-      { key: 'sheetFloat', label: '轻微浮动', type: 'toggle' },
-      { key: 'sheetFloatAmount', label: '浮动幅度(px)', type: 'range', min: 0, max: 12, step: 1 },
-      { key: 'sheetFloatSpeed', label: '浮动周期（秒）', type: 'range', min: 1, max: 8, step: 0.5 },
+      { key: 'sheetBgTop', label: '顶部颜色', type: 'color' },
+      { key: 'sheetBgBottom', label: '底部颜色', type: 'color' },
+      { key: 'sheetBgOpacity', label: '不透明度（越低越透）', type: 'range', min: 0.3, max: 1, step: 0.01 },
+      { key: 'sheetBlur', label: '磨砂模糊(px)', type: 'range', min: 0, max: 40, step: 1 },
     ],
   },
 ]
@@ -190,22 +184,20 @@ export default function ModalBgEditorPage() {
 
             <ModalBackdrop config={cfg} />
 
-            <div className={`${styles.sheetWrap} ${fx.className}`} style={fx.style}>
-              <div className={styles.sheet}>
-                <div className={styles.grabber} />
-                <div className={styles.sheetHead}>
-                  <div>
-                    <div className={styles.sheetTask}>跟读复述 1 段</div>
-                    <div className={styles.sheetMeta}>20 分钟 · +40 XP · +10 魂火</div>
-                  </div>
-                  <div className={styles.sheetCancel}>取消</div>
+            <div className={`${styles.sheet} ${fx.className}`} style={fx.style}>
+              <div className={styles.grabber} />
+              <div className={styles.sheetHead}>
+                <div>
+                  <div className={styles.sheetTask}>跟读复述 1 段</div>
+                  <div className={styles.sheetMeta}>20 分钟 · +40 XP · +10 魂火</div>
                 </div>
-                <div className={styles.sheetMain}>
-                  <span>点火专注</span>
-                  <small>⏱ 20 min · +40 XP</small>
-                </div>
-                <div className={styles.sheetQuick}>快速打卡</div>
+                <div className={styles.sheetCancel}>取消</div>
               </div>
+              <div className={styles.sheetMain}>
+                <span>点火专注</span>
+                <small>⏱ 20 min · +40 XP</small>
+              </div>
+              <div className={styles.sheetQuick}>快速打卡</div>
             </div>
           </div>
         </main>

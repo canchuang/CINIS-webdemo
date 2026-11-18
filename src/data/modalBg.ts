@@ -34,29 +34,17 @@ export type ModalBgConfig = {
   /** 是否开启光晕上浮动画 */
   riseEnabled: boolean
 
-  /* ===== 弹窗面板（sheet）本身的特效 ===== */
+  /* ===== 弹窗面板特效（磨砂暖白背景） ===== */
   /** 是否启用面板特效 */
   sheetFxEnabled: boolean
-  /** 面板边缘辉光颜色 */
-  sheetGlowColor: string
-  /** 面板边缘辉光强度 0~1 */
-  sheetGlowStrength: number
-  /** 面板辉光扩散半径 px 0~60 */
-  sheetGlowSpread: number
-  /** 面板顶部高光线是否开启 */
-  sheetTopLight: boolean
-  /** 光泽扫过是否开启 */
-  sheetSheen: boolean
-  /** 光泽扫过周期（秒）0.8~8 */
-  sheetSheenSpeed: number
-  /** 光泽颜色 */
-  sheetSheenColor: string
-  /** 是否轻微浮动 */
-  sheetFloat: boolean
-  /** 浮动幅度 px 0~12 */
-  sheetFloatAmount: number
-  /** 浮动周期（秒）1~8 */
-  sheetFloatSpeed: number
+  /** 面板背景顶部颜色 */
+  sheetBgTop: string
+  /** 面板背景底部颜色 */
+  sheetBgBottom: string
+  /** 面板背景不透明度 0.3~1（越低越透，暖光越容易透上来） */
+  sheetBgOpacity: number
+  /** 磨砂模糊强度 px 0~40 */
+  sheetBlur: number
 }
 
 export const defaultModalBg: ModalBgConfig = {
@@ -75,21 +63,15 @@ export const defaultModalBg: ModalBgConfig = {
   particleOpacity: 0.75,
   riseEnabled: true,
 
-  // 弹窗面板特效
+  // 弹窗面板特效（磨砂暖白）
   sheetFxEnabled: true,
-  sheetGlowColor: '#F0AD53',
-  sheetGlowStrength: 0.55,
-  sheetGlowSpread: 26,
-  sheetTopLight: true,
-  sheetSheen: true,
-  sheetSheenSpeed: 3.2,
-  sheetSheenColor: '#FFFFFF',
-  sheetFloat: true,
-  sheetFloatAmount: 4,
-  sheetFloatSpeed: 4.5,
+  sheetBgTop: '#EADBAB',
+  sheetBgBottom: '#F4ECD3',
+  sheetBgOpacity: 0.94,
+  sheetBlur: 16,
 }
 
-const KEY = 'cinis:modal-bg-config:v3'
+const KEY = 'cinis:modal-bg-config:v4'
 
 export function loadModalBg(): ModalBgConfig {
   try {

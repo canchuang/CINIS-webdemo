@@ -21,44 +21,42 @@ export function ChooseModeSheet({ onClose, onFocus, onQuick }: Props) {
     <div className={styles.overlay} role="presentation">
       <ModalBackdrop config={bg} onClick={onClose} />
 
-      {/* 包裹层承载面板特效（辉光/扫光/浮动），避免与 sheet 入场动画冲突 */}
-      <div className={`${styles.sheetWrap} ${fx.className}`} style={fx.style}>
-        <div
-          className={styles.sheet}
-          onClick={(e) => e.stopPropagation()}
-          role="dialog"
-          aria-modal="true"
-          aria-label="选择完成方式"
-        >
-          <div className={styles.grabber} aria-hidden="true" />
+      <div
+        className={`${styles.sheet} ${fx.className}`}
+        style={fx.style}
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label="选择完成方式"
+      >
+        <div className={styles.grabber} aria-hidden="true" />
 
-          <div className={styles.head}>
-            <div>
-              <p className={styles.task}>{c.task}</p>
-              <p className={styles.meta}>{c.meta}</p>
-            </div>
-            <button type="button" className={styles.cancel} onClick={onClose}>
-              取消
-            </button>
+        <div className={styles.head}>
+          <div>
+            <p className={styles.task}>{c.task}</p>
+            <p className={styles.meta}>{c.meta}</p>
           </div>
-
-          <button type="button" className={styles.main} onClick={onFocus}>
-            <span className={styles.mainTitle}>{c.focus.title}</span>
-            <span className={styles.mainMeta}>⏱ {c.focus.meta}</span>
-            <span className={styles.mainRule}>{c.focus.rule}</span>
-            <span className={styles.mainArrow} aria-hidden="true">
-              ›
-            </span>
-          </button>
-
-          <button type="button" className={styles.quick} onClick={onQuick}>
-            <span className={styles.quickTitle}>{c.quick.title}</span>
-            <span className={styles.quickMeta}>{c.quick.meta}</span>
-            <span className={styles.quickArrow} aria-hidden="true">
-              ›
-            </span>
+          <button type="button" className={styles.cancel} onClick={onClose}>
+            取消
           </button>
         </div>
+
+        <button type="button" className={styles.main} onClick={onFocus}>
+          <span className={styles.mainTitle}>{c.focus.title}</span>
+          <span className={styles.mainMeta}>⏱ {c.focus.meta}</span>
+          <span className={styles.mainRule}>{c.focus.rule}</span>
+          <span className={styles.mainArrow} aria-hidden="true">
+            ›
+          </span>
+        </button>
+
+        <button type="button" className={styles.quick} onClick={onQuick}>
+          <span className={styles.quickTitle}>{c.quick.title}</span>
+          <span className={styles.quickMeta}>{c.quick.meta}</span>
+          <span className={styles.quickArrow} aria-hidden="true">
+            ›
+          </span>
+        </button>
       </div>
     </div>
   )

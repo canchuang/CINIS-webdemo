@@ -1,83 +1,16 @@
-/* 弹窗面板特效（叠加到任意 .sheet 上） */
+/* 弹窗面板特效：磨砂暖白背景（贴合设计稿 18A） */
 
-.fx {
-  position: relative;
-  overflow: hidden;
-  /* 边缘辉光 */
-  box-shadow:
-    0 -2px 0 var(--sheet-glow, rgba(240, 173, 83, 0.55)) inset,
-    0 -8px 26px -6px var(--sheet-glow, rgba(240, 173, 83, 0.55)),
-    0 -1px calc(var(--sheet-glow-spread, 26px)) rgba(240, 173, 83, 0.28);
-}
-
-/* 顶部高光线 */
-.topLight::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 12%;
-  right: 12%;
-  height: 1.5px;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--sheet-glow, rgba(240, 173, 83, 0.9)),
-    transparent
-  );
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* 光泽扫过 */
-.sheen::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(
-    115deg,
-    transparent 32%,
-    var(--sheet-sheen-color, #fff) 47%,
-    transparent 62%
-  );
-  background-size: 260% 100%;
-  opacity: 0.18;
-  mix-blend-mode: soft-light;
-  animation: sheetSheen var(--sheet-sheen-speed, 3.2s) ease-in-out infinite;
-}
-
-@keyframes sheetSheen {
-  0% {
-    background-position: 150% 0;
-  }
-  55% {
-    background-position: -60% 0;
-  }
-  100% {
-    background-position: -60% 0;
-  }
-}
-
-/* 轻微浮动 */
-.float {
-  animation: sheetFloat var(--sheet-float-speed, 4.5s) ease-in-out infinite;
-}
-
-@keyframes sheetFloat {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 0 calc(-1 * var(--sheet-float-amount, 4px));
-  }
+.frost {
+  background: var(--sheet-bg, linear-gradient(to bottom, #eadbab 0%, #f4ecd3 100%)) !important;
+  backdrop-filter: blur(var(--sheet-blur, 16px)) saturate(1.15);
+  -webkit-backdrop-filter: blur(var(--sheet-blur, 16px)) saturate(1.15);
+  /* 柔和的上沿分隔线（中性白，不是暖光） */
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sheen::after,
-  .float {
-    animation: none !important;
+  .frost {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
