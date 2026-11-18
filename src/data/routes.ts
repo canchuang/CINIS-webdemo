@@ -27,8 +27,10 @@ export type RouteKey =
   | 'privacy'
   | 'stageProgress'
   | 'comeback'
+  | 'modalBgEditor'
   | 'trialConfirm'
   | 'newGoal'
   | 'editor'
+
 
 

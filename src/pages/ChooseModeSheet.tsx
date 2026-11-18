@@ -1,13 +1,24 @@
+﻿import { useEffect, useState } from 'react'
 import styles from './ChooseModeSheet.module.css'
 import { chooseModeInfo } from '../data/content'
+import { ModalBackdrop } from '../components/ModalBackdrop'
+import { defaultModalBg, loadModalBg, type ModalBgConfig } from '../data/modalBg'
 
 type Props = { onClose: () => void; onFocus: () => void; onQuick: () => void }
 
 /** 11A 完成方式弹层 */
 export function ChooseModeSheet({ onClose, onFocus, onQuick }: Props) {
   const c = chooseModeInfo
+  // 读取编辑器保存的背景参数
+  const [bg, setBg] = useState<ModalBgConfig>(defaultModalBg)
+  useEffect(() => {
+    setBg(loadModalBg())
+  }, [])
+
   return (
-    <div className={styles.overlay} onClick={onClose} role="presentation">
+    <div className={styles.overlay} role="presentation">
+      <ModalBackdrop config={bg} onClick={onClose} />
+
       <div
         className={styles.sheet}
         onClick={(e) => e.stopPropagation()}

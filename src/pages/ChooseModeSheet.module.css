@@ -5,8 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background: rgba(22, 24, 29, 0.42);
-  animation: fade 200ms ease;
+  /* 背景由 ModalBackdrop 渲染 */
 }
 
 @keyframes fade {
@@ -16,6 +15,8 @@
 }
 
 .sheet {
+  position: relative;
+  z-index: 50;
   background: var(--surface);
   border-radius: 22px 22px 0 0;
   padding: 8px 20px calc(24px + env(safe-area-inset-bottom));
