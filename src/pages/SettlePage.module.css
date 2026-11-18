@@ -181,3 +181,10 @@
   background: rgba(255, 255, 255, 0.13);
 }
 
+
+/* 旅者：立绘无卡片背景（P15），直接落在页面上 */
+.heroPlain {
+  background: transparent !important;
+  height: auto;
+  padding: 4px 0 0;
+}

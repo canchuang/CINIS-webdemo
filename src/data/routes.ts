@@ -28,9 +28,11 @@ export type RouteKey =
   | 'stageProgress'
   | 'comeback'
   | 'modalBgEditor'
+  | 'navBarEditor'
   | 'trialConfirm'
   | 'newGoal'
   | 'editor'
+
 
 
 

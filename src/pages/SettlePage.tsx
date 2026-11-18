@@ -18,11 +18,18 @@ export function SettlePage({ mode = 'traveler', onContinue, onSkip, onViewProgre
 
   // 数值颜色：旅者/骑士 金，深渊 白（与稿一致）
   const soulColor = mode === 'abyss' ? '#FFFFFF' : '#F5C66A'
-  // 强调行颜色：深渊/骑士 绿 +1000 XP，旅者普通白
-  const accentColor = mode === 'traveler' ? '#FFFFFF' : '#4ADE80'
+  // 强调行颜色：深渊/骑士 绿 +1000 XP，旅者按稿为绿色经验
+  const accentColor = mode === 'traveler' ? '#6FCF97' : '#4ADE80'
+  // 页面底色：旅者深绿 #15211C（P15），骑士/深渊暖黑 #17130F
+  const screenBg = mode === 'traveler' ? '#15211C' : '#17130F'
+  // 旅者稿中立绘无卡片背景，其余模式保留卡片
+  const heroCard = mode !== 'traveler'
+  // 主按钮：旅者 #438D7B
+  const ctaBg = mode === 'knight' ? '#F0AD53' : mode === 'traveler' ? '#438D7B' : theme.accent
+  const ctaColor = mode === 'knight' ? '#17130F' : '#F3EDE2'
 
   return (
-    <div className={styles.screen}>
+    <div className={styles.screen} style={{ background: screenBg }}>
       <div className={styles.topBar}>
         <span className={styles.crumb}>
           魂火结算 · {s.mode} · {s.duration}
@@ -32,7 +39,7 @@ export function SettlePage({ mode = 'traveler', onContinue, onSkip, onViewProgre
         </button>
       </div>
 
-      <div className={styles.hero}>
+      <div className={`${styles.hero} ${heroCard ? '' : styles.heroPlain}`}>
         <img src={s.hero} alt="" />
       </div>
 
@@ -51,7 +58,13 @@ export function SettlePage({ mode = 'traveler', onContinue, onSkip, onViewProgre
             <span className={styles.rowLabel}>{r.label}</span>
             <span
               className={styles.rowValue}
-              style={r.accent ? { color: accentColor, fontWeight: 700 } : undefined}
+              style={
+                r.accent
+                  ? { color: accentColor, fontWeight: 700 }
+                  : r.copper
+                    ? { color: '#C08A52', fontWeight: 700 }
+                    : undefined
+              }
             >
               {r.value}
             </span>
@@ -77,7 +90,7 @@ export function SettlePage({ mode = 'traveler', onContinue, onSkip, onViewProgre
         <button
           type="button"
           className={styles.cta}
-          style={{ background: theme.accent }}
+          style={{ background: ctaBg, color: ctaColor }}
           onClick={onContinue}
         >
           继续征途
@@ -93,3 +106,4 @@ export function SettlePage({ mode = 'traveler', onContinue, onSkip, onViewProgre
     </div>
   )
 }
+

@@ -1,4 +1,4 @@
-import type { GameMode } from './content'
+﻿import type { GameMode } from './content'
 
 export type SettleMode = {
   duration: string
@@ -9,7 +9,7 @@ export type SettleMode = {
   title: string
   /** 副标题（含完成率） */
   subtitle: string
-  rows: { label: string; value: string; accent?: boolean }[]
+  rows: { label: string; value: string; accent?: boolean; copper?: boolean }[]
   /** 称号解锁卡（稿子里旅者有，深渊没有） */
   badge?: { title: string; sub: string }
   /** 次要按钮（稿子里的「回到首页」） */
@@ -26,12 +26,11 @@ export const modeSettle: Record<GameMode, SettleMode> = {
     subtitle: '本阶段历经七日 · 全额结算',
     rows: [
       { label: '完成任务', value: '14 / 21' },
-      { label: '阶段完成率', value: '67% · 铜徽章' },
-      { label: '永久经验', value: '+320 XP · 660 → 980' },
+      { label: '阶段完成率', value: '67% · 铜徽章', copper: true },
+      { label: '永久经验', value: '+320 XP · 660 → 980', accent: true },
       { label: '真实专注', value: '5 小时 40 分' },
     ],
     badge: { title: '解锁称号 · 旅途初行者', sub: '首次完成旅者模式的阶段 · 普通' },
-    backLabel: '回到首页',
   },
 
   knight: {
@@ -63,6 +62,6 @@ export const modeSettle: Record<GameMode, SettleMode> = {
       { label: '永久经验', value: '+1000 XP · 660 → 1660', accent: true },
       { label: '真实专注', value: '8 小时 20 分' },
     ],
-    backLabel: '回到首页',
   },
 }
+

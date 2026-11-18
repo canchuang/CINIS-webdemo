@@ -47,6 +47,7 @@ import { TaskDonePage } from './pages/TaskDonePage'
 import { StageProgressPage } from './pages/StageProgressPage'
 import { ComebackPage } from './pages/ComebackPage'
 import ModalBgEditorPage from './pages/ModalBgEditorPage'
+import NavBarEditorPage from './pages/NavBarEditorPage'
 import { TerminalPage } from './pages/TerminalPage'
 import { TodayPage } from './pages/TodayPage'
 
@@ -68,7 +69,7 @@ export default function App() {
     const allowed: RouteKey[] = [
       'splash', 'roles', 'onboarding', 'today', 'goals', 'goalDetail', 'goalEdit',
       'growth', 'me', 'taskDetail', 'focus', 'taskDone', 'settle', 'terminal',
-      'rekindle', 'achievements', 'characterFile', 'history', 'reminderSettings', 'privacy', 'trialConfirm', 'newGoal', 'stageProgress', 'comeback', 'modalBgEditor', 'editor',
+      'rekindle', 'achievements', 'characterFile', 'history', 'reminderSettings', 'privacy', 'trialConfirm', 'newGoal', 'stageProgress', 'comeback', 'modalBgEditor', 'navBarEditor', 'editor',
     ]
     return (allowed as string[]).includes(h) ? (h as RouteKey) : 'splash'
   }
@@ -126,6 +127,9 @@ export default function App() {
   }
   if (route === 'modalBgEditor') {
     return <ModalBgEditorPage />
+  }
+  if (route === 'navBarEditor') {
+    return <NavBarEditorPage />
   }
 
   const renderPage = () => {
@@ -352,6 +356,8 @@ export default function App() {
 
 // 暴露给 TABS 的类型使用，避免未使用告警
 void TABS
+
+
 
 
 
