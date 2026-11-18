@@ -34,14 +34,8 @@ export function ModalBackdrop({ config: c, onClick }: Props) {
   }
 
   return (
-    <div
-      className={styles.backdrop}
-      onClick={onClick}
-      style={{
-        background: `linear-gradient(to top, ${c.maskColor} 0%, ${c.maskColor} 55%, transparent 100%)`,
-      }}
-    >
-      {/* 遮罩层 */}
+    <div className={styles.backdrop} onClick={onClick}>
+      {/* 遮罩层（唯一压暗来源，避免重复叠加） */}
       <div className={styles.mask} style={{ background: c.maskColor, opacity: c.maskOpacity }} />
 
       {/* 底部暖光晕 */}

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 弹窗背景动效参数
  * 由「弹窗背景动效编辑器」(#modal-bg-editor) 实时调整，
  * 通过 localStorage 持久化，弹窗组件读取后呈现。
@@ -50,17 +50,17 @@ export type ModalBgConfig = {
 export const defaultModalBg: ModalBgConfig = {
   enabled: true,
   glowColor: '#F0AD53',
-  glowOpacity: 0.9,
-  glowScale: 1.15,
+  glowOpacity: 0.5,
+  glowScale: 1.0,
   breathSpeed: 3.6,
   breathAmount: 0.18,
   maskColor: '#16181D',
-  maskOpacity: 0.55,
+  maskOpacity: 0.42,
   particleCount: 14,
   particleSpeed: 6,
   particleSize: 3,
   particleColor: '#FFE0A8',
-  particleOpacity: 0.75,
+  particleOpacity: 0.55,
   riseEnabled: true,
 
   // 弹窗面板特效（磨砂暖白）
@@ -71,7 +71,7 @@ export const defaultModalBg: ModalBgConfig = {
   sheetBlur: 16,
 }
 
-const KEY = 'cinis:modal-bg-config:v4'
+const KEY = 'cinis:modal-bg-config:v6'
 
 export function loadModalBg(): ModalBgConfig {
   try {
@@ -93,5 +93,7 @@ export function saveModalBg(cfg: ModalBgConfig) {
 }
 
 export const MODAL_BG_STORAGE_KEY = KEY
+
+
 
 

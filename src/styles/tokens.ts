@@ -1,4 +1,4 @@
-﻿/**
+/**
  * CINIS 设计令牌
  * 色值与字号来源：Figma 文件「图形界面设计」页 CINIS
  * （figma_spec phase=style 读取的真实值，非估测）
@@ -47,11 +47,11 @@ export const modeThemes: Record<'traveler' | 'knight' | 'abyss', ModeTheme> = {
     glow: 'rgba(40, 125, 104, 0.25)',
   },
   knight: {
-    card: '#1A1B2E',
-    text: '#EDEAF5',
-    text2: '#9AA0C0',
+    card: '#19233A',
+    text: '#F2F5FA',
+    text2: '#98A4BC',
     accent: '#E0B45C',
-    line: '#2C2E48',
+    line: '#2C3A55',
     glow: 'rgba(224, 180, 92, 0.22)',
   },
   abyss: {

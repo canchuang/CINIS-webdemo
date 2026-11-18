@@ -316,6 +316,7 @@ export default function App() {
             )}
             {sheet && (
               <ChooseModeSheet
+                mode={mode}
                 onClose={() => setSheet(false)}
                 onFocus={() => go('focus')}
                 onQuick={() => {
@@ -335,6 +336,7 @@ export default function App() {
 
 // 暴露给 TABS 的类型使用，避免未使用告警
 void TABS
+
 
 
 
