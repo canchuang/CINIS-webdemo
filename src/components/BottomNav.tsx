@@ -56,7 +56,7 @@ export function BottomNav({ active, onChange }: Props) {
     if (popTimer.current) window.clearTimeout(popTimer.current)
     requestAnimationFrame(() => {
       setPopping(true)
-      popTimer.current = window.setTimeout(() => setPopping(false), 740)
+      popTimer.current = window.setTimeout(() => setPopping(false), 460)
     })
     onChange(key)
   }
@@ -94,4 +94,5 @@ export function BottomNav({ active, onChange }: Props) {
     </nav>
   )
 }
+
 

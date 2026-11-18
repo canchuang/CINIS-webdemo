@@ -36,26 +36,31 @@
 }
 
 /* Q 弹：点任意 icon 都弹一下（放慢到 760ms，压扁拉宽再回弹） */
-/* Q 弹：点击时指示器压扁拉宽再回弹（scale 属性，不冲突 translate3d） */
+/* 滑动途中：指示器放大 → 缩回，同时淡橙键降低饱和度、提高透明度 */
 .pop {
-  animation: qPop 720ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: navBump 420ms cubic-bezier(0.33, 0, 0.2, 1);
 }
 
-@keyframes qPop {
+@keyframes navBump {
   0% {
-    scale: 1 1;
+    scale: 1;
+    opacity: 1;
+    filter: saturate(1) brightness(1);
   }
-  30% {
-    scale: 1.06 0.93;
+  45% {
+    scale: 1.16;
+    opacity: 0.5;
+    filter: saturate(0.35) brightness(1.12);
   }
-  60% {
-    scale: 0.975 1.045;
-  }
-  85% {
-    scale: 1.01 0.992;
+  75% {
+    scale: 0.985;
+    opacity: 0.92;
+    filter: saturate(0.9) brightness(1);
   }
   100% {
-    scale: 1 1;
+    scale: 1;
+    opacity: 1;
+    filter: saturate(1) brightness(1);
   }
 }
 
