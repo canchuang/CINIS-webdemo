@@ -1,4 +1,4 @@
-.page {
+﻿.page {
   padding-top: 8px;
 }
 
@@ -28,7 +28,7 @@
 
 .level strong {
   font-weight: 700;
-  color: var(--primary);
+  color: #3b6ff5;
 }
 
 .xp {
@@ -84,7 +84,7 @@
   font-size: 12px;
   line-height: 16px;
   color: var(--card-text2);
-  padding-right: 168px;
+  padding-right: 120px;
 }
 
 .cardStage {
@@ -97,11 +97,11 @@
 
 .cardQuote {
   margin: 6px 0 0;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 22px;
+  line-height: 30px;
   font-weight: 700;
   letter-spacing: 0.2px;
-  padding-right: 168px;
+  padding-right: 120px;
 }
 
 .soulRow {
@@ -109,7 +109,7 @@
   align-items: baseline;
   gap: 8px;
   margin-top: 12px;
-  padding-right: 168px;
+  padding-right: 120px;
 }
 
 .soulLabel {
@@ -146,7 +146,7 @@
   border-radius: 1px;
   background: var(--card-line);
   overflow: hidden;
-  width: calc(100% - 168px);
+  width: calc(100% - 120px);
 }
 
 .soulFill {
@@ -162,7 +162,7 @@
   margin-top: 10px;
   font-size: 12px;
   color: var(--card-text2);
-  width: calc(100% - 168px);
+  width: calc(100% - 120px);
 }
 
 .character {
@@ -170,7 +170,7 @@
   right: 8px;
   top: 0;
   bottom: 0;
-  width: 168px;
+  width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,9 +193,9 @@
 .charImg {
   position: relative;
   z-index: 1;
-  width: 162px;
+  width: 128px;
   height: auto;
-  max-height: 176px;
+  max-height: 160px;
   object-fit: contain;
   transform-origin: 50% 92%;
   animation: charFloat 4.2s ease-in-out infinite, charBlink 5.4s ease-in-out infinite;
@@ -254,7 +254,7 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin: 22px 0 10px;
+  margin: 18px 0 6px;
 }
 
 .sectionTitle {
@@ -262,7 +262,7 @@
   font-size: 16px;
   line-height: 22px;
   font-weight: 700;
-  color: var(--primary);
+  color: #3b6ff5;
 }
 
 .sectionMeta {
@@ -279,7 +279,7 @@
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 14px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--line2);
 }
 
@@ -325,7 +325,7 @@
 }
 
 .taskMeta {
-  margin: 4px 0 0;
+  margin: 3px 0 0;
   font-size: 13px;
   line-height: 18px;
   color: var(--mute);
@@ -392,5 +392,15 @@
   .charGlow {
     animation: none !important;
   }
+}
+
+
+
+
+.taskDoneLabel {
+  flex: none;
+  align-self: center;
+  font-size: 13px;
+  color: var(--mute);
 }
 

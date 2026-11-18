@@ -1,0 +1,104 @@
+.plainMask {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  overflow: hidden;
+}
+
+.mask {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* 底部暖光晕：在遮罩之上 */
+.glow {
+  position: absolute;
+  left: -15%;
+  right: -15%;
+  bottom: -8%;
+  z-index: 2;
+  height: 72%;
+  transform-origin: 50% 100%;
+  animation: glowBreath var(--breath-speed, 3.6s) ease-in-out infinite;
+  pointer-events: none;
+  filter: blur(8px);
+}
+
+@keyframes glowBreath {
+  0%,
+  100% {
+    opacity: 0.82;
+    transform: scale(var(--glow-scale, 1));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(calc(var(--glow-scale, 1) * (1 + var(--breath-amount, 0.18))));
+  }
+}
+
+/* 光晕上浮入场：用 opacity 入场，避免与 scale 冲突 */
+.glowRise {
+  animation:
+    glowBreath var(--breath-speed, 3.6s) ease-in-out infinite,
+    glowIn 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes glowIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 粒子 */
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  animation-name: particleRise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: blur(0.4px);
+}
+
+@keyframes particleRise {
+  0% {
+    transform: translate(0, 0) scale(var(--scale, 1));
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(var(--drift, 10px), -105vh) scale(calc(var(--scale, 1) * 0.5));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow,
+  .glowRise,
+  .particle {
+    animation: none !important;
+  }
+}
+

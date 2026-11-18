@@ -1,0 +1,99 @@
+﻿/**
+ * 弹窗背景动效参数
+ * 由「弹窗背景动效编辑器」(#modal-bg-editor) 实时调整，
+ * 通过 localStorage 持久化，弹窗组件读取后呈现。
+ */
+
+export type ModalBgConfig = {
+  /** 是否启用动效背景 */
+  enabled: boolean
+  /** 主光颜色（底部暖光） */
+  glowColor: string
+  /** 光晕强度 0~1 */
+  glowOpacity: number
+  /** 光晕大小倍率 0.5~2 */
+  glowScale: number
+  /** 呼吸起伏速度（秒/周期）0.5~8 */
+  breathSpeed: number
+  /** 呼吸幅度 0~0.6 */
+  breathAmount: number
+  /** 遮罩底色 */
+  maskColor: string
+  /** 遮罩不透明度 0~1 */
+  maskOpacity: number
+  /** 粒子数量 0~40 */
+  particleCount: number
+  /** 粒子上升速度（秒穿透全屏）1~12 */
+  particleSpeed: number
+  /** 粒子大小 px 1~8 */
+  particleSize: number
+  /** 粒子颜色 */
+  particleColor: string
+  /** 粒子不透明度 0~1 */
+  particleOpacity: number
+  /** 是否开启光晕上浮动画 */
+  riseEnabled: boolean
+
+  /* ===== 弹窗面板特效（磨砂暖白背景） ===== */
+  /** 是否启用面板特效 */
+  sheetFxEnabled: boolean
+  /** 面板背景顶部颜色 */
+  sheetBgTop: string
+  /** 面板背景底部颜色 */
+  sheetBgBottom: string
+  /** 面板背景不透明度 0.3~1（越低越透，暖光越容易透上来） */
+  sheetBgOpacity: number
+  /** 磨砂模糊强度 px 0~40 */
+  sheetBlur: number
+}
+
+export const defaultModalBg: ModalBgConfig = {
+  enabled: true,
+  glowColor: '#F0AD53',
+  glowOpacity: 0.5,
+  glowScale: 1.0,
+  breathSpeed: 3.6,
+  breathAmount: 0.18,
+  maskColor: '#16181D',
+  maskOpacity: 0.42,
+  particleCount: 14,
+  particleSpeed: 6,
+  particleSize: 3,
+  particleColor: '#FFE0A8',
+  particleOpacity: 0.55,
+  riseEnabled: true,
+
+  // 弹窗面板特效（磨砂暖白）
+  sheetFxEnabled: true,
+  sheetBgTop: '#EADBAB',
+  sheetBgBottom: '#F4ECD3',
+  sheetBgOpacity: 0.94,
+  sheetBlur: 16,
+}
+
+const KEY = 'cinis:modal-bg-config:v6'
+
+export function loadModalBg(): ModalBgConfig {
+  try {
+    const raw = localStorage.getItem(KEY)
+    if (!raw) return { ...defaultModalBg }
+    const parsed = JSON.parse(raw)
+    return { ...defaultModalBg, ...parsed }
+  } catch {
+    return { ...defaultModalBg }
+  }
+}
+
+export function saveModalBg(cfg: ModalBgConfig) {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(cfg))
+  } catch {
+    /* ignore */
+  }
+}
+
+export const MODAL_BG_STORAGE_KEY = KEY
+
+
+
+

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+﻿import { useCallback, useEffect, useState } from 'react'
 import styles from './App.module.css'
 import { BottomNav } from './components/BottomNav'
 import { Screen } from './components/Screen'
@@ -33,6 +33,7 @@ import { SplashPage } from './pages/SplashPage'
 import { TaskDonePage } from './pages/TaskDonePage'
 import { StageProgressPage } from './pages/StageProgressPage'
 import { ComebackPage } from './pages/ComebackPage'
+import ModalBgEditorPage from './pages/ModalBgEditorPage'
 import { TerminalPage } from './pages/TerminalPage'
 import { TodayPage } from './pages/TodayPage'
 
@@ -54,7 +55,7 @@ export default function App() {
     const allowed: RouteKey[] = [
       'splash', 'roles', 'onboarding', 'today', 'goals', 'goalDetail', 'goalEdit',
       'growth', 'me', 'taskDetail', 'focus', 'taskDone', 'settle', 'terminal',
-      'rekindle', 'achievements', 'characterFile', 'history', 'reminderSettings', 'privacy', 'trialConfirm', 'newGoal', 'stageProgress', 'comeback', 'editor',
+      'rekindle', 'achievements', 'characterFile', 'history', 'reminderSettings', 'privacy', 'trialConfirm', 'newGoal', 'stageProgress', 'comeback', 'modalBgEditor', 'editor',
     ]
     return (allowed as string[]).includes(h) ? (h as RouteKey) : 'splash'
   }
@@ -106,9 +107,12 @@ export default function App() {
 
   const tab = TAB_OF[route] ?? 'today'
 
-  // 可视化编辑器是全屏独立页，不套手机外壳
+  // 全屏独立页（编辑器），不套手机外壳
   if (route === 'editor') {
     return <EditorPage />
+  }
+  if (route === 'modalBgEditor') {
+    return <ModalBgEditorPage />
   }
 
   const renderPage = () => {
@@ -312,6 +316,7 @@ export default function App() {
             )}
             {sheet && (
               <ChooseModeSheet
+                mode={mode}
                 onClose={() => setSheet(false)}
                 onFocus={() => go('focus')}
                 onQuick={() => {
@@ -331,6 +336,8 @@ export default function App() {
 
 // 暴露给 TABS 的类型使用，避免未使用告警
 void TABS
+
+
 
 
 

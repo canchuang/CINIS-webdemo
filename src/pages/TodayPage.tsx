@@ -22,6 +22,8 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
   const [toast, setToast] = useState<{ title: string; duration: string; xp: number; soul: number } | null>(
     null,
   )
+  // 本次会话内通过「勾选」完成的任务 -> 其魂火（用于进度条增长）
+  const [claims, setClaims] = useState<Record<string, number>>({})
 
   useEffect(() => {
     const unsub = taskStore.subscribe(() => {
@@ -39,6 +41,7 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
   // 切换模式时重置任务列表，否则会沿用上一个模式的任务
   useEffect(() => {
     setTasks(modeTasks[mode].map((t) => ({ ...t })))
+    setClaims({})
   }, [mode])
 
   // 合并 store 里记录的完成态（来自专注结算）
@@ -49,17 +52,27 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
 
   const doneCount = merged.filter((t) => t.done).length
   const remaining = merged.length - doneCount
-  // 魂火：基础值 + 已完成任务累计的魂火，封顶 soulMax
-  const gained = merged.filter((t) => t.done).reduce((sum, t) => sum + t.soul, 0)
-  const soulNow = Math.min(challenge.soulMax, challenge.soul + gained)
+  // 魂火：基础值 + 本次会话新完成任务的魂火（预置为已完成的任务不计），封顶 soulMax
+  const storeGain = modeTasks[mode]
+    .filter((t) => taskStore.isDone(mode, t.id))
+    .reduce((sum, t) => sum + t.soul, 0)
+  const claimGain = Object.values(claims).reduce((a, b) => a + b, 0)
+  const soulNow = Math.min(challenge.soulMax, challenge.soul + storeGain + claimGain)
   const soulRatio = soulNow / challenge.soulMax
 
   const toggle = (task: { id: string; title: string; duration: string; xp: number; soul: number; done: boolean }) => {
     if (taskStore.isDone(mode, task.id)) return // 专注完成的不可反勾
     setTasks((prev) => prev.map((t) => (t.id === task.id ? { ...t, done: !t.done } : t)))
-    // 勾选（而非取消）时弹出打卡成功
     if (!task.done) {
+      // 勾选（而非取消）：计入魂火增长 + 弹出打卡成功
+      setClaims((prev) => ({ ...prev, [task.id]: task.soul }))
       setToast({ title: task.title, duration: task.duration, xp: task.xp, soul: task.soul })
+    } else {
+      setClaims((prev) => {
+        const next = { ...prev }
+        delete next[task.id]
+        return next
+      })
     }
   }
 
@@ -148,7 +161,7 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
               onClick={() => toggle(task)}
               aria-pressed={task.done}
               aria-label={`${task.done ? '取消完成' : '完成'}：${task.title}`}
-              style={task.done ? { background: theme.accent, borderColor: 'transparent' } : undefined}
+              style={task.done ? { background: '#2E9E82', borderColor: 'transparent' } : undefined}
             >
               {task.done && (
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -162,17 +175,19 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
                 </svg>
               )}
             </button>
-            <div className={styles.taskBody}>
+            <div
+              className={styles.taskBody}
+              onClick={() => {
+                if (!task.done) onStartTask(task.id)
+              }}
+              style={{ cursor: task.done ? 'default' : 'pointer' }}
+            >
               <p className={styles.taskTitle}>{task.title}</p>
               <p className={styles.taskMeta}>
                 {task.duration} · +{task.xp} XP · +{task.soul} 魂火
               </p>
             </div>
-            {!task.done && (
-              <button type="button" className={styles.startBtn} onClick={() => onStartTask(task.id)}>
-                开始
-              </button>
-            )}
+            {task.done && <span className={styles.taskDoneLabel}>已完成</span>}
           </li>
         ))}
       </ul>
@@ -190,6 +205,8 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
     </div>
   )
 }
+
+
 
 
 

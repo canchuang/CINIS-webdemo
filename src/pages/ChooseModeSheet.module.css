@@ -1,24 +1,19 @@
-.overlay {
+﻿.overlay {
   position: absolute;
   inset: 0;
   z-index: 40;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background: rgba(22, 24, 29, 0.42);
-  animation: fade 200ms ease;
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
+  /* 背景由 ModalBackdrop 渲染 */
 }
 
 .sheet {
-  background: var(--surface);
-  border-radius: 22px 22px 0 0;
-  padding: 8px 20px calc(24px + env(safe-area-inset-bottom));
+  position: relative;
+  z-index: 50;
+  border-radius: 26px 26px 0 0;
+  padding: 8px 20px calc(14px + env(safe-area-inset-bottom));
+  color: var(--sheet-ink, #1c1710);
   animation: rise 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -30,53 +25,59 @@
 }
 
 .grabber {
-  width: 40px;
-  height: 4px;
-  margin: 0 auto 14px;
-  border-radius: 2px;
-  background: #e2e6ec;
+  width: 76px;
+  height: 5px;
+  margin: 0 auto 10px;
+  border-radius: 3px;
+  background: var(--sheet-grabber, #3a342b);
+  opacity: 0.85;
 }
 
 .head {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .task {
   margin: 0;
-  font-size: 17px;
+  font-size: 20px;
+  line-height: 27px;
   font-weight: 700;
+  color: var(--sheet-ink, #1c1710);
 }
 
 .meta {
-  margin: 5px 0 0;
-  font-size: 12px;
-  color: var(--mute);
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 19px;
+  color: var(--sheet-sub, #6e6455);
 }
 
+/* 取消胶囊：设计稿为橙色胶囊 + 深字 */
 .cancel {
   flex: none;
-  padding: 8px 16px;
+  padding: 11px 22px;
   border-radius: 999px;
-  background: var(--line2);
-  color: var(--ink2);
-  font-size: 14px;
-  font-weight: 500;
+  background: var(--sheet-cancel-bg, #f5c97e);
+  color: var(--sheet-cancel-text, #241a05);
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
+/* 主卡（点火专注） */
 .main {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
   width: 100%;
-  padding: 18px;
-  border-radius: 16px;
-  background: #eef7f2;
-  border: 1px solid #d5ebe0;
+  padding: 13px 18px;
+  border-radius: 18px;
+  background: var(--sheet-main-bg, #f0ad53);
   text-align: left;
   transition: transform 120ms ease;
 }
@@ -86,19 +87,23 @@
 }
 
 .mainTitle {
-  font-size: 17px;
+  font-size: 20px;
+  line-height: 26px;
   font-weight: 700;
-  color: #1f6b53;
+  color: var(--sheet-main-text, #1a1206);
 }
 
 .mainMeta {
-  font-size: 13px;
-  color: #3f7a66;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--sheet-main-text, #1a1206);
+  opacity: 0.92;
 }
 
 .mainRule {
-  font-size: 11px;
-  color: #6b9a89;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--sheet-main-rule, #6b5424);
 }
 
 .mainArrow {
@@ -107,35 +112,40 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
-  color: #4a7a67;
+  color: var(--sheet-main-text, #1a1206);
+  opacity: 0.75;
 }
 
+/* 次卡（快速打卡） */
 .quick {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
   width: 100%;
-  margin-top: 12px;
-  padding: 16px 18px;
-  border-radius: 16px;
-  background: var(--line2);
+  margin-top: 10px;
+  padding: 12px 18px;
+  border-radius: 18px;
+  background: var(--sheet-quick-bg, #f7efd8);
   text-align: left;
-  transition: background 160ms ease;
+  transition: filter 160ms ease;
 }
 
 .quick:active {
-  background: var(--line);
+  filter: brightness(0.97);
 }
 
 .quickTitle {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 19px;
+  line-height: 25px;
+  font-weight: 700;
+  color: var(--sheet-quick-text, #2b241a);
 }
 
 .quickMeta {
-  font-size: 12px;
-  color: var(--mute);
+  font-size: 13px;
+  line-height: 19px;
+  color: var(--sheet-quick-desc, #8a7a63);
 }
 
 .quickArrow {
@@ -144,7 +154,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 18px;
-  color: #c4cad4;
+  color: var(--sheet-quick-desc, #8a7a63);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -153,3 +163,6 @@
     animation: none;
   }
 }
+
+
+
