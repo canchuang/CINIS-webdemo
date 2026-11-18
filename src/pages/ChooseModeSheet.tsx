@@ -10,17 +10,17 @@ type Props = { mode: GameMode; onClose: () => void; onFocus: () => void; onQuick
 /** 各模式的弹窗配色（对齐设计稿 11A/18A/25A） */
 const SHEET_PALETTE: Record<GameMode, Record<string, string>> = {
   traveler: {
-    '--sheet-ink': '#16181D',
-    '--sheet-sub': '#7C8798',
-    '--sheet-grabber': '#9AA5B5',
-    '--sheet-main-bg': '#E6F2ED',
-    '--sheet-main-text': '#1F6B53',
-    '--sheet-main-rule': '#5E8C7A',
-    '--sheet-quick-bg': '#F1F2F5',
-    '--sheet-quick-text': '#16181D',
-    '--sheet-quick-desc': '#98A2B3',
-    '--sheet-cancel-bg': '#EDEFF4',
-    '--sheet-cancel-text': '#5F6773',
+    '--sheet-ink': '#16211C',
+    '--sheet-sub': '#6F8177',
+    '--sheet-grabber': '#2E7D5B',
+    '--sheet-main-bg': '#2E7D5B',
+    '--sheet-main-text': '#FFFFFF',
+    '--sheet-main-rule': '#CFE8DC',
+    '--sheet-quick-bg': '#F2F7F2',
+    '--sheet-quick-text': '#1B2A22',
+    '--sheet-quick-desc': '#7E9187',
+    '--sheet-cancel-bg': '#CDE9DC',
+    '--sheet-cancel-text': '#17452F',
   },
   knight: {
     '--sheet-ink': '#1C1710',

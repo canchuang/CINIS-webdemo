@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react'
+﻿import { useEffect, useReducer, useState } from 'react'
 import styles from './TodayPage.module.css'
 import { modeTasks, modeChallenges, type GameMode } from '../data/content'
 import { modeThemes } from '../styles/tokens'
@@ -85,8 +85,11 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
     '--card-glow': theme.glow,
   } as React.CSSProperties
 
+  // 各模式强调色（旅者绿 / 骑士蓝 / 深渊紫）
+  const accent = mode === 'traveler' ? '#2E7D5B' : mode === 'abyss' ? '#7C3AED' : '#3B6FF5'
+
   return (
-    <div className={styles.page}>
+    <div className={styles.page} style={{ ['--today-accent' as string]: accent }}>
       <header className={styles.header}>
         <div>
           <h1 className={styles.title}>3 月 12 日 · 周三</h1>
@@ -205,6 +208,7 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
     </div>
   )
 }
+
 
 
 
