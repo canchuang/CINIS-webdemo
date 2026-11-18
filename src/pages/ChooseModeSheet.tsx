@@ -67,6 +67,10 @@ export function ChooseModeSheet({ mode, onClose, onFocus, onQuick }: Props) {
   const fx = sheetFxStyle(bg)
 
   const style = { ...(SHEET_PALETTE[mode] as CSSProperties), ...fx.style }
+  // 旅者弹窗面板底色指定为 #CCE0CE（覆盖编辑器里的全局面板底色）
+  if (mode === 'traveler') {
+    ;(style as Record<string, string>)['--sheet-bg'] = '#CCE0CE'
+  }
 
   return (
     <div className={styles.overlay} role="presentation">
