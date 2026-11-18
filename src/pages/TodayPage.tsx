@@ -2,7 +2,7 @@
 import styles from './TodayPage.module.css'
 import { modeTasks, modeChallenges, type GameMode } from '../data/content'
 import { modeThemes } from '../styles/tokens'
-import { TiltCard } from './TiltCard'
+import { HologramCard } from '../components/HologramCard'
 import { taskStore } from '../data/taskStore'
 import { CheckinToast } from '../components/CheckinToast'
 
@@ -107,7 +107,7 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
         <div className={styles.xpFill} style={{ width: '85%' }} />
       </div>
 
-      <TiltCard className={styles.card} style={cardStyle}>
+      <HologramCard className={styles.card} style={cardStyle}>
         <div className={styles.cardTop}>
           <span className={styles.cardStage}>
             {challenge.label} · {challenge.stage}
@@ -146,7 +146,7 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
           {/* 眨眼：一块与背景同色的盖片，周期性压下模拟眼皮 */}
           <span className={styles.blink} aria-hidden="true" />
         </div>
-      </TiltCard>
+      </HologramCard>
 
       <div className={styles.sectionHead}>
         <h2 className={styles.sectionTitle}>今日任务</h2>
@@ -208,6 +208,7 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
     </div>
   )
 }
+
 
 
 

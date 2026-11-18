@@ -1,0 +1,161 @@
+﻿.stage {
+  position: relative;
+  width: 100%;
+  perspective: 900px;
+}
+
+/* 落影：倾斜时朝反方向位移，浮起感 */
+.shadow {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -10px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.45), transparent 78%);
+  filter: blur(10px);
+  transition: transform 120ms ease-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 120ms ease-out;
+  will-change: transform;
+  z-index: 1;
+  transform-origin: 50% 60%;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+  height: 100%;
+}
+
+/* 角色层做深度视差（抬到前面） */
+.content :global([class*='character']) {
+  transform: translateZ(46px);
+}
+
+/* 全息虹彩箔：随光标移动的彩虹渐变 */
+.holo {
+  position: absolute;
+  inset: -1px;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      circle at var(--hx, 50%) var(--hy, 50%),
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(110, 255, 210, 0.62) 14%,
+      rgba(130, 150, 255, 0.6) 26%,
+      rgba(255, 120, 215, 0.58) 38%,
+      rgba(255, 220, 120, 0.5) 50%,
+      transparent 62%
+    ),
+    conic-gradient(
+      from calc(var(--hx, 50%) * 1.8) at var(--hx, 50%) var(--hy, 50%),
+      rgba(255, 80, 190, 0.55),
+      rgba(80, 190, 255, 0.55),
+      rgba(80, 255, 190, 0.55),
+      rgba(255, 235, 110, 0.55),
+      rgba(255, 80, 190, 0.55)
+    );
+  mix-blend-mode: screen;
+  opacity: calc(0.5 + var(--ab, 0) * 0.5);
+  transition: opacity 160ms ease-out;
+}
+
+/* 眩光高光 */
+.glare {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    320px circle at var(--hx, 50%) var(--hy, 50%),
+    rgba(255, 255, 255, calc(0.10 + var(--ab, 0) * 0.28)),
+    transparent 60%
+  );
+  mix-blend-mode: screen;
+}
+
+/* 细密光栅颗粒，增强全息质感 */
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  border-radius: inherit;
+  background-image: repeating-linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.055) 0px,
+    rgba(255, 255, 255, 0.055) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: calc(0.35 + var(--ab, 0) * 0.5);
+  mix-blend-mode: overlay;
+}
+
+/* 彩虹描边 */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 120, 200, 0.55),
+    rgba(120, 200, 255, 0.55),
+    rgba(120, 255, 200, 0.55),
+    rgba(255, 240, 140, 0.55)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: calc(0.15 + var(--ab, 0) * 0.75);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+
+
+/* 全息箔条纹：保证肉眼可见的彩虹光泽 */
+.foil {
+  position: absolute;
+  inset: -2px;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+  background: repeating-linear-gradient(
+    105deg,
+    rgba(255, 64, 160, 0.5) 0px,
+    rgba(255, 196, 64, 0.45) 8px,
+    rgba(90, 255, 170, 0.45) 16px,
+    rgba(64, 200, 255, 0.5) 24px,
+    rgba(170, 90, 255, 0.5) 32px,
+    rgba(255, 64, 160, 0.5) 40px
+  );
+  background-size: 220% 220%;
+  background-position: var(--hx, 50%) var(--hy, 50%);
+  mix-blend-mode: overlay;
+  opacity: calc(0.16 + var(--ab, 0) * 0.72);
+  filter: blur(0.4px) saturate(1.3);
+  transition: opacity 160ms ease-out;
+}
