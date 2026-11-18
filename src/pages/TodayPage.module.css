@@ -28,7 +28,7 @@
 
 .level strong {
   font-weight: 700;
-  color: var(--today-accent, #3b6ff5);
+  color: #FF873F;
 }
 
 .xp {
@@ -262,7 +262,7 @@
   font-size: 16px;
   line-height: 22px;
   font-weight: 700;
-  color: var(--today-accent, #3b6ff5);
+  color: #FF873F;
 }
 
 .sectionMeta {
@@ -403,5 +403,6 @@
   font-size: 13px;
   color: var(--mute);
 }
+
 
 

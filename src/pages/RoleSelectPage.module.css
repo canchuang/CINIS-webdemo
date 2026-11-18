@@ -71,9 +71,9 @@
 }
 
 .cardActive {
-  border-color: var(--mode-accent, #C08A52);
+  border-color: #C3A06A;
   background: #403B33;
-  box-shadow: 0 0 0 1px rgba(245, 241, 232, 0.16);
+  box-shadow: 0 0 0 1px rgba(195, 160, 106, 0.35);
 }
 
 .numeral {
@@ -125,7 +125,7 @@
 }
 
 .cardActive .cardTag {
-  color: var(--mode-accent, #C08A52);
+  color: #C3A06A;
 }
 
 .quote {
@@ -145,7 +145,7 @@
 
 .selected {
   font-size: 12px;
-  color: var(--mode-accent, #C08A52);
+  color: #C3A06A;
 }
 
 .quoteText {
@@ -265,4 +265,10 @@
   .quote {
     margin-top: 10px;
   }
+}
+
+/* 角色形象缩放锚点（底部中心，避免缩放时上下跳动） */
+.figure img {
+  transform-origin: 50% 78%;
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }

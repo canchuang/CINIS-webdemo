@@ -30,9 +30,11 @@ export type RouteKey =
   | 'modalBgEditor'
   | 'navBarEditor'
   | 'cardFxEditor'
+  | 'charSizeEditor'
   | 'trialConfirm'
   | 'newGoal'
   | 'editor'
+
 
 
 

@@ -37,6 +37,7 @@ import { ComebackPage } from './pages/ComebackPage'
 import ModalBgEditorPage from './pages/ModalBgEditorPage'
 import NavBarEditorPage from './pages/NavBarEditorPage'
 import CardFxEditorPage from './pages/CardFxEditorPage'
+import CharSizeEditorPage from './pages/CharSizeEditorPage'
 
 /** 各模式强调色（按钮/选中态） */
 const MODE_ACCENT: Record<GameMode, string> = {
@@ -65,7 +66,7 @@ export default function App() {
     const allowed: RouteKey[] = [
       'splash', 'roles', 'onboarding', 'today', 'goals', 'goalDetail', 'goalEdit',
       'growth', 'me', 'taskDetail', 'focus', 'taskDone', 'settle', 'terminal',
-      'rekindle', 'achievements', 'characterFile', 'history', 'reminderSettings', 'privacy', 'trialConfirm', 'newGoal', 'stageProgress', 'comeback', 'modalBgEditor', 'navBarEditor', 'cardFxEditor', 'editor',
+      'rekindle', 'achievements', 'characterFile', 'history', 'reminderSettings', 'privacy', 'trialConfirm', 'newGoal', 'stageProgress', 'comeback', 'modalBgEditor', 'navBarEditor', 'cardFxEditor', 'charSizeEditor', 'editor',
     ]
     return (allowed as string[]).includes(h) ? (h as RouteKey) : 'splash'
   }
@@ -129,6 +130,9 @@ export default function App() {
   }
   if (route === 'cardFxEditor') {
     return <CardFxEditorPage />
+  }
+  if (route === 'charSizeEditor') {
+    return <CharSizeEditorPage />
   }
 
   const renderPage = () => {
@@ -355,6 +359,7 @@ export default function App() {
 
 // 暴露给 TABS 的类型使用，避免未使用告警
 void TABS
+
 
 
 

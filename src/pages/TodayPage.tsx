@@ -3,6 +3,7 @@ import styles from './TodayPage.module.css'
 import { modeTasks, modeChallenges, type GameMode } from '../data/content'
 import { modeThemes } from '../styles/tokens'
 import { HologramCard } from '../components/HologramCard'
+import { defaultCharSize, loadCharSize, type CharSizeConfig } from '../data/charSize'
 import { taskStore } from '../data/taskStore'
 import { CheckinToast } from '../components/CheckinToast'
 
@@ -24,6 +25,13 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
   )
   // 本次会话内通过「勾选」完成的任务 -> 其魂火（用于进度条增长）
   const [claims, setClaims] = useState<Record<string, number>>({})
+  const [charSize, setCharSize] = useState<CharSizeConfig>(defaultCharSize)
+  useEffect(() => {
+    setCharSize(loadCharSize())
+    const onFocus = () => setCharSize(loadCharSize())
+    window.addEventListener('focus', onFocus)
+    return () => window.removeEventListener('focus', onFocus)
+  }, [])
 
   useEffect(() => {
     const unsub = taskStore.subscribe(() => {
@@ -87,6 +95,8 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
 
   // 各模式强调色（旅者绿 / 骑士蓝 / 深渊紫）
   const accent = mode === 'traveler' ? '#2E7D5B' : mode === 'abyss' ? '#7C3AED' : '#3B6FF5'
+  // 勾选成功图标：随模式色系（旅者绿 / 骑士金 / 深渊紫）
+  const checkColor = mode === 'traveler' ? '#2E9E82' : mode === 'knight' ? '#E0B45C' : '#7C3AED'
 
   return (
     <div className={styles.page} style={{ ['--today-accent' as string]: accent }}>
@@ -142,6 +152,7 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
             className={styles.charImg}
             src={challenge.character}
             alt={`${challenge.label}角色`}
+            style={{ width: `${(128 * charSize[mode]) / 100}px` }}
           />
           {/* 眨眼：一块与背景同色的盖片，周期性压下模拟眼皮 */}
           <span className={styles.blink} aria-hidden="true" />
@@ -164,7 +175,7 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
               onClick={() => toggle(task)}
               aria-pressed={task.done}
               aria-label={`${task.done ? '取消完成' : '完成'}：${task.title}`}
-              style={task.done ? { background: '#2E9E82', borderColor: 'transparent' } : undefined}
+              style={task.done ? { background: checkColor, borderColor: 'transparent' } : undefined}
             >
               {task.done && (
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -208,6 +219,7 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
     </div>
   )
 }
+
 
 
 
