@@ -1,5 +1,6 @@
 ﻿import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import styles from './HologramCard.module.css'
+import { cardFxVars, defaultCardFx, loadCardFx, type CardFxConfig } from '../data/cardFx'
 
 type Props = {
   children: ReactNode
@@ -9,6 +10,8 @@ type Props = {
   maxTilt?: number
   /** 深度浮雕图（可选）：作为视差遮罩，暗=低 亮=高 */
   depth?: string
+  /** 外部强制配置（编辑器实时预览用） */
+  fxOverride?: CardFxConfig
 }
 
 type Tilt = { rx: number; ry: number; px: number; py: number; active: boolean }
@@ -20,7 +23,20 @@ type Tilt = { rx: number; ry: number; px: number; py: number; active: boolean }
  *  · 角色层的深度视差（translateZ）
  *  · 倾斜时的 RGB 色散边缘
  */
-export function HologramCard({ children, className = '', style, maxTilt = 10 }: Props) {
+export function HologramCard({ children, className = '', style, maxTilt: maxTiltProp, fxOverride }: Props) {
+  const [fx, setFx] = useState<CardFxConfig>(defaultCardFx)
+  useEffect(() => {
+    setFx(loadCardFx())
+    const sync = () => setFx(loadCardFx())
+    window.addEventListener('storage', sync)
+    window.addEventListener('focus', sync)
+    return () => {
+      window.removeEventListener('storage', sync)
+      window.removeEventListener('focus', sync)
+    }
+  }, [])
+  const activeFx = fxOverride ?? fx
+  const maxTilt = maxTiltProp ?? activeFx.maxTilt ?? 10
   const ref = useRef<HTMLDivElement>(null)
   const [tilt, setTilt] = useState<Tilt>({ rx: 0, ry: 0, px: 0.5, py: 0.5, active: false })
 
@@ -108,6 +124,7 @@ export function HologramCard({ children, className = '', style, maxTilt = 10 }: 
         style={
           {
             ...style,
+            ...cardFxVars(activeFx),
             transform: `perspective(900px) rotateX(${tilt.rx.toFixed(2)}deg) rotateY(${tilt.ry.toFixed(
               2,
             )}deg) scale(${tilt.active ? 1.02 : 1})`,
@@ -138,14 +155,18 @@ export function HologramCard({ children, className = '', style, maxTilt = 10 }: 
         {/* 虹彩箔层：随光标移动的彩虹渐变 */}
         <span className={styles.holo} aria-hidden="true" />
         {/* 全息箔条纹 */}
-        <span className={styles.foil} aria-hidden="true" />
+        {activeFx.showFoil && <span className={styles.foil} aria-hidden="true" />}
         {/* 眩光：跟随光标的高光 */}
-        <span className={styles.glare} aria-hidden="true" />
+        {activeFx.showGlare && <span className={styles.glare} aria-hidden="true" />}
         {/* 细密光栅：全息颗粒感 */}
-        <span className={styles.grain} aria-hidden="true" />
+        {activeFx.showGrain && <span className={styles.grain} aria-hidden="true" />}
       </div>
     </div>
   )
 }
+
+
+
+
 
 

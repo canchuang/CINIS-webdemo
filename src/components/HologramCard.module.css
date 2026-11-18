@@ -12,9 +12,9 @@
   bottom: -10px;
   height: 40px;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.45), transparent 78%);
+  background: radial-gradient(closest-side, rgba(0, 0, 0, var(--shadow-strength, 0.45)), transparent 78%);
   filter: blur(10px);
-  transition: transform 120ms ease-out;
+  transition: transform var(--tilt-ms, 120ms) ease-out;
   pointer-events: none;
   z-index: 0;
 }
@@ -22,7 +22,7 @@
 .card {
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 120ms ease-out;
+  transition: transform var(--tilt-ms, 120ms) ease-out;
   will-change: transform;
   z-index: 1;
   transform-origin: 50% 60%;
@@ -38,7 +38,7 @@
 
 /* 角色层做深度视差（抬到前面） */
 .content :global([class*='character']) {
-  transform: translateZ(46px);
+  transform: translateZ(var(--depth-z, 46px));
 }
 
 /* 全息虹彩箔：随光标移动的彩虹渐变 */
@@ -67,7 +67,7 @@
       rgba(255, 80, 190, 0.55)
     );
   mix-blend-mode: screen;
-  opacity: calc(0.5 + var(--ab, 0) * 0.5);
+  opacity: calc(var(--holo-base, 0.5) + var(--ab, 0) * var(--holo-tilt, 0.5));
   transition: opacity 160ms ease-out;
 }
 
@@ -80,7 +80,7 @@
   border-radius: inherit;
   background: radial-gradient(
     320px circle at var(--hx, 50%) var(--hy, 50%),
-    rgba(255, 255, 255, calc(0.10 + var(--ab, 0) * 0.28)),
+    rgba(255, 255, 255, calc(var(--glare-base, 0.1) + var(--ab, 0) * var(--glare-tilt, 0.28))),
     transparent 60%
   );
   mix-blend-mode: screen;
@@ -125,7 +125,7 @@
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  opacity: calc(0.15 + var(--ab, 0) * 0.75);
+  opacity: calc(var(--border-base, 0.15) + var(--ab, 0) * var(--border-tilt, 0.75));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -155,7 +155,9 @@
   background-size: 220% 220%;
   background-position: var(--hx, 50%) var(--hy, 50%);
   mix-blend-mode: overlay;
-  opacity: calc(0.16 + var(--ab, 0) * 0.72);
+  opacity: calc(var(--foil-base, 0.16) + var(--ab, 0) * var(--foil-tilt, 0.72));
   filter: blur(0.4px) saturate(1.3);
   transition: opacity 160ms ease-out;
 }
+
+

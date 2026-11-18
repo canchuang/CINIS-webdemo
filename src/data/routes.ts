@@ -29,9 +29,11 @@ export type RouteKey =
   | 'comeback'
   | 'modalBgEditor'
   | 'navBarEditor'
+  | 'cardFxEditor'
   | 'trialConfirm'
   | 'newGoal'
   | 'editor'
+
 
 
 
