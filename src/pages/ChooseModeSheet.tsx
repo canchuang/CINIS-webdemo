@@ -74,7 +74,11 @@ export function ChooseModeSheet({ mode, onClose, onFocus, onQuick }: Props) {
 
   return (
     <div className={styles.overlay} role="presentation">
-      <ModalBackdrop config={bg} onClick={onClose} />
+      <ModalBackdrop
+        config={bg}
+        onClick={onClose}
+        glowColorOverride={mode === 'traveler' ? '#43A47F' : undefined}
+      />
 
       <div
         className={`${styles.sheet} ${fx.className}`}
