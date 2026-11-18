@@ -1,4 +1,4 @@
-.overlay {
+﻿.overlay {
   position: absolute;
   inset: 0;
   z-index: 40;
@@ -154,3 +154,12 @@
     animation: none;
   }
 }
+
+/* 面板特效包裹层 */
+.sheetWrap {
+  position: relative;
+  z-index: 50;
+  width: 100%;
+  border-radius: 22px 22px 0 0;
+}
+
