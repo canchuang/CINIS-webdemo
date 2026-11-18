@@ -86,11 +86,11 @@ export default function CardFxEditorPage() {
               />
             </div>
           ))}
-          <p className={styles.tip}>拖动右侧卡片查看倾斜与彩虹效果。改动自动保存，三个模式今日页同步生效。</p>
+          <p className={styles.tip}>鼠标悬浮到右侧卡片上即可查看倾斜与彩虹效果。改动自动保存，三个模式今日页同步生效。</p>
         </aside>
 
         <main className={styles.previewArea}>
-          <div className={styles.previewHint}>实时预览 · 按住卡片拖动</div>
+          <div className={styles.previewHint}>实时预览 · 悬浮卡片查看效果</div>
           <div className={styles.phone}>
             <div className={styles.pageBg}>
               <div className={styles.head}>
@@ -135,4 +135,5 @@ export default function CardFxEditorPage() {
     </div>
   )
 }
+
 

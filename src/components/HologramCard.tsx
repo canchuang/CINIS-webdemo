@@ -133,20 +133,27 @@ export function HologramCard({ children, className = '', style, maxTilt: maxTilt
             '--ab': ab.toFixed(3),
           } as CSSProperties
         }
+        onPointerEnter={(e) => {
+          compute(e.clientX, e.clientY)
+          start()
+        }}
+        onPointerMove={(e) => {
+          // 悬浮即跟随；触屏需按下才触发
+          if (e.pointerType === "touch" && !target.current.active) return
+          const now = performance.now()
+          if (now - lastMove.current < 12) return
+          lastMove.current = now
+          compute(e.clientX, e.clientY)
+          start()
+        }}
         onPointerDown={(e) => {
           ;(e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId)
           compute(e.clientX, e.clientY)
           start()
         }}
-        onPointerMove={(e) => {
-          if (!target.current.active) return
-          const now = performance.now()
-          if (now - lastMove.current < 12) return
-          lastMove.current = now
-          compute(e.clientX, e.clientY)
-        }}
         onPointerUp={release}
         onPointerCancel={release}
+        onPointerLeave={release}
         onLostPointerCapture={release}
       >
         {/* 卡片本体 */}
@@ -164,6 +171,7 @@ export function HologramCard({ children, className = '', style, maxTilt: maxTilt
     </div>
   )
 }
+
 
 
 
