@@ -1,11 +1,11 @@
-.screen {
+﻿.screen {
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
   padding: 0 var(--pad);
-  background: #0a090e;
+  background: #242221;
   color: #f4efe7;
   text-align: left;
   overflow: hidden;
@@ -91,4 +91,19 @@
   .ember {
     animation: none;
   }
+}
+
+
+/* 巨大的「燃」水印，压在背景里（P01） */
+.watermark {
+  position: absolute;
+  top: 24%;
+  right: -6%;
+  font-size: 300px;
+  line-height: 1;
+  font-weight: 800;
+  color: #2E2B2D;
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
 }

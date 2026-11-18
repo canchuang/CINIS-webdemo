@@ -8,6 +8,9 @@ export function SplashPage({ onStart }: Props) {
   const s = onboardingInfo.splash
   return (
     <button type="button" className={styles.screen} onClick={onStart} aria-label="进入 CINIS">
+      <span className={styles.watermark} aria-hidden="true">
+        燃
+      </span>
       <span className={styles.glow} aria-hidden="true" />
       <span className={styles.ember} aria-hidden="true">
         🔥

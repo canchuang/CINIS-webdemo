@@ -6,18 +6,6 @@ import type { RouteKey } from './data/routes'
 import { TABS, type TabKey } from './data/tabs'
 import type { GameMode } from './data/content'
 
-/** 各模式「进程中」页面背景色（逐步替换；当前仅旅者生效） */
-const MODE_ACCENT: Record<GameMode, string> = {
-  traveler: '#2E7D5B',
-  knight: '#3B6FF5',
-  abyss: '#7C3AED',
-}
-
-const PAGE_BG: Record<GameMode, string> = {
-  traveler: '#DEE3DA',
-  knight: '#F5F7FB',
-  abyss: '#F5F7FB',
-}
 import { AchievementsPage } from './pages/AchievementsPage'
 import { AbyssRestartPage } from './pages/AbyssRestartPage'
 import { AbyssTerminalPage } from './pages/AbyssTerminalPage'
@@ -48,6 +36,13 @@ import { StageProgressPage } from './pages/StageProgressPage'
 import { ComebackPage } from './pages/ComebackPage'
 import ModalBgEditorPage from './pages/ModalBgEditorPage'
 import NavBarEditorPage from './pages/NavBarEditorPage'
+
+/** 各模式强调色（按钮/选中态） */
+const MODE_ACCENT: Record<GameMode, string> = {
+  traveler: '#2E7D5B',
+  knight: '#3B6FF5',
+  abyss: '#7C3AED',
+}
 import { TerminalPage } from './pages/TerminalPage'
 import { TodayPage } from './pages/TodayPage'
 
@@ -320,7 +315,7 @@ export default function App() {
     <div className={styles.stage}>
       <div
         className={`${styles.phone} ${isImmersive ? styles.immersive : ''}`}
-        style={{ ['--bg' as string]: PAGE_BG[mode], ['--mode-accent' as string]: MODE_ACCENT[mode] }}
+        style={{ ['--mode-accent' as string]: MODE_ACCENT[mode] }}
       >
         {isImmersive ? (
           <div key={route} className={styles.fullBleed}>
@@ -356,6 +351,8 @@ export default function App() {
 
 // 暴露给 TABS 的类型使用，避免未使用告警
 void TABS
+
+
 
 
 
