@@ -1,22 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About — Your Name</title>
+<title>关于 — 姓名</title>
 <script>document.documentElement.className+=' js';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500;600;700&family=Archivo:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSansVF.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="site-nav">
   <div class="inner">
-    <a class="brand" href="index.html">Your<i>Name</i></a>
+    <a class="brand" href="index.html">姓名 <span class="en" style="font-size:10px;color:var(--text2);margin-left:6px">YOUR NAME</span></a>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="works.html">Works</a>
-      <a href="about.html" class="active">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html">首页</a>
+      <a href="works.html">作品</a>
+      <a href="about.html" class="active">关于</a>
+      <a href="contact.html">联系</a>
     </nav>
   </div>
 </header>
@@ -24,9 +26,9 @@
 <main class="page-fade">
 <section class="about-hero">
   <div class="wrap">
-    <span class="mono">About — Profile</span>
-    <h1 style="margin-top:18px">Editorial mind,<br><em class="accent">systematic</em> craft.</h1>
-    <p class="lead">A UI/UX and product designer who treats interfaces as editorial objects — bold type, deliberate structure, motion that serves the story.</p>
+    <span class="en">关于 — Profile</span>
+    <h1 class="zh-h1" style="margin-top:18px">编辑式的头脑，<br><span class="accent">系统化</span>的手。</h1>
+    <p class="lead zh-body">一位 UI/UX 与产品设计师，把界面当作编辑对象——大胆的字体、克制的结构、服务于叙事的动效。</p>
   </div>
 </section>
 
@@ -35,55 +37,46 @@
     <div class="about-grid">
       <aside class="sticky">
         <div class="factbox rv">
-          <h4>At a glance</h4>
+          <h4>概览 At a glance</h4>
           <ul>
-            <li>Role <span>UI/UX · Product</span></li>
-            <li>Based <span>TODO — city</span></li>
-            <li>Focus <span>Interface · Type · Motion</span></li>
-            <li>Status <span>TODO — availability</span></li>
-            <li>Contact <span><a href="contact.html" style="color:var(--accent)">Contact page →</a></span></li>
+            <li class="zh">角色 <span>UI/UX · 产品</span></li>
+            <li class="zh">所在 <span>待定</span></li>
+            <li class="zh">方向 <span>界面 · 字体 · 动效</span></li>
+            <li class="zh">状态 <span>待定</span></li>
+            <li class="zh">联系 <span><a href="contact.html" style="color:var(--accent)">联系页 →</a></span></li>
           </ul>
         </div>
       </aside>
 
       <div class="about-body">
-        <h2 class="rv">Introduction</h2>
-        <p class="drop rv">I'm Your Name — a UI/UX and product designer. <span class="mono" style="color:var(--accent)">[TODO: personal introduction, background and one sentence on what drives you — to be supplied]</span></p>
-        <p class="rv">My work sits between editorial design and product thinking: I care about how a screen <em>reads</em> as much as how it works. The projects below range from a gamified habit product to an industrial energy device and a movie-ticketing experience.</p>
+        <h2 class="zh">简介 <span class="en">Introduction</span></h2>
+        <p class="drop zh-body">我是「姓名」——一名 UI/UX 与产品设计师。<span class="en" style="color:var(--accent)">[TODO：个人简介、背景，以及一句驱动你的话——待你提供]</span></p>
+        <p class="zh-body">我的工作在编辑式设计与产品思维之间：我既在意一个界面「好不好用」，也在意它「读起来怎么样」。下面的项目，从一个游戏化习惯产品，到一台工业储能设备，再到一个电影票务体验。</p>
 
-        <h2 class="rv">Design Philosophy</h2>
-        <p class="rv"><b>Structure first.</b> Before style, I want the information architecture to make sense — what the user came for, and the shortest honest path to it.</p>
-        <p class="rv"><b>Type carries the argument.</b> Hierarchy, scale and rhythm do more persuasive work than decoration. Whitespace is a material, not empty space.</p>
-        <p class="rv"><b>Motion serves narrative.</b> Movement should clarify state and pace a story — never decorate a page that hasn't earned it.</p>
+        <h2 class="zh">设计理念 <span class="en">Design Philosophy</span></h2>
+        <p class="zh-body"><b>结构优先。</b>在风格之前，我先让信息架构讲得通——用户为什么而来，以及通往它最短、最诚实的那条路。</p>
+        <p class="zh-body"><b>字体承载论点。</b>层级、比例与节奏，比装饰更能说服人。留白是一种材料，不是空。</p>
+        <p class="zh-body"><b>动效服务叙事。</b>动作应当澄清状态、为故事定节奏——而不是给还没成立的页面加装饰。</p>
 
-        <h2 class="rv">Professional Direction</h2>
+        <h2 class="zh">专业方向 <span class="en">Professional Direction</span></h2>
         <div class="exp rv" style="grid-template-columns:1fr">
-          <div class="col" style="border-right:none;border-bottom:1px solid var(--line);padding:20px 0">
-            <h3>Interface &amp; Systems</h3>
-            <p>Information architecture, interaction logic and scalable design systems.</p>
-          </div>
-          <div class="col" style="border-right:none;border-bottom:1px solid var(--line);padding:20px 0">
-            <h3>Typography &amp; Art Direction</h3>
-            <p>Editorial layout, type systems and a distinct visual voice.</p>
-          </div>
-          <div class="col" style="border-right:none;padding:20px 0">
-            <h3>Motion &amp; Craft</h3>
-            <p>Interaction choreography and accessible, restrained motion.</p>
-          </div>
+          <div class="col" style="border-right:none;border-bottom:1px solid var(--line);padding:20px 0"><h3 class="zh">界面与系统</h3><p class="zh-body">信息架构、交互逻辑，以及可扩展的设计系统。</p></div>
+          <div class="col" style="border-right:none;border-bottom:1px solid var(--line);padding:20px 0"><h3 class="zh">字体与艺术指导</h3><p class="zh-body">编辑式版式、字体系统与鲜明的视觉语气。</p></div>
+          <div class="col" style="border-right:none;padding:20px 0"><h3 class="zh">动效与工艺</h3><p class="zh-body">交互编排与可访问、克制的动效。</p></div>
         </div>
 
-        <h2 class="rv">Skills &amp; Method</h2>
-        <p class="rv">I work in a repeatable loop rather than a fixed pipeline: <b>research → define → IA → interaction → visual → prototype → test</b>. Tools: Figma, React/TypeScript for prototypes, design tokens for consistency. <span class="mono" style="color:var(--accent)">[TODO: confirm tools &amp; proficiency framing]</span></p>
+        <h2 class="zh">技能与方法 <span class="en">Skills &amp; Method</span></h2>
+        <p class="zh-body">我更像一个可复用的闭环，而非固定流水线：<b>研究 → 定义 → 信息架构 → 交互 → 视觉 → 原型 → 验证</b>。工具：Figma、用于原型的 React/TypeScript、用于一致性的设计令牌。<span class="en" style="color:var(--accent)">[TODO：确认工具与熟练度表述]</span></p>
 
-        <h2 class="rv">Experience</h2>
+        <h2 class="zh">经历 <span class="en">Experience</span></h2>
         <div class="timeline rv">
-          <div class="item"><span class="yr">2026</span><h4>CINIS — UI/UX · Product Design</h4><p>Gamified self-discipline product: three modes, soul-flame growth, 23-screen hi-fi prototype.</p></div>
-          <div class="item"><span class="yr">2025</span><h4>Portable Energy Storage — Product Design</h4><p>Modular outdoor energy storage: scenario research, structure and form.</p></div>
-          <div class="item"><span class="yr">2025</span><h4>MOVA — UI/UX Design</h4><p>Movie ticketing and viewing-experience product: booking flow and seat selection.</p></div>
-          <div class="item"><span class="yr">TODO</span><h4>Education / Employment</h4><p class="mono" style="color:var(--accent)">[TODO: school, degree and any employment history to be supplied — not fabricated]</p></div>
+          <div class="item"><span class="yr">2026</span><h4 class="zh">CINIS — UI/UX · 产品设计</h4><p class="zh-body">游戏化自律产品：三模式、魂火成长、23 屏高保真原型。</p></div>
+          <div class="item"><span class="yr">2025</span><h4 class="zh">便携式储能 — 产品设计</h4><p class="zh-body">模块化户外储能：场景研究、结构与形态。</p></div>
+          <div class="item"><span class="yr">2025</span><h4 class="zh">MOVA — UI/UX 设计</h4><p class="zh-body">电影购票与观影体验产品：购票流程与选座。</p></div>
+          <div class="item"><span class="yr">TODO</span><h4 class="zh">教育与工作经历</h4><p class="zh-body en" style="color:var(--accent)">[TODO：学校、学位与任何工作经历待你提供——不编造]</p></div>
         </div>
-        <p class="note rv">No awards, positions, or collaborations are invented. All unknown items are marked TODO.</p>
-        <p class="rv" style="margin-top:34px"><a class="btn" href="contact.html">Get in touch →</a></p>
+        <p class="note rv">不虚构奖项、职位或合作经历。未知项一律标注 TODO。</p>
+        <p class="rv" style="margin-top:34px"><a class="btn" href="contact.html">取得联系 →</a></p>
       </div>
     </div>
   </div>
@@ -92,8 +85,8 @@
 
 <footer class="footer">
   <div class="wrap">
-    <span class="mono">© 2026 Your Name — placeholder identity</span>
-    <span class="mono">About · Editorial Brutalism</span>
+    <span class="en">© 2026 姓名 — 占位身份</span>
+    <span class="en">关于 · 编辑式粗野主义</span>
   </div>
 </footer>
 <script src="app.js"></script>

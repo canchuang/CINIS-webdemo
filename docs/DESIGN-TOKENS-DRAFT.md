@@ -21,31 +21,47 @@
 
 ---
 
-## 2. Typography — locked
+## 2. Typography — FINAL (Chinese-first, serif banned)
+
+> Serif is **completely removed** (no Fraunces / Georgia / Times). Full detail: `CHINESE-TYPOGRAPHY-SPEC.md`.
 
 | Role | Family | Weights | Notes |
 |---|---|---|---|
-| Display / Heading | **Fraunces** (variable serif) | 400 / 600 + italic | editorial voice, italic for emphasis |
-| Bold-sans conflict (hero) | **Archivo** | 800 | the "brutalist" counterweight in the hero |
-| Body / UI | **Inter** | 300/400/500/600/700 | reading text |
-| Mono | **IBM Plex Mono** | 400/500 | labels, folios, captions-meta |
+| **Chinese (primary)** | **MiSans** | 400 / 500 / 600 / 700 (VF 150–700) | primary for all Chinese; embedded as subsetted variable WOFF2 |
+| Chinese fallback | HarmonyOS Sans SC → Source Han Sans SC / Noto Sans SC | per file | CJK safety fallbacks |
+| Latin display | **Space Grotesk** | 400–700 | hero / large Latin |
+| Latin body / UI | **Inter** | 300–700 | reading text |
+| Mono | **IBM Plex Mono** | 400/500 | labels, project numbers, metadata |
 
-- All four are **open-source (SIL OFL)** — free for commercial use. **Chinese fallback:** `'PingFang SC','Microsoft YaHei',sans-serif` is stacked after Inter for CJK; Fraunces has no CJK glyphs, so CJK display text falls back to the serif's system CJK pair — **TODO: confirm a preferred CJK display face** (e.g., Noto Serif SC / Source Han Serif) if CJK display type is needed.
+**Stacks** (Latin leads, Chinese falls through to MiSans by coverage — never to a serif):
+```
+--font-zh:     "MiSans VF","MiSans","HarmonyOS Sans SC","Noto Sans SC","Source Han Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+--font-heading:"Space Grotesk","MiSans VF","MiSans","Noto Sans SC",sans-serif;
+--font-body:   "Inter","MiSans VF","MiSans","Noto Sans SC",sans-serif;
+--font-mono:   "IBM Plex Mono","MiSans VF",ui-monospace,monospace;
+```
 
-### Type scale (fluid)
-| Token | clamp / value | Use |
+### Chinese type scale (independent)
+| Token | Desktop | Mobile | clamp |
+|---|---|---|---|
+| Hero | 76–112px | 42–64px | `clamp(42px,8vw,112px)` |
+| H1 | 56–76px | 36–48px | `clamp(36px,6vw,76px)` |
+| H2 | 36–48px | 28–36px | `clamp(28px,4vw,48px)` |
+| H3 | 24–30px | 20–24px | `clamp(20px,2.6vw,30px)` |
+| Body | 16–18px | 15–16px | `17px` |
+| Caption | 12–14px | 11–13px | — |
+
+### Tracking & leading (中 vs 英)
+| | Chinese | English |
 |---|---|---|
-| hero l1 (serif) | `clamp(48px, 8.6vw, 124px)` | hero line 1 |
-| hero l2 (Archivo 800) | `clamp(56px, 11vw, 168px)` | hero line 2 (outline option) |
-| hero l3 (serif italic) | `clamp(44px, 7.4vw, 108px)` | hero line 3 |
-| h1 page | `clamp(56px, 11vw, 140px)` | Works / About / Contact |
-| h2 section | `clamp(30px, 4vw, 58px)` | section heads |
-| lead | `clamp(20px, 2.4vw, 28px)` | standfirst |
-| body | `17px` (16–17.5) | reading |
-| small | `13–14px` | captions |
-| mono | `11–12px`, tracking `.12–.2em`, uppercase | labels |
+| Display letter-spacing | −0.02em … 0 | −0.04…−0.02em |
+| Body letter-spacing | 0 … 0.02em | 0 |
+| Heading line-height | 1.12–1.25 | 1.05–1.2 |
+| Body line-height | 1.7–1.9 (site 1.8–1.85) | 1.5–1.7 |
 
-Line-height: hero `.84–.92`, headings `1.0–1.1`, body `1.65–1.8`.
+Numbers: `font-variant-numeric: tabular-nums`; project numbers in IBM Plex Mono. No faux-italic on Chinese.
+**Electric blue `#2D6BFF`** = hero keyword accent only; all other emphasis = terracotta `#A8442A`.
+
 
 ---
 

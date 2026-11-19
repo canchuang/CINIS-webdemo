@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Typography Specimen — 中文排版样张</title>
+<script>document.documentElement.className+=' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSansVF.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  body{overflow-x:hidden}
+  .spec{max-width:1240px;margin:0 auto;padding:48px 48px 80px}
+  .spec-head{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:44px}
+  .spec-head h1{font-family:var(--font-zh);font-weight:700;font-size:clamp(30px,4.4vw,52px);letter-spacing:-.01em;margin:0 0 8px}
+  .spec-head p{font-family:var(--font-zh);color:var(--text2);margin:0;font-size:15px}
+  .block{margin:0 0 60px}
+  .block>.cap{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;gap:10px;align-items:center}
+  .block>.cap b{color:var(--text);font-weight:400}
+  .fam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .fam{border:1px solid var(--line);padding:22px;background:var(--surface)}
+  .fam .tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--text2);text-transform:uppercase;margin-bottom:2px}
+  .fam .tag b{color:var(--accent);font-weight:400;display:block;font-size:13px;letter-spacing:0;text-transform:none;font-family:var(--font-zh)}
+  .fam .big{font-size:46px;font-weight:700;line-height:1.15;margin:16px 0;letter-spacing:-.01em}
+  .fam .body{font-size:15px;line-height:1.85;color:#2e2a22;margin:0 0 14px}
+  .fam .wts{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:15px}
+  .fam .wts i{font-style:normal;display:inline-block}
+  .s-misans .big,.s-misans .body,.s-misans .wts{font-family:"MiSans VF","MiSans",sans-serif}
+  .s-harmony .big,.s-harmony .body,.s-harmony .wts{font-family:"HarmonyOS Sans SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+  .s-noto .big,.s-noto .body,.s-noto .wts{font-family:"Noto Sans SC","Source Han Sans SC",sans-serif}
+  .demo{font-family:"MiSans VF","MiSans",sans-serif}
+  .demo-huge{font-size:clamp(56px,9vw,104px);font-weight:700;line-height:1.08;letter-spacing:-.02em;margin:0}
+  .demo-body{font-size:17px;line-height:1.85;max-width:34em;color:#2e2a22;margin:0}
+  .demo-nums{font-family:"IBM Plex Mono","MiSans VF",monospace;font-size:15px;letter-spacing:.02em;display:flex;flex-direction:column;gap:10px}
+  .demo-nums span{color:var(--text2)}
+  .demo-nums b{color:var(--text);font-weight:500}
+  .mix{font-size:18px;line-height:1.9;max-width:38em;color:#2e2a22;margin:0}
+  .mix .l{font-family:"Space Grotesk","MiSans VF",sans-serif;font-weight:500}
+  .mix .n{font-variant-numeric:tabular-nums;font-weight:600}
+  .eng-h1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(44px,7vw,88px);letter-spacing:-.03em;line-height:.98;margin:0}
+  .mobile-card{width:390px;max-width:100%;border:1px solid var(--ink);padding:22px;margin:0;background:var(--surface)}
+  .mobile-card .mt{font-family:"MiSans VF",sans-serif;font-weight:700;font-size:clamp(34px,10vw,54px);line-height:1.12;letter-spacing:-.02em;margin:0}
+  .mobile-card .ms{font-family:"MiSans VF",sans-serif;font-size:15px;line-height:1.8;color:var(--text2);margin:12px 0 0}
+  .weights{display:flex;flex-direction:column;gap:16px;font-family:"MiSans VF",sans-serif}
+  .weights .row{display:flex;align-items:baseline;gap:20px;border-bottom:1px solid var(--line);padding-bottom:12px}
+  .weights .row .lbl{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--text2);width:64px;flex:none}
+  .weights .row .txt{font-size:34px;line-height:1.1}
+  .rule{font-family:var(--font-mono);font-size:11px;color:var(--text2);letter-spacing:.04em;border-left:2px solid var(--accent);padding-left:12px;margin-top:14px;line-height:1.8}
+  @media(max-width:820px){.spec{padding:28px 20px 60px}.fam-grid{grid-template-columns:1fr}.fam .big{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="spec">
+  <div class="spec-head">
+    <h1>中文排版样张 · Typography Specimen</h1>
+    <p>Chinese-first, bilingual-ready · 无衬线体系。真实字形对照：MiSans（variable, Apache-2.0）· HarmonyOS Sans SC · Source Han Sans SC / Noto Sans SC。</p>
+  </div>
+
+  <!-- 0. FAMILY COMPARISON (actual glyphs) -->
+  <div class="block">
+    <div class="cap"><b>00</b> 字体族对照 · Family comparison (actual glyphs)</div>
+    <div class="fam-grid">
+      <div class="fam s-misans">
+        <div class="tag">Chinese · 首选<b>MiSans</b></div>
+        <div class="big">设计，让复杂变得清晰</div>
+        <p class="body">好的排版让复杂的东西读起来毫不费力。字距克制，行距舒展，中西文共用一条基线。</p>
+        <div class="wts"><i style="font-weight:400">400 常规</i><i style="font-weight:500">500 中黑</i><i style="font-weight:700">700 粗体</i></div>
+      </div>
+      <div class="fam s-harmony">
+        <div class="tag">备选<b>HarmonyOS Sans SC</b></div>
+        <div class="big">设计，让复杂变得清晰</div>
+        <p class="body">好的排版让复杂的东西读起来毫不费力。字距克制，行距舒展，中西文共用一条基线。</p>
+        <div class="wts"><i style="font-weight:700">Bold（本机仅安装此字重）</i></div>
+      </div>
+      <div class="fam s-noto">
+        <div class="tag">备选<b>Source Han Sans / Noto Sans SC</b></div>
+        <div class="big">设计，让复杂变得清晰</div>
+        <p class="body">好的排版让复杂的东西读起来毫不费力。字距克制，行距舒展，中西文共用一条基线。</p>
+        <div class="wts"><i style="font-weight:400">400</i><i style="font-weight:500">500</i><i style="font-weight:700">700</i></div>
+      </div>
+    </div>
+    <div class="rule">本机安装：MiSans-Regular / MiSans VF（CDN 可变 150–700）· HarmonyOS_Sans_SC_Bold（仅 Bold）· NotoSansSC-VF。HarmonyOS 因本机仅有 Bold，无法完整对比其余字重，需补充字体文件后再评。</div>
+  </div>
+
+  <!-- 1. 中文大标题 -->
+  <div class="block">
+    <div class="cap"><b>01</b> 中文大标题 · Chinese display</div>
+    <h2 class="demo demo-huge">设计，让复杂变得清晰。</h2>
+    <div class="rule">字距 -0.02em · 行高 1.08 · 字重 700 · 思源/MiSans 粗体在大字号下保持结构清晰，不压缩。</div>
+  </div>
+
+  <!-- 2. 中文正文 -->
+  <div class="block">
+    <div class="cap"><b>02</b> 中文正文 · Chinese body</div>
+    <p class="demo demo-body">结构与表达之间，我选择先把结构讲清楚。一个界面的阅读顺序、信息的轻重缓急、以及留白的比例，决定了它是否值得被反复使用。正文采用 17px、行高 1.85，字距 0.01em，兼顾屏幕阅读的舒适与密度。</p>
+  </div>
+
+  <!-- 3. 中文项目编号 -->
+  <div class="block">
+    <div class="cap"><b>03</b> 中文项目编号 · Project numbering</div>
+    <div class="demo-nums">
+      <span><b>01</b> — CINIS｜游戏化自律产品</span>
+      <span><b>02</b> — 便携式储能｜模块化户外电源</span>
+      <span><b>03</b> — MOVA｜电影购票与观影体验</span>
+    </div>
+  </div>
+
+  <!-- 4. 中英文混排 -->
+  <div class="block">
+    <div class="cap"><b>04</b> 中英文混排 · Bilingual mixing</div>
+    <p class="mix">在 <span class="l">CINIS</span> 项目中，我用三模式（<span class="l">Traveler / Knight / Abyss</span>）重构了自律体验，并将任务完成度提升到 <span class="n">23</span> 个可交互界面。中文为主，<span class="l">English</span> 作为辅助标签，数字使用稳定字形并对齐。</p>
+    <div class="rule">同一行混排：中文 MiSans，英文 Space Grotesk / Inter，数字 tabular-nums；调整字重与视觉大小，保持基线自然，不给中文加强制英文式大字距。</div>
+  </div>
+
+  <!-- 5. 英文大标题 -->
+  <div class="block">
+    <div class="cap"><b>05</b> 英文大标题 · English display</div>
+    <h2 class="eng-h1">Editorial structure,<br>bilingual by design.</h2>
+    <div class="rule">Space Grotesk 700 · 字距 -0.03em · 用于英文主标题与编号辅助。</div>
+  </div>
+
+  <!-- 6. 中文移动端标题 -->
+  <div class="block">
+    <div class="cap"><b>06</b> 中文移动端标题 · Mobile title (390)</div>
+    <div class="mobile-card">
+      <p class="mt">设计，<br>让复杂<br>变得清晰。</p>
+      <p class="ms">移动端 Hero：42–64px，行高 1.12，按语义断行——不依赖浏览器自动换行。</p>
+    </div>
+  </div>
+
+  <!-- 7. 不同字重对照 -->
+  <div class="block">
+    <div class="cap"><b>07</b> 不同字重对照 · Weight comparison</div>
+    <div class="weights">
+      <div class="row"><span class="lbl">400</span><span class="txt" style="font-weight:400">字体是信息的骨架 Regular</span></div>
+      <div class="row"><span class="lbl">500</span><span class="txt" style="font-weight:500">字体是信息的骨架 Medium</span></div>
+      <div class="row"><span class="lbl">600</span><span class="txt" style="font-weight:600">字体是信息的骨架 Semibold</span></div>
+      <div class="row"><span class="lbl">700</span><span class="txt" style="font-weight:700">字体是信息的骨架 Bold</span></div>
+    </div>
+    <div class="rule">MiSans VF 支持 150–700（该子集无 800；如有 Heavy 需求需补字体文件）。标题用 700，正文 400，强调 500/600。</div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

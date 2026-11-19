@@ -183,3 +183,18 @@ All values are **proposals** to be tuned in build (TODO: confirm against real co
 
 **Where it lives:** `repo/experiments/art-direction/direction-b-plus/` (home, works, cinis, about, contact).
 **Tokens:** see `DESIGN-TOKENS-DRAFT.md` (FINAL). **Review:** see `DIRECTION-B-PLUS-REVIEW.md`. **Report:** see `PHASE-04-REPORT.md`.
+
+---
+
+## 11. TYPOGRAPHY REVISION (Phase 05) — Chinese-first, serif banned
+
+> Supersedes the serif direction in §4. **All serif families are removed** (Fraunces / Georgia / Times / generic `serif`).
+
+- **System:** Chinese-first, bilingual-ready modern sans. Chinese gets its own scale, tracking, leading and line-breaking; English is auxiliary.
+- **Chinese:** **MiSans** (primary) → HarmonyOS Sans SC → Source Han Sans SC / Noto Sans SC.
+- **Latin:** Space Grotesk (display) · Inter (body) · IBM Plex Mono (metadata / numbers).
+- **Mechanism:** heading/body stacks lead with Latin (no CJK glyphs) so Chinese auto-falls to MiSans via Unicode coverage — never to a serif.
+- **Hero reworked to Chinese:** 「设计，让复杂变得清晰。」 — 3 asymmetric lines, weight contrast, keyword 「清晰」 in **electric blue `#2D6BFF`** (hero-only accent), small English auxiliary `DESIGN · CLARITY`. Example copy is a **placeholder pending your confirmation** (not asserted as your personal statement).
+- **Accent discipline:** electric blue = hero keyword only; everything else uses terracotta `#A8442A`.
+- **All pages** converted Chinese-first (nav 首页/作品/关于/联系; section heads Chinese + English mono labels; case-study 12 sections in Chinese).
+- Full spec: `CHINESE-TYPOGRAPHY-SPEC.md`. Specimen: `direction-b-plus/_type-specimen.html` (`_shots/SPEC-desktop.png`, `SPEC-mobile.png`).
