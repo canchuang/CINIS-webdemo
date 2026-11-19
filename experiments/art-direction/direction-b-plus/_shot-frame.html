@@ -1,0 +1,14 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#F6F1E8}iframe{display:block;border:0;background:#F6F1E8}</style>
+</head><body>
+<iframe id="f"></iframe>
+<script>
+var q=new URLSearchParams(location.search);
+var p=q.get('p')||'index.html';
+var w=q.get('w')||'390';
+var h=q.get('h')||'2000';
+var f=document.getElementById('f');
+f.style.width=w+'px'; f.style.height=h+'px'; f.src=p;
+</script>
+</body></html>

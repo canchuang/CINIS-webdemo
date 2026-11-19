@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Works — Direction A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ribbon"><span>DIRECTION <b>A</b> — TYPOGRAPHIC BRUTALISM</span><span>WORKS / 03 PROJECTS</span></div>
+
+<header class="nav">
+  <div class="brand">YOUR NAME<span style="color:var(--accent)">.</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="works.html" class="active">Works</a>
+    <a href="cinis.html">CINIS</a>
+    <a href="index.html#expertise">Expertise</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" style="padding:54px 0 30px">
+  <div class="wrap">
+    <div class="kicker mono"><span>ALL WORK</span><span>SELECTED 2024 — 2026</span></div>
+    <h1 style="font-size:clamp(56px,11vw,180px)">WORKS</h1>
+  </div>
+</section>
+
+<section class="section" style="border-bottom:none">
+  <div class="wrap">
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">All (03)</button>
+      <button data-f="uiux">UI/UX</button>
+      <button data-f="product">Product Design</button>
+    </div>
+    <div class="works-grid" id="grid">
+      <article class="card c-1" data-cat="uiux" onclick="location.href='cinis.html'">
+        <div class="thumb"><img src="../_screens/today.png" alt="CINIS UI"></div>
+        <div class="body"><h3>CINIS</h3><p class="mono">UI/UX · Product · 3 modes · 魂火 growth</p></div>
+      </article>
+      <article class="card c-2" data-cat="product">
+        <div class="thumb"><div class="placeholder-art">Modular portable<br>energy storage<br><br>— visual pending assets —</div></div>
+        <div class="body"><h3>Portable Energy Storage</h3><p class="mono">Product · Industrial Design</p></div>
+      </article>
+      <article class="card c-3" data-cat="uiux">
+        <div class="thumb"><div class="placeholder-art">Movie ticketing<br>&amp; viewing experience<br><br>— visual pending assets —</div></div>
+        <div class="body"><h3>MOVA</h3><p class="mono">UI/UX Design · Ticketing</p></div>
+      </article>
+    </div>
+    <p class="note">PES and MOVA use real project descriptors and designed placeholder structures only — no fabricated renders pretending to be real work.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span class="mono">© 2026 YOUR NAME — Placeholder</span>
+  <span class="mono">Direction A · Typographic Brutalism</span>
+</footer>
+<script>
+const f=document.getElementById('filters'),cards=[...document.querySelectorAll('.card')];
+f.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  f.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  const k=b.dataset.f;cards.forEach(c=>{c.style.display=(k==='all'||c.dataset.cat===k)?'':'none';});
+});
+</script>
+</body>
+</html>

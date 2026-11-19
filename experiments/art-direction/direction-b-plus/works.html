@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Works — Your Name</title>
+<script>document.documentElement.className+=' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500;600;700&family=Archivo:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-nav">
+  <div class="inner">
+    <a class="brand" href="index.html">Your<i>Name</i></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="works.html" class="active">Works</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page-fade">
+<section class="works-hero">
+  <div class="wrap">
+    <h1>Selected <em>Work.</em></h1>
+    <div class="intro">
+      <p>Three projects across interface systems and industrial product design. Where assets are still pending, structures stay honest — no fabricated renders.</p>
+      <span class="mono">03 projects — 2024–2026</span>
+    </div>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">All (03)</button>
+      <button data-f="uiux">UI/UX</button>
+      <button data-f="product">Product</button>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="wgrid" id="grid">
+    <article class="wcard big rv" data-cat="uiux" onclick="location.href='cinis.html'">
+      <div class="frame"><img src="assets/screen-today.png" alt="CINIS"></div>
+      <div class="cap"><h3>CINIS</h3><span class="n">01 — UI/UX · Product</span></div>
+      <p class="desc">Gamified self-discipline product. Three modes, soul-flame growth system, 23-screen hi-fi prototype.</p>
+    </article>
+    <article class="wcard small rv" data-cat="product">
+      <div class="frame"><div class="placeholder">Portable Energy Storage<br><br>visual pending assets</div></div>
+      <div class="cap"><h3>Portable Energy Storage</h3><span class="n">02 — Product</span></div>
+      <p class="desc">Modular portable outdoor energy-storage device. Case study reserved; imagery pending.</p>
+    </article>
+    <article class="wcard wide rv" data-cat="uiux">
+      <div class="frame"><div class="placeholder">MOVA — movie ticketing &amp; viewing experience<br><br>visual pending assets</div></div>
+      <div class="cap"><h3>MOVA</h3><span class="n">03 — UI/UX Design · Ticketing</span></div>
+      <p class="desc">Movie ticketing and viewing-experience product — booking flow and seat-selection interaction. Case study reserved; imagery pending.</p>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span class="mono">© 2026 Your Name — placeholder identity</span>
+    <span class="mono">Works · Editorial Brutalism</span>
+  </div>
+</footer>
+<script src="app.js"></script>
+<script>
+document.getElementById('filters').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  this.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});
+  var k=b.dataset.f;
+  document.querySelectorAll('#grid [data-cat]').forEach(function(c){
+    c.style.display=(k==='all'||c.dataset.cat===k)?'':'none';
+  });
+});
+</script>
+</body>
+</html>

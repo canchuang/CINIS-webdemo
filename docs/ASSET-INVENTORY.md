@@ -1,0 +1,151 @@
+# ASSET INVENTORY
+
+> Phase 02 deliverable — **revised Round 2 (2026-11-19)**. Inventories the three retained portfolio projects only: **CINIS**, **Portable Energy Storage**, **MOVA**.
+> Smart Home Icon System is **excluded** by project mandate and is not inventoried here.
+> Status legend: **READY** = usable as-is · **NEEDS-PROCESSING** = crop/layout/clean needed · **MISSING** = not provided.
+> Original artwork is never modified; this file only records paths and judgments.
+
+---
+
+## 0. Backup status — ✅ CINIS fully backed up (Round 2)
+
+| Item | Value |
+|---|---|
+| Source | `https://github.com/canchuang/CINIS-webdemo` @ commit `cb91106220f0dcf7a0d063b21262207a4a96a96d` (`main`) |
+| Live sites | **Netlify:** `https://cinis.netlify.app` (production, bound to repo) · **GitHub Pages:** `https://canchuang.github.io/CINIS-webdemo/` |
+| Local read-only backup | `assets/source/CINIS-webdemo/` (full clone) |
+| Assets backed up | **66 files / 4,855,835 bytes** in `public/assets` (+ full `src/`, configs) |
+| Checksums | `assets/source/cinis-assets-hashes.csv` · manifest: [`ASSET-BACKUP-MANIFEST.md`](ASSET-BACKUP-MANIFEST.md) |
+| Duplicates | 66 files contain **45 unique contents** (several PNG names share identical SHA256 — e.g. `character-knight.png` == `image-cc22…png`). Dedup when producing web assets. |
+| Processed-output target | `assets/projects/cinis/{characters,screens,illustrations,icons,growth-system,interaction,content}/` (skeleton created; **never overwrite source**) |
+
+---
+
+## Summary table
+
+| Project | Category | Source availability | Overall status |
+|---|---|---|---|
+| 01 — CINIS | UI/UX · Product | **Rich** — Figma-exported assets + runnable React prototype + **2 live sites (Netlify + GH Pages)** + **local backup** | Mostly **READY**; some assets **NEEDS-PROCESSING** (2× PNGs to be re-cropped for web); narrative assets **MISSING** (process/research docs) |
+| 02 — Portable Energy Storage | Product · Industrial | **None found** — no repo, no assets, no workspace files | Almost entirely **MISSING** |
+| 03 — MOVA | UI/UX | **None found** — no repo, no assets, no workspace files | Almost entirely **MISSING** |
+
+> CINIS is fully available (repo + 2 live deployments + local backup). PES and MOVA have **no discoverable source** until the user provides files or links.
+
+---
+
+## Project 01 — CINIS
+
+**Source of truth:** `https://github.com/canchuang/CINIS-webdemo` (branch `main`, public; commit `cb91106`).
+**Live prototype (2 deployments):** `https://cinis.netlify.app/` (Netlify production — **primary**) and `https://canchuang.github.io/CINIS-webdemo/` (GitHub Pages — backup).
+**Local backup:** `assets/source/CINIS-webdemo/` (read-only).
+**Asset manifest:** `public/assets/assets.json` (Figma export, 45 entries — 17 images + 28 vectors; 66 files on disk incl. duplicate names).
+**Design origin:** a Figma file owned by the user (root node `1299:5713`). Figma link → **TODO**.
+
+### A. Character / illustration assets (images) — READY
+
+All are 2×-optimized transparent PNGs exported from Figma. Previewed and confirmed high quality (chibi game art).
+
+| File (`public/assets/…`) | Size (px) | Approx source | Intended use |
+|---|---|---|---|
+| `character-traveler.png` (`image-ec2d…`) | 324×324 | traveler (旅者) portrait | Case-study mode showcase |
+| `character-knight.png` (`image-cc22…`) | 568×568 | knight (骑士) portrait — **confirmed excellent** | Hero / mode section |
+| `character-abyss.png` (`image-2c0c…`, `chibi_knight2_transparent`) | 336×336 | abyss (深渊) character | Mode section |
+| `image-5ff41…png` (`chibi_knight4_transparent`) | 124×124 | knight alt pose (transparent) | Accents |
+| `image-d60f3…png` (提灯跃动的精灵冒险家) | 402×402 | lantern adventurer | Settle screen art |
+| `settle-traveler / settle-knight / settle-abyss.png` | various | settle-screen characters | Phase-settle section |
+| `rest-traveler / rest-knight / rest-abyss.png` | various | resting-pose characters | Failure/reflection branch |
+| `image-145 / 144 / 143` (knight/abyss terminal art) | 414–609 px | terminal/fail illustrations | Failure-branch narrative |
+| `growth-scene.png` (`image-c72f…`) | 684×298 | **growth path scene with milestone stones — confirmed excellent** | "魂火成长体系" hero visual |
+| `badge-1 / 2 / 3.png` (`image-130/131/132`) | 90×90 | 3 achievement badges | Achievements section |
+| `abyss-restart.png`, `knight-fail.png`, `knight-sleep.png`, `look-*.png` | small | misc UI art | Detail shots |
+
+**Status: READY.** Language/credentials note: images are design output of the user's own project; safe to use. Confirm licensing/permission → OPEN-QUESTION (assumed user-owned).
+
+### B. Vector assets (SVG) — READY (icons/nav), NEEDS-PROCESSING (page-render vectors)
+
+| Group | Files | Status |
+|---|---|---|
+| Nav icons & indicator (`nav*.svg`, `nav-indicator.svg`, `tab-icon*.svg`) | ~9 SVGs | **READY** — reusable as small icons |
+| Per-screen decorative vectors (`p11*.svg`, `p15*.svg`, `p29*.svg`, `p30*.svg`, `p31*.svg`, `p37*.svg`) | ~19 SVGs | **NEEDS-PROCESSING** — these are partial screen vectors; prefer full-page renders (see C) |
+
+### C. Rendered screen captures — **NEEDS-PROCESSING**
+
+The live prototype can be screenshotted screen-by-screen (23 screens + 1 bottom sheet). These are the most valuable **case-study** visuals (information architecture, user flow, high-fidelity UI).
+
+- **Sources (either works):** `https://cinis.netlify.app/#<route>` (primary) or `https://canchuang.github.io/CINIS-webdemo/#<route>`.
+- **Route inventory (28 keys in `routes.ts`; ~23 distinct screens):** splash, roles, onboarding, today, goals, goalDetail, goalEdit, growth, me, focus, taskDone, stage, settle, terminal, rekindle, achievements, characterFile, history, reminderSettings, privacy, stageProgress, comeback, trialConfirm, newGoal, editor + `chooseMode` (bottom-sheet layer). *(Feature-branch pages: knight terminal/recover, abyss terminal/restart, modalBgEditor.)*
+- Status: **NEEDS-PROCESSING** — must be captured at device scale, cropped to the phone frame, organized per narrative section. Not yet captured.
+- Action (next phase): headless capture at 390×844 @2×, save to `assets/projects/cinis/screens/`.
+
+### D. Code / prototype resources — READY (as reference & embed)
+
+| Item | Status | Use |
+|---|---|---|
+| Runnable React prototype (23 screens + bottom sheet) | **READY** | Link out to live demo; optionally embed in an iframe within a phone frame |
+| `src/data/content.ts` (22 KB Figma-sourced copy) | **READY** | Ground truth for case-study copy (mode names, flow labels) |
+| `TiltCard.tsx`, `Screen.tsx`, `BottomNav.tsx` | **READY** (pattern) | Reusable interaction/layout patterns |
+| Design tokens (`tokens.ts`, `global.css` vars) | **READY** (reference) | Token reference, not to be copied as-is |
+
+### E. Narrative / process assets — **MISSING**
+
+The brief asks CINIS's case study to show **product positioning, three-mode mechanism, IA, user flow, interaction logic, soul-flame growth system, UI design system, hi-fi UI, prototype demo**. Only "hi-fi UI + prototype + growth system art" is covered by assets. Missing:
+
+- Product positioning write-up → **MISSING** (TODO)
+- Three-mode mechanism explanation / diagram → **MISSING** (TODO; can be authored from `content.ts`)
+- Information architecture map → **MISSING** (can be derived; needs authoring)
+- User-flow diagram → **MISSING** (needs authoring)
+- Interaction-logic write-up → **MISSING** (can be derived from code)
+- UI design-system sheet (color/type/spacing/components) → **MISSING as a sheet** (extractable from `tokens.ts` + CSS — NEEDS-PROCESSING)
+- Original Figma design link → **MISSING** (TODO)
+
+---
+
+## Project 02 — Portable Energy Storage
+
+**Category:** Product · Industrial Design.
+
+**Source availability:** No repository, no files, no assets found in the workspace or among the user's public GitHub repos. → **Not started / not provided.**
+
+| Asset type | Status | Notes |
+|---|---|---|
+| User & scenario research (interview notes, personas, scenarios) | **MISSING** | TODO |
+| Product function analysis | **MISSING** | TODO |
+| Modular design diagrams | **MISSING** | TODO |
+| Product structure / exploded views | **MISSING** | TODO |
+| Appearance / form-design renders (3D or photos) | **MISSING** | TODO — highest priority for the cover |
+| Final presentation / hero render | **MISSING** | TODO — needed for project card |
+| Any prototype or model files | **MISSING** | TODO |
+
+**Everything for PES is MISSING.** Requires the user to drop the source folder (renders, process boards, research docs) into e.g. `assets/source/portable-energy-storage/`, or provide a link (Drive/Figma/Behance). → OPEN-QUESTION Q3.
+
+---
+
+## Project 03 — MOVA
+
+**Category:** UI/UX (movie ticket & viewing experience product).
+
+**Source availability:** No repository, no files, no assets found. → **Not started / not provided.**
+
+Brief expects: product positioning, competitor analysis, IA, ticketing flow, seat-selection interaction, hi-fi UI, prototype demo.
+
+| Asset type | Status | Notes |
+|---|---|---|
+| Product positioning | **MISSING** | TODO |
+| Competitor analysis | **MISSING** | TODO |
+| Information architecture | **MISSING** | TODO |
+| Ticketing flow | **MISSING** | TODO |
+| Seat-selection interaction (design + states) | **MISSING** | TODO — signature interaction; needs assets or Figma |
+| Hi-fi UI screens | **MISSING** | TODO |
+| Prototype (Figma/live) | **MISSING** | TODO |
+| Any design files | **MISSING** | TODO |
+
+**Everything for MOVA is MISSING.** Requires user-supplied Figma link and/or exported screens + prototype URL. → OPEN-QUESTION Q4.
+
+---
+
+## Consolidated MISSING list (to request from user)
+
+1. **Portable Energy Storage** — full asset set (research, structure, form renders, final hero).  
+2. **MOVA** — Figma link + exported screens + prototype URL + positioning/competitor docs.  
+3. **CINIS** — Figma file link (original design), product-positioning/three-mode/IA/user-flow write-ups or permission to author them from the prototype.  
+4. **Global** — personal bio, contact links (email/social/resume), any confirmed metrics/testimonials (else remain TODO; must not be fabricated).
