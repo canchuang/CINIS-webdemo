@@ -1,7 +1,7 @@
 # MOVA ASSET RECEIPT REPORT
 
 > Phase 07 · Source: `C:\Users\35335\Desktop\MOVA\` · Backed up read-only to `assets/source/mova-original/` · Hash list: `assets/source/mova-assets-hashes.csv`.
-> **15 files · 2.42 MB · all phone screens 393×852 (04/05 taller 393×1683).** Files carry `.png` extension but are **WebP** encoded.
+> **15 files · 2.42 MB · all phone screens 393×852 (04/05 taller 393×1683).** Files carry `.png` extension but are **PNG** encoded.
 
 ---
 
