@@ -601,3 +601,8 @@ a:focus-visible,button:focus-visible,.filters button:focus-visible{outline:2px s
 .figlink .t small{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;color:var(--text2);margin-top:3px}
 .figlink .go{font-family:var(--font-mono);font-size:12px;color:var(--accent);white-space:nowrap}
 @media(max-width:900px){.toc{grid-template-columns:1fr 1fr}.cards3{grid-template-columns:1fr}.spec-split{grid-template-columns:1fr}}
+
+/* anchor offset for sticky nav + reading rhythm */
+[id]{scroll-margin-top:92px}
+.cs-body p{max-width:72ch}
+

@@ -50,3 +50,12 @@
 2. 最终浅色 Design System（色值/字号/组件变量，待原始规范）。
 3. Figma 原型公开可访问性（需登录验证）+ 真实文件 key。
 4. 研究样本扩展（当前 n=1，初步）；成果指标（无数据不写）。
+
+
+---
+
+## PHASE 10 更正（Figma key 表述）
+- 关于 Figma 文件 key：页面与报告中使用的 key 均**逐字沿用用户提供的原始链接**（在本环境显示为脱敏形式 `BpBSvyIQAZI19mJdWXMvJo`），**并非我自行编造的占位符，也未做替换**。此前“请以真实 key 替换”的说法已更正。
+- 高保真画板链接已按用户本轮提供的原始链接补齐参数：`…/design/BpBSvyIQAZI19mJdWXMvJo/MOVA?node-id=1005-15690&m=dev&t=Pum7lwxxW089fykR-1`。
+- 访问性：`web_fetch` 返回 HTTP 200 但仅 Figma JS 壳，**未能验证公开可访问**；页面标注“访问权限待确认”。
+- 阅读尺寸与连续性验收详见 `docs/PHASE-10-REPORT.md`。
