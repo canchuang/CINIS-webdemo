@@ -62,3 +62,12 @@
 
 ## 6. Integrity
 Originals are read-only in `assets/source/mova-original/` (never edited). Any processed/thumbnail copies go under `assets/projects/mova/` (to be created when the case-study page is built).
+
+
+---
+
+## PHASE 09 状态更新
+- 研究：课程研究报告的**探索性访谈（样本量 1，初步）**要点已接入案例页；完整研究文件未在本工作区，数值型结论仍 TODO。
+- 原型：Figma 原型/高保真画板/影院导航状态链接已提供 → 案例页已加入入口；**公开可访问性未验证（需登录）**。
+- 影院：仅有底部导航状态画板；**完整影院列表/详情待补**。
+- 视觉规范：Figma 1129-2862 为**早期深色探索**；最终浅色规范**待补**。

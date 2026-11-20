@@ -84,3 +84,7 @@
 - **MOVA 素材已收到**：15 张高保真界面（已备份 + SHA256 + 审计 → `docs/MOVA-ASSET-REPORT.md`、`docs/MOVA-CASE-STUDY-OUTLINE.md`）。仍缺：**交互原型链接、影院 Tab 截图、项目定位/研究/竞品、原始视觉规范（Figma/色值）**。
 - **CINIS 原型入口**：主用 GitHub Pages `https://canchuang.github.io/CINIS-webdemo/`（Netlify `cinis.netlify.app` 作镜像备用，不作为唯一依赖）。
 - 仍需：真实简介/城市/可用状态、简历链接、社交链接、CINIS 原始 Figma 链接、**PES 素材**。
+
+
+### PHASE 09 更新
+- MOVA：研究/竞品要点已按课程研究报告接入（探索性访谈 n=1 初步）；Figma 原型入口已加（权限待确认）；影院仅导航状态、完整影院页待补；最终浅色 Design System 待补。

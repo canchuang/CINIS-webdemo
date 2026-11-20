@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MOVA — 电影购票体验 · 案例研究 · 颜夕和</title>
-<meta name="description" content="MOVA 电影购票与观影体验案例：影片详情 → 场次筛选 → 选座 → 确认订单 → 支付 → 电子票，一条完整的购票体验。">
+<meta name="description" content="MOVA 电影购票与观影体验案例：研究、竞品与设计机会 → 信息架构与用户流程 → 影片详情/场次/选座/支付/电子票。">
 <meta property="og:type" content="article"><meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="颜夕和 · Portfolio">
 <meta property="og:title" content="MOVA — 电影购票体验 · 颜夕和">
-<meta property="og:description" content="MOVA 电影购票与观影体验：从查看场次、选座到获取电子票的完整购票体验。">
+<meta property="og:description" content="MOVA 电影购票与观影体验：从研究、竞品机会，到发现→判断→购票的完整流程。">
 <script>document.documentElement.className+=' js';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,149 +29,194 @@
 </header>
 
 <main class="page-fade cs mova cs-mova">
-<!-- 01 COVER -->
+<!-- COVER -->
 <section class="cs-cover mova-cover">
   <div class="wrap">
     <div class="kick"><span class="en">案例 03 / 03</span><span class="en">UI/UX 设计</span><span class="en">2026</span></div>
     <h1 class="zh-h1" style="margin-top:14px">MOVA<span class="accent">.</span></h1>
-    <p class="dek zh-body" style="max-width:52ch">电影购票与观影体验：从查看场次、选定座位，到获取电子票——一条完整的购票体验。</p>
+    <p class="dek zh-body" style="max-width:54ch">电影购票与观影体验：从查看场次、选定座位，到获取电子票——一条完整的购票体验。</p>
     <div class="cs-meta">
       <div><b>角色</b><span class="zh">UI/UX 设计</span></div>
-      <div><b>交付物</b><span class="zh">购票主流程 · 选座与场次交互 · 高保真界面</span></div>
-      <div><b>工具</b><span class="zh">UI 设计（素材为界面导出）</span></div>
+      <div><b>交付物</b><span class="zh">研究发现 · 竞品与机会 · IA · 流程 · 高保真界面</span></div>
+      <div><b>工具</b><span class="zh">Figma · UI 设计</span></div>
       <div><b>时间</b><span class="zh">待补充</span></div>
     </div>
-
     <div class="cover-duo rv">
       <div class="ph"><img src="assets/mova/09-seat-select.png" alt="MOVA 选座"></div>
       <div class="ph"><img src="assets/mova/13-payment-success.png" alt="MOVA 支付成功 · 电子票"></div>
     </div>
     <div class="cover-rel"><span>选座</span><span class="line"></span><span>支付 · 电子票</span></div>
+
+    <nav class="toc rv" aria-label="目录">
+      <a href="#ov"><b>01</b>项目概述</a>
+      <a href="#bg"><b>02</b>背景与研究</a>
+      <a href="#interview"><b>03</b>访谈发现</a>
+      <a href="#comp"><b>04</b>竞品与设计机会</a>
+      <a href="#pos"><b>05</b>产品定位</a>
+      <a href="#ia"><b>06</b>信息架构</a>
+      <a href="#flow"><b>07</b>用户流程</a>
+      <a href="#detail"><b>08</b>影片详情</a>
+      <a href="#sessions"><b>09</b>筛选场次</a>
+      <a href="#seat"><b>10</b>选座交互</a>
+      <a href="#pay"><b>11</b>订单·支付·电子票</a>
+      <a href="#spec"><b>12</b>视觉规范</a>
+      <a href="#proto"><b>13</b>交互原型</a>
+      <a href="#reflect"><b>14</b>总结</a>
+    </nav>
   </div>
 </section>
 
 <div class="cs-body">
-  <!-- 02 OVERVIEW -->
-  <div class="cs-marker"><h2 class="zh">项目概述 <span class="en">Overview</span></h2><span class="mono">01</span></div>
+  <!-- 01 OVERVIEW -->
+  <div class="cs-marker" id="ov"><h2 class="zh">项目概述 <span class="en">Overview</span></h2><span class="mono">01</span></div>
   <p class="drop zh-body">MOVA 是一款电影发现与购票应用，覆盖观影前的完整决策与交易链路：从选城市、看热映 / 即将上映，到影片详情、选场次、选座、下单支付，最终获得一张可直接入场的电子票。</p>
-  <p class="note">页面内容依据现有界面与已确认资料撰写；未提供的用户研究、竞品与成果数据标为 TODO，不虚构。</p>
+  <p class="note">本页内容依据现有界面与课程研究报告撰写；<b>探索性访谈样本量仅 1</b>，相关结论为初步发现；无法核实的比例、满意度、转化与成效一律不写。</p>
 
-  <!-- 03 BACKGROUND -->
-  <div class="cs-marker"><h2 class="zh">背景与场景 <span class="en">Background &amp; Context</span></h2><span class="mono">02</span></div>
-  <p class="zh-body">看电影的决策往往发生在移动端、且时间碎片化：用户要在一屏里快速判断「看什么、去哪家、几点、坐哪」再完成支付。体验的关键不只是界面好看，而是把这条链路做得<b>短、清晰、可信</b>。</p>
-  <span class="todo-line">素材待补充：用户研究 / 场景访谈（未提供，暂不编造）</span>
-
-  <!-- 04 PROBLEM & GOALS -->
-  <div class="cs-marker"><h2 class="zh">设计问题与目标 <span class="en">Problem &amp; Goals</span></h2><span class="mono">03</span></div>
-  <p class="zh-body">购票环节的典型摩擦在于「信息过载」与「决策后置」：场次多、影院多、价格 / 距离 / 格式差异大；座位又必须在支付前一次性选好。设计需要让用户在尽量少的步骤里做出有把握的选择，并对结果（价格、座位、票据）有确定的预期。</p>
+  <!-- 02 BACKGROUND & RESEARCH -->
+  <div class="cs-marker" id="bg"><h2 class="zh">背景与研究 <span class="en">Background &amp; Research</span></h2><span class="mono">02</span></div>
+  <span class="sample-tag">课程研究报告 · 探索性访谈 · 样本量 1 · 初步发现</span>
+  <p class="zh-body">研究围绕一条真实链路展开：用户如何<b>发现一部电影</b>、如何<b>判断值不值得看与去哪看</b>、以及<b>购票过程中的痛点</b>。目标不是验证统计规律，而是为设计找到可被界面回应的具体问题。</p>
   <div class="logic">
-    <span class="lb">设计目标 · Goals（目标表述）</span>
+    <span class="lb">研究关注 · Research focus</span>
     <ul>
-      <li><b>清晰</b><span>场次在价格、格式、距离、余票之间可快速比较，降低选择成本。</span></li>
-      <li><b>可信</b><span>选座状态（可选 / 已售 / 推荐）与结算金额清晰可见，减少支付前的不确定。</span></li>
-      <li><b>闭环</b><span>从选座到电子票一气呵成，购票完成后票据即刻可用。</span></li>
+      <li><b>发现</b><span>从哪里得知一部电影（短视频、社交、内容社区等）。</span></li>
+      <li><b>判断</b><span>用什么信息决定「看不看」「去哪家影院、哪个场次」。</span></li>
+      <li><b>购票</b><span>从选场到选座、支付、取票过程中的卡点与不确定。</span></li>
     </ul>
   </div>
 
+  <!-- 03 INTERVIEW -->
+  <div class="cs-marker" id="interview"><h2 class="zh">访谈发现 <span class="en">Interview Findings</span></h2><span class="mono">03</span></div>
+  <p class="zh-body">探索性访谈对象为 <b>1 名在校大学生</b>。其发现路径大致为：在<b>抖音、朋友推荐、B 站</b>接触到影片内容后，再到<b>猫眼</b>补充评分、场次与影院等购票所需信息。</p>
+  <div class="ipath rv">
+    <span class="src">抖音</span><span class="arw">/</span><span class="src">朋友推荐</span><span class="arw">/</span><span class="src">B 站</span>
+    <span class="arw">→</span><span class="src hi">猫眼（补充信息 · 购票）</span>
+  </div>
+  <div class="logic">
+    <span class="lb">初步发现 · Preliminary（样本量 1，不作普遍规律）</span>
+    <ul>
+      <li><b>发现与购票分离</b><span>内容平台负责「种草」，票务平台负责「补齐信息 + 交易」，用户在两处之间切换。</span></li>
+      <li><b>信息补齐</b><span>进入票务平台后主要补齐评分、场次、影院与座位，判断依据集中在这几项。</span></li>
+      <li><b>局限</b><span>以上仅来自 1 位受访者，属定性初步发现；不代表整体用户，也不提供任何比例或满意度数据。</span></li>
+    </ul>
+  </div>
+
+  <!-- 04 COMPETITORS & OPPORTUNITY -->
+  <div class="cs-marker" id="comp"><h2 class="zh">竞品与设计机会 <span class="en">Competitors &amp; Opportunity</span></h2><span class="mono">04</span></div>
+  <p class="zh-body">课程研究报告对三类产品的观察各有侧重：猫眼偏<b>票务效率</b>、淘票票偏<b>票务与权益</b>、豆瓣偏<b>内容与社区</b>。三者的强项不同，也留下了「内容激发」到「顺畅交易」之间的衔接空间。</p>
+  <div class="cards3 rv">
+    <div class="comp"><h4>猫眼</h4><div class="role">票务效率</div><p>以购票交易为核心，场次、影院、座位链路成熟，强调买到票的效率。</p></div>
+    <div class="comp"><h4>淘票票</h4><div class="role">票务 + 权益</div><p>在票务之外叠加会员权益与优惠，强化价格与权益吸引力。</p></div>
+    <div class="comp"><h4>豆瓣</h4><div class="role">内容 + 社区</div><p>以评分、评论与社区讨论见长，擅长「判断值不值得看」，但交易链路并非重心。</p></div>
+  </div>
+  <div class="opp rv">
+    <span class="lb">设计机会 · Opportunity（据课程研究报告推导）</span>
+    <p>把「内容激发的兴趣」与「高效的购票交易」放在同一条路径：用户在浏览影片内容时即可顺势进入场次与选座，并在选择过程中获得确定的座位与费用反馈。</p>
+  </div>
+
   <!-- 05 POSITIONING -->
-  <div class="cs-marker"><h2 class="zh">产品定位 <span class="en">Positioning</span></h2><span class="mono">04</span></div>
-  <p class="zh-body">MOVA 把「发现」与「交易」放在同一条流里：先以海报与评分激发兴趣，再在同一路径内完成场次、选座与支付。用户在浏览影片的过程中即可进入购票，不必在多个页面间跳转。</p>
-  <span class="todo-line">素材待补充：竞品分析 / 定位论证（未提供）</span>
+  <div class="cs-marker" id="pos"><h2 class="zh">产品定位 <span class="en">Positioning</span></h2><span class="mono">05</span></div>
+  <p class="zh-body">基于上述机会，MOVA 定位为「<b>发现即购买</b>」的电影票务体验：以海报、评分与内容激发兴趣，再在同一路径内完成场次、选座与支付，减少在内容平台与票务平台之间的来回切换。</p>
 
   <!-- 06 IA -->
-  <div class="cs-marker"><h2 class="zh">信息架构 <span class="en">Information Architecture</span></h2><span class="mono">05</span></div>
-  <p class="zh-body">底部三个 Tab：电影 · 影院 · 我的。电影作为主入口承载发现与购票主链路；「我的」聚合订单与个人资产。</p>
+  <div class="cs-marker" id="ia"><h2 class="zh">信息架构 <span class="en">Information Architecture</span></h2><span class="mono">06</span></div>
+  <p class="zh-body">信息架构对应「<b>发现 → 判断 → 购票</b>」三层：发现层承载热映 / 即将上映与城市；判断层是影片详情（评分、简介、演职员）；购票层由场次、选座、支付与票据构成。底部三 Tab：电影 · 影院 · 我的。</p>
   <div class="ia rv">
-    <div class="tab"><h4>电影 <span class="en" style="display:inline;font-size:9px">Movie</span></h4><ul class="zh-body"><li>城市选择</li><li>热映 / 即将上映</li><li>影片详情</li><li>场次</li></ul></div>
-    <div class="tab"><h4>影院 <span class="en" style="display:inline;font-size:9px">Cinema</span></h4><ul class="zh-body"><li>影院列表</li><li>影院详情</li><li>（素材待补充）</li></ul></div>
+    <div class="tab"><h4>电影 <span class="en" style="display:inline;font-size:9px">Movie</span></h4><ul class="zh-body"><li>城市选择</li><li>热映 / 即将上映</li><li>影片详情</li><li>场次 → 选座 → 支付</li></ul></div>
+    <div class="tab"><h4>影院 <span class="en" style="display:inline;font-size:9px">Cinema</span></h4><ul class="zh-body"><li>底部导航入口</li><li>（完整列表/详情待补）</li></ul></div>
     <div class="tab"><h4>我的 <span class="en" style="display:inline;font-size:9px">Me</span></h4><ul class="zh-body"><li>想看 / 已看</li><li>我的订单</li><li>优惠券</li></ul></div>
     <div class="tab"><h4>辅助 <span class="en" style="display:inline;font-size:9px">System</span></h4><ul class="zh-body"><li>通知</li><li>支付方式</li><li>关于 MOVA</li></ul></div>
   </div>
-  <span class="todo-line">素材待补充：影院 Tab 独立界面（仅底部存在，未提供截图）· 线框图</span>
+  <p class="note">影院 Tab 目前<b>仅有底部导航指示器状态</b>（Figma 画板 1165-3901），<b>尚无完整的影院列表首页与影院详情高保真页面</b>；这部分标为待补，不写成完整的影院浏览体验。</p>
 
-  <!-- 07 FLOW + MOVIE DETAIL -->
-  <div class="cs-marker"><h2 class="zh">主流程与影片详情 <span class="en">Main Flow &amp; Movie Detail</span></h2><span class="mono">06</span></div>
-  <p class="zh-body">完整链路：启动 → 电影首页 → 影片详情 → 场次 → 选座 → 确认订单 → 支付 → 电子票 → 我的订单。影片详情页承接「要不要看」到「去看哪一场」的转折。</p>
+  <!-- 07 USER FLOW -->
+  <div class="cs-marker" id="flow"><h2 class="zh">用户流程 <span class="en">User Flow</span></h2><span class="mono">07</span></div>
+  <p class="zh-body">主流程串联「发现 → 判断 → 购票」：从电影首页进入影片详情（判断），再进入场次（影院 / 时段筛选）、选座、确认订单、支付，最终到电子票与我的订单。</p>
   <div class="flow rv">
     <span class="step">启动</span><span class="arrow">→</span><span class="step hi">电影首页</span><span class="arrow">→</span>
     <span class="step hi">影片详情</span><span class="arrow">→</span><span class="step">场次</span><span class="arrow">→</span>
     <span class="step">选座</span><span class="arrow">→</span><span class="step">确认订单</span><span class="arrow">→</span>
     <span class="step">支付</span><span class="arrow">→</span><span class="step hi">电子票</span><span class="arrow">→</span><span class="step">我的订单</span>
   </div>
-  <p class="zh-body" style="font-size:14.5px;color:var(--text2)">影片详情为长页面（含海报、简介、评分、演职员、剧照与「查找场次」入口）。下方可<b>滚动查看完整长图</b>，或点「查看完整长图」在新窗口打开原图；移动端同样可上下滚动查看。</p>
+
+  <!-- 08 MOVIE DETAIL -->
+  <div class="cs-marker" id="detail"><h2 class="zh">影片详情 <span class="en">Movie Detail</span></h2><span class="mono">08</span></div>
+  <p class="zh-body">影片详情承担「判断」：海报、评分（MOVA 评分 / 观众评分）、简介、演职员与剧照，底部「查找场次」进入购票。为长页面，下方可<b>滚动查看完整长图</b>，或点「查看完整长图」在新窗口打开；移动端同样可上下滚动查看。</p>
   <div class="screens rv" style="align-items:start">
-    <figure class="longshot-wrap" style="grid-column:span 6">
-      <div class="longshot"><img src="assets/mova/04-movie-about.png" alt="影片详情长图 1"></div>
-      <div class="cap"><span>影片详情 · 长图（可滚动）</span><a href="assets/mova/04-movie-about.png" target="_blank" rel="noopener">查看完整长图 ↗</a></div>
-    </figure>
-    <figure class="longshot-wrap" style="grid-column:span 6">
-      <div class="longshot"><img src="assets/mova/05-movie-about-alt.png" alt="影片详情长图 2"></div>
-      <div class="cap"><span>影片详情 · 另一状态（辅助）</span><a href="assets/mova/05-movie-about-alt.png" target="_blank" rel="noopener">查看完整长图 ↗</a></div>
-    </figure>
+    <figure class="longshot-wrap" style="grid-column:span 6"><div class="longshot"><img src="assets/mova/04-movie-about.png" alt="影片详情长图 1"></div><div class="cap"><span>影片详情 · 长图（可滚动）</span><a href="assets/mova/04-movie-about.png" target="_blank" rel="noopener">查看完整长图 ↗</a></div></figure>
+    <figure class="longshot-wrap" style="grid-column:span 6"><div class="longshot"><img src="assets/mova/05-movie-about-alt.png" alt="影片详情长图 2"></div><div class="cap"><span>影片详情 · 另一状态（辅助）</span><a href="assets/mova/05-movie-about-alt.png" target="_blank" rel="noopener">查看完整长图 ↗</a></div></figure>
   </div>
 
-  <!-- 08 SESSIONS -->
-  <div class="cs-marker"><h2 class="zh">筛选场次 <span class="en">Sessions</span></h2><span class="mono">07</span></div>
-  <p class="zh-body">场次提供两种查找方式：<b>按时段</b>（时间优先，快速找最近可看的场）与<b>按影院</b>（影院优先，锁定想去的影院再选时间）。两者都是「场次筛选」的不同视角，行内组合 2D / IMAX / 4D 格式、价格、距离与余票提示。</p>
+  <!-- 09 SESSIONS -->
+  <div class="cs-marker" id="sessions"><h2 class="zh">筛选场次 <span class="en">Sessions</span></h2><span class="mono">09</span></div>
+  <p class="zh-body">场次提供两种视图：<b>按时段</b>（时间优先）与<b>按影院</b>（影院优先）。「按影院」属于<b>场次筛选</b>的一种排序，用于在购票过程中先锁定影院再比较时间；它<b>不等于</b>独立的影院浏览页。行内组合 2D / IMAX / 4D 格式、价格、距离与余票提示。</p>
   <div class="screens rv">
-    <figure class="shot" style="grid-column:span 6"><div class="frame"><img src="assets/mova/06-sessions-by-time.png" alt="场次按时段"></div><figcaption><b>按时段 · 时间优先</b>先看时间与价格，适合「今天就想看一场」的即时决策。</figcaption></figure>
-    <figure class="shot" style="grid-column:span 6"><div class="frame"><img src="assets/mova/07-sessions-by-cinema.png" alt="场次按影院"></div><figcaption><b>按影院 · 影院优先</b>先锁定影院，再比较该院不同时间与格式——属于场次筛选的另一种排序。</figcaption></figure>
+    <figure class="shot" style="grid-column:span 6"><div class="frame"><img src="assets/mova/06-sessions-by-time.png" alt="场次按时段"></div><figcaption><b>按时段 · 时间优先</b>先看时间与价格，适合即时决策。</figcaption></figure>
+    <figure class="shot" style="grid-column:span 6"><div class="frame"><img src="assets/mova/07-sessions-by-cinema.png" alt="场次按影院"></div><figcaption><b>按影院 · 影院优先</b>先锁定影院，再比较时间与格式——属于场次筛选。</figcaption></figure>
   </div>
+  <p class="note">相关 Figma 画板：「按影院筛选场次」<a href="https://www.figma.com/design/BpBSvyIQAZI19mJdWXMvJo/MOVA?node-id=1005-16331" target="_blank" rel="noopener" style="color:var(--accent)">node 1005-16331 ↗</a>（用于说明购票中的影院选择，非影院浏览首页）。</p>
 
-  <!-- 09 SEAT (KEY) -->
-  <div class="cs-marker"><h2 class="zh">选座交互 <span class="en">Seat Selection</span></h2><span class="mono">08 · 重点</span></div>
-  <p class="zh-body">选座是这条链路的核心决策。界面用银幕弧线建立空间感，用图例区分<b>可选 / 已售 / 最佳位置</b>，并给出「推荐」与已选反馈，让用户在支付前对「坐哪」有把握。</p>
+  <!-- 10 SEAT (KEY) -->
+  <div class="cs-marker" id="seat"><h2 class="zh">选座交互 <span class="en">Seat Selection</span></h2><span class="mono">10 · 重点</span></div>
+  <p class="zh-body">选座是链路的核心决策。界面以银幕弧线建立空间感，用图例区分<b>可选 / 已售 / 最佳位置</b>，并给出「推荐」与已选反馈，让用户在支付前对「坐哪」有把握。</p>
   <div class="screens rv">
     <figure class="shot"><div class="frame"><img src="assets/mova/08-seat-overview.png" alt="选座总览"></div><figcaption><b>总览</b>整厅座位一屏可见，银幕方向与分区一目了然。</figcaption></figure>
     <figure class="shot"><div class="frame"><img src="assets/mova/09-seat-select.png" alt="选座放大"></div><figcaption><b>放大 · 推荐</b>可缩放到近处细选；橙色「推荐」标出最佳观影区。</figcaption></figure>
-    <figure class="shot"><div class="frame"><img src="assets/mova/10-selected-seat.png" alt="已选座"></div><figcaption><b>已选反馈</b>选中座位即时高亮，数量与位置同步，便于确认。</figcaption></figure>
+    <figure class="shot"><div class="frame"><img src="assets/mova/10-selected-seat.png" alt="已选座"></div><figcaption><b>已选反馈</b>选中座位即时高亮，数量与位置同步。</figcaption></figure>
   </div>
   <div class="logic">
     <span class="lb">设计逻辑 · Design Logic（据界面状态推断）</span>
     <ul>
-      <li><b>可读性</b><span>用颜色与图例区分可选 / 已售 / 推荐，减少误选与重复尝试。</span></li>
+      <li><b>可读性</b><span>颜色 + 图例区分可选 / 已售 / 推荐，减少误选与重复尝试。</span></li>
       <li><b>引导</b><span>「推荐」把最佳座位前置为默认最优解，降低决策成本。</span></li>
-      <li><b>确认感</b><span>已选状态即时反馈，让用户在进入结算前确认无误。</span></li>
+      <li><b>确认感</b><span>已选状态即时反馈，进入结算前先确认无误。</span></li>
     </ul>
   </div>
 
-  <!-- 10 UI VISUAL SYSTEM -->
-  <div class="cs-marker"><h2 class="zh">UI 视觉系统 <span class="en">UI Visual System</span></h2><span class="mono">09</span></div>
-  <p class="zh-body">MOVA 以<b>橙红</b>作为主操作色（购票 / 主按钮），浅灰白底配圆角卡片，海报使用深色大图拉开层级；评分、标签用中性灰与状态色区分。以下为界面观察，原始规范待你提供后精确化。</p>
-  <div class="screens rv">
-    <figure class="shot"><div class="frame"><img src="assets/mova/02-movie-logged-out.png" alt="首页未登录"></div><figcaption><b>电影首页 · 未登录</b>热映 / 即将上映分区，登录条提示获取推荐。</figcaption></figure>
-    <figure class="shot"><div class="frame"><img src="assets/mova/03-movie-logged-in.png" alt="首页已登录"></div><figcaption><b>电影首页 · 已登录</b>登录态下展示个性化内容。</figcaption></figure>
-    <figure class="shot"><div class="frame"><img src="assets/mova/14-mine.png" alt="我的"></div><figcaption><b>我的</b>想看 / 已看、订单与优惠券聚合。</figcaption></figure>
-  </div>
-  <span class="todo-line">素材待补充：原始视觉规范（色值 / 字号 / 组件）——当前为界面近似，未编造数值</span>
-
-  <!-- 11 CHECKOUT / PAYMENT / E-TICKET -->
-  <div class="cs-marker"><h2 class="zh">确认订单 · 支付 · 电子票 <span class="en">Checkout · Payment · E-Ticket</span></h2><span class="mono">10</span></div>
-  <p class="zh-body">确认订单页把「看什么、哪家、几号厅、几点、哪两个座」一次性讲清，并以优惠券直接体现价格变化（合计 ¥91 → 用券后 ¥81）。支付完成后进入电子票页，含条形码与订单号，票据即可入场。</p>
+  <!-- 11 CHECKOUT -->
+  <div class="cs-marker" id="pay"><h2 class="zh">确认订单 · 支付 · 电子票 <span class="en">Checkout · Payment · E-Ticket</span></h2><span class="mono">11</span></div>
+  <p class="zh-body">确认订单把「看什么、哪家、几号厅、几点、哪两个座」一次讲清，并用优惠券直接体现价格变化（合计 ¥91 → 用券后 ¥81）。支付后进入电子票页，含条形码与订单号，票据即可入场。</p>
   <div class="screens rv">
     <figure class="shot"><div class="frame"><img src="assets/mova/11-checkout.png" alt="确认订单"></div><figcaption><b>确认订单</b>影片 / 影院 / 场次 / 座位与费用明细同屏，优惠券自动套用。</figcaption></figure>
-    <figure class="shot"><div class="frame"><img src="assets/mova/12-payment.png" alt="支付"></div><figcaption><b>支付</b>清晰的金额与主按钮，聚焦完成交易。</figcaption></figure>
+    <figure class="shot"><div class="frame"><img src="assets/mova/12-payment.png" alt="支付"></div><figcaption><b>支付</b>清晰金额与主按钮，聚焦完成交易。</figcaption></figure>
     <figure class="shot"><div class="frame"><img src="assets/mova/13-payment-success.png" alt="支付成功·电子票"></div><figcaption><b>电子票</b>支付成功 + 条形码票据 + 订单号，可直接入场。</figcaption></figure>
   </div>
   <figure class="shot" style="grid-column:span 4;max-width:320px"><div class="frame"><img src="assets/mova/12b-payment-alt.png" alt="支付变体"></div><figcaption><b>支付 · 变体（辅助）</b>另一支付状态展示，层级从简。</figcaption></figure>
-  <div class="logic">
-    <span class="lb">设计逻辑 · Design Logic</span>
-    <ul>
-      <li><b>透明</b><span>费用与优惠在支付前一次讲清，减少「最后一步才发现」的挫败。</span></li>
-      <li><b>收尾</b><span>成功页以电子票作为「已完成」的实体凭证，强化闭环与信任。</span></li>
-    </ul>
+
+  <!-- 12 VISUAL SYSTEM -->
+  <div class="cs-marker" id="spec"><h2 class="zh">视觉规范 <span class="en">Visual System</span></h2><span class="mono">12</span></div>
+  <p class="zh-body">Figma 中的规范画板（1129-2862）包含一版<b>深色配色探索</b>，属于早期规范探索；而当前已交付的高保真页面主要采用<b>浅色背景 + 橙红操作按钮</b>。两者分开展示，不混为同一版本。</p>
+  <div class="spec-split rv">
+    <div class="spec-box old">
+      <h4>早期视觉探索 · 原始规范（Figma 1129-2862）</h4>
+      <p class="zh-body" style="font-size:13px;color:var(--text2);margin:0 0 8px">深色底 + 强调色的早期探索，用于确定方向，非最终成品规范。</p>
+      <div class="darkswatch"><i style="background:#12101A"></i><i style="background:#1E1B2E"></i><i style="background:#FF5A36"></i><i style="background:#E9E4F5"></i></div>
+      <a href="https://www.figma.com/design/BpBSvyIQAZI19mJdWXMvJo/MOVA?node-id=1129-2862" target="_blank" rel="noopener" class="en" style="color:var(--accent)">查看规范画板 ↗</a>
+    </div>
+    <div class="spec-box">
+      <h4>当前高保真 · 浅色界面（据截图可确认）</h4>
+      <div class="chips">
+        <span>浅灰白页面背景</span><span>橙红主操作按钮</span><span>深色海报卡片</span><span>圆角卡片</span><span>座位状态色（可选/已售/推荐）</span><span>场次行（价格/格式/距离）</span>
+      </div>
+      <p class="note" style="margin-top:12px">最终色值 / 字号 / 组件状态：<b>待补</b>（需原始浅色规范或 Figma 变量，不从深色探索稿推断）。</p>
+    </div>
   </div>
 
-  <!-- 12 PROTOTYPE -->
-  <div class="cs-marker"><h2 class="zh">交互原型 <span class="en">Interactive Prototype</span></h2><span class="mono">11</span></div>
-  <p class="zh-body">MOVA 的交互原型尚未提供可访问链接。拿到链接或 Figma 后，将在此提供内嵌预览与外链入口。</p>
-  <span class="todo-line">素材待补充：交互原型链接（Figma / 在线）——到位后接入内嵌 + 外链</span>
+  <!-- 13 PROTOTYPE -->
+  <div class="cs-marker" id="proto"><h2 class="zh">交互原型 <span class="en">Interactive Prototype</span></h2><span class="mono">13</span></div>
+  <p class="zh-body">提供 Figma 交互原型与高保真画板入口。以下链接在本环境无 Figma 登录会话，<b>未能验证公开可访问性</b>——如打开需登录或权限不足，请以「原型链接待确认访问权限」视之。</p>
+  <div class="link-list rv">
+    <a class="figlink" href="https://www.figma.com/proto/BpBSvyIQAZI19mJdWXMvJo/MOVA?node-id=1005-15872&starting-point-node-id=1005-15872&scaling=scale-down" target="_blank" rel="noopener"><span class="t">Figma 交互原型<small>proto · node 1005-15872 · 起点 1005-15872</small></span><span class="go">打开 ↗</span></a>
+    <a class="figlink" href="https://www.figma.com/design/BpBSvyIQAZI19mJdWXMvJo/MOVA?node-id=1005-15690" target="_blank" rel="noopener"><span class="t">高保真画板<small>design · node 1005-15690</small></span><span class="go">打开 ↗</span></a>
+    <a class="figlink" href="https://www.figma.com/design/BpBSvyIQAZI19mJdWXMvJo/MOVA?node-id=1165-3901" target="_blank" rel="noopener"><span class="t">影院 Tab · 底部导航状态<small>design · node 1165-3901（仅导航指示器状态）</small></span><span class="go">打开 ↗</span></a>
+  </div>
+  <p class="note">原型链接待确认访问权限。Figma 文件 key 在本次会话中以脱敏占位符呈现（<span class="mono">BpBSvyIQAZI19mJdWXMvJo</span>），请以真实 key 替换后使用。</p>
 
-  <!-- 13 REFLECTION -->
-  <div class="cs-marker"><h2 class="zh">总结 <span class="en">Reflection</span></h2><span class="mono">12</span></div>
-  <p class="zh-body">MOVA 呈现了一条完整的购票体验：以发现激发兴趣，用场次与选座把选择讲清，再以订单、支付与电子票完成闭环。本案例交付现有材料可支持的<b>高保真界面与主流程</b>；研究成果与效果数据待补。</p>
+  <!-- 14 REFLECTION -->
+  <div class="cs-marker" id="reflect"><h2 class="zh">总结 <span class="en">Reflection</span></h2><span class="mono">14</span></div>
+  <p class="zh-body">MOVA 呈现了一条完整的购票体验：研究指向「发现与购票分离」，设计机会是把内容激发与高效交易衔接；信息架构以「发现 → 判断 → 购票」回应，界面则在影片详情、场次、选座到电子票的链路中把选择讲清并完成闭环。</p>
   <p class="pull zh-body">把「看什么」到「坐哪、怎么付、怎么入场」讲成一条清晰的路。</p>
-  <p class="note">成果指标、用户测试与竞品结论：TODO —— 待素材补充后再写，不虚构。</p>
+  <p class="note">成果指标、用户测试与竞品结论：TODO。研究为课程研究报告中的<b>探索性访谈（样本量 1，初步发现）</b>；完整影院浏览页与最终浅色 Design System 仍待补，不虚构。</p>
   <p style="margin:34px 0 10px"><a class="btn" href="works.html">← 返回作品</a></p>
 </div>
 </main>
