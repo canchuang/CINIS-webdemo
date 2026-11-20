@@ -73,3 +73,14 @@
 - Cloned the repo locally for a **read-only backup** (`assets/source/CINIS-webdemo`); **did not modify `main` / `gh-pages`**, did not push, did not deploy.
 - Excluded Smart Home Icon System entirely (per mandate).
 - Kept project list to exactly 3 (CINIS, PES, MOVA); did not add a fourth.
+
+
+---
+
+## PHASE 07 更新（2026-11-20）
+
+- **身份已提供**：中文姓名 **颜夕和**（已全站替换：导航 / About / Footer / SEO Title / Open Graph / 配置文件）。**英文名 TODO**（不擅自使用拼音、英文昵称）。
+- **联系方式**：确定使用 Gmail，但完整地址未提供 → 全站联系入口显示「待配置」，**不编造邮箱、不使用 hello@example.com 可点击链接**；获得地址后再生成 mailto。
+- **MOVA 素材已收到**：15 张高保真界面（已备份 + SHA256 + 审计 → `docs/MOVA-ASSET-REPORT.md`、`docs/MOVA-CASE-STUDY-OUTLINE.md`）。仍缺：**交互原型链接、影院 Tab 截图、项目定位/研究/竞品、原始视觉规范（Figma/色值）**。
+- **CINIS 原型入口**：主用 GitHub Pages `https://canchuang.github.io/CINIS-webdemo/`（Netlify `cinis.netlify.app` 作镜像备用，不作为唯一依赖）。
+- 仍需：真实简介/城市/可用状态、简历链接、社交链接、CINIS 原始 Figma 链接、**PES 素材**。

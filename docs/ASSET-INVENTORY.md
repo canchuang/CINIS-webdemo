@@ -27,7 +27,7 @@
 |---|---|---|---|
 | 01 — CINIS | UI/UX · Product | **Rich** — Figma-exported assets + runnable React prototype + **2 live sites (Netlify + GH Pages)** + **local backup** | Mostly **READY**; some assets **NEEDS-PROCESSING** (2× PNGs to be re-cropped for web); narrative assets **MISSING** (process/research docs) |
 | 02 — Portable Energy Storage | Product · Industrial | **None found** — no repo, no assets, no workspace files | Almost entirely **MISSING** |
-| 03 — MOVA | UI/UX | **None found** — no repo, no assets, no workspace files | Almost entirely **MISSING** |
+| 03 — MOVA | UI/UX | **Rich (screens)** — 15 real hi-fi screens received (Phase 07) + backup + hash | **READY** for hi-fi/flow; prototype + research **MISSING** |
 
 > CINIS is fully available (repo + 2 live deployments + local backup). PES and MOVA have **no discoverable source** until the user provides files or links.
 
@@ -124,28 +124,28 @@ The brief asks CINIS's case study to show **product positioning, three-mode mech
 
 **Category:** UI/UX (movie ticket & viewing experience product).
 
-**Source availability:** No repository, no files, no assets found. → **Not started / not provided.**
+**Source availability:** ✅ **15 hi-fi screens received (Phase 07)** → backed up read-only at `assets/source/mova-original/`, hashed in `assets/source/mova-assets-hashes.csv`, details in `docs/MOVA-ASSET-REPORT.md`.
 
 Brief expects: product positioning, competitor analysis, IA, ticketing flow, seat-selection interaction, hi-fi UI, prototype demo.
 
 | Asset type | Status | Notes |
 |---|---|---|
-| Product positioning | **MISSING** | TODO |
-| Competitor analysis | **MISSING** | TODO |
-| Information architecture | **MISSING** | TODO |
-| Ticketing flow | **MISSING** | TODO |
-| Seat-selection interaction (design + states) | **MISSING** | TODO — signature interaction; needs assets or Figma |
-| Hi-fi UI screens | **MISSING** | TODO |
-| Prototype (Figma/live) | **MISSING** | TODO |
-| Any design files | **MISSING** | TODO |
+| Hi-fi UI screens (15) | **READY** | Splash · Movie(out/in) · Movie About ×2 · Sessions(time/cinema) · Seat overview · Seat select · Selected seat · Checkout · Payment ×2 · Success · Mine |
+| Ticketing flow (observed) | **READY** | Splash→Home→Detail→Sessions→Seat→Checkout→Payment→Success→Mine |
+| Seat-selection interaction | **READY (visual)** | seat map, legend 可选/已告/最佳位置, 推荐; written spec to be authored |
+| Information architecture | **NEEDS-PROCESSING** | inferable from screens (3 tabs); needs authoring |
+| Product positioning | **NEEDS-PROCESSING** | inferable; formal statement TODO |
+| Competitor analysis / research | **MISSING** | TODO — not provided |
+| Prototype (Figma/live) | **MISSING** | TODO — no interactive link |
+| Source files (Figma) / visual spec | **MISSING** | TODO — colors near orange-red, exact values pending |
 
-**Everything for MOVA is MISSING.** Requires user-supplied Figma link and/or exported screens + prototype URL. → OPEN-QUESTION Q4.
+**Screens ready; prototype & research MISSING.** Outline: `docs/MOVA-CASE-STUDY-OUTLINE.md`. → OPEN-QUESTION Q4 (prototype link, 影院 Tab, research).
 
 ---
 
 ## Consolidated MISSING list (to request from user)
 
 1. **Portable Energy Storage** — full asset set (research, structure, form renders, final hero).  
-2. **MOVA** — Figma link + exported screens + prototype URL + positioning/competitor docs.  
+2. **MOVA** — screens received ✅; still need **交互原型链接**, **影院 Tab 截图**, **项目定位/研究/竞品**, 原始视觉规范.  
 3. **CINIS** — Figma file link (original design), product-positioning/three-mode/IA/user-flow write-ups or permission to author them from the prototype.  
 4. **Global** — personal bio, contact links (email/social/resume), any confirmed metrics/testimonials (else remain TODO; must not be fabricated).

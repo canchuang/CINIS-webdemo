@@ -1,0 +1,27 @@
+{
+  "_comment": "Central identity & contact config (Phase 07). Static pages mirror these values; keep in sync. No personal data invented.",
+  "identity": {
+    "nameZh": "颜夕和",
+    "nameEn": "TODO",
+    "brandMark": "颜夕和",
+    "role": "UI/UX 与产品设计师"
+  },
+  "contact": {
+    "email": {
+      "provider": "Gmail",
+      "address": "TODO",
+      "status": "pending",
+      "note": "用户确定使用 Gmail，但尚未提供完整地址；获得后再生成 mailto 链接。"
+    },
+    "resume": { "url": "TODO", "status": "pending" },
+    "social": {
+      "behance": "TODO",
+      "dribbble": "TODO",
+      "linkedin": "TODO"
+    }
+  },
+  "seo": {
+    "siteName": "颜夕和 · Portfolio",
+    "locale": "zh_CN"
+  }
+}
