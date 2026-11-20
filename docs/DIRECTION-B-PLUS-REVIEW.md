@@ -1,5 +1,7 @@
 # DIRECTION B+ REVIEW
 
+> ⚠️ **HISTORICAL — superseded by Phase 05 (Direction B · Modern Editorial).** Kept as a design-exploration record only. The warm-paper / Fraunces-serif / terracotta system described here is **retired**; the current spec is cool, sans-only, Chinese-first with a blue accent. See `DESIGN-DIRECTION.md` and `DESIGN-CLEANUP-REPORT.md`.
+
 > Phase 04 — high-fidelity finalisation of **Direction B+ (Editorial Brutalism)**.
 > Prototype: `repo/experiments/art-direction/direction-b-plus/` · Screenshots: `_shots/` · Tokens: `DESIGN-TOKENS-DRAFT.md`.
 

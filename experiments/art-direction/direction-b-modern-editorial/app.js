@@ -1,4 +1,4 @@
-/* DIRECTION B+ — motion system (progressive enhancement) */
+/* DIRECTION B — motion system (progressive enhancement) */
 (function () {
   var STATIC = /[?&]static/.test(location.search);
   if (STATIC) document.documentElement.classList.add('static');
