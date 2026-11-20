@@ -14,10 +14,12 @@
 | `--color-text` | `#11151B` | primary text | **16.62:1** on bg · 15.43 on surface — AAA |
 | `--color-text-secondary` | `#5E6773` | secondary text / captions | **5.20:1** on bg · 4.83 on surface — AA ✅ |
 | `--color-border` | `#CCD3DC` | hairlines, borders | decorative |
-| `--color-accent` | `#315EFB` | emphasis, links, active, key words | **4.62:1** on bg — AA ✅ (large text ≥3 on surface 4.29) |
-| `--color-accent-soft` | `#E3EAFE` | soft accent fills (cover band) | — |
+| `--color-accent` | `#6552D6` | Modern Iris — emphasis, links, active, key words | **5.11:1** on bg — AA ✅ |
+| `--color-accent-hover` | `#5946C8` | accent hover/active | — |
+| `--color-accent-soft` | `#EAE6FF` | soft accent fills (cover band) | text on it 15.05:1 · secondary 4.71:1 — AA ✅ |
+| `--color-on-accent` | `#FFFFFF` | text on accent fill | 5.63:1 — AA ✅ |
 
-**Rules:** single accent = electric blue `#315EFB`. Terracotta/warm paper **removed**. For small accent text sitting on `surface`, use `--color-text` (or a darker accent) to keep AA — implemented on code chips.
+**Rules:** single accent = **Modern Iris `#6552D6`** (cool violet). Terracotta/warm paper/electric-blue **removed**. Accent-on-soft is 4.63:1 and accent-on-surface 4.74:1 — both AA; small accent text on surface uses `--color-text` on `--color-accent-soft` where needed.
 **Preserved:** CINIS's own product palette (orange `#FF7A1A` + mode themes) stays **inside the case study** — not overridden by the portfolio theme.
 
 ---
@@ -90,13 +92,14 @@ Numbers `font-variant-numeric: tabular-nums`; project numbers in IBM Plex Mono. 
 Applied only to: Hero Text Reveal · Project Image Reveal · Hover Feedback · Nav Active Indicator · Scroll Section Reveal. `prefers-reduced-motion` collapses all. No `transition: all`.
 
 ## 5. Component tokens
-- Button solid: accent fill, white text; hover darken `#2749C9`.
-- Link / keyword: accent `#315EFB`.
+- Button solid: accent fill, `--color-on-accent` text; hover `--color-accent-hover` (`#5946C8`).
+- Link / keyword: accent `#6552D6`.
 - Section marker: mono `NN ·`, secondary.
 - Tags/chips: 1px border `--color-border`, mono uppercase, secondary text.
 - Cover band: `--color-accent-soft` bg with real UI phones.
 
 ## 6. Confirm / TODO
-1. Hero copy 「设计，让复杂变得清晰。」 pending your confirmation.
+1. **Hero locked: Version A** (左侧锚定·紧凑). Hero B retired as formal option.
+2. Hero copy 「设计，让复杂变得清晰。」 pending confirmation.
 2. MiSans 800/Heavy & HarmonyOS full weights (optional).
 3. Real identity / contact / PES-MOVA assets.

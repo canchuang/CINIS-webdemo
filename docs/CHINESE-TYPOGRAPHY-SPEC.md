@@ -33,7 +33,7 @@ Mobile: Hero 42–64 / H1 36–48 / H2 28–36 / H3 20–24 / Body 15–16 / Cap
 Chinese MiSans first · Latin Space Grotesk/Inter · numbers `tabular-nums` (project numbers in IBM Plex Mono) · normal Chinese punctuation · don't mirror every block bilingually (English = auxiliary label).
 
 ## 7. Color interaction
-Single accent = **electric blue `#315EFB`** (links, active, key words, incl. hero 「清晰」). No terracotta. Soft accent `#E3EAFE` for cover bands. See `DESIGN-TOKENS-DRAFT.md`.
+Single accent = **Modern Iris 冷调鸢尾紫 `#6552D6`** (links, active, key words, incl. hero 「清晰」); hover `#5946C8`; soft `#EAE6FF` for cover bands; on-accent white. No terracotta, no electric blue. See `DESIGN-TOKENS-DRAFT.md`.
 
 ## 8. Loading (WOFF2 / performance)
 - **MiSans:** `https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSansVF.min.css` — variable + **unicode-range subsetted**: only used-character subset files download; `font-display:swap`.

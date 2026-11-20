@@ -4,7 +4,8 @@
    ============================================================ */
 :root{
   /* === Unified semantic color tokens (cool, Direction B — Modern Editorial) === */
-  --color-bg:#F2F4F7; --color-surface:#E8ECF1; --color-text:#11151B; --color-text-secondary:#5E6773; --color-border:#CCD3DC; --color-accent:#315EFB; --color-accent-soft:#E3EAFE;
+  --color-bg:#F2F4F7; --color-surface:#E8ECF1; --color-text:#11151B; --color-text-secondary:#5E6773; --color-border:#CCD3DC;
+  --color-accent:#6552D6; --color-accent-hover:#5946C8; --color-accent-soft:#EAE6FF; --color-on-accent:#FFFFFF;
   --base:var(--color-bg); --surface:var(--color-surface); --text:var(--color-text); --text2:var(--color-text-secondary);
   --accent:var(--color-accent); --line:var(--color-border); --ink:var(--color-text);
   --accent-blue:var(--color-accent); --accent-soft:var(--color-accent-soft);
@@ -138,8 +139,8 @@ em{font-style:italic}
 .btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;
   text-transform:uppercase;border:1.5px solid var(--ink);padding:16px 30px;transition:background var(--dur-2),color var(--dur-2),gap var(--dur-2)}
 .btn:hover{background:var(--ink);color:var(--base);gap:20px}
-.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
-.btn.solid:hover{background:#2749C9;border-color:#2749C9;color:#fff}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--color-on-accent)}
+.btn.solid:hover{background:var(--color-accent-hover);border-color:var(--color-accent-hover);color:var(--color-on-accent)}
 .footer{border-top:1px solid var(--line);padding:30px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 .footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;width:100%}
 /* ================= WORKS PAGE ================= */
@@ -506,7 +507,26 @@ a:focus-visible,button:focus-visible,.filters button:focus-visible{outline:2px s
 @media(max-width:1024px){.feature .layout{grid-template-columns:1fr;gap:22px}.dup,.exp2{grid-template-columns:1fr}}
 
 /* CINIS feature cover — real 3-screen UI band */
-.phones-band{aspect-ratio:16/9;background:var(--accent-soft);border:1px solid var(--color-border);overflow:hidden;display:flex;align-items:flex-end;justify-content:center;gap:3%;padding:4.5% 4.5% 0}
-.phones-band img{width:28%;height:auto;border:1px solid var(--color-border);border-radius:8px;box-shadow:0 12px 26px rgba(17,21,27,.12);background:#fff;display:block}
-.phones-band img:nth-child(2){transform:translateY(-7%)}
+.phones-band{aspect-ratio:16/9;background:var(--accent-soft);border:1px solid var(--color-border);overflow:hidden;display:flex;align-items:flex-end;justify-content:center;gap:3.5%;padding:3% 3% 0}
+.phones-band img{width:25%;height:auto;border:1px solid var(--color-border);border-radius:8px;box-shadow:0 12px 26px rgba(17,21,27,.12);background:#fff;display:block}
+.phones-band img:nth-child(2){transform:translateY(-4%)}
 @media(max-width:640px){.phones-band{gap:2%;padding:3% 3% 0}.phones-band img{border-radius:5px}}
+
+/* ===== Phase 06 — accent aliases + Hero A refine ===== */
+:root{--accent-hover:var(--color-accent-hover);--on-accent:var(--color-on-accent);--accent-soft:var(--color-accent-soft)}
+.hx-title{line-height:1.0}
+
+.hx-a .hx-title .l1{font-size:clamp(36px,6.2vw,92px);font-weight:500}
+.hx-a .hx-title .l2{font-size:clamp(44px,8.2vw,116px);margin-top:0}
+.hx-a .hx-title .l3{font-size:clamp(40px,7.2vw,104px)}
+.hx-a .hx-title .mix{display:inline-block;margin-left:.7em;position:relative;top:-.08em}
+.hx-a .rule{margin-top:20px}
+.hx-foot{padding:28px 0;margin-top:26px;gap:32px}
+.hx-foot .lede{max-width:36ch}
+.hx-foot .meta{font-size:12.5px;gap:7px 16px}
+.hx-foot .side{gap:12px}
+
+/* ===== CINIS case study — light refinement (Phase 06, in progress) ===== */
+.cs-marker .mono{color:var(--color-accent);font-weight:500}
+.cs-body{padding-top:56px}
+.cs .pull{border-left-color:var(--color-accent);color:var(--color-accent)}

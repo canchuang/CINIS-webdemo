@@ -7,11 +7,11 @@
 | Axis | Decision |
 |---|---|
 | Direction | **Direction B — Modern Editorial** |
-| Hero | **Bold** |
+| Hero | **Bold — Version A（左侧锚定·紧凑）· 已锁定** |
 | Background | **Cool** (cool light gray, not warm paper) |
 | Typography | **Sans-serif only** (no serif, ever) |
 | Language | **Chinese-first / bilingual-ready** |
-| Accent | **Electric blue** (single accent) |
+| Accent | **Modern Iris** 冷调鸢尾紫（single accent） |
 
 **Banned / retired:** Fraunces, Georgia, Times, any serif; warm paper (`#F6F1E8`) as global background; terracotta (`#A8442A`) as global accent; any unconfirmed "hybrid B+" spec.
 
@@ -24,8 +24,10 @@
 | `--color-text` | `#11151B` | primary text |
 | `--color-text-secondary` | `#5E6773` | secondary text, captions |
 | `--color-border` | `#CCD3DC` | hairlines, borders |
-| `--color-accent` | `#315EFB` | emphasis, links, active, key words |
-| `--color-accent-soft` | `#E3EAFE` | soft accent fills (e.g., cover band) |
+| `--color-accent` | `#6552D6` | Modern Iris — emphasis, links, active, key words |
+| `--color-accent-hover` | `#5946C8` | accent hover/active |
+| `--color-accent-soft` | `#EAE6FF` | soft accent fills (e.g., cover band) |
+| `--color-on-accent` | `#FFFFFF` | text on accent fill |
 
 All components read from these semantic tokens — no hard-coded palette in rules.
 
