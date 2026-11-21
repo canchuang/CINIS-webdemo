@@ -121,7 +121,7 @@ function initGrainient(layer) {
   const field = link(gl, GRAINIENT_VERTEX, GRAINIENT_FIELD), comp = link(gl, GRAINIENT_VERTEX, GRAINIENT_COMPOSITE);
   if (!field || !comp) { canvas.remove(); return; }
   layer.classList.add('has-canvas');
-  const S = { colors: ['#F4F6FA', '#E8EFF8', '#EFEAFB', '#E3ECF7'], type: 0, angle: 55, bands: 1, speed: .2, flow: .45, scale: 1, softness: 1, silk: .15, grainAmount: .045, grainSize: 1.1, grainAnimated: true, contrast: .92, saturation: .55, variation: 0, interactive: false, clickSwirl: false, intro: false };
+  const S = { colors: ['#F4F6FA', '#E8EFF8', '#EFEAFB', '#E3ECF7'], type: 0, angle: 55, bands: 1, speed: .2, flow: .45, scale: 1, softness: 1, silk: .15, grainAmount: .028, grainSize: 1.1, grainAnimated: true, contrast: .92, saturation: .55, variation: 0, interactive: false, clickSwirl: false, intro: false };
   const vao = gl.createVertexArray(); gl.bindVertexArray(vao);
   const target = gl.createTexture();
   gl.bindTexture(gl.TEXTURE_2D, target);
@@ -185,7 +185,7 @@ function boot() {
   if (!hero) return;
   const aLayer = hero.querySelector('.bg-aurora');
   const gLayer = hero.querySelector('.bg-grainient');
-  const a = aLayer ? initAurora(aLayer) : null;
+  const a = null; /* Aurora keeps P24 CSS implementation to preserve approved visual baseline */
   const g = gLayer ? initGrainient(gLayer) : null;
   /* ensure only the active scheme animates: pause inactive by skipping frames */
   const isActive = scheme => hero.getAttribute('data-bg') === scheme;
