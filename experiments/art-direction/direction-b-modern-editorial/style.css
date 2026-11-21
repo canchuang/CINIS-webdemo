@@ -606,3 +606,16 @@ a:focus-visible,button:focus-visible,.filters button:focus-visible{outline:2px s
 [id]{scroll-margin-top:92px}
 .cs-body p{max-width:72ch}
 
+
+/* CINIS cover trio (3 mode characters) */
+.cs-cinis .cover-duo{gap:14px;padding:6px 0 24px}
+.cs-cinis .cover-duo .ph{width:29%;border-width:6px;border-radius:22px}
+.cs-cinis .cover-duo .ph:nth-child(2){transform:translateY(26px)}
+.cs-cinis .cover-duo .ph:nth-child(3){transform:translateY(6px)}
+@media(max-width:640px){.cs-cinis .cover-duo{gap:9px}.cs-cinis .cover-duo .ph{border-width:4px;border-radius:16px}}
+
+
+/* CINIS: constrain portrait shots to control page length */
+.cs-cinis .screens .shot .frame,.cs-cinis .screens .shot .zoom{max-width:340px;margin-left:auto;margin-right:auto}
+.cs-cinis .screens{align-items:start}
+
