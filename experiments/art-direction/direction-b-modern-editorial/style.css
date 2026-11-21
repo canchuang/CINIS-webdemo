@@ -657,3 +657,22 @@ a:focus-visible,button:focus-visible,.filters button:focus-visible{outline:2px s
 .wcard.pes-card:hover .cap h3{color:inherit}
 .wcard.pes-card:hover .frame img{transform:none}
 .wcard:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+
+/* ===== Phase 21: About desktop two-column rhythm (section heading left, content right) ===== */
+@media(min-width:1025px){.about-grid{grid-template-columns:minmax(240px,300px) minmax(0,1fr)}}
+.about-intro{max-width:66ch}
+.about-flow{margin-top:64px}
+.about-block{display:grid;grid-template-columns:minmax(220px,280px) minmax(0,1fr);gap:52px;align-items:start;padding:42px 0;border-top:1px solid var(--line)}
+.about-block>h2{font-family:var(--font-heading);font-weight:400;font-size:clamp(24px,2.4vw,32px);letter-spacing:-.01em;margin:0;line-height:1.12}
+.about-block>h2 .en{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);margin-top:9px}
+.about-block .content{max-width:72ch}
+.about-block .content>p{font-size:17px;line-height:1.8;color:#2b333d;margin:0 0 16px}
+.about-block .content>p:last-child{margin-bottom:0}
+.about-block .exp .col p{max-width:32ch}
+.about-cta{margin-top:30px}
+@media(max-width:1024px){
+  .about-block{grid-template-columns:1fr;gap:14px;padding:30px 0}
+  .about-block>h2 .en{display:inline;margin-left:10px}
+  .about-block .content{max-width:none}
+  .about-flow{margin-top:36px}
+}
