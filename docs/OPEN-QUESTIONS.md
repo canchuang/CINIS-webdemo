@@ -186,3 +186,13 @@
 4. 社交链接（Behance / Dribbble / LinkedIn）；5. 简历链接。
 
 **备注**：首页「作品集 — 2026」「03 projects — 2024–2026」为既有展示性时间标注，非项目具体年份；如需精确年份请提供。
+
+---
+
+## PHASE 22 更新（CINIS 内容—证据复核）
+
+**页面小修正**：移除封面「角色/时间 TODO」可见文案；研究/反思区把「TODO」改为「暂无记录」的诚实表述；最终界面计数改为「全页 8 个界面状态（含今日细节放大）」。
+
+**新增待确认（素材清晰度）**：CINIS 封面/三模式卡中的**角色立绘为 56–80px 小图**，大尺寸显示偏软。Desktop 存在高清原件（`…/CINIS/Characters/骑士/paladin_knight_transparent`、`深渊/chibi_knight2-4` 约 200–212px），但**其模式/阶段归属无法仅凭命名完全确认**——确认后可复制为高清版本接入（原件只读不改）。
+
+**沿用待补**：用户研究/可用性测试/量化成效；个人角色与项目周期；CINIS Figma 链接；缺失状态截图（roles/onboarding、taskDone、stage/settle、terminal/rekindle）。

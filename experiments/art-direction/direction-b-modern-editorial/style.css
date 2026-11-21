@@ -676,3 +676,7 @@ a:focus-visible,button:focus-visible,.filters button:focus-visible{outline:2px s
   .about-block .content{max-width:none}
   .about-flow{margin-top:36px}
 }
+
+/* Phase 22: CINIS detail zoom focus */
+.cs-cinis .zoom img{top:-26%;left:-14%}
+
