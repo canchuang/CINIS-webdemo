@@ -142,3 +142,17 @@
 - 外观渲染/成品图（3/4 视角 + 细节，长边 ≥2000px，至少 1 张作封面）；
 - 结构图 / 爆炸图 / 模块拆分；场景与用户研究；过程展板；关键参数与项目定位。
 - 说明：PES 仍不建空壳案例页、不生成替代渲染；其素材请放入 `assets/source/portable-energy-storage/` 或给公开链接。
+
+---
+
+## PHASE 18 更新（作品列表交互与可访问性）
+
+**已修复**
+- 筛选：`role="group" aria-label`、按钮 `type="button"` + `aria-pressed`；新增 `role="status" aria-live="polite"` 播报「已显示 N 个项目：…」；脚本重写（初始 all、数量与名称同步）。
+- 卡片：CINIS / MOVA 由 `article+onclick` 改为真实 `<a href>`（可键盘聚焦、带 aria-label）；PES 保持非链接、`cursor:default`、不暗示可点。
+- 新增 `.visually-hidden` 与 `.wcard:focus-visible`；reduced-motion 下筛选仍可用（已实测）。
+
+**本轮无需你补充即可运行；以下仍为未完成/待你提供**
+- PES 真实素材（外观渲染/成品图、结构/爆炸图、场景研究、过程展板、参数）；
+- 个人简介 / 城市 / 经历；Gmail 地址 / 简历 / 社交链接；
+- CINIS：Figma 链接、缺失状态截图、深渊/骑士阶段素材对应确认。

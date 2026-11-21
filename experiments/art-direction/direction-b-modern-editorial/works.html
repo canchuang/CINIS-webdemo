@@ -36,17 +36,18 @@
       <p class="zh-body">三个项目，横跨界面系统与工业产品设计。素材尚未齐备之处，保持诚实的占位——不伪造渲染。</p>
       <span class="en">03 projects — 2024–2026</span>
     </div>
-    <div class="filters" id="filters">
-      <button class="on" data-f="all">全部 (03)</button>
-      <button data-f="uiux">UI/UX</button>
-      <button data-f="product">产品</button>
+    <div class="filters" id="filters" role="group" aria-label="按类别筛选作品">
+      <button type="button" class="on" data-f="all" aria-pressed="true">全部 (03)</button>
+      <button type="button" data-f="uiux" aria-pressed="false">UI/UX</button>
+      <button type="button" data-f="product" aria-pressed="false">产品</button>
     </div>
+    <p id="filterStatus" class="visually-hidden" role="status" aria-live="polite">已显示 3 个项目：CINIS、便携式储能、MOVA</p>
   </div>
 </section>
 
 <section class="wrap">
   <div class="wgrid" id="grid">
-    <article class="wcard big cinis-card rv" data-cat="uiux" onclick="location.href='cinis.html'">
+    <a class="wcard big cinis-card rv" href="cinis.html" data-cat="uiux" aria-label="CINIS — UI/UX · 产品设计，查看案例">
       <div class="frame">
         <img src="assets/screen-today.png" alt="CINIS 今日">
         <img src="assets/screen-growth.png" alt="CINIS 成长">
@@ -54,13 +55,13 @@
       </div>
       <div class="cap"><h3 class="zh">CINIS</h3><span class="n">01 — UI/UX · 产品设计</span></div>
       <p class="desc zh-body">游戏化自律产品：三模式、魂火成长体系、23 屏高保真原型。</p>
-    </article>
+    </a>
     <article class="wcard small pes-card rv" data-cat="product">
       <div class="frame"><div class="placeholder">便携式储能<br>Portable Energy Storage<br><br>案例素材待补充</div></div>
       <div class="cap"><h3 class="zh">便携式储能</h3><span class="n">02 — 产品设计</span></div>
       <p class="desc zh-body">模块化户外储能设备。案例结构已预留，图像待补充。</p>
     </article>
-    <article class="wcard wide mova-card rv" data-cat="uiux" onclick="location.href='mova.html'">
+    <a class="wcard wide mova-card rv" href="mova.html" data-cat="uiux" aria-label="MOVA — UI/UX 设计 · 票务，查看案例">
       <div class="frame">
         <img src="assets/mova/02-movie-logged-out.png" alt="MOVA 电影首页">
         <img src="assets/mova/09-seat-select.png" alt="MOVA 选座">
@@ -68,7 +69,7 @@
       </div>
       <div class="cap"><h3 class="zh">MOVA</h3><span class="n">03 — UI/UX 设计 · 票务</span></div>
       <p class="desc zh-body">电影购票与观影体验——从场次筛选、选座到电子票的完整购票体验。</p>
-    </article>
+    </a>
   </div>
 </section>
 </main>
@@ -81,14 +82,32 @@
 </footer>
 <script src="app.js"></script>
 <script>
-document.getElementById('filters').addEventListener('click',function(e){
-  var b=e.target.closest('button'); if(!b) return;
-  this.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});
-  var k=b.dataset.f;
-  document.querySelectorAll('#grid [data-cat]').forEach(function(c){
-    c.style.display=(k==='all'||c.dataset.cat===k)?'':'none';
+(function(){
+  var filters=document.getElementById('filters');
+  var grid=document.getElementById('grid');
+  var status=document.getElementById('filterStatus');
+  var buttons=[].slice.call(filters.querySelectorAll('button'));
+  function apply(k, activeBtn){
+    var visible=0, names=[];
+    [].forEach.call(grid.querySelectorAll('[data-cat]'), function(c){
+      var show=(k==='all' || c.getAttribute('data-cat')===k);
+      c.style.display = show ? '' : 'none';
+      c.hidden = !show;
+      if(show){ visible++; var t=c.querySelector('.cap h3'); if(t) names.push(t.textContent.trim()); }
+    });
+    buttons.forEach(function(x){
+      var on = (x===activeBtn);
+      x.classList.toggle('on', on);
+      x.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    if(status){ status.textContent = '已显示 ' + visible + ' 个项目：' + names.join('、'); }
+  }
+  filters.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    apply(b.getAttribute('data-f'), b);
   });
-});
+  apply('all', buttons[0]);
+})();
 </script>
 </body>
 </html>
