@@ -68,14 +68,16 @@ All are 2×-optimized transparent PNGs exported from Figma. Previewed and confir
 | Nav icons & indicator (`nav*.svg`, `nav-indicator.svg`, `tab-icon*.svg`) | ~9 SVGs | **READY** — reusable as small icons |
 | Per-screen decorative vectors (`p11*.svg`, `p15*.svg`, `p29*.svg`, `p30*.svg`, `p31*.svg`, `p37*.svg`) | ~19 SVGs | **NEEDS-PROCESSING** — these are partial screen vectors; prefer full-page renders (see C) |
 
-### C. Rendered screen captures — **NEEDS-PROCESSING**
+### C. Rendered screen captures — **READY (10 captured) / NEEDS-PROCESSING (remaining routes)**  *(updated Phase 12)*
 
-The live prototype can be screenshotted screen-by-screen (23 screens + 1 bottom sheet). These are the most valuable **case-study** visuals (information architecture, user flow, high-fidelity UI).
+已用真实原型在 390×844 @2× **抓取 10 屏**（存 `experiments/art-direction/_screens/`；原型包另存 `experiments/art-direction/direction-b-modern-editorial/assets/screen-*.png`）：
 
-- **Sources (either works):** `https://cinis.netlify.app/#<route>` (primary) or `https://canchuang.github.io/CINIS-webdemo/#<route>`.
-- **Route inventory (28 keys in `routes.ts`; ~23 distinct screens):** splash, roles, onboarding, today, goals, goalDetail, goalEdit, growth, me, focus, taskDone, stage, settle, terminal, rekindle, achievements, characterFile, history, reminderSettings, privacy, stageProgress, comeback, trialConfirm, newGoal, editor + `chooseMode` (bottom-sheet layer). *(Feature-branch pages: knight terminal/recover, abyss terminal/restart, modalBgEditor.)*
-- Status: **NEEDS-PROCESSING** — must be captured at device scale, cropped to the phone frame, organized per narrative section. Not yet captured.
-- Action (next phase): headless capture at 390×844 @2×, save to `assets/projects/cinis/screens/`.
+`splash · today · goals · goalDetail · growth · characterFile · achievements · focus · history · me`
+
+- 已用于 CINIS 案例页（8）：`today / growth / characterFile / achievements / goals / focus / history / me`（路径见 `direction-b-modern-editorial/assets/`）。
+- **仍未抓取**：`roles · onboarding · taskDone · stage · settle · terminal · rekindle · reminderSettings · privacy · stageProgress · comeback · trialConfirm · newGoal · editor · modalBgEditor` + `chooseMode` 底部弹层 → **NEEDS-PROCESSING（待补抓）**。
+- 源：`https://canchuang.github.io/CINIS-webdemo/#<route>` 或 `https://cinis.netlify.app/#<route>`（均 200，见 Phase 12 探测）。
+- 说明：本节此前标为“未抓取”，Phase 12 核对**仓库现状已变化**——10 屏已存在并可用；其余路由仍缺。
 
 ### D. Code / prototype resources — READY (as reference & embed)
 
