@@ -102,6 +102,19 @@ The brief asks CINIS's case study to show **product positioning, three-mode mech
 
 ---
 
+### F. 角色阶段素材（新增 · Phase 14/15）— READY / 待确认
+
+| 文件（案例页） | 源文件（只读） | 尺寸 | 透明 | 模式 · 阶段 | 状态 |
+|---|---|---|---|---:|---|
+| `assets/stage-traveler-lv1.png` | `Desktop/…/CINIS/Characters/Traveler/traveler_lv1_base.png` | 1472×1472 | 是 | 旅者 · Lv1 初火 | **READY（已用于案例页）** |
+| `assets/stage-traveler-lv2.png` | `…/traveler_lv2_soulfire.png` | 1472×1472 | 是 | 旅者 · Lv2 燃魂 | **READY（已用）** |
+| `assets/stage-traveler-lv3.png` | `…/traveler_lv3_veteran.png` | 1472×1472 | 是 | 旅者 · Lv3 历战 | **READY（已用）** |
+
+- 来源：用户自有项目源图；原件**只读未覆盖**；案例页使用新文件 `assets/stage-traveler-*.png`。
+- **待确认（未接入）**：深渊 `chibi_knight2/3/4_transparent`（阶段对应不明确）、骑士 `paladin_knight_transparent`（单张，无阶段序列），以及 `soulfire_*` 特效——仅凭命名/画面无法可靠确定阶段或用途 → 保持待确认，不接入页面。
+
+---
+
 ## Project 02 — Portable Energy Storage
 
 **Category:** Product · Industrial Design.
