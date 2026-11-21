@@ -15,6 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSansVF.min.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="hero-bg.css">
 </head>
 <body>
 <header class="site-nav">
@@ -31,8 +32,18 @@
 
 <main class="page-fade">
 <!-- HERO · Version A (working default; Version B in _hero-refine.html) -->
-<section class="hero-v2x hx-a">
+<section class="hero-v2x hx-a" data-bg="aurora">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="bg-layer bg-aurora"></div>
+    <div class="bg-layer bg-grainient"></div>
+    <div class="bg-grain"></div>
+  </div>
   <div class="wrap">
+    <div class="bg-switch" role="group" aria-label="背景方案对比">
+      <span class="lbl">背景</span>
+      <button type="button" data-bgset="aurora" aria-pressed="true">Aurora</button>
+      <button type="button" data-bgset="grainient" aria-pressed="false">Grainient</button>
+    </div>
     <div class="hx-top"><span class="en">UI/UX &amp; 交互设计</span><span class="en">作品集 — 2026</span></div>
     <h1 class="hx-title">
       <span class="l l1">设计，</span>
@@ -120,6 +131,9 @@
     <span class="en">Direction B · Modern Editorial</span>
   </div>
 </footer>
+<script src="rb-shaders.js"></script>
+<script src="hero-bg-canvas.js"></script>
+<script src="hero-bg.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
