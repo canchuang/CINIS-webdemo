@@ -114,6 +114,18 @@
     </ul>
   </div>
 
+  <p class="note">模式与失败机制对留存 / 坚持的影响为设计意图，尚未经研究验证。</p>
+
+  <div class="stage-strip rv" id="stage-evolution">
+    <div class="lbl"><span class="en">阶段演进 · 以旅者为例</span><span class="mono">Lv1 初火 → Lv2 燃魂 → Lv3 历战</span></div>
+    <div class="stage-imgs">
+      <figure><img src="assets/stage-traveler-lv1.png" alt="旅者 Lv1"><figcaption>Lv1 · 初火</figcaption></figure>
+      <figure><img src="assets/stage-traveler-lv2.png" alt="旅者 Lv2"><figcaption>Lv2 · 燃魂</figcaption></figure>
+      <figure><img src="assets/stage-traveler-lv3.png" alt="旅者 Lv3"><figcaption>Lv3 · 历战</figcaption></figure>
+    </div>
+    <p class="note">源：项目原始角色素材（1472×1472 透明 PNG）。仅旅者具备明确 Lv1–Lv3 阶段图；骑士 / 深渊对应阶段图未提供，暂不接入。</p>
+  </div>
+
   <!-- 06 IA -->
   <div class="cs-marker" id="ia"><h2 class="zh">信息架构 <span class="en">Information Architecture</span></h2><span class="mono">06</span></div>
   <p class="zh-body">底部四个 Tab：今日 · 目标 · 成长 · 我的；以「今日」为中心承载每日行动，目标 / 成长 / 设置在下一层展开。</p>
@@ -144,15 +156,17 @@
   <div class="cs-marker" id="interact"><h2 class="zh">关键交互 · 魂火成长 <span class="en">Key Interactions · Soulflame</span></h2><span class="mono">08 · 重点</span></div>
   <p class="zh-body">交互以「即时反馈 + 全局联动」为原则：切换模式时全站换肤；任务勾选、进度与计数同步；底部导航指示块只动 transform，保证流畅。<b>魂火</b>作为核心反馈：完成任务累积魂火、推进阶段，结算时转化为经验与称号。</p>
   <div class="ilist rv">
-    <div class="row"><div class="k">模式</div><p class="zh-body">换模式在 旅者 → 骑士 → 深渊 循环；底色 / 强调 / 魂火上限 / 门槛 / 角色 / 文案随之切换。</p></div>
-    <div class="row"><div class="k">计时</div><p class="zh-body">真实 <code>setInterval</code> 倒计时，暂停 / 继续有效。</p></div>
-    <div class="row"><div class="k">任务</div><p class="zh-body">勾选切换完成态，删除线、进度条与「已完成 N 项」同步。</p></div>
-    <div class="row"><div class="k">导航</div><p class="zh-body">指示块 <code>translate3d</code> + <code>cubic-bezier(.22,1,.36,1)</code> 380ms，仅动 transform。</p></div>
+    <div class="row"><div class="k">模式切换</div><p class="zh-body">切换后，全站底色 / 强调 / 魂火上限 / 角色随之变化——让「选择模式」成为一次有意义的承诺。</p></div>
+    <div class="row"><div class="k">专注计时</div><p class="zh-body">倒计时真实走动、可暂停继续；用户看到专注在推进，而不是一个静止数字。</p></div>
+    <div class="row"><div class="k">任务勾选</div><p class="zh-body">勾选即时反馈：完成态、删除线、进度与「已完成 N 项」同步变化。</p></div>
+    <div class="row"><div class="k">阶段推进</div><p class="zh-body">完成任务累积魂火、推进阶段；阶段结算把魂火转为经验与称号，形成正反馈闭环。</p></div>
   </div>
+  <p class="note">实现细节（次级注释）：计时用 <code>setInterval</code> 真实倒计时；底部导航指示块用 <code>translate3d</code> + <code>cubic-bezier(.22,1,.36,1)</code> 380ms、仅动 transform 以保 60fps；页面淡入 220ms。以上为实现参数，仅在需证明工程细节时参考，不进入主叙事。</p>
   <div class="growth-band rv">
     <img src="assets/growth-scene.png" alt="魂火成长路径">
     <div class="growth-cap"><p class="zh-body">魂火随任务增长，里程碑石碑标记阶段推进；阶段结算把魂火转为经验与称号，成就墙收集徽章。永久成长（经验 / 称号）不因失败收回。</p><div class="badges"><img src="assets/badge-1.png" alt="徽章"><img src="assets/badge-2.png" alt="徽章"><img src="assets/badge-3.png" alt="徽章"></div></div>
   </div>
+  <p class="note">成长场景图以<b>骑士</b>为例；旅者 / 深渊对应成长场景素材未提供，界面仅以该图示意。</p>
   <div class="screens rv" style="align-items:start">
     <figure class="shot" style="grid-column:span 6"><div class="frame"><img src="assets/screen-growth.png" alt="成长"></div><figcaption><b>成长</b>阶段进度与完成率，把「势头」可视化。</figcaption></figure>
     <figure class="shot" style="grid-column:span 6"><div class="frame"><img src="assets/screen-achievements.png" alt="成就墙"></div><figcaption><b>成就墙</b>称号与徽章收集（打卡 1/7/21 天等）。</figcaption></figure>

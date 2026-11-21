@@ -619,3 +619,16 @@ a:focus-visible,button:focus-visible,.filters button:focus-visible{outline:2px s
 .cs-cinis .screens .shot .frame,.cs-cinis .screens .shot .zoom{max-width:340px;margin-left:auto;margin-right:auto}
 .cs-cinis .screens{align-items:start}
 
+
+/* ===== Phase 14 CINIS: mode alignment + stage strip ===== */
+.cs-cinis .modes{align-items:stretch}
+.cs-cinis .mode{display:flex;flex-direction:column}
+.cs-cinis .mode .fig{margin-top:auto;height:200px;display:grid;place-items:center}
+.cs-cinis .mode .fig img{max-height:185px}
+.stage-strip{border-top:1px solid var(--line);margin-top:26px;padding-top:22px}
+.stage-strip .lbl{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.stage-imgs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:end}
+.stage-imgs figure{margin:0;background:var(--color-surface);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.stage-imgs img{width:100%;height:auto;max-height:250px;object-fit:contain}
+.stage-imgs figcaption{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text2);margin-top:8px}
+@media(max-width:640px){.stage-imgs{gap:10px}}
