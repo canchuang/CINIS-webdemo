@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>镇岳 · 机动能源基站 — 产品设计 · 案例研究 · 颜夕和</title>
+<meta name="description" content="镇岳·机动能源基站：面向地震灾害救援的便携储能与工具电池补能设备——6 槽 18V 电池、多口输出、提握背三形态与现场快速部署。">
+<meta property="og:type" content="article"><meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="颜夕和 · Portfolio">
+<meta property="og:title" content="镇岳 · 机动能源基站 — 颜夕和">
+<meta property="og:description" content="便携储能救援设备：6 槽工具电池、多口输出与现场快速部署。">
+<script>document.documentElement.className+=' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSansVF.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="pes.css">
+</head>
+<body>
+<header class="site-nav">
+  <div class="inner">
+    <a class="brand" href="index.html">颜夕和</a>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="works.html" class="active">作品</a>
+      <a href="about.html">关于</a>
+      <a href="contact.html">联系</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page-fade cs cs-pes">
+<section class="cs-cover">
+  <div class="wrap">
+    <div class="kick"><span class="en">案例 02 / 03</span><span class="en">产品设计 · 工业设计</span><span class="en">救援能源</span></div>
+    <h1 class="zh-h1" style="margin-top:14px">镇岳<span class="accent">.</span></h1>
+    <p class="dek zh-body" style="max-width:56ch">为地震灾害救援设计的便携储能与工具电池补能设备：内置 6 槽 18V 工具电池充电座，多口输出、提 / 握 / 背三形态，一名救援队员即可携带并在现场快速部署。</p>
+    <div class="cs-meta">
+      <div><b>类型</b><span class="zh">产品设计 · 工业设计</span></div>
+      <div><b>交付物</b><span class="zh">外观渲染 · 结构爆炸图 · 三视图 · 使用流程 · 竞赛展板</span></div>
+      <div><b>素材来源</b><span class="zh">课程项目展板（原始文件只读，见文末说明）</span></div>
+    </div>
+    <figure class="pes-hero-shot"><img src="assets/pes/render-hero.jpg" alt="镇岳·机动能源基站 产品渲染：灰白机身与橙色强调"></figure>
+    <nav class="toc rv" aria-label="目录">
+      <a href="#ov"><b>01</b>项目概述</a>
+      <a href="#bg"><b>02</b>背景与问题</a>
+      <a href="#users"><b>03</b>用户与场景</a>
+      <a href="#goal"><b>04</b>设计目标</a>
+      <a href="#concept"><b>05</b>方案推演</a>
+      <a href="#structure"><b>06</b>结构与模块</a>
+      <a href="#ports"><b>07</b>接口与补能</a>
+      <a href="#flow"><b>08</b>使用流程</a>
+      <a href="#cmf"><b>09</b>CMF 与细节</a>
+      <a href="#final"><b>10</b>最终方案</a>
+      <a href="#reflect"><b>11</b>说明与反思</a>
+    </nav>
+  </div>
+</section>
+
+<div class="cs-body">
+  <div class="cs-marker" id="ov"><h2 class="zh">项目概述 <span class="en">Overview</span></h2><span class="mono">01</span></div>
+  <p class="drop zh-body">镇岳是一台面向地震灾害现场的「机动能源基站」：把救援队常用的 18V 工具电池集中为现场能源单元，通过内置 6 槽充电座与多口输出，为生命探测、破拆、照明与通信设备持续供电。</p>
+  <p class="note">参数说明：页中的容量 / 功率 / 电压等取自项目展板标注（如 750Wh、总功率预算 3600W、25.6V、DC-DC 效率 95%），**未提供第三方测试或验收资料**，作为设计指标标注，不作已验证性能结论。</p>
+
+  <div class="cs-marker" id="bg"><h2 class="zh">背景与问题 <span class="en">Background &amp; Problem</span></h2><span class="mono">02</span></div>
+  <p class="zh-body">地震灾害常导致区域电力瘫痪：应急通信基站面临离线风险，破拆工具电量告急。传统发电机「笨重、噪音大、运输困难」；现有户外电源虽可应急，却**缺少对工具电池的原生支持**，充电慢、需自带充电器，且难以在设备前查看状态。</p>
+  <div class="logic">
+    <span class="lb">设计问题 · Design Problem（据项目展板整理）</span>
+    <ul>
+      <li><b>黄金 72 小时</b><span>救援初期电力即生命线：供电中断会直接拖慢破拆、探测、照明与通信。</span></li>
+      <li><b>携带与部署</b><span>设备需单人背负穿越废墟，到场后快速放置、开机、供电。</span></li>
+      <li><b>工具电池生态</b><span>现场大量 18V 工具电池，缺一个能集中、原生补能的节点。</span></li>
+    </ul>
+  </div>
+
+  <div class="cs-marker" id="users"><h2 class="zh">用户与场景 <span class="en">Users &amp; Scenarios</span></h2><span class="mono">03</span></div>
+  <p class="zh-body">目标使用者是**救援队员与现场数据人员**；典型场景包括地震废墟、应急通信基站与临时安置点。</p>
+  <div class="cards3 rv">
+    <div class="comp"><h4>救援队 / 数据人员</h4><div class="role">Primary</div><p>背负设备进入核心灾区，负责现场供电与设备运转。</p></div>
+    <div class="comp"><h4>地震废墟 · 通信基站</h4><div class="role">Scenario</div><p>电力瘫痪、道路受损、夜间搜救困难的环境。</p></div>
+    <div class="comp"><h4>临时安置点</h4><div class="role">Scenario</div><p>为医疗帐篷、供水、充电与夜间照明提供临时电力。</p></div>
+  </div>
+  <figure class="pes-fig"><img src="assets/pes/scenario.jpg" alt="救援队员背负镇岳设备在废墟中行进"><figcaption>使用场景 · 单人背负进入灾区（展板局部）</figcaption></figure>
+
+  <div class="cs-marker" id="goal"><h2 class="zh">设计目标 <span class="en">Design Goals</span></h2><span class="mono">04</span></div>
+  <div class="cards3 rv">
+    <div class="comp"><h4>高机动</h4><div class="role">Mobility</div><p>提 / 握 / 背三合一，满足废墟与山地场景的搬运。</p></div>
+    <div class="comp"><h4>快部署</h4><div class="role">Deploy</div><p>放置固定、开机、连接设备即可供电（展板流程共 6 步）。</p></div>
+    <div class="comp"><h4>原生补能</h4><div class="role">Ecosystem</div><p>6 槽 18V 工具电池直充，无需额外充电器。</p></div>
+  </div>
+
+  <div class="cs-marker" id="concept"><h2 class="zh">方案推演 <span class="en">Concept</span></h2><span class="mono">05</span></div>
+  <p class="zh-body">方案以「工具电池即能源单元」为出发点：把分散的 18V 电池集中为可调度的储能仓，并将充电、输出、监测与携带整合进一个可背负的机体。</p>
+  <div class="logic">
+    <span class="lb">推演路径 · Concept Logic</span>
+    <ul>
+      <li><b>能源单元</b><span>以 6 块 18V 工具电池作为可替换能源模块，现场集中补能。</span></li>
+      <li><b>形态整合</b><span>提手、侧握与背负带三种携带方式，适配废墟与山地。</span></li>
+      <li><b>状态可见</b><span>智能监测面板与 LED 指示灯，在设备前即可读取电量与状态。</span></li>
+    </ul>
+  </div>
+
+  <div class="cs-marker" id="structure"><h2 class="zh">结构与模块 <span class="en">Structure &amp; Modules</span></h2><span class="mono">06</span></div>
+  <div class="pes-split rev">
+    <div>
+      <p class="zh-body">机体围绕电池仓与散热风道组织：上部为多功能接口仓与总电池储能仓，中部为电池模块与智能监测面板，外部以防撞防护框架与高强度 PC 外壳包覆。</p>
+      <ul class="pes-list">
+        <li><b>接口外盖 / 多功能接口仓</b><span>AC/DC/USB 接口集中，带保护机制。</span></li>
+        <li><b>ABS 保护层 / 防撞防护框架</b><span>缓冲与抗冲击，适应复杂环境。</span></li>
+        <li><b>总电池储能仓 / 电池模块</b><span>6 槽 18V 工具电池集中收纳与补能。</span></li>
+        <li><b>智能监测面板 / LED 指示灯</b><span>实时监控电池数据，显示装载与位置。</span></li>
+        <li><b>散热通风系统 / 高强度 PC 外壳</b><span>高效散热风道，保持高负载运行。</span></li>
+      </ul>
+    </div>
+    <figure class="pes-fig"><img src="assets/pes/exploded.jpg" alt="镇岳产品结构爆炸图"><figcaption>结构爆炸图（展板局部）</figcaption></figure>
+  </div>
+
+  <div class="cs-marker" id="ports"><h2 class="zh">接口与补能 <span class="en">Ports &amp; Replenishment</span></h2><span class="mono">07</span></div>
+  <div class="pes-split">
+    <figure class="pes-fig"><img src="assets/pes/interface.jpg" alt="镇岳输出接口：安德森PP50、Type-C、XT-30、AC IN 与 220V 插座"><figcaption>输出接口与补能方式（展板局部）</figcaption></figure>
+    <div>
+      <p class="zh-body">统一的多口输出覆盖救援现场的主要用电需求：</p>
+      <ul class="pes-list">
+        <li><b>安德森 PP50</b><span>大功率直流电接口。</span></li>
+        <li><b>Type-C 100W</b><span>设备与终端快充。</span></li>
+        <li><b>XT-30</b><span>无人机接口。</span></li>
+        <li><b>AC IN / 220V 插座</b><span>交流输入与交流供电。</span></li>
+      </ul>
+      <p class="note">接口与电气指标均来自展板标注；实际输出能力、效率与热性能待样机/测试确认。</p>
+    </div>
+  </div>
+
+  <div class="cs-marker" id="flow"><h2 class="zh">使用流程 <span class="en">Workflow</span></h2><span class="mono">08</span></div>
+  <p class="zh-body">从携带到撤收共 6 步，强调到场后的快速部署与状态可读。</p>
+  <figure class="pes-fig"><img src="assets/pes/workflow.jpg" alt="镇岳产品操作流程图（6 步）"><figcaption>产品操作流程图（展板局部）</figcaption></figure>
+  <ol class="pes-steps rv">
+    <li><b>01</b>携带设备前往现场</li>
+    <li><b>02</b>放置固定设备</li>
+    <li><b>03</b>打开电源开关</li>
+    <li><b>04</b>连接用电设备</li>
+    <li><b>05</b>设备正常运转</li>
+    <li><b>06</b>结束使用搬离位移</li>
+  </ol>
+
+  <div class="cs-marker" id="cmf"><h2 class="zh">CMF 与细节 <span class="en">CMF &amp; Details</span></h2><span class="mono">09</span></div>
+  <p class="zh-body">外观采用灰白 PC 外壳 + 黑色 ABS 防护 + 橙色强调条与指示灯的配色；圆角硬朗、结构外露，强调工具与救援装备的可靠感。细节包含智能指示灯、坚固提手、多功能接口仓与智能监测面板。</p>
+  <figure class="pes-fig"><img src="assets/pes/details.jpg" alt="镇岳产品细节：智能指示灯、提手、多功能接口仓、智能监测面板、散热与防护框架"><figcaption>产品细节（展板局部）</figcaption></figure>
+
+  <div class="cs-marker" id="final"><h2 class="zh">最终方案 <span class="en">Final Board</span></h2><span class="mono">10 · 展板</span></div>
+  <p class="zh-body">完整竞赛展板（原图 7442×5264，网页使用 2200 宽版本）：含功能概览、救援场景、输出接口、爆炸图、多方式携带、三视图与工作流程。</p>
+  <figure class="pes-fig"><img src="assets/pes/board-01.jpg" alt="镇岳·机动能源基站 竞赛展板全图"><figcaption>竞赛展板 · 总览（原图 7442×5264）</figcaption></figure>
+  <figure class="pes-fig"><img src="assets/pes/board-02.jpg" alt="镇岳产品细节、爆炸图、故事板、三视图与操作流程图"><figcaption>第二张展板 · 结构 / 故事板 / 三视图 / 流程</figcaption></figure>
+
+  <div class="cs-marker" id="reflect"><h2 class="zh">说明与反思 <span class="en">Notes &amp; Reflection</span></h2><span class="mono">11</span></div>
+  <p class="zh-body">镇岳把「工具电池生态」与「救援现场补能」结合：以 6 槽原生充电减少额外充电器负担，用提 / 握 / 背与 6 步流程回应单人携带与快速部署。</p>
+  <p class="pull zh-body">把现场的电，装进一个可背负的节点。</p>
+  <p class="note">素材说明：本页依据项目展板（300dpi.jpg / 版面2 / 竞赛版面1）整理；同目录另有《调研报告.pdf》，本页未引用其中未经核对的数据。结构强度、散热、重量、成本、续航等工程验证数据与量化成效**暂无材料**；个人角色、项目周期、获奖情况待补。参数均为展板标注，待确认。</p>
+  <p style="margin:34px 0 10px"><a class="btn" href="works.html">← 返回作品</a></p>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span class="en">© 2026 颜夕和 — 个人作品集</span>
+    <span class="en">镇岳 · 产品设计案例</span>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
