@@ -137,10 +137,32 @@
 | 07 核心流程 | 角色→今日→完成方式→专注→反馈→结算→失败分支 | 截图 today/focus + README | A/B | roles/onboarding、taskDone、stage/settle、terminal/rekindle 截图待补 |
 | 08 关键交互·魂火 | 换肤联动/真实计时/任务勾选/导航/魂火累积→称号 | 代码实现 + growth/achievements 截图 + badges | A/B | 成长场景图仅「骑士」示例；实现参数为次级注释 |
 | 09 视觉系统 | 核心色板 / 三模式深色主题 / 字体圆角画布 | tokens.ts / global.css（真实令牌） | A | —— |
-| 10 最终界面 | 8 个界面状态（今日含细节放大） | 真实截图（780×1688 @2×） | A | 角色立绘 56–80px 偏低清；Desktop 高清原件映射待确认后再替换 |
+| 10 最终界面 | 8 个界面状态（今日含细节放大） | 真实截图（780×1688 @2×） | A | 角色立绘 324–568px（清晰）；Desktop 另有变体原件（paladin 与当前骑士造型不同），不替换 |
 | 原型演示 | GitHub Pages 主入口 / Netlify 镜像 | 实测 2026-11-21 均 HTTP 200 | A | 不依赖 iframe；Figma 原始链接仍缺 |
 | 11 反思 | 三模式/主流程/魂火闭环总结 | 依据原型的设计总结 | B | 角色/周期/研究/测试/指标无记录，不作结论 |
 
 **Phase 22 页面小修正**：移除封面「角色/时间 TODO」展示；研究/反思的 TODO 字样改为「暂无记录」表述；10 最终界面计数表述更精确（全页 8 个界面状态，含今日细节放大）；细节放大裁切上移聚焦魂火卡。
 
 **整体待补**：用户研究/可用性测试/量化成效、个人角色与项目周期、CINIS Figma 链接、缺失状态截图（roles/onboarding、taskDone、stage/settle、terminal/rekindle）、骑士/深渊高清立绘的归属确认。
+
+
+---
+
+## PHASE 23 — 真实状态补抓与截图台账
+
+**方法**：原型 App 支持 `#route` 哈希深链（`App.tsx` 读取 `location.hash`）；注意不是 `#/route`。以真实运行站点（Netlify 200 / GitHub Pages 200）在 390×844 @2× 视口抓取，输出 **780×1688 PNG**。
+
+| 状态 | 来源 URL | 文件 | 尺寸 | 页面接入 |
+|---|---|---|---|---|
+| 角色选择 | https://cinis.netlify.app/#roles | assets/screen-roles.png | 780×1688 | §07 |
+| 引导（两种成长） | .../#onboarding | assets/screen-onboarding.png | 780×1688 | §07 |
+| 完成方式弹层 | 今日页交互（真实点击） | assets/screen-chooseMode.png | 780×1688 | §07 |
+| 任务完成反馈 | .../#taskDone | assets/screen-taskDone.png | 780×1688 | §07 |
+| 阶段进度 | .../#stageProgress | assets/screen-stageProgress.png | 780×1688 | §07 |
+| 阶段结算 | .../#settle | assets/screen-settle.png | 780×1688 | §07 |
+| 终止 | .../#terminal | assets/screen-terminal.png | 780×1688 | §05b |
+| 重燃 | .../#rekindle | assets/screen-rekindle.png | 780×1688 | §05b |
+| 回归 | .../#comeback | assets/screen-comeback.png | 780×1688 | §05b |
+
+**计数更新**：原型 23 屏；本地已抓取 **18 屏**（另含完成方式弹层）；本页展示 **17 个界面状态**。
+**原件映射复核**：当前角色立绘 324/568/336px（清晰）；Desktop 的 `paladin_knight` 为**不同骑士造型**、深渊 `chibi_knight4` 与当前深渊一致但现有 336px 足够 → **不替换**。

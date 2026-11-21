@@ -193,6 +193,14 @@
 
 **页面小修正**：移除封面「角色/时间 TODO」可见文案；研究/反思区把「TODO」改为「暂无记录」的诚实表述；最终界面计数改为「全页 8 个界面状态（含今日细节放大）」。
 
-**新增待确认（素材清晰度）**：CINIS 封面/三模式卡中的**角色立绘为 56–80px 小图**，大尺寸显示偏软。Desktop 存在高清原件（`…/CINIS/Characters/骑士/paladin_knight_transparent`、`深渊/chibi_knight2-4` 约 200–212px），但**其模式/阶段归属无法仅凭命名完全确认**——确认后可复制为高清版本接入（原件只读不改）。
+**素材清晰度更正（Phase 23）**：角色立绘实为 324/568/336px（清晰）——此前“56–80px 偏低清”为误判，已更正；Desktop 的 paladin 为不同骑士造型、深渊 chibi 与现有一致但现有尺寸足够，故不替换。
 
 **沿用待补**：用户研究/可用性测试/量化成效；个人角色与项目周期；CINIS Figma 链接；缺失状态截图（roles/onboarding、taskDone、stage/settle、terminal/rekindle）。
+
+
+---
+
+## PHASE 23 更新（CINIS 真实状态补抓）
+- 已从**真实运行原型**（`#route` 深链，390×844@2×）补抓：角色选择、引导、完成方式弹层、任务完成反馈、阶段进度、阶段结算、终止、重燃、回归；合计新增 9 张（780×1688），已接入案例页。
+- 计数更新：原型 23 屏 / 已抓取 18 屏（+弹层）/ 本页展示 17 个界面状态。
+- 仍待补：taskDetail、goalEdit、reminderSettings、privacy、trialConfirm、newGoal、editor、modalBgEditor；用户研究/测试/指标/角色/周期；CINIS Figma 链接。

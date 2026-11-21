@@ -67,7 +67,7 @@
   <!-- 01 OVERVIEW -->
   <div class="cs-marker" id="ov"><h2 class="zh">项目概述 <span class="en">Overview</span></h2><span class="mono">01</span></div>
   <p class="drop zh-body">CINIS 把自律重新讲成一个故事：用户选定一种「模式」，每天完成任务、积累<b>魂火</b>，在阶段结算时获得经验与称号；一旦中断，则进入该模式对应的<b>后果与回归路径</b>。产品覆盖从引导、今日任务、专注、完成反馈到阶段结算与成长的完整闭环。</p>
-  <p class="note">计数口径：CINIS 原型共 <b>23 屏</b>（另含 1 个底部弹层）；本地已抓取 <b>10 屏</b>真实截图；本页展示其中 <b>8 屏</b>关键状态。不使用相似页面替代未抓取状态。</p>
+  <p class="note">计数口径：CINIS 原型共 <b>23 屏</b>（另含 1 个底部弹层）；本地已抓取 <b>18 屏</b>真实截图（另含完成方式弹层）；本页展示 <b>17 个界面状态</b>。不使用相似页面替代未抓取状态。</p>
 
   <!-- 02 BACKGROUND (HYPOTHESIS) -->
   <div class="cs-marker" id="bg"><h2 class="zh">背景与问题 <span class="en">Background &amp; Problem</span></h2><span class="mono">02</span></div>
@@ -124,6 +124,15 @@
     <p class="note">源：项目原始角色素材（1472×1472 透明 PNG）。仅旅者具备明确 Lv1–Lv3 阶段图；骑士 / 深渊对应阶段图未提供，暂不接入。</p>
   </div>
 
+  <div class="cs-marker"><h2 class="zh">失败分支 <span class="en">Failure Branches</span></h2><span class="mono">05b</span></div>
+  <p class="zh-body">三模式各自独立的中断处理：<b>终止</b>（记录本轮结果）、<b>重燃</b>（选择如何回归）、<b>回归</b>（久未开始后的重启）——均保留永久成长，只处理本轮魂火。</p>
+  <div class="screens rv" style="align-items:start">
+    <figure class="shot" style="grid-column:span 4"><div class="frame"><img src="assets/screen-terminal.png" alt="终止 · 本轮无损失"></div><figcaption><b>终止（旅者）</b>本轮没有任何损失，魂火全额结算、记录照常入历史。</figcaption></figure>
+    <figure class="shot" style="grid-column:span 4"><div class="frame"><img src="assets/screen-rekindle.png" alt="重燃 · 选择回归方式"></div><figcaption><b>重燃（旅者）</b>从一簇小火开始：沿用原计划 / 降低强度 / 先休息。</figcaption></figure>
+    <figure class="shot" style="grid-column:span 4"><div class="frame"><img src="assets/screen-comeback.png" alt="回归 · 永久成长保留"></div><figcaption><b>回归</b>断了 9 天：永久成长都还在，魂火从零开始。</figcaption></figure>
+  </div>
+  <p class="note">终止 / 重燃以旅者为示例；骑士「誓约警戒·可追回」、深渊「契约已断·归零重开」沿用各自模式后果（详见 content.ts）。</p>
+
   <!-- 06 IA -->
   <div class="cs-marker" id="ia"><h2 class="zh">信息架构 <span class="en">Information Architecture</span></h2><span class="mono">06</span></div>
   <p class="zh-body">底部四个 Tab：今日 · 目标 · 成长 · 我的；以「今日」为中心承载每日行动，目标 / 成长 / 设置在下一层展开。</p>
@@ -148,7 +157,15 @@
     <figure class="shot" style="grid-column:span 6"><div class="frame"><img src="assets/screen-today.png" alt="今日"></div><figcaption><b>今日 · 每日中枢</b>魂火卡（100/120）+ 任务列表；完成方式与专注由此进入。</figcaption></figure>
     <figure class="shot" style="grid-column:span 6"><div class="frame"><img src="assets/screen-focus.png" alt="专注"></div><figcaption><b>专注计时</b>真实倒计时，支持暂停 / 继续（非静态占位）。</figcaption></figure>
   </div>
-  <p class="note">待补：角色 / 模式确立（roles / onboarding）、完成反馈（taskDone）、阶段进度与结算（stage / settle）、失败分支（terminal / rekindle）等状态截图未抓取 —— 保留标记，不用相似页面替代。</p>
+  <div class="screens rv" style="align-items:start">
+    <figure class="shot" style="grid-column:span 4"><div class="frame"><img src="assets/screen-roles.png" alt="角色选择"></div><figcaption><b>角色选择</b>旅者 / 骑士 / 深渊三档化身，选择即确定强度与后果。</figcaption></figure>
+    <figure class="shot" style="grid-column:span 4"><div class="frame"><img src="assets/screen-onboarding.png" alt="引导 · 两种成长"></div><figcaption><b>引导</b>先讲清「魂火会失去、经验与等级不会」，建立正确预期。</figcaption></figure>
+    <figure class="shot" style="grid-column:span 4"><div class="frame"><img src="assets/screen-chooseMode.png" alt="完成方式弹层"></div><figcaption><b>完成方式</b>底部弹层：点火专注（计时）或快速打卡（不计专注）。</figcaption></figure>
+    <figure class="shot" style="grid-column:span 4"><div class="frame"><img src="assets/screen-taskDone.png" alt="完成反馈"></div><figcaption><b>完成反馈</b>行动已记录：永久经验与本轮魂火即时结算。</figcaption></figure>
+    <figure class="shot" style="grid-column:span 4"><div class="frame"><img src="assets/screen-stageProgress.png" alt="阶段进度"></div><figcaption><b>阶段进度</b>第 4 天 14/21、完成率与暂存魂火 / 裂痕。</figcaption></figure>
+    <figure class="shot" style="grid-column:span 4"><div class="frame"><img src="assets/screen-settle.png" alt="阶段结算"></div><figcaption><b>阶段结算</b>七日结束：魂火一次性结算，得经验 / 徽章 / 称号。</figcaption></figure>
+  </div>
+  <p class="note">待补：taskDetail / goalEdit / reminderSettings / privacy / trialConfirm / newGoal / editor / modalBgEditor 等次要流程与设置页（角色确立 / 完成反馈 / 阶段 / 结算 / 终止 / 重燃已补齐真实截图）。</p>
 
   <!-- 08 KEY INTERACTIONS / SOULFLAME -->
   <div class="cs-marker" id="interact"><h2 class="zh">关键交互 · 魂火成长 <span class="en">Key Interactions · Soulflame</span></h2><span class="mono">08 · 重点</span></div>
@@ -195,7 +212,7 @@
 
   <!-- 10 FINAL UI -->
   <div class="cs-marker" id="ui"><h2 class="zh">最终界面 <span class="en">Final UI</span></h2><span class="mono">10 · 真实截图</span></div>
-  <p class="zh-body">真实界面截图（原型 23 屏中已抓取 10 屏；<b>全页共展示 8 个界面状态</b>；下方含「今日」的细节放大），每张对应一条设计说明。</p>
+  <p class="zh-body">真实界面截图（原型 23 屏中已抓取 18 屏；<b>全页共展示 17 个界面状态</b>，含「今日」细节放大与完成方式弹层），每张对应一条设计说明。</p>
   <div class="screens rv" style="align-items:start">
     <figure class="shot" style="grid-column:span 6"><div class="frame"><img src="assets/screen-today.png" alt="今日"></div><figcaption><b>今日</b>每日中枢：模式身份 + 魂火 + 任务，一屏读懂「今天做什么」。</figcaption></figure>
     <figure class="shot" style="grid-column:span 6"><div class="zoom" style="aspect-ratio:390/844"><img src="assets/screen-today.png" alt="魂火细节"><span class="zcap">细节 · 魂火量表</span></div><figcaption><b>细节</b>Lv / XP 与魂火量表是情绪核心，放大到一眼可读。</figcaption></figure>
