@@ -18,7 +18,7 @@
 | CINIS 卡片 | ✅ 现为 `<a href="cinis.html">`，`tabIndex=0`，`aria-label="CINIS — UI/UX · 产品设计，查看案例"`；整卡可点、可键盘聚焦 |
 | MOVA 卡片 | ✅ `<a href="mova.html">`，可聚焦，`aria-label` 同上格式 |
 | PES 卡片 | ✅ 仍为 `<article>`，**无 href、tabIndex=-1、cursor:default**，hover 不再变标题色/缩放 → 不伪装成可进入；保留「案例素材待补充」 |
-| 键盘 | ✅ 筛选项（3 个 button）与两张卡片链接 `tabIndex=0`，原生 Enter/Space 可触发；`:focus-visible` 2px 强调色轮廓（含 `.wcard:focus-visible`） |
+| 键盘 | ✅ 筛选项（3 个 `<button>`）`tabIndex=0`，原生 **Enter 与 Space 均可触发**；两张卡片链接为 `<a href>`（`tabIndex=0`），原生 **Enter 可触发**、**Space 为页面滚动、不激活链接**；无自定义按键逻辑（无 `onkeydown`）；`:focus-visible` 2px 强调色轮廓（含 `.wcard:focus-visible`） |
 | 图片替代文本 | ✅ 6 张图均具描述性 alt（CINIS 今日/成长/角色档案；MOVA 电影首页/选座/电子票）；无重复装饰性朗读（卡片链接以 aria-label 命名，避免图片 alt 叠加冗读） |
 
 ## 3. 移动端与动效
