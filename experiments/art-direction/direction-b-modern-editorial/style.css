@@ -638,3 +638,15 @@ a:focus-visible,button:focus-visible,.filters button:focus-visible{outline:2px s
 .wcard.mova-card .frame img{width:24%;height:auto;max-height:100%;object-fit:contain;border:1px solid var(--color-border);border-radius:8px;box-shadow:0 8px 20px rgba(17,21,27,.10);background:#fff;transform:none;transition:transform var(--dur-3) var(--ease-out)}
 .wcard.mova-card:hover .frame img{transform:translateY(-4px)}
 @media(max-width:900px){.wcard.mova-card .frame{gap:2%;padding:3% 3% 0}.wcard.mova-card .frame img{width:29%}}
+
+/* ===== Phase 17: works CINIS three-screen + lighter PES placeholder ===== */
+.wcard.cinis-card .frame{aspect-ratio:16/9;display:flex;align-items:flex-end;justify-content:center;gap:3%;padding:4% 4% 0;background:var(--color-surface)}
+.wcard.cinis-card .frame img{width:23%;height:auto;max-height:100%;object-fit:contain;border:1px solid var(--color-border);border-radius:8px;box-shadow:0 8px 20px rgba(17,21,27,.10);background:#fff;transform:none;transition:transform var(--dur-3) var(--ease-out)}
+.wcard.cinis-card:hover .frame img{transform:translateY(-4px)}
+.wcard.pes-card .frame{aspect-ratio:3/2;background:var(--color-surface)}
+.wcard.pes-card .placeholder{background:repeating-linear-gradient(135deg,transparent 0 18px,rgba(17,21,27,.03) 18px 36px);color:var(--text2);min-height:0;font-size:11px}
+@media(max-width:900px){
+  .wcard.cinis-card .frame{gap:2%;padding:3% 3% 0}
+  .wcard.cinis-card .frame img{width:29%}
+  .wcard.pes-card .frame{aspect-ratio:16/10}
+}

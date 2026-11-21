@@ -75,6 +75,7 @@ All are 2×-optimized transparent PNGs exported from Figma. Previewed and confir
 `splash · today · goals · goalDetail · growth · characterFile · achievements · focus · history · me`
 
 - 已用于 CINIS 案例页（8）：`today / growth / characterFile / achievements / goals / focus / history / me`（路径见 `direction-b-modern-editorial/assets/`）。
+- **作品列表 CINIS 封面（Phase 17）**：使用 `screen-today / screen-growth / screen-characterFile`（原生 780×1688 @2×）三屏组合，按原比例 `contain` 展示、约 23% 卡宽，**不放大、不裁切**。
 - **仍未抓取**：`roles · onboarding · taskDone · stage · settle · terminal · rekindle · reminderSettings · privacy · stageProgress · comeback · trialConfirm · newGoal · editor · modalBgEditor` + `chooseMode` 底部弹层 → **NEEDS-PROCESSING（待补抓）**。
 - 源：`https://canchuang.github.io/CINIS-webdemo/#<route>` 或 `https://cinis.netlify.app/#<route>`（均 200，见 Phase 12 探测）。
 - 说明：本节此前标为“未抓取”，Phase 12 核对**仓库现状已变化**——10 屏已存在并可用；其余路由仍缺。
