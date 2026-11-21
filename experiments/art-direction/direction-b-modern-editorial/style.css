@@ -632,3 +632,9 @@ a:focus-visible,button:focus-visible,.filters button:focus-visible{outline:2px s
 .stage-imgs img{width:100%;height:auto;max-height:250px;object-fit:contain}
 .stage-imgs figcaption{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text2);margin-top:8px}
 @media(max-width:640px){.stage-imgs{gap:10px}}
+
+/* ===== Phase 16: works MOVA card — multi-screen, no upscaled crop ===== */
+.wcard.mova-card .frame{aspect-ratio:16/9;display:flex;align-items:flex-end;justify-content:center;gap:2.5%;padding:4% 4% 0;background:var(--color-surface)}
+.wcard.mova-card .frame img{width:24%;height:auto;max-height:100%;object-fit:contain;border:1px solid var(--color-border);border-radius:8px;box-shadow:0 8px 20px rgba(17,21,27,.10);background:#fff;transform:none;transition:transform var(--dur-3) var(--ease-out)}
+.wcard.mova-card:hover .frame img{transform:translateY(-4px)}
+@media(max-width:900px){.wcard.mova-card .frame{gap:2%;padding:3% 3% 0}.wcard.mova-card .frame img{width:29%}}

@@ -133,6 +133,8 @@ The brief asks CINIS's case study to show **product positioning, three-mode mech
 
 **Everything for PES is MISSING.** Requires the user to drop the source folder (renders, process boards, research docs) into e.g. `assets/source/portable-energy-storage/`, or provide a link (Drive/Figma/Behance). → OPEN-QUESTION Q3.
 
+> **PHASE 16 复核（2026-11-21）**：对 `Desktop` 与工作区按关键词（储能 / 电源 / 户外 / 便携 / PES / energy / storage / 救援 / 应急 / 电池）全盘搜索 → **0 命中**；目标目录 `assets/projects/portable-energy-storage/` 为空。仅存在通用课程文件夹（`大二下/概念产品设计`、`目标产品设计导向`、`设计调研`），但**无法确认其中含 PES 素材**，不擅自引用。→ 结论：**“PES 全部缺失”仅表示当前仓库/工作区未发现**（不代表用户从未有素材）；保持待补，不建空壳页面。
+
 ---
 
 ## Project 03 — MOVA
