@@ -7,7 +7,7 @@
   document.body.insertBefore(layer, document.body.firstChild);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   if (reduced.matches) return;
-  const sections = [...document.querySelectorAll('main > section, main section[id], main .about-block')];
+  const sections = [...document.querySelectorAll('main > section, main section[id], main .about-block, .cs-body .cs-marker[id]')];
   let pending = false;
   function update() {
     pending = false;
