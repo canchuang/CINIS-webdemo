@@ -1,11 +1,11 @@
 /* Ambient light follows the reading position while content stays on its own layer. */
 body > main, body > footer{position:relative;z-index:1}
 .scroll-aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
-  --flow-x:0vw;--flow-y:0vh;
-  transform:translate3d(var(--flow-x),var(--flow-y),0);
-  transition:transform 1000ms cubic-bezier(.2,0,.2,1);contain:paint}
+  --flow-x:0vw;--flow-y:0vh;contain:paint}
 .scroll-aurora::before,.scroll-aurora::after{content:"";position:absolute;border-radius:50%;
-  filter:blur(54px);opacity:.28;will-change:transform}
+  filter:blur(54px);opacity:.28;will-change:transform,translate;
+  translate:var(--flow-x) var(--flow-y);
+  transition:translate 1000ms cubic-bezier(.2,0,.2,1)}
 .scroll-aurora::before{width:74vw;height:66vh;left:-24vw;top:8vh;
   background:radial-gradient(ellipse,#BCA9F1 0%,rgba(188,169,241,.7) 26%,transparent 72%);
   animation:ambientBreathe 13s ease-in-out infinite alternate}
@@ -44,6 +44,5 @@ a:focus-visible,button:focus-visible,.filters button:focus-visible,.bg-switch bu
   .hero-cta,.feature .cta{padding:10px 13px}
 }
 @media(prefers-reduced-motion:reduce){
-  .scroll-aurora{transition:none;transform:none!important}
-  .scroll-aurora::before,.scroll-aurora::after{animation:none;will-change:auto}
+  .scroll-aurora::before,.scroll-aurora::after{animation:none;transition:none;will-change:auto}
 }
