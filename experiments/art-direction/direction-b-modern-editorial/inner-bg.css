@@ -1,0 +1,31 @@
+/* React Bits Aurora on inner-page covers; the two-color CSS layer is its fallback. */
+.inner-aurora{position:relative;isolation:isolate;overflow:hidden}
+.inner-aurora>.wrap{position:relative;z-index:1}
+.inner-aurora-layer{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(62% 72% at 18% 12%,#BCA9F1 0%,rgba(188,169,241,0) 73%),
+    radial-gradient(64% 72% at 82% 24%,#A9D1EF 0%,rgba(169,209,239,0) 75%);
+  filter:blur(12px);opacity:.82;transform:translate3d(-3%,-1%,0) scale(1.05);
+  animation:innerAuroraDrift 15s ease-in-out infinite alternate;will-change:transform}
+.inner-aurora-layer.has-canvas{background:none;filter:none;animation:none;transform:none;opacity:1}
+.inner-aurora-layer canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
+@keyframes innerAuroraDrift{
+  0%{transform:translate3d(-3%,-1%,0) scale(1.05)}
+  50%{transform:translate3d(2%,2%,0) scale(1.11)}
+  100%{transform:translate3d(4%,-2%,0) scale(1.06)}
+}
+/* Cool field, warm actions. Keep the rest of the page's violet accent intact. */
+.inner-aurora{--action:#AE4124;--action-hover:#873019}
+.inner-aurora .btn{background:var(--action);border-color:var(--action);color:#fff}
+.inner-aurora .btn:hover{background:var(--action-hover);border-color:var(--action-hover);color:#fff}
+.inner-aurora .btn:focus-visible,.inner-aurora .filters button:focus-visible{outline-color:var(--action-hover)}
+.about-cta .btn{background:#AE4124;border-color:#AE4124;color:#fff}
+.about-cta .btn:hover{background:#873019;border-color:#873019;color:#fff}
+.inner-aurora .filters button.on{background:var(--action);border-color:var(--action);color:#fff}
+.inner-aurora .filters button:not(.on):hover{border-color:var(--action);color:var(--action)}
+@media(max-width:640px){
+  .inner-aurora-layer{filter:blur(8px);opacity:.76;animation-duration:18s}
+}
+@media(prefers-reduced-motion:reduce){
+  .inner-aurora-layer{animation:none;transform:none;will-change:auto}
+}

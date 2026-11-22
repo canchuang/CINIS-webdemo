@@ -69,20 +69,20 @@ function link(gl, vs, fs, attrib) {
 function dprCap() { return Math.min(window.devicePixelRatio || 1, window.innerWidth < 640 ? 1.25 : 1.6); }
 
 /* ---------------- Aurora ---------------- */
-function initAurora(layer) {
+function initAurora(layer, overrides = {}) {
   const canvas = document.createElement('canvas'); canvas.className = 'aurora-canvas'; layer.appendChild(canvas);
   const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false });
   if (!gl) { canvas.remove(); return; }
   const prog = link(gl, AURORA_VERTEX, AURORA_FRAGMENT, 'aPosition'); if (!prog) { canvas.remove(); return; }
   layer.classList.add('has-canvas');
-  const S = { stops: ['#BDAAF1', '#B6D5F3', '#D2C2F2'], amplitude: .78, blend: .48, speed: 2.2, height: .48, scale: .85, glow: .55, brightness: 1.1, layers: 2, opacity: .86 };
+  const S = { stops: ['#BDAAF1', '#B6D5F3', '#D2C2F2'], amplitude: .78, blend: .48, speed: 2.2, height: .48, scale: .85, glow: .55, brightness: 1.1, layers: 2, opacity: .86, ...overrides };
   const u = prog.uniforms, vao = gl.createVertexArray(), buf = gl.createBuffer();
   gl.bindVertexArray(vao); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
   gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
   const palette = new Float32Array(5 * 3);
   unwrapHues(S.stops.map(v => toOklch(hexToRgb(v)))).forEach((s, i) => palette.set(s, i * 3));
-  let clock = 0, reveal = reduceMotion ? 1 : 0, raf = 0, last = 0;
+  let clock = 0, reveal = reduceMotion ? 1 : 0, raf = 0, last = 0, visible = true;
   function render() {
     gl.viewport(0, 0, canvas.width, canvas.height); gl.useProgram(prog.program); gl.bindVertexArray(vao);
     gl.uniform2f(u.uResolution, canvas.width, canvas.height);
@@ -99,7 +99,7 @@ function initAurora(layer) {
   }
   function resize() { const r = dprCap(); canvas.width = Math.max(1, Math.round(layer.clientWidth * r)); canvas.height = Math.max(1, Math.round(layer.clientHeight * r)); render(); }
   function frame(now) {
-    raf = 0; if (document.hidden) return;
+    raf = 0; if (document.hidden || !visible) { last = 0; return; }
     const heroEl = document.querySelector('.hero-v2x');
     if (heroEl && heroEl.getAttribute('data-bg') !== 'aurora') { last = 0; raf = requestAnimationFrame(frame); return; }
     const dt = last ? clamp((now - last) / 1000, .0005, .05) : 1 / 60; last = now;
@@ -109,6 +109,9 @@ function initAurora(layer) {
   }
   function wake() { if (!raf && !reduceMotion) raf = requestAnimationFrame(frame); else if (reduceMotion) render(); }
   new ResizeObserver(resize).observe(layer);
+  if (layer.classList.contains('inner-aurora-layer') && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; if (visible) wake(); }, { threshold: 0 }).observe(layer);
+  }
   resize(); wake();
   return { wake, render };
 }
@@ -182,12 +185,17 @@ function initGrainient(layer) {
 
 function boot() {
   const hero = document.querySelector('.hero-v2x');
-  if (!hero) return;
-  const aLayer = hero.querySelector('.bg-aurora');
-  const gLayer = hero.querySelector('.bg-grainient');
+  const aLayer = hero?.querySelector('.bg-aurora');
+  const gLayer = hero?.querySelector('.bg-grainient');
   const a = aLayer ? initAurora(aLayer) : null;
   const g = gLayer ? initGrainient(gLayer) : null;
+  const innerLayer = document.querySelector('.inner-aurora-layer');
+  const inner = innerLayer ? initAurora(innerLayer, {
+    stops: ['#BCA9F1', '#A9D1EF', '#BCA9F1'],
+    amplitude: .62, blend: .7, speed: .85, height: .42,
+    scale: .8, glow: .6, brightness: 1.05, layers: 2, opacity: .72
+  }) : null;
   /* ensure only the active scheme animates: pause inactive by skipping frames */
-  document.addEventListener('visibilitychange', () => { if (a) a.wake(); if (g) g.wake(); });
+  document.addEventListener('visibilitychange', () => { if (a) a.wake(); if (g) g.wake(); if (inner) inner.wake(); });
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();

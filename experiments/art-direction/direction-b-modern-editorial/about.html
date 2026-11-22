@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSansVF.min.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="visual-refine.css">
+<link rel="stylesheet" href="inner-bg.css">
 </head>
 <body>
 <header class="site-nav">
@@ -30,7 +31,8 @@
 </header>
 
 <main class="page-fade">
-<section class="about-hero">
+<section class="about-hero inner-aurora">
+  <div class="inner-aurora-layer" aria-hidden="true"></div>
   <div class="wrap">
     <span class="en">关于 — Profile</span>
     <h1 class="zh-h1" style="margin-top:18px">编辑式的头脑，<br><span class="accent">系统化</span>的手。</h1>
@@ -110,6 +112,8 @@
     <span class="en">关于 · Modern Editorial</span>
   </div>
 </footer>
+<script src="rb-shaders.js"></script>
+<script src="hero-bg-canvas.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
