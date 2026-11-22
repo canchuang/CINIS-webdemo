@@ -153,3 +153,17 @@ The Netlify **public site object** is readable without a token and gives us the 
 - **Hashes:** `assets/source/cinis-assets-hashes.csv` (per-file SHA256 + bytes).
 - **Manifest:** `docs/ASSET-BACKUP-MANIFEST.md` (human-readable full listing).
 - **Immutability:** originals are read-only; processed outputs go to `assets/projects/cinis/*` (never overwrite source).
+
+
+---
+
+## 7. PHASE 29 — STATUS UPDATE（supersedes §4 items where noted）
+
+> 本节为最新状态，覆盖 Phase 01 审计中的部分假设；历史内容保留。
+
+- **实现形态**：作品集以**静态原型**交付，位于 `repo/experiments/art-direction/direction-b-modern-editorial/`（Modern Editorial；HTML/CSS/JS + 少量 vanilla WebGL shader），**不是** Phase 01 设想的 React Router 重构。分支 `portfolio-redesign` 已有完整提交历史；**尚未 push**（无写权限/token），未改 `main`/`gh-pages`。
+- **MOVA 素材**：15 屏真实界面 + `mova.html` 案例页已建成（取代 §4.3「MOVA assets absent」）。仍缺：完整影院列表/详情、最终浅色 Design System、原型公开访问权限。
+- **PES 素材**：已在用户课程资料找到真实展板（`300dpi.jpg` 7442×5264 等）并建成 `pes.html`（取代 §4.3「PES assets absent」）。仍缺：工程测试数据、角色/周期/参赛获奖。
+- **CINIS**：原型 23 屏；已抓取 18 屏 + 完成方式弹层，页面展示 17 状态；仍缺 Figma 源文件、研究/测试资料、少量次要状态截图。
+- **个人信息**：About 已使用确认信息（颜夕和 · 浙江科技大学产品设计 · 大三 · UI/UX 与交互设计）；**Gmail / 简历 / 社交链接仍缺**（§4.5 仍未解决）。
+- **Phase 29 全站复核**：的首页、作品、About、Contact、CINIS、PES、MOVA 七页，在 1440 与 390 下均无破图/缺 alt/失效链接/横向溢出/可见 TODO；本地 href/src 全部解析。

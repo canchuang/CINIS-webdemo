@@ -2,6 +2,7 @@
 
 > Consolidated blockers and decisions needed from the user. Grouped by priority.
 > **Round 2 update (2026-11-19): Q1 and Q2 are now RESOLVED** (Netlify site confirmed bound to `CINIS-webdemo`, production `main`). See closed items below.
+> **记录说明（Phase 29）**：本文保留各阶段历史记录；其中“PES 无素材 / 不建案例页”“MOVA 无页面”等已被后续阶段取代。**以文末「PHASE 29 — 当前状态摘要」为准。**
 
 ---
 
@@ -233,3 +234,23 @@
 | CINIS 次要状态截图 | 标注待补 | 可以（已含 17 个真实状态） |
 | PES 参赛 / 获奖信息 | 页面未展示 | 可以 |
 | 《调研报告.pdf》是否可引用其结论 | 未引用（当前无 PDF 文本提取工具） | 可以（仅用展板） |
+
+
+---
+
+## PHASE 29 — 当前状态摘要（以此为准）
+
+| 项目 / 页面 | 当前状态 | 仍缺（真实缺口） |
+|---|---|---|
+| CINIS 案例 `cinis.html` | **已建页**；展示 17 个真实界面状态（原型 23 屏，已抓取 18 屏 + 完成方式弹层）；三模式/流程/失败分支/魂火/视觉/展板截图齐备 | 次要状态截图（taskDetail/goalEdit/reminderSettings/privacy/trialConfirm/newGoal/editor/modalBgEditor）；Figma 源文件；研究/测试/角色/周期 |
+| MOVA 案例 `mova.html` | **已建页**；15 屏真实界面 + 三模式对照/流程/原型外链 | 完整影院列表/详情页；最终浅色 Design System；原型公开访问权限；研究为课程报告 n=1 初步 |
+| PES 案例 `pes.html` | **已建页**（Phase 27）；真实展板 300dpi 7442×5264 + 版面2 + 竞赛版面1；渲染/爆炸图/接口/流程/场景 | 工程测试数据（结构/散热/重量/续航/成本）；个人职责、项目周期、参赛/获奖；《调研报告.pdf》可否引用 |
+| 首页 / 作品 / About / Contact | 七页均可展示；导航/图片/链接/无横向溢出 | 联系方式（Gmail）、简历/社交链接；About 城市/可用状态、工作或实习经历（如有） |
+
+**早期记录状态**
+- PES“无素材 / 不建案例页”（Phase 16）→ **已被 Phase 27 取代**。
+- MOVA“无页面”（Phase 08 前）→ **已建页**。
+- CINIS“仅 10 屏”（Phase 22）→ **已抓取 18 屏 / 展示 17 状态**（Phase 23）。
+
+**发布前必须补充**：有效 Gmail；简历/社交链接去留；PES 个人职责与项目周期（若页面需展示）。
+**可选完善**：CINIS Figma 链接；MOVA 影院页/浅色规范/原型权限；CINIS 次要状态截图；PES 参赛/获奖；《调研报告.pdf》引用授权。

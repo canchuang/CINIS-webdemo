@@ -25,11 +25,11 @@
 
 | Project | Category | Source availability | Overall status |
 |---|---|---|---|
-| 01 — CINIS | UI/UX · Product | **Rich** — Figma-exported assets + runnable React prototype + **2 live sites (Netlify + GH Pages)** + **local backup** | Mostly **READY**; some assets **NEEDS-PROCESSING** (2× PNGs to be re-cropped for web); narrative assets **MISSING** (process/research docs) |
-| 02 — Portable Energy Storage | Product · Industrial | **None found** — no repo, no assets, no workspace files | Almost entirely **MISSING** |
-| 03 — MOVA | UI/UX | **Rich (screens)** — 15 real hi-fi screens received (Phase 07) + backup + hash | **READY** for hi-fi/flow; prototype + research **MISSING** |
+| 01 — CINIS | UI/UX · Product | **Rich** — Figma-exported assets + runnable React prototype + **2 live sites (Netlify + GH Pages)** + **local backup** | **READY** — 18 屏已抓取 / 页面展示 17 状态（Phase 23/29）；研究/测试/角色/周期仍缺；Figma 链接待补 |
+| 02 — Portable Energy Storage | Product · Industrial | **Found (Phase 27)** — 真实课程展板 `300dpi.jpg` 7442×5264 + `版面2`/`竞赛版面1` + `调研报告.pdf`；派生图 `assets/pes/` | 视觉/结构 **READY**；工程测试/角色/周期待补 |
+| 03 — MOVA | UI/UX | **Rich (screens)** — 15 real hi-fi screens received (Phase 07) + backup + hash | **READY**（15 屏 + `mova.html`）；影院列表/详情、最终浅色 DS、原型公开权限待补；研究为课程报告 n=1 初步 |
 
-> CINIS is fully available (repo + 2 live deployments + local backup). PES and MOVA have **no discoverable source** until the user provides files or links.
+> 三个项目现均有可核实来源：CINIS（repo + 2 live + 备份）、MOVA（15 屏 + 案例页）、PES（课程展板 + 案例页）。仍缺项见 `OPEN-QUESTIONS.md` Phase 29。
 
 ---
 
@@ -75,6 +75,7 @@ All are 2×-optimized transparent PNGs exported from Figma. Previewed and confir
 `splash · today · goals · goalDetail · growth · characterFile · achievements · focus · history · me`
 
 - 已用于 CINIS 案例页（8）：`today / growth / characterFile / achievements / goals / focus / history / me`（路径见 `direction-b-modern-editorial/assets/`）。
+- **PHASE 23/29 更新：已抓取 18 屏**（新增 roles/onboarding/chooseMode/taskDone/stageProgress/settle/terminal/rekindle/comeback），页面展示 **17 个界面状态**；剩余 taskDetail/goalEdit/reminderSettings/privacy/trialConfirm/newGoal/editor/modalBgEditor 待抓。
 - **作品列表 CINIS 封面（Phase 17）**：使用 `screen-today / screen-growth / screen-characterFile`（原生 780×1688 @2×）三屏组合，按原比例 `contain` 展示、约 23% 卡宽，**不放大、不裁切**。
 - **仍未抓取**：`roles · onboarding · taskDone · stage · settle · terminal · rekindle · reminderSettings · privacy · stageProgress · comeback · trialConfirm · newGoal · editor · modalBgEditor` + `chooseMode` 底部弹层 → **NEEDS-PROCESSING（待补抓）**。
 - 源：`https://canchuang.github.io/CINIS-webdemo/#<route>` 或 `https://cinis.netlify.app/#<route>`（均 200，见 Phase 12 探测）。
