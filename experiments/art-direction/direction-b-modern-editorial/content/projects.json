@@ -1,0 +1,78 @@
+[
+  {
+    "slug": "cinis",
+    "order": 1,
+    "title": "CINIS",
+    "filter": "uiux",
+    "worksLayout": "big",
+    "coverClass": "cinis-card",
+    "worksMeta": "01 — UI/UX · 产品设计",
+    "homeLayout": "feature",
+    "homeMeta": "01",
+    "homeCat": "UI/UX · 产品设计 · 原型",
+    "homeTags": ["UI/UX", "产品设计", "原型"],
+    "summary": "游戏化自律产品：三模式、魂火成长体系、23 屏高保真原型。",
+    "homeSummary": "游戏化自律产品 —— 三模式机制、魂火成长体系，以及 23 屏可交互的高保真原型。",
+    "cover": {
+      "kind": "triptych",
+      "images": [
+        { "src": "assets/screen-today.png", "alt": "CINIS 今日界面" },
+        { "src": "assets/screen-growth.png", "alt": "CINIS 成长界面" },
+        { "src": "assets/screen-characterFile.png", "alt": "CINIS 角色档案" }
+      ]
+    },
+    "page": "cinis.html",
+    "showOnHome": true,
+    "showInWorks": true
+  },
+  {
+    "slug": "pes",
+    "order": 2,
+    "title": "镇岳",
+    "filter": "product",
+    "worksLayout": "small",
+    "coverClass": "pes-card",
+    "worksMeta": "02 — 产品设计 · 工业设计",
+    "homeLayout": "item",
+    "homeMeta": "02 — 产品设计 · 工业设计",
+    "homeCat": "",
+    "homeTags": [],
+    "summary": "便携储能救援设备：6 槽 18V 工具电池、多口输出与现场快速部署。",
+    "homeSummary": "便携储能救援设备 —— 6 槽工具电池、多口输出与现场快速部署。",
+    "cover": {
+      "kind": "single",
+      "images": [
+        { "src": "assets/pes/render-card.jpg", "alt": "镇岳·机动能源基站 产品渲染" }
+      ]
+    },
+    "page": "pes.html",
+    "showOnHome": true,
+    "showInWorks": true
+  },
+  {
+    "slug": "mova",
+    "order": 3,
+    "title": "MOVA",
+    "filter": "uiux",
+    "worksLayout": "wide",
+    "coverClass": "mova-card",
+    "worksMeta": "03 — UI/UX 设计 · 票务",
+    "homeLayout": "item",
+    "homeMeta": "03 — UI/UX 设计 · 票务",
+    "homeCat": "",
+    "homeTags": [],
+    "summary": "电影购票与观影体验——从场次筛选、选座到电子票的完整购票体验。",
+    "homeSummary": "电影购票与观影体验产品 —— 购票流程与选座交互。",
+    "cover": {
+      "kind": "triptych",
+      "images": [
+        { "src": "assets/mova/02-movie-logged-out.png", "alt": "MOVA 电影首页" },
+        { "src": "assets/mova/09-seat-select.png", "alt": "MOVA 选座" },
+        { "src": "assets/mova/13-payment-success.png", "alt": "MOVA 电子票" }
+      ]
+    },
+    "page": "mova.html",
+    "showOnHome": true,
+    "showInWorks": true
+  }
+]

@@ -1,0 +1,5 @@
+/* Phase 30 — data-driven project cards: ensure real project cards keep interactive affordance.
+   (Overrides the earlier placeholder-only .pes-card non-interactive rules from Phase 18.) */
+.wcard.pes-card{cursor:pointer}
+.wcard.pes-card:hover .cap h3{color:var(--accent)}
+.wcard.pes-card:hover .frame img{transform:scale(1.05)}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{TITLE}} — 案例研究 · 颜夕和</title>
+<meta name="description" content="{{SUMMARY}}">
+<meta property="og:type" content="article"><meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="颜夕和 · Portfolio">
+<meta property="og:title" content="{{TITLE}} — 颜夕和">
+<meta property="og:description" content="{{SUMMARY}}">
+<script>document.documentElement.className+=' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSansVF.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="pes.css">
+</head>
+<body>
+<header class="site-nav">
+  <div class="inner">
+    <a class="brand" href="index.html">颜夕和</a>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="works.html" class="active">作品</a>
+      <a href="about.html">关于</a>
+      <a href="contact.html">联系</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page-fade cs cs-pes">
+<section class="cs-cover">
+  <div class="wrap">
+    <div class="kick"><span class="en">案例 · {{CATEGORY}}</span><span class="en">Project</span></div>
+    <h1 class="zh-h1" style="margin-top:14px">{{TITLE}}<span class="accent">.</span></h1>
+    <p class="dek zh-body" style="max-width:56ch">{{SUMMARY}}</p>
+    <div class="cs-meta">
+      <div><b>类别</b><span class="zh">{{CATEGORY}}</span></div>
+      <div><b>角色</b><span class="zh">待补充</span></div>
+      <div><b>时间</b><span class="zh">待补充</span></div>
+    </div>
+    <figure class="pes-hero-shot"><img src="{{COVER}}" alt="{{TITLE}} 封面"></figure>
+    <nav class="toc rv" aria-label="目录">
+      <a href="#ov"><b>01</b>项目概述</a>
+      <a href="#bg"><b>02</b>背景与问题</a>
+      <a href="#process"><b>03</b>设计与过程</a>
+      <a href="#result"><b>04</b>结果</a>
+      <a href="#reflect"><b>05</b>反思</a>
+    </nav>
+  </div>
+</section>
+
+<div class="cs-body">
+  <!-- 在此填写：用真实素材/记录支撑每一段；无证据不写结论与数字 -->
+  <div class="cs-marker" id="ov"><h2 class="zh">项目概述 <span class="en">Overview</span></h2><span class="mono">01</span></div>
+  <p class="drop zh-body">{{SUMMARY}}</p>
+
+  <div class="cs-marker" id="bg"><h2 class="zh">背景与问题 <span class="en">Background</span></h2><span class="mono">02</span></div>
+  <p class="zh-body">[待填写：项目背景与要解决的问题；如为设计假设请注明。]</p>
+
+  <div class="cs-marker" id="process"><h2 class="zh">设计与过程 <span class="en">Process</span></h2><span class="mono">03</span></div>
+  <p class="zh-body">[待填写：关键设计决策与过程；配真实图片/结构图/流程图。]</p>
+
+  <div class="cs-marker" id="result"><h2 class="zh">结果 <span class="en">Outcome</span></h2><span class="mono">04</span></div>
+  <p class="zh-body">[待填写：可核实的结果；没有测试/验收材料时不要写实测结论。]</p>
+
+  <div class="cs-marker" id="reflect"><h2 class="zh">反思 <span class="en">Reflection</span></h2><span class="mono">05</span></div>
+  <p class="zh-body">[待填写：经验与边界。]</p>
+  <p style="margin:34px 0 10px"><a class="btn" href="works.html">← 返回作品</a></p>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span class="en">© 2026 颜夕和 — 个人作品集</span>
+    <span class="en">{{TITLE}} · 案例研究</span>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

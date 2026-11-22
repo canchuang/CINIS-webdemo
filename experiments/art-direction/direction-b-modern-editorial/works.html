@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSansVF.min.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="content/projects-cards.css">
 </head>
 <body>
 <header class="site-nav">
@@ -33,8 +34,8 @@
   <div class="wrap">
     <h1 class="zh-h1">精选<span class="accent">作品</span>。</h1>
     <div class="intro">
-      <p class="zh-body">三个项目，横跨界面系统与工业产品设计。素材尚未齐备之处，保持诚实的占位——不伪造渲染。</p>
-      <span class="en">03 projects — 2024–2026</span>
+      <p class="zh-body">横跨界面系统与工业产品设计。未提供的材料如实标注，不伪造渲染。</p>
+      <span class="en" id="worksProjectCount">03 projects — 2024–2026</span>
     </div>
     <div class="filters" id="filters" role="group" aria-label="按类别筛选作品">
       <button type="button" class="on" data-f="all" aria-pressed="true">全部 (03)</button>
@@ -46,31 +47,7 @@
 </section>
 
 <section class="wrap">
-  <div class="wgrid" id="grid">
-    <a class="wcard big cinis-card rv" href="cinis.html" data-cat="uiux" aria-label="CINIS — UI/UX · 产品设计，查看案例">
-      <div class="frame">
-        <img src="assets/screen-today.png" alt="CINIS 今日">
-        <img src="assets/screen-growth.png" alt="CINIS 成长">
-        <img src="assets/screen-characterFile.png" alt="CINIS 角色档案">
-      </div>
-      <div class="cap"><h3 class="zh">CINIS</h3><span class="n">01 — UI/UX · 产品设计</span></div>
-      <p class="desc zh-body">游戏化自律产品：三模式、魂火成长体系、23 屏高保真原型。</p>
-    </a>
-    <a class="wcard small pes-card rv" href="pes.html" data-cat="product" aria-label="镇岳 · 机动能源基站 — 产品设计，查看案例">
-      <div class="frame"><img src="assets/pes/render-card.jpg" alt="镇岳·机动能源基站 产品渲染"></div>
-      <div class="cap"><h3 class="zh">镇岳</h3><span class="n">02 — 产品设计 · 工业设计</span></div>
-      <p class="desc zh-body">便携储能救援设备：6 槽 18V 工具电池、多口输出与现场快速部署。</p>
-    </a>
-    <a class="wcard wide mova-card rv" href="mova.html" data-cat="uiux" aria-label="MOVA — UI/UX 设计 · 票务，查看案例">
-      <div class="frame">
-        <img src="assets/mova/02-movie-logged-out.png" alt="MOVA 电影首页">
-        <img src="assets/mova/09-seat-select.png" alt="MOVA 选座">
-        <img src="assets/mova/13-payment-success.png" alt="MOVA 电子票">
-      </div>
-      <div class="cap"><h3 class="zh">MOVA</h3><span class="n">03 — UI/UX 设计 · 票务</span></div>
-      <p class="desc zh-body">电影购票与观影体验——从场次筛选、选座到电子票的完整购票体验。</p>
-    </a>
-  </div>
+  <div class="wgrid" id="grid"></div>
 </section>
 </main>
 
@@ -80,34 +57,8 @@
     <span class="en">作品 · Modern Editorial</span>
   </div>
 </footer>
+<script src="content/projects-data.js"></script>
+<script src="content/projects-render.js"></script>
 <script src="app.js"></script>
-<script>
-(function(){
-  var filters=document.getElementById('filters');
-  var grid=document.getElementById('grid');
-  var status=document.getElementById('filterStatus');
-  var buttons=[].slice.call(filters.querySelectorAll('button'));
-  function apply(k, activeBtn){
-    var visible=0, names=[];
-    [].forEach.call(grid.querySelectorAll('[data-cat]'), function(c){
-      var show=(k==='all' || c.getAttribute('data-cat')===k);
-      c.style.display = show ? '' : 'none';
-      c.hidden = !show;
-      if(show){ visible++; var t=c.querySelector('.cap h3'); if(t) names.push(t.textContent.trim()); }
-    });
-    buttons.forEach(function(x){
-      var on = (x===activeBtn);
-      x.classList.toggle('on', on);
-      x.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-    if(status){ status.textContent = '已显示 ' + visible + ' 个项目：' + names.join('、'); }
-  }
-  filters.addEventListener('click', function(e){
-    var b = e.target.closest('button'); if(!b) return;
-    apply(b.getAttribute('data-f'), b);
-  });
-  apply('all', buttons[0]);
-})();
-</script>
 </body>
 </html>

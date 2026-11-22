@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSansVF.min.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="hero-bg.css">
+<link rel="stylesheet" href="content/projects-cards.css">
 </head>
 <body>
 <header class="site-nav">
@@ -69,37 +70,10 @@
 <!-- SELECTED WORKS (redesigned) -->
 <section class="sec" id="work">
   <div class="wrap">
-    <div class="sec-head rv"><h2>精选作品 <span class="en">Selected Works</span></h2><span class="marker">(03) — 2024–2026</span></div>
+    <div class="sec-head rv"><h2>精选作品 <span class="en">Selected Works</span></h2><span class="marker" id="homeProjectCount">(03) — 2024–2026</span></div>
 
-    <!-- CINIS feature -->
-    <a class="feature rv" href="cinis.html">
-      <div class="fhead"><span class="num">01</span><span class="cat">UI/UX · 产品设计 · 原型</span></div>
-      <div class="layout">
-        <div class="phones-band"><img src="assets/screen-today.png" alt="CINIS 今日界面"><img src="assets/screen-growth.png" alt="CINIS 成长界面"><img src="assets/screen-characterFile.png" alt="CINIS 角色档案"></div>
-        <div class="info">
-          <h3>CINIS</h3>
-          <p>游戏化自律产品 —— 三模式机制、魂火成长体系，以及 23 屏可交互的高保真原型。</p>
-          <div class="tags"><span>UI/UX</span><span>产品设计</span><span>原型</span></div>
-          <span class="cta">查看案例 <span class="arw">→</span></span>
-        </div>
-      </div>
-    </a>
-
-    <!-- secondary -->
-    <div class="dup">
-      <a class="item rv" href="pes.html">
-        <div class="cover"><img src="assets/pes/render-card.jpg" alt="镇岳·机动能源基站 产品渲染"></div>
-        <div class="meta">02 — 产品设计 · 工业设计</div>
-        <h3>镇岳</h3>
-        <p>便携储能救援设备 —— 6 槽工具电池、多口输出与现场快速部署。</p>
-      </a>
-      <a class="item rv" href="mova.html">
-        <div class="cover"><img src="assets/mova/02-movie-logged-out.png" alt="MOVA 电影首页"></div>
-        <div class="meta">03 — UI/UX 设计 · 票务</div>
-        <h3>MOVA</h3>
-        <p>电影购票与观影体验产品 —— 购票流程与选座交互。</p>
-      </a>
-    </div>
+    <div id="homeFeature"></div>
+    <div class="dup" id="homeSecondary"></div>
   </div>
 </section>
 
@@ -134,6 +108,8 @@
 <script src="rb-shaders.js"></script>
 <script src="hero-bg-canvas.js"></script>
 <script src="hero-bg.js"></script>
+<script src="content/projects-data.js"></script>
+<script src="content/projects-render.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
