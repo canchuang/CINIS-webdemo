@@ -1,5 +1,5 @@
 /* Phase 24 — Vanilla WebGL ports of React Bits Aurora & Grainient (JS-CSS registry shaders, verbatim).
-   No React runtime / no dependencies. Interactions & click-swirl disabled; light mode; low intensity.
+   No React runtime / no dependencies. Interactions & click-swirl disabled; light mode.
    Falls back to CSS gradients if WebGL2 unavailable; static frame under prefers-reduced-motion. */
 const { AURORA_VERTEX, AURORA_FRAGMENT, GRAINIENT_VERTEX, GRAINIENT_FIELD, GRAINIENT_COMPOSITE } = window.RB_SHADERS;
 
@@ -75,7 +75,7 @@ function initAurora(layer) {
   if (!gl) { canvas.remove(); return; }
   const prog = link(gl, AURORA_VERTEX, AURORA_FRAGMENT, 'aPosition'); if (!prog) { canvas.remove(); return; }
   layer.classList.add('has-canvas');
-  const S = { stops: ['#E6E0FB', '#D9E6F6', '#F1F4FA'], amplitude: .55, blend: .5, speed: .2, height: .33, scale: 1, glow: .45, brightness: .9, layers: 1, opacity: .6 };
+  const S = { stops: ['#BDAAF1', '#B6D5F3', '#D2C2F2'], amplitude: .78, blend: .48, speed: 2.2, height: .48, scale: .85, glow: .55, brightness: 1.1, layers: 2, opacity: .86 };
   const u = prog.uniforms, vao = gl.createVertexArray(), buf = gl.createBuffer();
   gl.bindVertexArray(vao); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
@@ -121,7 +121,7 @@ function initGrainient(layer) {
   const field = link(gl, GRAINIENT_VERTEX, GRAINIENT_FIELD), comp = link(gl, GRAINIENT_VERTEX, GRAINIENT_COMPOSITE);
   if (!field || !comp) { canvas.remove(); return; }
   layer.classList.add('has-canvas');
-  const S = { colors: ['#F4F6FA', '#E8EFF8', '#EFEAFB', '#E3ECF7'], type: 0, angle: 55, bands: 1, speed: .2, flow: .45, scale: 1, softness: 1, silk: .15, grainAmount: .028, grainSize: 1.1, grainAnimated: true, contrast: .92, saturation: .55, variation: 0, interactive: false, clickSwirl: false, intro: false };
+  const S = { colors: ['#F2F4F7', '#C9BDF1', '#BFD8F2', '#DED2F4', '#F2F4F7'], type: 0, angle: 55, bands: 1, speed: .72, flow: .85, scale: 1, softness: .88, silk: .2, grainAmount: .052, grainSize: 1.1, grainAnimated: true, contrast: 1.02, saturation: 1, variation: 0, interactive: false, clickSwirl: false, intro: false };
   const vao = gl.createVertexArray(); gl.bindVertexArray(vao);
   const target = gl.createTexture();
   gl.bindTexture(gl.TEXTURE_2D, target);
@@ -129,7 +129,7 @@ function initGrainient(layer) {
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
   const buffer = gl.createFramebuffer(); const fieldSize = { w: 0, h: 0 };
   const ramp = new Float32Array(8 * 3), stirs = new Float32Array(24 * 4), stirW = new Float32Array(24), twirls = new Float32Array(4 * 4);
-  const labs = S.colors.map(v => toLab(hexToRgb(v))); const LIFT = .2;
+  const labs = S.colors.map(v => toLab(hexToRgb(v))); const LIFT = .06;
   const blanks = labs.map(([L]) => Math.abs(L - labs[0][0]) < .1); const tints = labs.filter((_, i) => !blanks[i]).reverse();
   labs.forEach((_, i) => { const [L, a, b] = blanks[i] ? [1, 0, 0] : tints.shift(); ramp.set([L + (1 - L) * LIFT, a * (1 - LIFT), b * (1 - LIFT)], i * 3); });
   let time = 0, grainFrame = 0, raf = 0, last = 0, grainClock = 0;
@@ -170,7 +170,7 @@ function initGrainient(layer) {
     const heroEl = document.querySelector('.hero-v2x');
     if (heroEl && heroEl.getAttribute('data-bg') !== 'grainient') { last = 0; raf = requestAnimationFrame(frame); return; }
     const dt = last ? clamp((now - last) / 1000, .001, .05) : 1 / 60; last = now;
-    time += dt * S.speed * .16; grainClock += dt;
+    time += dt * S.speed * .5; grainClock += dt;
     if (S.grainAnimated && grainClock > 1 / 16) { grainClock = 0; grainFrame = (grainFrame + 1) % 97; }
     draw(); raf = requestAnimationFrame(frame);
   }
@@ -185,11 +185,9 @@ function boot() {
   if (!hero) return;
   const aLayer = hero.querySelector('.bg-aurora');
   const gLayer = hero.querySelector('.bg-grainient');
-  const a = null; /* Aurora keeps P24 CSS implementation to preserve approved visual baseline */
+  const a = aLayer ? initAurora(aLayer) : null;
   const g = gLayer ? initGrainient(gLayer) : null;
   /* ensure only the active scheme animates: pause inactive by skipping frames */
-  const isActive = scheme => hero.getAttribute('data-bg') === scheme;
-  if (a) { const origWake = a.wake; }
   document.addEventListener('visibilitychange', () => { if (a) a.wake(); if (g) g.wake(); });
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();

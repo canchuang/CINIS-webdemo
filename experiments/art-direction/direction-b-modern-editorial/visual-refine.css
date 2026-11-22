@@ -1,0 +1,15 @@
+/* Small-screen rhythm shared by the home, works, and case pages. */
+@media (max-width:640px){
+  .site-nav .inner{padding:12px var(--gutter);gap:12px}
+  .site-nav nav{gap:clamp(10px,3vw,16px)}
+  .site-nav nav a{display:inline-flex;align-items:center;min-height:44px}
+  .hx-top{padding-bottom:20px}
+  .hx-foot{margin-top:22px;padding:24px 0 28px;gap:26px}
+  .hx-foot .lede{line-height:1.75}
+  .sec-head h2{flex-wrap:wrap;gap:6px 12px}
+  .sec-head h2 .en{font-size:10px}
+  .feature .layout{gap:24px}
+  .phones-band{aspect-ratio:4/3}
+  .phones-band img{width:28%}
+  .dup{gap:28px;margin-top:32px}
+}
