@@ -3,3 +3,11 @@
 .wcard.pes-card{cursor:pointer}
 .wcard.pes-card:hover .cap h3{color:var(--accent)}
 .wcard.pes-card:hover .frame img{transform:scale(1.05)}
+
+@media (max-width:640px){
+  .wgrid{gap:38px}
+  .wcard.big .frame,.wcard.small .frame,.wcard.wide .frame,
+  .wcard.cinis-card .frame,.wcard.pes-card .frame{aspect-ratio:4/3}
+  .wcard .cap{align-items:flex-start;flex-wrap:wrap;gap:4px 12px}
+  .wcard .desc{font-size:15px;line-height:1.7}
+}
