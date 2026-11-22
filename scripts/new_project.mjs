@@ -83,7 +83,7 @@ try {
   console.log('  - 素材目录：assets/projects/' + slug + '/');
   console.log('  - 案例页模板：' + slug + '.html（可自由定制正文，不受 JSON 限制）');
   console.log('  - 已追加 content/projects.json 并重新生成 content/projects-data.js');
-  console.log('\n下一步：1) 把封面/图片放进素材目录；2) 编辑 ' + slug + '.html 正文；3) 本地预览 node _tools/server.mjs "' + SITE + '" 8123');
+  console.log('\n下一步：1) 把封面/图片放进素材目录；2) 编辑 ' + slug + '.html 正文；3) 本地预览：cd "' + SITE + '" && python -m http.server 8123');
 } catch (e) {
   console.error('✗ 新增失败：' + e.message);
   if (e.errors) e.errors.forEach(x => console.error('  - ' + x));

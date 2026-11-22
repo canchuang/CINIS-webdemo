@@ -51,6 +51,7 @@
      --home true --works true
    ```
    可选：`--feature`（首页大卡）、`--home false` / `--works false`（暂不展示）、`--tags "UI/UX,产品设计"`、`--cover-alt "封面描述"`、`--dry-run`（只打印将写入的内容，不落盘）。
+   **注意**：`--cover` 与所有素材路径都**相对于“站点目录”**（`experiments/art-direction/direction-b-modern-editorial/`），不是命令执行时所在的 shell 目录；脚本按站点目录解析并校验文件存在。
    脚本会：校验参数 → 创建素材目录 → 从模板生成 `<slug>.html` → 追加 `content/projects.json` → 重新生成 `content/projects-data.js`。
 3. **编辑案例页**：打开新生成的 `站点目录/<slug>.html`，按模板中的 01–05 区块填写真实内容。**案例正文不写进 JSON**；JSON 只记录卡片元数据。
 4. **本地预览**：
@@ -59,7 +60,7 @@
    python -m http.server 8123
    # 打开 http://localhost:8123/
    ```
-   （或使用工作区的 `node _tools/server.mjs "<站点目录>" 8123`）
+   （等价于在站点目录运行 `python -m http.server 8123`；无需任何依赖）
 5. **提交**：`content/projects.json`、`content/projects-data.js`、`assets/projects/<slug>/`、`<slug>.html`（以及如需的样式）。
 
 > 新增后，**首页/作品列表的项目数量、顺序、封面、分类、链接、筛选结果会自动同步**；无需再改 HTML 卡片。
@@ -86,11 +87,11 @@
   - `portfolio-redesign` 分支**没有**连接到任何自动预览/自动部署；
   - 现有的 Netlify `cinis.netlify.app` 与 GitHub Pages 都绑定 **`main`**，推送作品集分支**不会**更新它们；
   - 因此**现在不会自动上线**，也不要在浏览器/仓库保存 GitHub / Netlify Token 或部署密钥。
-- **以后要发布（需你在平台侧配置）**：
-  1. 新建一个 Netlify 站点，绑定 `portfolio-redesign` 分支，**Base directory** 设为
-     `experiments/art-direction/direction-b-modern-editorial`，Publish directory 设为 `.`；或
-  2. 用 GitHub Pages 指向包含该站点目录的分支/文件夹。
-  2. 平台账号与授权由你完成；本仓库不保存任何部署密钥。发布前建议先在本地按第 4 步预览确认。
+- **以后要发布（需你在平台侧配置，不能复用 CINIS 站点）**：
+  1. **新建独立的“作品集”部署站点**（不要复用 `cinis.netlify.app`，它绑定 `main` 的 CINIS 原项目）。以 Netlify 为例：New site → 选择本仓库 → Branch = **`portfolio-redesign`** → **Base directory** = `experiments/art-direction/direction-b-modern-editorial` → **Build command** 留空（纯静态）→ **Publish directory** = `.`。
+  2. 平台账号与授权由你完成；本仓库与浏览器**不保存任何 Token / 部署密钥**。
+  3. **部署连通后**：每次新增或修改作品，都需要 **commit 并 push 到 `portfolio-redesign`**（若站点开启自动部署）才会触发线上更新；否则需在平台手动触发一次 Deploy。**本地改文件不会自动上线**。
+  4. 发布前先在本地按第 4 步预览确认；GitHub Pages 若要用，需单独的分支/Actions 把站点目录发布到根，不要动 `main`。
 
 ## E. 约束
 - 不提供“看起来能提交但无法保存”的前端表单；所有变更走 JSON + 脚本。
