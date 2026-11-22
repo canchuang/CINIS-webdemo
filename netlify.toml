@@ -1,0 +1,3 @@
+﻿[build]
+  base = "experiments/art-direction/direction-b-modern-editorial"
+  publish = "."
