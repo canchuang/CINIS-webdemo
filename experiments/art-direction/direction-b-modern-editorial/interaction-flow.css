@@ -1,0 +1,49 @@
+/* Ambient light follows the reading position while content stays on its own layer. */
+body > main, body > footer{position:relative;z-index:1}
+.scroll-aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+  --flow-x:0vw;--flow-y:0vh;
+  transform:translate3d(var(--flow-x),var(--flow-y),0);
+  transition:transform 1000ms cubic-bezier(.2,0,.2,1);contain:paint}
+.scroll-aurora::before,.scroll-aurora::after{content:"";position:absolute;border-radius:50%;
+  filter:blur(54px);opacity:.28;will-change:transform}
+.scroll-aurora::before{width:74vw;height:66vh;left:-24vw;top:8vh;
+  background:radial-gradient(ellipse,#BCA9F1 0%,rgba(188,169,241,.7) 26%,transparent 72%);
+  animation:ambientBreathe 13s ease-in-out infinite alternate}
+.scroll-aurora::after{width:72vw;height:70vh;right:-23vw;bottom:-20vh;
+  background:radial-gradient(ellipse,#A9D1EF 0%,rgba(169,209,239,.68) 26%,transparent 72%);
+  animation:ambientBreathe 17s ease-in-out infinite alternate-reverse}
+@keyframes ambientBreathe{to{transform:translate3d(4vw,-3vh,0) scale(1.11)}}
+
+/* Warm action colors oppose the cool field. Text, image cards and navigation keep
+   their editorial hierarchy instead of becoming solid buttons. */
+:root{--action:#AE4124;--action-hover:#873019;--action-soft:#FFF1E9}
+.btn,.btn.solid,.inner-aurora .btn,.about-cta .btn{
+  background:var(--action);border-color:var(--action);color:#fff;
+  box-shadow:0 5px 16px rgba(135,48,25,.15)}
+.btn:hover,.btn.solid:hover,.inner-aurora .btn:hover,.about-cta .btn:hover{
+  background:var(--action-hover);border-color:var(--action-hover);color:#fff;
+  box-shadow:0 9px 24px rgba(135,48,25,.23)}
+.filters button,.bg-switch button{background:rgba(255,255,255,.88);border-color:var(--action);color:var(--action-hover)}
+.filters button.on,.inner-aurora .filters button.on,.bg-switch button[aria-pressed="true"]{
+  background:var(--action);border-color:var(--action);color:#fff}
+.filters button:hover,.filters button.on:hover,.bg-switch button:hover,.bg-switch button[aria-pressed="true"]:hover{
+  background:var(--action-hover);border-color:var(--action-hover);color:#fff}
+.inner-aurora .filters button:not(.on):hover{background:var(--action-hover);border-color:var(--action-hover);color:#fff}
+.hero-cta,.feature .cta{background:var(--action);border:1px solid var(--action);color:#fff;
+  padding:10px 16px;transition:background .2s,color .2s,border-color .2s,gap .2s}
+.hero-cta:hover,.feature:hover .cta,.feature .cta:hover{background:var(--action-hover);border-color:var(--action-hover);color:#fff}
+.site-nav nav a:hover{color:var(--action-hover)}
+.site-nav nav a:hover::after{background:var(--action)}
+.figlink:hover{border-color:var(--action);background:var(--action-soft)}
+.figlink:hover .go,.toc a:hover,.longshot-wrap .cap a:hover{color:var(--action-hover)}
+.wcard:hover .cap h3,.wcard.pes-card:hover .cap h3,.feature:hover h3{color:var(--action-hover)}
+a:focus-visible,button:focus-visible,.filters button:focus-visible,.bg-switch button:focus-visible{
+  outline:3px solid var(--action-hover);outline-offset:3px}
+@media(max-width:640px){
+  .scroll-aurora::before,.scroll-aurora::after{filter:blur(38px);opacity:.2}
+  .hero-cta,.feature .cta{padding:10px 13px}
+}
+@media(prefers-reduced-motion:reduce){
+  .scroll-aurora{transition:none;transform:none!important}
+  .scroll-aurora::before,.scroll-aurora::after{animation:none;will-change:auto}
+}
