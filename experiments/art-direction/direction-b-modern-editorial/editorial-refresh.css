@@ -1,0 +1,71 @@
+/* Editorial portfolio refinement: the work remains the visual anchor. */
+:root{--reading-width:68ch}
+.site-nav .inner{min-height:76px}
+.site-nav nav a{font-size:13px;letter-spacing:.04em}
+.brand{letter-spacing:-.04em}
+.hero-v2x .hx-title{letter-spacing:-.055em}
+.hero-v2x .hx-foot{border-top:1px solid var(--line)}
+.hero-v2x .lede{max-width:34ch}
+.sec-head{align-items:end}
+.sec-head h2{font-weight:700;letter-spacing:-.045em}
+#work .sec-head{margin-bottom:clamp(28px,4vw,56px)}
+.feature .phones-band,.dup .cover,.wcard .frame{isolation:isolate;transition:background-color .3s ease,border-color .3s ease}
+.feature .phones-band{background:#e8e5fa}
+.feature:is(:hover,:focus-visible) .phones-band,.dup .item:is(:hover,:focus-visible) .cover,.wcard:is(:hover,:focus-visible) .frame{border-color:#aaa0d9;background-color:#e8e5fa}
+.feature .info h3,.dup h3{letter-spacing:-.045em}
+.feature .info p,.dup p{color:#45505c;max-width:44ch}
+.feature .fhead .cat,.dup .meta,.wcard .cap .n{font-size:12px;letter-spacing:.03em}
+.feature .info .cta,.case-link{font-size:15px}
+.dup .item{border-top:1px solid var(--line);padding-top:20px}
+.dup .cover{margin-bottom:20px}
+.dup h3{margin-bottom:12px}
+.exp2{gap:clamp(24px,4vw,56px)}
+.exp2>div{padding-top:8px}
+.exp2 h3{font-size:clamp(22px,2.2vw,30px);letter-spacing:-.03em}
+.exp2 p{max-width:28ch;color:#45505c}
+.works-hero{padding-block:clamp(64px,8vw,112px) clamp(36px,5vw,64px)}
+.works-hero h1{font-weight:700;letter-spacing:-.06em}
+.works-hero .intro{align-items:end;margin-top:clamp(28px,4vw,52px)}
+.works-hero .intro p{font-size:clamp(17px,1.7vw,21px);line-height:1.65;max-width:37ch;color:#45505c}
+.works-hero .intro .en{font-size:12px}
+.filters{gap:12px;padding-top:clamp(28px,4vw,48px)}
+.filters button{min-height:44px;padding-inline:20px;font-size:13px;letter-spacing:.03em}
+.wgrid{column-gap:clamp(24px,3.2vw,48px);row-gap:clamp(48px,6vw,90px);padding-block:clamp(52px,7vw,100px) clamp(88px,10vw,140px)}
+.wcard .cap{margin-top:22px;padding-top:18px;align-items:start}
+.wcard .cap h3{font-weight:600;font-size:clamp(26px,3vw,42px);letter-spacing:-.045em;line-height:1.1}
+.wcard .desc{max-width:44ch;font-size:16px;line-height:1.65;color:#45505c;margin-top:12px}
+.wcard .frame img{transition:transform .65s cubic-bezier(.2,0,.2,1)}
+.wcard:is(:hover,:focus-visible) .frame img{transform:scale(1.025)}
+.cs-cover h1{font-weight:700;letter-spacing:-.06em}
+.cs-cover .dek{max-width:var(--reading-width)}
+.cs-body{max-width:900px}
+.cs .cs-body>p{max-width:var(--reading-width)}
+.cs-marker{margin-top:clamp(64px,8vw,104px)}
+.next-work-card:is(:hover,:focus-visible) .next-work-visual{background:#e8e5fa}
+.work-switch-curtain{position:fixed;inset:0;z-index:10000;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(20px,5vw,80px);padding:clamp(24px,7vw,96px);pointer-events:none;background:#15191f;color:#fff;clip-path:inset(100% 0 0 0)}
+.work-switch-curtain .copy{align-self:end;padding-bottom:clamp(20px,7vh,80px)}
+.work-switch-curtain .eyebrow{display:block;margin-bottom:20px;color:#b8aefb;font:500 13px/1.4 var(--font-mono)}
+.work-switch-curtain .title{display:block;font:700 clamp(44px,9vw,132px)/.95 var(--font-zh);letter-spacing:-.06em}
+.work-switch-curtain .visual{display:flex;align-items:center;justify-content:center;gap:2%;min-height:35vh;max-height:64vh;padding:5%;overflow:hidden;background:#e8e5fa}
+.work-switch-curtain .visual img{max-width:100%;max-height:56vh;width:auto;height:auto;object-fit:contain}
+.work-switch-curtain .visual:has(img:nth-child(3)) img{max-width:30%}
+@media(max-width:760px){
+  .site-nav .inner{min-height:0}
+  .works-hero .intro{align-items:start}
+  .wgrid{row-gap:48px}
+  .work-switch-curtain{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:12px}
+  .work-switch-curtain .copy{align-self:end;padding-bottom:0}
+  .work-switch-curtain .visual{min-height:0;max-height:48vh}
+  .work-switch-curtain .visual img{max-height:43vh}
+}
+@media(max-width:640px){
+  .works-hero{padding-block:52px 32px}
+  .works-hero h1{font-size:clamp(52px,14vw,78px)}
+  .works-hero .intro{margin-top:24px}
+  .wgrid{padding-top:40px}
+  .wcard .cap{margin-top:16px;padding-top:14px}
+  .wcard .cap h3{font-size:30px}
+  .wcard .desc{font-size:16px}
+  .feature .fhead .cat{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.feature .phones-band,.dup .cover,.wcard .frame,.wcard .frame img{transition:none!important}}

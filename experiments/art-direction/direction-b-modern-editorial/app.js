@@ -54,7 +54,8 @@
       var href = a.getAttribute('href');
       if (!href || href.charAt(0) === '#' || a.target === '_blank' || /^https?:/i.test(href) || href.indexOf('mailto:') === 0) return;
       a.addEventListener('click', function (e) {
-        if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        if ((window.PROJECTS || []).some(function (p) { return p.page === href; })) return;
         e.preventDefault();
         document.body.classList.add('leaving');
         setTimeout(function () { location.href = href; }, 200);

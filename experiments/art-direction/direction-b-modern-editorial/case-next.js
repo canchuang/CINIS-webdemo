@@ -72,14 +72,4 @@
   inner.appendChild(grid);
   host.appendChild(inner);
 
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let leaving = false;
-  host.addEventListener('click', event => {
-    const link = event.target.closest('a[href]');
-    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || reduced.matches || leaving) return;
-    event.preventDefault();
-    leaving = true;
-    document.documentElement.classList.add('case-leaving');
-    setTimeout(() => { location.href = link.href; }, 180);
-  });
 })();
