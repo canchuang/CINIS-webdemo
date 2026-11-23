@@ -1,0 +1,137 @@
+/* ============================================================
+   VERTICAL RHYTHM SYSTEM — Phase 31 (site-wide)
+   Single source of vertical spacing tokens + page-level pacing.
+   Does NOT change colors, typography family, layout width or content.
+   ============================================================ */
+:root{
+  /* spacing scale */
+  --space-3xs:clamp(4px,.5vw,6px);
+  --space-2xs:clamp(8px,1vw,12px);
+  --space-xs:clamp(12px,1.4vw,16px);
+  --space-s:clamp(16px,2vw,24px);
+  --space-m:clamp(24px,3vw,32px);
+  --space-l:clamp(32px,4vw,48px);
+  --space-xl:clamp(48px,6vw,72px);
+  --space-2xl:clamp(64px,8vw,104px);
+  --space-3xl:clamp(88px,11vw,144px);
+
+  /* section rhythm states */
+  --section-tight:clamp(56px,6vw,88px);      /* reading blocks */
+  --section:clamp(72px,8.5vw,112px);         /* normal sections */
+  --section-loose:clamp(104px,11vw,160px);   /* transitions / opening */
+  --section-showcase:clamp(120px,13vw,180px);/* showcase climax */
+  --title-gap:clamp(20px,2.4vw,32px);        /* heading -> body */
+  --group-gap:clamp(16px,2vw,24px);          /* within a content group */
+  --hero-min:clamp(640px,88svh,920px);       /* opening height */
+}
+
+/* ---------- global sections / footer ---------- */
+.sec{padding-block:var(--section)}
+.footer{padding-block:var(--space-m);margin-top:0}
+
+/* ---------- HOME : opening ---------- */
+.hero-v2x{min-height:var(--hero-min);padding:clamp(32px,5.5vh,60px) 0 0;display:flex;flex-direction:column;justify-content:center}
+.hero-v2x>.wrap{width:100%}
+.hx-top{padding-bottom:var(--space-s)}
+.hx-a .rule{margin-top:var(--space-s)}
+.hx-foot{margin-top:var(--space-m);padding:var(--space-m) 0;gap:clamp(24px,3vw,40px)}
+.ticker{padding-block:var(--space-2xs)}
+
+/* HOME : transition -> showcase */
+#work{padding-top:var(--section-loose);padding-bottom:var(--section-showcase)}
+.feature{padding-top:var(--space-s);padding-bottom:var(--space-m)}
+.feature .layout{gap:clamp(20px,3vw,40px)}
+.dup{margin-top:var(--space-3xl);gap:clamp(28px,4vw,56px)}
+.item h3{margin-top:var(--space-2xs)}
+
+/* HOME : reading (philosophy / expertise) */
+#expertise{padding-block:var(--section-tight)}
+
+/* HOME : closing */
+.cta{padding:var(--section-loose) 0 calc(var(--section-loose) + var(--space-m))}
+
+/* ---------- WORKS ---------- */
+.works-hero{padding:clamp(44px,5.5vw,76px) 0 clamp(24px,3vw,36px)}
+.works-hero .intro{margin-top:var(--space-s)}
+.filters{padding-top:var(--space-l)}
+.wgrid{padding:var(--space-l) 0 var(--section);gap:clamp(28px,3.5vw,44px)}
+.wcard .desc{margin-top:var(--space-2xs)}
+
+/* ---------- CASE STUDIES : shared ---------- */
+.cs-cover{padding:clamp(48px,6.5vw,84px) 0 clamp(32px,4.5vw,56px)}
+.cs-cover .kick{margin-bottom:var(--space-s)}
+.cs-cover .dek{margin-top:var(--space-m)}
+.cs-meta{margin:var(--space-m) 0;padding:var(--space-s) 0}
+.cs-body{padding:clamp(40px,5.5vw,64px) var(--gutter) var(--section)}
+.cs-marker{margin:clamp(44px,5.5vw,76px) 0 clamp(16px,2.4vw,26px);padding-top:var(--space-xs)}
+.cs-marker:first-child{margin-top:0}
+.cs-body p{margin-bottom:var(--group-gap)}
+.cs-body .note{margin:var(--space-s) 0}
+.screens{margin:clamp(22px,3vw,36px) 0;gap:clamp(20px,3vw,36px)}
+.modes,.growth-band,.ia,.ilist,.ds,.flow{margin:var(--space-l) 0}
+
+/* PES */
+.pes-hero-shot{margin-top:var(--space-l)}
+.pes-fig{margin-top:clamp(18px,2.4vw,28px)}
+.pes-split{margin-top:var(--space-s);gap:clamp(18px,2.5vw,28px)}
+.pes-steps{margin-top:var(--space-s);gap:clamp(12px,1.6vw,18px)}
+
+/* ---------- ABOUT : reading continuity ---------- */
+.about-hero{padding:clamp(48px,6vw,80px) 0 clamp(28px,4vw,44px)}
+.about-hero .lead{margin-top:clamp(18px,2.5vw,30px)}
+.about-grid{gap:clamp(32px,4.5vw,56px)}
+.about-body h2{margin:var(--section-tight) 0 var(--title-gap)}
+.about-body h2:first-child{margin-top:0}
+.about-body p{margin-bottom:var(--group-gap)}
+.about-flow{margin-top:clamp(44px,6vw,72px)}
+.about-block{padding:clamp(28px,3.5vw,44px) 0}
+.about-block .content>p{margin-bottom:var(--group-gap)}
+.timeline{margin:var(--space-s) 0}
+.timeline .item{padding-bottom:clamp(18px,2.4vw,26px)}
+
+/* ---------- CONTACT : balanced closing ---------- */
+.contact-page{padding:clamp(56px,8vw,96px) 0 clamp(40px,6vw,72px);min-height:clamp(420px,58vh,620px)}
+.contact-page .k{margin-bottom:var(--space-s)}
+.contact-page h1{margin-bottom:clamp(24px,3.5vw,36px)}
+.contact-page .note{margin-top:var(--space-s)}
+
+/* ---------- responsive token recalibration ---------- */
+@media (max-width:1024px){
+  :root{
+    --section-tight:clamp(48px,7vw,72px);
+    --section:clamp(56px,8vw,88px);
+    --section-loose:clamp(80px,10vw,120px);
+    --section-showcase:clamp(88px,12vw,132px);
+    --hero-min:clamp(520px,70svh,720px);
+  }
+}
+@media (max-width:640px){
+  :root{
+    --section-tight:clamp(36px,7vw,56px);
+    --section:clamp(40px,8vw,64px);
+    --section-loose:clamp(64px,10vw,96px);
+    --section-showcase:clamp(72px,12vw,96px);
+    --title-gap:clamp(16px,4vw,24px);
+    --group-gap:clamp(12px,3vw,20px);
+    --hero-min:auto;
+  }
+  .hero-v2x{min-height:auto;padding:clamp(28px,6vh,44px) 0 0}
+  .hx-foot{padding:var(--space-s) 0}
+  .cta{padding:var(--section-loose) 0 var(--section)}
+  .contact-page{min-height:0}
+  .about-block{padding:clamp(24px,5vw,32px) 0}
+  .works-hero{padding:clamp(32px,7vw,44px) 0 var(--space-s)}
+  .wgrid{padding:var(--space-s) 0 var(--section-loose)}
+  .cs-cover{padding:clamp(36px,8vw,52px) 0 var(--space-l)}
+  .cs-body{padding:var(--space-l) var(--gutter) var(--section)}
+}
+@media (max-width:480px){
+  :root{
+    --section:clamp(34px,7vw,48px);
+    --section-loose:clamp(52px,9vw,72px);
+    --section-showcase:clamp(56px,10vw,76px);
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  /* spacing is static; no change needed, kept for completeness */
+}
