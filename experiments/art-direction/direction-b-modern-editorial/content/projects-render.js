@@ -29,9 +29,6 @@
       var info = el('div', 'info');
       info.appendChild(el('h3', null, feature.title));
       info.appendChild(el('p', null, feature.homeSummary || feature.summary));
-      var tags = el('div', 'tags');
-      (feature.homeTags || []).forEach(function (t) { tags.appendChild(el('span', null, t)); });
-      info.appendChild(tags);
       var cta = el('span', 'cta'); cta.appendChild(document.createTextNode('查看案例 '));
       var arw = el('span', 'arw', '→'); cta.appendChild(arw); info.appendChild(cta);
       layout.appendChild(band); layout.appendChild(info);
@@ -40,16 +37,18 @@
     if (secondaryHost) {
       secondary.forEach(function (p) {
         var a = el('a', 'item rv'); a.href = p.page;
-        var cov = el('div', 'cover'); cov.appendChild(imgs(p.cover)[0] || el('div', 'placeholder'));
+        var cov = el('div', 'cover');
+        imgs(p.cover).forEach(function (im) { cov.appendChild(im); });
         a.appendChild(cov);
-        a.appendChild(el('div', 'meta', p.homeMeta || (pad(p.order) + ' — ' + p.worksMeta)));
+        a.appendChild(el('div', 'meta', (p.worksMeta || '').replace(/^\d+\s*[—-]\s*/, '')));
         a.appendChild(el('h3', null, p.title));
         a.appendChild(el('p', null, p.homeSummary || p.summary));
+        a.appendChild(el('span', 'case-link', '查看案例 →'));
         secondaryHost.appendChild(a);
       });
     }
     var marker = document.getElementById('homeProjectCount');
-    if (marker) marker.textContent = '(' + pad(list.length) + ') — 2024–2026';
+    if (marker) marker.textContent = pad(list.length) + ' 个项目';
   }
 
   /* ---------- WORKS ---------- */
