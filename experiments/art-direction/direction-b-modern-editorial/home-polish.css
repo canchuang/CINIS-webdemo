@@ -47,3 +47,46 @@
   .dup .cover{aspect-ratio:4/3}
   #expertise{padding-top:72px}
 }
+
+/* A calmer editorial grid for the home page. Keep the existing type and color system. */
+.skip-link{position:absolute;z-index:1000;top:8px;left:var(--gutter);padding:8px 12px;background:var(--ink);color:var(--base);transform:translateY(-150%)}
+.skip-link:focus{transform:translateY(0)}
+.site-nav nav a:focus-visible,.hero-cta:focus-visible,#work a:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+.hero-v2x>.wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,18%);column-gap:clamp(32px,5vw,72px)}
+.hx-top,.hx-title,.hx-a .rule,.hx-foot{grid-column:1 / -1}
+.hx-title{max-width:12ch}
+.hx-aside{position:static;grid-column:2;grid-row:2;align-self:center;width:auto;margin-top:24px}
+.hx-foot{grid-template-columns:minmax(0,1fr) minmax(260px,.55fr);gap:clamp(32px,6vw,88px)}
+.hx-foot .lede{max-width:42ch}
+#work .sec-head{gap:16px 32px}
+.feature .layout{grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr)}
+.feature .info{align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.feature .info .tags{margin-top:8px}
+.dup .item{display:flex;flex-direction:column;min-width:0}
+.dup .cover{width:100%}
+.dup p{max-width:52ch}
+@media(max-width:1100px){
+  .hero-v2x>.wrap{display:block}
+  .hx-title{max-width:none}
+  .hx-foot{grid-template-columns:minmax(0,1.1fr) minmax(250px,.9fr)}
+}
+@media(max-width:760px){
+  .hx-foot,.feature .layout{grid-template-columns:1fr}
+  .feature .info{padding:20px 0 0}
+  .feature .info p{max-width:58ch}
+  .dup{grid-template-columns:1fr 1fr;gap:24px}
+}
+@media(max-width:640px){
+  .site-nav .inner{align-items:flex-start;flex-wrap:wrap}
+  .site-nav nav{width:100%;justify-content:space-between;gap:8px}
+  .site-nav nav a.active::before{display:none}
+  .hx-top{font-size:11px}
+  .hx-foot{grid-template-columns:1fr}
+  .hx-foot .side{align-items:stretch}
+  .hero-cta{align-self:flex-start}
+  #work .sec-head{align-items:flex-start}
+  #work .sec-head .marker{font-size:11px}
+  .feature .fhead{align-items:flex-start}
+  .dup{grid-template-columns:1fr;gap:32px}
+  .dup .item{padding-top:16px}
+}
