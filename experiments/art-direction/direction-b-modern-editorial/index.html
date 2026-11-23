@@ -9,7 +9,7 @@
 <meta property="og:description" content="个人作品集 — 现代编辑式设计，中文优先。产品设计专业学生，专注 UI/UX 与交互设计。">
 <title>颜夕和 — 产品设计专业学生 · UI/UX 与交互设计</title>
 <meta name="description" content="个人作品集 — 现代编辑式设计，中文优先。产品设计专业学生，专注 UI/UX 与交互设计。">
-<script>document.documentElement.className+=' js';</script>
+<script>document.documentElement.classList.add('js');if(/[?&]static(?:[=&]|$)/.test(location.search))document.documentElement.classList.add('static');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -22,8 +22,10 @@
 <link rel="stylesheet" href="home-polish.css">
 <link rel="stylesheet" href="editorial-refresh.css">
 <link rel="stylesheet" href="rhythm.css">
+<link rel="stylesheet" href="scroll-showcase.css">
+<link rel="stylesheet" href="homepage-v2.css">
 </head>
-<body>
+<body class="home-v2">
 <a class="skip-link" href="#main-content">跳转到主要内容</a>
 <header class="site-nav">
   <div class="inner">
@@ -39,17 +41,16 @@
 
 <main class="page-fade" id="main-content">
 <!-- HERO · Version A (working default; Version B in _hero-refine.html) -->
-<section class="hero-v2x hx-a" data-bg="aurora">
+<section class="hero-v2x hx-a" data-bg="grainient">
   <div class="hero-bg" aria-hidden="true">
     <div class="bg-layer bg-aurora"></div>
     <div class="bg-layer bg-grainient"></div>
     <div class="bg-grain"></div>
   </div>
   <div class="wrap">
-    <div class="bg-switch" role="group" aria-label="背景方案对比">
-      <span class="lbl">背景</span>
-      <button type="button" data-bgset="aurora" aria-pressed="true">Aurora</button>
-      <button type="button" data-bgset="grainient" aria-pressed="false">Grainient</button>
+    <div class="bg-switch" role="group" aria-label="背景风格">
+      <button type="button" data-bgset="aurora" aria-pressed="false">光幕</button>
+      <button type="button" data-bgset="grainient" aria-pressed="true">流光</button>
     </div>
     <p class="hero-identity">颜夕和 <span>UI/UX 与产品设计</span></p>
     <h1 class="hx-title">
@@ -61,19 +62,23 @@
     <div class="hx-foot">
       <p class="lede">我是颜夕和，产品设计专业学生。喜欢把绕的流程捋顺，让界面少一点猜谜，多一点一眼就懂。</p>
       <div class="side">
-        <a class="hero-cta" href="#work">查看作品 <span class="arw" aria-hidden="true">↓</span></a>
+        <a class="hero-cta" href="#work">查看作品</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SELECTED WORKS (redesigned) -->
-<section class="sec" id="work">
+<section class="showcase" id="work">
   <div class="wrap">
     <div class="sec-head rv"><h2>精选作品</h2><span class="marker" id="homeProjectCount">03 个项目</span></div>
-
-    <div id="homeFeature"></div>
-    <div class="dup" id="homeSecondary"></div>
+  </div>
+  <div class="showcase-viewport" id="showcaseViewport">
+    <div class="showcase-stage" id="showcaseStage"></div>
+    <div class="showcase-rail" aria-hidden="true">
+      <span class="rail-track"><span class="rail-fill" id="showcaseFill"></span></span>
+      <span class="rail-count"><b id="showcaseIndex">01</b> <i>/ 03</i></span>
+    </div>
   </div>
 </section>
 
@@ -93,7 +98,7 @@
   <div class="wrap">
     <div class="k rv">联系</div>
     <h2 class="rv zh-h2">有点子？<br>聊聊看。</h2>
-    <a class="btn solid rv" href="contact.html">看看怎么联系 →</a>
+    <a class="btn solid rv" href="contact.html">看看怎么联系</a>
   </div>
 </section>
 </main>
@@ -109,6 +114,9 @@
 <script src="hero-bg.js"></script>
 <script src="content/projects-data.js"></script>
 <script src="content/projects-render.js"></script>
+<script src="vendor/gsap/gsap.min.js"></script>
+<script src="vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="scroll-showcase.js"></script>
 <script src="app.js"></script>
 <script src="interaction-flow.js"></script>
 <script src="project-motion.js"></script>

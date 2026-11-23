@@ -124,7 +124,7 @@ function initGrainient(layer) {
   const field = link(gl, GRAINIENT_VERTEX, GRAINIENT_FIELD), comp = link(gl, GRAINIENT_VERTEX, GRAINIENT_COMPOSITE);
   if (!field || !comp) { canvas.remove(); return; }
   layer.classList.add('has-canvas');
-  const S = { colors: ['#F2F4F7', '#C9BDF1', '#BFD8F2', '#DED2F4', '#F2F4F7'], type: 0, angle: 55, bands: 1, speed: .72, flow: .85, scale: 1, softness: .88, silk: .2, grainAmount: .052, grainSize: 1.1, grainAnimated: true, contrast: 1.02, saturation: 1, variation: 0, interactive: false, clickSwirl: false, intro: false };
+  const S = { colors: layer.closest('.home-v2') ? ['#E2EAF3', '#749CE4', '#FFF2AE', '#B4CEE9', '#E2EAF3'] : ['#F2F4F7', '#C9BDF1', '#BFD8F2', '#DED2F4', '#F2F4F7'], type: 0, angle: 55, bands: 1, speed: .72, flow: .85, scale: 1, softness: .88, silk: .2, grainAmount: .052, grainSize: 1.1, grainAnimated: true, contrast: 1.02, saturation: 1, variation: 0, interactive: false, clickSwirl: false, intro: false };
   const vao = gl.createVertexArray(); gl.bindVertexArray(vao);
   const target = gl.createTexture();
   gl.bindTexture(gl.TEXTURE_2D, target);
@@ -187,7 +187,7 @@ function boot() {
   const hero = document.querySelector('.hero-v2x');
   const aLayer = hero?.querySelector('.bg-aurora');
   const gLayer = hero?.querySelector('.bg-grainient');
-  const a = aLayer ? initAurora(aLayer) : null;
+  const a = aLayer ? initAurora(aLayer, document.body.classList.contains('home-v2') ? { stops: ['#6999E9', '#F6E9A2', '#99BDE7'], opacity: .94, brightness: 1.08 } : {}) : null;
   const g = gLayer ? initGrainient(gLayer) : null;
   const innerLayer = document.querySelector('.inner-aurora-layer');
   const inner = innerLayer ? initAurora(innerLayer, {

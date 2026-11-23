@@ -38,7 +38,27 @@ window.PROJECTS = [
     },
     "page": "cinis.html",
     "showOnHome": true,
-    "showInWorks": true
+    "showInWorks": true,
+    "showcase": {
+      "accent": "#E9E4FF",
+      "visual": "modes",
+      "label": "三模式 · 旅者 / 骑士 / 深渊",
+      "note": "同一套界面，三档强度与后果。",
+      "images": [
+        {
+          "src": "assets/char-traveler.png",
+          "alt": "旅者"
+        },
+        {
+          "src": "assets/char-knight.png",
+          "alt": "骑士"
+        },
+        {
+          "src": "assets/char-abyss.png",
+          "alt": "深渊"
+        }
+      ]
+    }
   },
   {
     "slug": "pes",
@@ -65,7 +85,23 @@ window.PROJECTS = [
     },
     "page": "pes.html",
     "showOnHome": true,
-    "showInWorks": true
+    "showInWorks": true,
+    "showcase": {
+      "accent": "#E7ECF2",
+      "visual": "industrial",
+      "label": "工具电池 · 多口输出 · 快速部署",
+      "note": "产品造型与内部结构的一体化组织。",
+      "images": [
+        {
+          "src": "assets/pes/render-hero.jpg",
+          "alt": "镇岳产品三视图"
+        },
+        {
+          "src": "assets/pes/exploded.jpg",
+          "alt": "镇岳结构爆炸图"
+        }
+      ]
+    }
   },
   {
     "slug": "mova",
@@ -100,6 +136,26 @@ window.PROJECTS = [
     },
     "page": "mova.html",
     "showOnHome": true,
-    "showInWorks": true
+    "showInWorks": true,
+    "showcase": {
+      "accent": "#FFE8D9",
+      "visual": "screens",
+      "label": "选片 · 场次 · 选座",
+      "note": "从发现电影到完成购票的关键界面。",
+      "images": [
+        {
+          "src": "assets/mova/02-movie-logged-out.png",
+          "alt": "MOVA 电影首页"
+        },
+        {
+          "src": "assets/mova/09-seat-select.png",
+          "alt": "MOVA 选座"
+        },
+        {
+          "src": "assets/mova/13-payment-success.png",
+          "alt": "MOVA 电子票"
+        }
+      ]
+    }
   }
 ];
