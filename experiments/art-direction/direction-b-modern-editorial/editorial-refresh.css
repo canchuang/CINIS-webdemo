@@ -69,3 +69,30 @@
   .feature .fhead .cat{font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){.feature .phones-band,.dup .cover,.wcard .frame,.wcard .frame img{transition:none!important}}
+
+/* Copy refresh: make the longest hero line readable across narrow screens. */
+.hx-a .hx-title .l2{font-size:clamp(52px,6.9vw,96px)}
+.hx-a .hx-title .l3{font-size:clamp(44px,5.5vw,80px)}
+@media(max-width:640px){
+  .hx-a .hx-title .l2{font-size:clamp(27px,7.8vw,47px);letter-spacing:-.055em;white-space:nowrap}
+  .hx-a .hx-title .l3{font-size:clamp(30px,9vw,52px);white-space:nowrap}
+  .about-hero h1{font-size:clamp(34px,8.8vw,52px);line-height:1.12}
+  .contact-page h1{font-size:clamp(36px,9.5vw,54px);line-height:1.08}
+}
+
+/* Full-width editorial grid: one shared edge for every page. */
+:root{--wrap:none;--gutter:clamp(12px,1.25vw,20px)}
+.wrap,.site-nav .inner,.next-work-inner{box-sizing:border-box;max-width:none;width:100%;margin-inline:0;padding-inline:var(--gutter)}
+.cs-body{box-sizing:border-box;max-width:none;width:100%;margin-inline:0;padding-inline:var(--gutter)}
+.contact-lines{max-width:none}
+.about-body{max-width:72ch}
+:is(.hero-v2x,.works-hero,.about-hero,.contact-page,.cs,.sec) p{
+  text-align:justify;
+  text-justify:inter-ideograph;
+  text-align-last:left;
+}
+@media(max-width:640px){
+  :root{--gutter:12px}
+  .site-nav .inner{padding-inline:var(--gutter)}
+  .cs-body{padding-inline:var(--gutter)}
+}
