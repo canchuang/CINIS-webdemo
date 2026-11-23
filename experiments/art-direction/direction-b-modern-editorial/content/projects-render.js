@@ -87,7 +87,7 @@
         var show = (k === 'all' || c.getAttribute('data-cat') === k);
         c.style.display = show ? '' : 'none';
         c.hidden = !show;
-        if (show) { visible++; var t = c.querySelector('.cap h3'); if (t) names.push(t.textContent.trim()); }
+        if (show) { visible++; var t = c.querySelector('.cap h3'); if (t) names.push((ALL.find(function (p) { return p.page === c.getAttribute('href'); }) || {}).title || t.textContent.trim()); }
       });
       buttons.forEach(function (x) {
         var on = (x === activeBtn);

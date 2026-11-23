@@ -191,7 +191,7 @@ function boot() {
   const g = gLayer ? initGrainient(gLayer) : null;
   const innerLayer = document.querySelector('.inner-aurora-layer');
   const inner = innerLayer ? initAurora(innerLayer, {
-    stops: ['#BCA9F1', '#A9D1EF', '#BCA9F1'],
+    stops: ['#6999E9', '#F6E9A2', '#99BDE7'],
     amplitude: .62, blend: .7, speed: .85, height: .42,
     scale: .8, glow: .6, brightness: 1.05, layers: 2, opacity: .72
   }) : null;

@@ -1,0 +1,52 @@
+/* Shared blue / yellow editorial palette, loaded last on all seven pages. */
+:root{--color-accent:#244fc5;--color-accent-hover:#183a98;--color-accent-soft:#e3ebfa;--color-bg:#f1f4f7;--color-surface:#e3eaf3;--color-text:#15212b;--color-text-secondary:#485b70;--color-border:#c4cfdd;--action:#244fc5;--action-hover:#183a98;--warm:#fff2ae;--accent:var(--color-accent);--accent-blue:var(--color-accent);--accent-soft:var(--color-accent-soft)}
+body .inner-aurora{--action:var(--color-accent);--action-hover:var(--color-accent-hover)}
+.inner-aurora-layer{background:radial-gradient(ellipse at 18% 30%,#94b5eb,transparent 70%),radial-gradient(ellipse at 80% 25%,#fff2ae,transparent 70%),#e3eaf3}
+.scroll-aurora{background:radial-gradient(ellipse at 22% 40%,#b8cef166,transparent 64%),radial-gradient(ellipse at 76% 60%,#fff2ae44,transparent 60%)}
+.site-nav{background:rgba(241,244,247,.94);border-color:var(--color-border)}
+.site-nav .inner{gap:24px}
+.site-nav nav{margin-left:auto}
+.site-nav nav a{font-size:14px;letter-spacing:.02em}
+.language-toggle{flex:none;font:500 14px/1.2 var(--font-heading);min-width:48px;min-height:44px;padding:10px 12px;border:1px solid var(--color-accent);border-radius:0}
+/* All actionable controls share the same blue states, on every page. */
+body :is(.btn,.hero-cta,.panel-cta,.bg-switch button,.filters button,.language-toggle){color:var(--color-accent)!important;background:#f1f4f7!important;border:1px solid var(--color-accent)!important;box-shadow:none!important;transition:background-color .2s,color .2s,border-color .2s;min-height:44px}
+body :is(.btn,.hero-cta,.panel-cta,.bg-switch button,.filters button,.language-toggle):is(:hover,:focus-visible),body :is(.btn.solid,.bg-switch button[aria-pressed="true"],.filters button.on){background:var(--color-accent)!important;color:#fff!important;border-color:var(--color-accent)!important}
+body :is(.btn.solid,.bg-switch button[aria-pressed="true"],.filters button.on):hover{background:var(--color-accent-hover)!important;border-color:var(--color-accent-hover)!important}
+body :is(.case-link,.figlink .go,.next-work-action,.next-work-all-arrow,.back-link){color:var(--color-accent);border-color:var(--color-accent)}
+body :is(.feature .phones-band,.dup .cover,.wcard .frame,.next-work-visual):hover{background-color:var(--color-accent-soft);border-color:var(--color-accent)}
+body :focus-visible{outline:2px solid var(--color-accent);outline-offset:4px}
+/* Explicit exclusion fixes the opaque Flow layer covering Aurora. */
+.home-v2 .hero-v2x[data-bg="aurora"] .bg-grainient{opacity:0;visibility:hidden}
+.home-v2 .hero-v2x[data-bg="aurora"] .bg-aurora{opacity:1;visibility:visible}
+.home-v2 .hero-v2x[data-bg="grainient"] .bg-aurora{opacity:0;visibility:hidden}
+.home-v2 .hero-v2x[data-bg="grainient"] .bg-grainient{opacity:1;visibility:visible}
+.home-v2 .bg-switch{flex-wrap:wrap;max-width:250px;justify-content:flex-end;column-gap:6px;row-gap:8px}
+.bg-status{flex-basis:100%;font:400 13px/1.4 var(--font-zh);text-align:right;color:#263c50;letter-spacing:0;text-transform:none}
+/* English needs natural wrapping rather than Chinese character-based sizes. */
+html[lang="en"] body .hx-title .l{white-space:normal;overflow-wrap:normal;letter-spacing:-.045em}
+html[lang="en"] body .hx-title .l1{font-size:clamp(58px,7.5vw,110px)}
+html[lang="en"] body .hx-title :is(.l2,.l3){font-size:clamp(38px,5.5vw,84px);line-height:1.12}
+html[lang="en"] :is(p,.note,.panel-desc){text-align:left!important}
+html[lang="en"] .cs-cover .dek{max-width:64ch}
+html[lang="en"] .toc{flex-wrap:wrap}
+html[lang="en"] .toc a{white-space:normal}
+html[lang="en"] :is(.panel-title,.cs-cover h1){overflow-wrap:anywhere}
+html[lang="en"] .panel-title{font-size:clamp(60px,8vw,124px)}
+@media(max-width:760px){
+ .site-nav .inner,body.home-v2 .site-nav .inner{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-block:12px}
+ .site-nav .brand{margin-right:auto;font-size:21px}
+ .site-nav nav,body.home-v2 .site-nav nav{order:3;flex-basis:100%;width:100%;margin:0;justify-content:space-between;gap:12px}
+ .language-toggle{order:2}
+ .home-v2 .hero-v2x,.home-v2 .hero-v2x>.wrap{min-height:calc(100svh - 122px)}
+ html[lang="en"] body .hx-title .l1{font-size:clamp(50px,13vw,84px)}
+ html[lang="en"] body .hx-title :is(.l2,.l3){font-size:clamp(32px,8vw,52px);line-height:1.18}
+ html[lang="en"] .hero-identity{max-width:55%;padding-right:0}
+ html[lang="en"] .panel-title{font-size:58px}
+ html[lang="en"] .cs-meta{gap:16px;flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){body :is(.btn,.hero-cta,.bg-switch button,.filters button,.language-toggle){transition:none}.hero-bg .bg-layer{transition:none}}
+
+.work-switch-curtain .eyebrow{color:#fff2ae}.work-switch-curtain .visual{background:#e3ebfa}
+html[lang="en"] .home-v2 .hx-title .l3 .hl{margin-left:.16em}
+html[lang="en"] :is(.cs-body p,.cs-body figcaption,.cs-body .note,.cs-body code){overflow-wrap:anywhere}
+.cs-body>*,.screens>*,.cs-meta>*{min-width:0}
