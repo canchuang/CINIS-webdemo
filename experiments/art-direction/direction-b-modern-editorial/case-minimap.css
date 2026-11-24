@@ -30,3 +30,33 @@
  .case-map-thumb{height:72px}.case-map-tiny-title{font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){.case-map-item{transition:none}}
+/* Actual page fragments, scaled without changing their internal layout. */
+.case-map-thumb{height:70px;isolation:isolate;background:var(--base)}
+.case-map-preview{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none;contain:layout style;background:var(--base);font-size:16px;text-align:left}
+.case-map-preview *{pointer-events:none!important;animation:none!important;transition:none!important}
+.case-map-preview .cs-body{padding-top:0!important;padding-bottom:0!important}
+.case-map-preview .cs-marker:first-child{margin-top:0!important}
+.case-map-preview .rv,.case-map-preview .split{opacity:1!important;transform:none!important}
+.case-map-preview .inner-aurora{background:linear-gradient(120deg,#b4cef0,#fff2ae)}
+.case-map-item{border-color:transparent!important;padding:3px}
+.case-map-selection{position:absolute;top:0;left:0;z-index:3;pointer-events:none;border:1px solid #244fc5;box-shadow:0 0 0 1px #f1f4f7aa;background:transparent;will-change:transform;transition:transform 420ms cubic-bezier(.22,1,.36,1),width 180ms ease,height 180ms ease}
+.case-map-list{padding:8px;gap:8px;touch-action:none;user-select:none;-webkit-user-select:none}
+.case-map-item{cursor:grab}.is-dragging .case-map-item{cursor:grabbing}
+.is-dragging .case-map-selection{transition:none}
+@media(max-width:1279px){.case-map-thumb{height:84px}}
+@media(prefers-reduced-motion:reduce){.case-map-selection{transition:none}}
+
+/* Origin-aware menu morph, inspired by Transitions.dev's dropdown-menu-morph. */
+.case-map{--map-open-width:116px;width:116px;height:44px;overflow:hidden;background:#f1f4f7;border:1px solid #c4cfdd;border-radius:6px;transition:width 350ms cubic-bezier(.34,1.25,.64,1),height 350ms cubic-bezier(.34,1.25,.64,1),border-radius 350ms cubic-bezier(.34,1.25,.64,1),box-shadow 350ms ease}
+.case-map.is-open{width:var(--map-open-width);height:var(--map-height,460px);border-radius:10px;box-shadow:0 8px 30px #15212b14}
+.case-map-panel{position:absolute;bottom:44px;left:0;right:0;width:auto!important;margin:0!important;border:0;background:transparent;border-radius:0;opacity:0;transform:translateY(9px);filter:blur(3px);pointer-events:none;transition:opacity 140ms ease,transform 240ms cubic-bezier(.22,1,.36,1),filter 180ms ease}
+.is-open .case-map-panel{opacity:1;transform:translateY(0);filter:blur(0);pointer-events:auto;transition-delay:65ms}
+.case-map-toggle{position:absolute;bottom:0;right:0;width:100%;height:44px;min-height:44px;border:0;border-radius:0;background:#f1f4f7;z-index:4}
+.is-open .case-map-toggle{border-top:1px solid #d7e0ec}
+.case-map-icon{transition:transform 350ms cubic-bezier(.34,1.25,.64,1)}
+.is-open .case-map-icon{transform:rotate(90deg)}
+.case-map-selection{opacity:0;transition:transform 420ms cubic-bezier(.22,1,.36,1),width 180ms ease,height 180ms ease,opacity 120ms ease}
+.is-open .case-map-selection{opacity:1}
+.is-dragging .case-map-selection{transition:none}
+@media(max-width:1279px){.case-map{--map-open-width:148px}}
+@media(prefers-reduced-motion:reduce){.case-map,.case-map-panel,.case-map-icon,.case-map-selection{transition:none!important;filter:none!important}}
