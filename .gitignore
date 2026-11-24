@@ -29,3 +29,6 @@ pnpm-debug.log*
 # 临时文件
 *.tmp
 *.tmpdir/
+
+/test-results/
+/playwright-report/

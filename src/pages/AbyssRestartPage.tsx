@@ -1,7 +1,12 @@
-﻿import styles from './AbyssRestartPage.module.css'
+import { assetUrl } from '../data/assets'
+import styles from './AbyssRestartPage.module.css'
 import { PageHeader } from '../components/PageHeader'
 
-type Props = { onBack: () => void; onAnother: () => void; onFromAshes: () => void }
+type Props = {
+  onBack: () => void
+  onAnother: () => void
+  onFromAshes: () => void
+}
 
 /** P31 后续 · 深渊（重新开始，浅色） */
 export function AbyssRestartPage({ onBack, onAnother, onFromAshes }: Props) {
@@ -10,7 +15,7 @@ export function AbyssRestartPage({ onBack, onAnother, onFromAshes }: Props) {
       <PageHeader title="重新开始" onBack={onBack} backLabel="今日" size="lg" />
 
       <div className={styles.hero}>
-        <img src="/assets/abyss-restart.png" alt="深渊" />
+        <img src={assetUrl(`/assets/abyss-restart.png`)} alt="深渊" />
       </div>
 
       <h2 className={styles.lead}>深渊不接受追回。</h2>
@@ -26,18 +31,27 @@ export function AbyssRestartPage({ onBack, onAnother, onFromAshes }: Props) {
 
       <div className={styles.keepCard}>
         <span className={styles.keepLabel}>不变的只有这些</span>
-        <p className={styles.keepValue}>永久经验 240 XP · 12 项记录 · 2 个称号</p>
+        <p className={styles.keepValue}>
+          永久经验 240 XP · 12 项记录 · 2 个称号
+        </p>
       </div>
 
       <div className={styles.actions}>
-        <button type="button" className={styles.btnSecondary} onClick={onAnother}>
+        <button
+          type="button"
+          className={styles.btnSecondary}
+          onClick={onAnother}
+        >
           再来一轮深渊
         </button>
-        <button type="button" className={styles.btnPrimary} onClick={onFromAshes}>
+        <button
+          type="button"
+          className={styles.btnPrimary}
+          onClick={onFromAshes}
+        >
           从灰烬中再来一次
         </button>
       </div>
     </div>
   )
 }
-

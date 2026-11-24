@@ -1,9 +1,21 @@
-﻿import { useEffect, useState } from 'react'
+import { assetUrl } from '../data/assets'
+import { useEffect, useState } from 'react'
 import styles from './CardFxEditorPage.module.css'
 import { HologramCard } from '../components/HologramCard'
-import { defaultCardFx, loadCardFx, saveCardFx, type CardFxConfig } from '../data/cardFx'
+import {
+  defaultCardFx,
+  loadCardFx,
+  saveCardFx,
+  type CardFxConfig,
+} from '../data/cardFx'
 
-type RangeField = { key: keyof CardFxConfig; label: string; min: number; max: number; step: number }
+type RangeField = {
+  key: keyof CardFxConfig
+  label: string
+  min: number
+  max: number
+  step: number
+}
 
 const RANGES: RangeField[] = [
   { key: 'maxTilt', label: '最大倾斜角度(°)', min: 0, max: 20, step: 1 },
@@ -46,7 +58,11 @@ export default function CardFxEditorPage() {
         </a>
         <span className={styles.title}>卡片特效编辑器（全息）</span>
         <div className={styles.actions}>
-          <button type="button" className={styles.btnGhost} onClick={() => setCfg({ ...defaultCardFx })}>
+          <button
+            type="button"
+            className={styles.btnGhost}
+            onClick={() => setCfg({ ...defaultCardFx })}
+          >
             恢复默认
           </button>
         </div>
@@ -73,7 +89,9 @@ export default function CardFxEditorPage() {
             <div key={f.key} className={styles.field}>
               <div className={styles.fieldHead}>
                 <span className={styles.fieldLabel}>{f.label}</span>
-                <span className={styles.fieldValue}>{Number(cfg[f.key]).toFixed(f.step < 1 ? 2 : 0)}</span>
+                <span className={styles.fieldValue}>
+                  {Number(cfg[f.key]).toFixed(f.step < 1 ? 2 : 0)}
+                </span>
               </div>
               <input
                 type="range"
@@ -86,7 +104,9 @@ export default function CardFxEditorPage() {
               />
             </div>
           ))}
-          <p className={styles.tip}>鼠标悬浮到右侧卡片上即可查看倾斜与彩虹效果。改动自动保存，三个模式今日页同步生效。</p>
+          <p className={styles.tip}>
+            鼠标悬浮到右侧卡片上即可查看倾斜与彩虹效果。改动自动保存，三个模式今日页同步生效。
+          </p>
         </aside>
 
         <main className={styles.previewArea}>
@@ -98,7 +118,11 @@ export default function CardFxEditorPage() {
                 <div className={styles.lv}>Lv.08</div>
               </div>
 
-              <HologramCard className={styles.card} maxTilt={cfg.maxTilt} fxOverride={cfg}>
+              <HologramCard
+                className={styles.card}
+                maxTilt={cfg.maxTilt}
+                fxOverride={cfg}
+              >
                 <div className={styles.cardInner}>
                   <div className={styles.cardTop}>
                     <span>旅者 · 第一阶段</span>
@@ -119,7 +143,11 @@ export default function CardFxEditorPage() {
                     <span>今日 2 / 3</span>
                     <span>第 3 / 7 天</span>
                   </div>
-                  <img className={styles.character} src="/assets/character-traveler.png" alt="" />
+                  <img
+                    className={styles.character}
+                    src={assetUrl(`/assets/character-traveler.png`)}
+                    alt=""
+                  />
                 </div>
               </HologramCard>
 
@@ -135,5 +163,3 @@ export default function CardFxEditorPage() {
     </div>
   )
 }
-
-

@@ -1,12 +1,33 @@
+import { assetUrl } from '../data/assets'
 import { useEffect, useState } from 'react'
 import styles from './CharSizeEditorPage.module.css'
-import { defaultCharSize, loadCharSize, saveCharSize, type CharSizeConfig } from '../data/charSize'
+import {
+  defaultCharSize,
+  loadCharSize,
+  saveCharSize,
+  type CharSizeConfig,
+} from '../data/charSize'
 import type { GameMode } from '../data/content'
 
 const META: { key: GameMode; name: string; en: string; src: string }[] = [
-  { key: 'traveler', name: '旅者', en: 'TRAVELER', src: '/assets/character-traveler.png' },
-  { key: 'knight', name: '骑士', en: 'KNIGHT', src: '/assets/character-knight.png' },
-  { key: 'abyss', name: '深渊', en: 'ABYSS', src: '/assets/character-abyss.png' },
+  {
+    key: 'traveler',
+    name: '旅者',
+    en: 'TRAVELER',
+    src: assetUrl(`/assets/character-traveler.png`),
+  },
+  {
+    key: 'knight',
+    name: '骑士',
+    en: 'KNIGHT',
+    src: assetUrl(`/assets/character-knight.png`),
+  },
+  {
+    key: 'abyss',
+    name: '深渊',
+    en: 'ABYSS',
+    src: assetUrl(`/assets/character-abyss.png`),
+  },
 ]
 
 export default function CharSizeEditorPage() {
@@ -26,7 +47,11 @@ export default function CharSizeEditorPage() {
         </a>
         <span className={styles.title}>角色大小编辑器</span>
         <div className={styles.actions}>
-          <button type="button" className={styles.btnGhost} onClick={() => setCfg({ ...defaultCharSize })}>
+          <button
+            type="button"
+            className={styles.btnGhost}
+            onClick={() => setCfg({ ...defaultCharSize })}
+          >
             恢复默认
           </button>
         </div>
@@ -53,7 +78,12 @@ export default function CharSizeEditorPage() {
               />
               <div className={styles.scaleBtns}>
                 {[80, 100, 120, 140].map((v) => (
-                  <button key={v} type="button" className={styles.miniBtn} onClick={() => set(m.key, v)}>
+                  <button
+                    key={v}
+                    type="button"
+                    className={styles.miniBtn}
+                    onClick={() => set(m.key, v)}
+                  >
                     {v}%
                   </button>
                 ))}

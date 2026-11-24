@@ -1,3 +1,4 @@
+import { assetUrl } from '../data/assets'
 import styles from './KnightRecoverPage.module.css'
 
 type Props = { onBack: () => void; onRest: () => void; onAccept: () => void }
@@ -9,7 +10,7 @@ export function KnightRecoverPage({ onRest, onAccept }: Props) {
       <p className={styles.kicker}>REKINDLE · 重燃</p>
 
       <div className={styles.hero}>
-        <img src="/assets/knight-sleep.png" alt="骑士沉睡" />
+        <img src={assetUrl(`/assets/knight-sleep.png`)} alt="骑士沉睡" />
       </div>
 
       <h1 className={styles.title}>余火未熄</h1>

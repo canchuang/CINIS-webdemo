@@ -121,3 +121,10 @@ ul {
 }
 
 
+
+.appNotice { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 9999; background: #19233a; color: white; border-radius: 12px; padding: 12px 18px; max-width: 90vw; }
+.primaryAction, .resumeSession { display: block; width: 100%; padding: 14px; margin: 14px 0; border-radius: 16px; background: var(--mode-accent, #287d68); color: white; font-weight: 600; }
+.historyRow, .achievementRow { padding: 16px 0; border-bottom: 1px solid var(--line); }
+button:disabled { opacity: .55; cursor: default; }
+input { font: inherit; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--mode-accent, #287d68); outline-offset: 3px; }

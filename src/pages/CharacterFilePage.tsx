@@ -1,21 +1,53 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import styles from './CharacterFilePage.module.css'
 import { PageHeader } from '../components/PageHeader'
+import { useAppState } from '../data/appStore'
+import { RULES, growth, type Mode } from '../domain/engine'
 import { characterFileInfo } from '../data/content'
 
-type Props = { onBack: () => void }
+type Props = { mode?: Mode; onBack: () => void }
 
 /** P37B 角色档案 */
-export function CharacterFilePage({ onBack }: Props) {
-  const c = characterFileInfo
-  const [look, setLook] = useState(c.looks.findIndex((l) => l.active))
+export function CharacterFilePage({ mode = 'traveler', onBack }: Props) {
+  const state = useAppState(),
+    g = growth(state)
+  const looks = characterFileInfo.looks
+  const [look, setLook] = useState(
+    ['traveler', 'knight', 'abyss'].indexOf(mode),
+  )
+  const names = ['初火', '行装', '誓约', '余烬', '长明']
+  const stage =
+    g.activeDays >= 60 && state.rounds.some((r) => r.rate === 1)
+      ? 4
+      : state.rounds.some((r) => r.mode === 'abyss')
+        ? 3
+        : g.passed >= 3
+          ? 2
+          : g.passed >= 1
+            ? 1
+            : 0
+  const c = {
+    ...characterFileInfo,
+    heroSrc: looks[look].src,
+    name: `${looks[look].name} · L${stage} ${names[stage]}`,
+    rounds: `已完成 ${g.passed} 轮`,
+    stages: names.map((name, i) => ({
+      code: `L${i}`,
+      name,
+      done: i <= stage,
+      current: i === stage,
+    })),
+    titleValue: g.titles.at(-1) ?? '尚未获得称号',
+    titleCount: `${g.titles.length} 个`,
+    looks,
+  }
 
   return (
     <div className={`${styles.page} darkSystem`}>
       <PageHeader title="角色档案" onBack={onBack} backLabel="成长" size="lg" />
 
       <div className={styles.hero}>
-        <img src={c.heroSrc} alt="骑士立绘" />
+        <img src={c.heroSrc} alt={`${RULES[mode].label}装扮预览`} />
       </div>
 
       <div className={styles.nameRow}>
@@ -31,7 +63,9 @@ export function CharacterFilePage({ onBack }: Props) {
               className={`${styles.node} ${s.done ? styles.nodeDone : ''} ${s.current ? styles.nodeCurrent : ''}`}
               aria-hidden="true"
             />
-            <span className={`${styles.stageName} ${s.current ? styles.stageCurrent : ''}`}>
+            <span
+              className={`${styles.stageName} ${s.current ? styles.stageCurrent : ''}`}
+            >
               {s.code} {s.name}
             </span>
           </div>
@@ -65,4 +99,3 @@ export function CharacterFilePage({ onBack }: Props) {
     </div>
   )
 }
-

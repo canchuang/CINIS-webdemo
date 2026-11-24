@@ -1,12 +1,23 @@
 import { useEffect, useState, type CSSProperties } from 'react'
 import styles from './ChooseModeSheet.module.css'
-import { chooseModeInfo, modeTasks, type GameMode } from '../data/content'
+import { chooseModeInfo, type GameMode } from '../data/content'
 import { ModalBackdrop } from '../components/ModalBackdrop'
-import { defaultModalBg, loadModalBg, type ModalBgConfig } from '../data/modalBg'
+import {
+  defaultModalBg,
+  loadModalBg,
+  type ModalBgConfig,
+} from '../data/modalBg'
 import { sheetFxStyle } from '../components/sheetFx'
+import { appStore } from '../data/appStore'
+import { RULES } from '../domain/engine'
 import { taskStore } from '../data/taskStore'
 
-type Props = { mode: GameMode; onClose: () => void; onFocus: () => void; onQuick: () => void }
+type Props = {
+  mode: GameMode
+  onClose: () => void
+  onFocus: () => void
+  onQuick: () => void
+}
 
 /** 各模式的弹窗配色（对齐设计稿 11A/18A/25A） */
 const SHEET_PALETTE: Record<GameMode, Record<string, string>> = {
@@ -64,11 +75,6 @@ const GLOW_COLOR: Partial<Record<GameMode, string>> = {
 }
 
 /** 各模式「点火专注」下的规则文案 */
-const FOCUS_RULE: Record<GameMode, string> = {
-  traveler: '随时可暂停 · 无次数限制',
-  knight: '本轮可暂停 1 次 · 每次 ≤ 10 分钟',
-  abyss: '本轮仅 1 次暂停 · 单次 ≤ 2 天',
-}
 
 /** 11A / 18A / 25A 完成方式弹层 */
 export function ChooseModeSheet({ mode, onClose, onFocus, onQuick }: Props) {
@@ -82,15 +88,15 @@ export function ChooseModeSheet({ mode, onClose, onFocus, onQuick }: Props) {
   // 当前被点击的任务（决定弹窗头部与专注卡信息）
   const focusingId = taskStore.getFocusing()
   const task =
-    modeTasks[mode].find((t) => t.id === focusingId) ??
-    modeTasks[mode].find((t) => !t.done) ??
-    modeTasks[mode][0]
+    appStore.tasks(mode).find((t) => t.id === focusingId) ??
+    appStore.tasks(mode).find((t) => !appStore.done(t.id)) ??
+    appStore.tasks(mode)[0]
   const headerTitle = task?.title ?? c.task
   const headerMeta = task
-    ? `${task.duration} · +${task.xp} XP · +${task.soul} 魂火`
+    ? `${task.durationMin} 分钟 · +${task.xp} XP · +${task.soul} 魂火`
     : c.meta
   const focusMeta = task
-    ? `⏱ ${task.duration.replace(/\s*分钟/, ' min')} · +${task.xp} XP`
+    ? `⏱ ${`${task.durationMin} min`} · +${task.xp} XP`
     : `⏱ ${c.focus.meta}`
 
   const style = { ...(SHEET_PALETTE[mode] as CSSProperties), ...fx.style }
@@ -102,7 +108,11 @@ export function ChooseModeSheet({ mode, onClose, onFocus, onQuick }: Props) {
 
   return (
     <div className={styles.overlay} role="presentation">
-      <ModalBackdrop config={bg} onClick={onClose} glowColorOverride={GLOW_COLOR[mode]} />
+      <ModalBackdrop
+        config={bg}
+        onClick={onClose}
+        glowColorOverride={GLOW_COLOR[mode]}
+      />
 
       <div
         className={`${styles.sheet} ${fx.className} ${mode === 'abyss' ? styles.sheetDark : ''}`}
@@ -127,7 +137,7 @@ export function ChooseModeSheet({ mode, onClose, onFocus, onQuick }: Props) {
         <button type="button" className={styles.main} onClick={onFocus}>
           <span className={styles.mainTitle}>{c.focus.title}</span>
           <span className={styles.mainMeta}>{focusMeta}</span>
-          <span className={styles.mainRule}>{FOCUS_RULE[mode]}</span>
+          <span className={styles.mainRule}>{RULES[mode].focusRule}</span>
           <span className={styles.mainArrow} aria-hidden="true">
             ›
           </span>

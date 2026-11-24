@@ -1,21 +1,42 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import styles from './ReminderPage.module.css'
 import { PageHeader } from '../components/PageHeader'
 import { reminderInfo } from '../data/content'
+import { appStore, useAppState } from '../data/appStore'
 import { TimePickerSheet } from '../components/TimePickerSheet'
 
 type Props = { onBack: () => void }
 
 /** P32 提醒设置 */
 export function ReminderPage({ onBack }: Props) {
-  const r = reminderInfo
-  const [main, setMain] = useState(r.mainToggle.on)
-  const [time, setTime] = useState(r.activeTime)
-  const [scenes, setScenes] = useState(r.scenes.map((s) => s.on))
+  const r = reminderInfo,
+    state = useAppState(),
+    reminder = state.reminder
+  const main = reminder.enabled,
+    time = reminder.reminderTime
   const [pickerOpen, setPickerOpen] = useState(false)
-
-  const toggleScene = (i: number) => setScenes((p) => p.map((v, idx) => (idx === i ? !v : v)))
-
+  const [permission, setPermission] = useState('')
+  const setTime = (time: string) =>
+    appStore.saveReminder({ reminderTime: time })
+  const toggleMain = async () => {
+    if (main) {
+      appStore.saveReminder({ enabled: false })
+      return
+    }
+    appStore.saveReminder({ enabled: true })
+    if (typeof Notification === 'undefined') {
+      setPermission('此浏览器不支持通知，已保存提醒设置。')
+      return
+    }
+    try {
+      const p = await Notification.requestPermission()
+      setPermission(
+        p === 'granted' ? '通知权限已开启' : '未获得通知权限，已保存提醒设置。',
+      )
+    } catch {
+      setPermission('当前环境无法申请通知权限。')
+    }
+  }
   // 打开滚轮时用当前选中时间初始化
   const [h0, m0] = time.split(':').map((x) => parseInt(x, 10))
 
@@ -25,8 +46,8 @@ export function ReminderPage({ onBack }: Props) {
 
       <div className={styles.mainRow}>
         <div className={styles.mainText}>
-          <p className={styles.mainTitle}>{r.mainToggle.title}</p>
-          <p className={styles.mainSub}>{r.mainToggle.sub}</p>
+          <p className={styles.mainTitle}>每日任务提醒</p>
+          <p className={styles.mainSub}>按所选时间与执行日提醒</p>
         </div>
         <button
           type="button"
@@ -34,12 +55,34 @@ export function ReminderPage({ onBack }: Props) {
           aria-checked={main}
           aria-label="每日提醒"
           className={`${styles.switch} ${main ? styles.switchOn : ''}`}
-          onClick={() => setMain((v) => !v)}
+          onClick={toggleMain}
         >
           <span className={styles.knob} />
         </button>
       </div>
 
+      <p className={styles.mainSub} role="status">
+        {permission ||
+          '提醒设置自动保存。通知仅在网页保持打开时尝试发送，关闭网页后不会定时推送。'}
+      </p>
+      <h3 className={styles.section}>重复</h3>
+      <div className={styles.times}>
+        {['一', '二', '三', '四', '五', '六', '日'].map((d, i) => (
+          <button
+            key={d}
+            type="button"
+            aria-pressed={reminder.weekdays[i]}
+            className={`${styles.time} ${reminder.weekdays[i] ? styles.timeOn : ''}`}
+            onClick={() =>
+              appStore.saveReminder({
+                weekdays: reminder.weekdays.map((v, j) => (j === i ? !v : v)),
+              })
+            }
+          >
+            {d}
+          </button>
+        ))}
+      </div>
       <h3 className={styles.section}>时间</h3>
       <div className={styles.times}>
         {r.times.map((t) => (
@@ -58,31 +101,6 @@ export function ReminderPage({ onBack }: Props) {
         ))}
       </div>
 
-      <h3 className={styles.section}>提醒场景</h3>
-      <ul className={styles.scenes}>
-        {r.scenes.map((s, i) => (
-          <li key={s.title} className={styles.scene}>
-            <div className={styles.sceneText}>
-              <p className={styles.sceneTitle}>{s.title}</p>
-              <p className={styles.sceneSub}>{s.sub}</p>
-            </div>
-            <button
-              type="button"
-              role="switch"
-              aria-checked={scenes[i]}
-              aria-label={s.title}
-              className={`${styles.switch} ${scenes[i] ? styles.switchOn : ''}`}
-              onClick={() => toggleScene(i)}
-            >
-              <span className={styles.knob} />
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      <h3 className={styles.section}>{r.dnd.title}</h3>
-      <p className={styles.dndValue}>{r.dnd.value}</p>
-
       {pickerOpen && (
         <TimePickerSheet
           initialHour={h0}
@@ -98,4 +116,3 @@ export function ReminderPage({ onBack }: Props) {
     </div>
   )
 }
-

@@ -1,6 +1,11 @@
+import { assetUrl } from '../data/assets'
 import styles from './AbyssTerminalPage.module.css'
 
-type Props = { onBack: () => void; onChangeMode: () => void; onRestart: () => void }
+type Props = {
+  onBack: () => void
+  onChangeMode: () => void
+  onRestart: () => void
+}
 
 /** P30 终止 · 深渊（THE FLAME HAS FADED） */
 export function AbyssTerminalPage({ onChangeMode, onRestart }: Props) {
@@ -9,7 +14,7 @@ export function AbyssTerminalPage({ onChangeMode, onRestart }: Props) {
       <p className={styles.kicker}>THE FLAME HAS FADED</p>
 
       <div className={styles.hero}>
-        <img src="/assets/abyss-fail.png" alt="深渊契约已断" />
+        <img src={assetUrl(`/assets/abyss-fail.png`)} alt="深渊契约已断" />
       </div>
 
       <h1 className={styles.title}>契约已断</h1>
@@ -33,7 +38,11 @@ export function AbyssTerminalPage({ onChangeMode, onRestart }: Props) {
       </ul>
 
       <div className={styles.actions}>
-        <button type="button" className={styles.btnSecondary} onClick={onChangeMode}>
+        <button
+          type="button"
+          className={styles.btnSecondary}
+          onClick={onChangeMode}
+        >
           换个模式
         </button>
         <button type="button" className={styles.btnPrimary} onClick={onRestart}>

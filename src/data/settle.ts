@@ -1,4 +1,5 @@
-﻿import type { GameMode } from './content'
+import { assetUrl } from './assets'
+import type { GameMode } from './content'
 
 export type SettleMode = {
   duration: string
@@ -19,7 +20,7 @@ export type SettleMode = {
 export const modeSettle: Record<GameMode, SettleMode> = {
   traveler: {
     duration: '3s',
-    hero: '/assets/settle-traveler.png',
+    hero: assetUrl(`/assets/settle-traveler.png`),
     soul: '140',
     mode: '旅者',
     title: '试炼已终。',
@@ -30,12 +31,15 @@ export const modeSettle: Record<GameMode, SettleMode> = {
       { label: '永久经验', value: '+320 XP · 660 → 980', accent: true },
       { label: '真实专注', value: '5 小时 40 分' },
     ],
-    badge: { title: '解锁称号 · 旅途初行者', sub: '首次完成旅者模式的阶段 · 普通' },
+    badge: {
+      title: '解锁称号 · 旅途初行者',
+      sub: '首次完成旅者模式的阶段 · 普通',
+    },
   },
 
   knight: {
     duration: '6s',
-    hero: '/assets/settle-knight.png',
+    hero: assetUrl(`/assets/settle-knight.png`),
     soul: '180',
     mode: '骑士',
     title: '试炼已终',
@@ -46,12 +50,15 @@ export const modeSettle: Record<GameMode, SettleMode> = {
       { label: '永久经验', value: '+420 XP · 660 → 1080', accent: true },
       { label: '真实专注', value: '7 小时 20 分' },
     ],
-    badge: { title: '解锁称号 · 誓约骑士', sub: '首次完成骑士模式的阶段 · 稀有' },
+    badge: {
+      title: '解锁称号 · 誓约骑士',
+      sub: '首次完成骑士模式的阶段 · 稀有',
+    },
   },
 
   abyss: {
     duration: '8s',
-    hero: '/assets/settle-abyss.png',
+    hero: assetUrl(`/assets/settle-abyss.png`),
     soul: '250',
     mode: '深渊',
     title: '深渊见证了你的坚持',
@@ -64,4 +71,3 @@ export const modeSettle: Record<GameMode, SettleMode> = {
     ],
   },
 }
-

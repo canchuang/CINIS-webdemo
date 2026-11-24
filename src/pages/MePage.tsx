@@ -1,9 +1,31 @@
 import { useState } from 'react'
 import styles from './MePage.module.css'
-import { me } from '../data/content'
+import { useAppState } from '../data/appStore'
+import { growth } from '../domain/engine'
+import { me as demoMe } from '../data/content'
 
-export function MePage({ onNavigate }: { onNavigate: (route: string) => void }) {
+export function MePage({
+  onNavigate,
+}: {
+  onNavigate: (route: string) => void
+}) {
   const [incentive, setIncentive] = useState(true)
+  const stats = growth(useAppState())
+  const me = {
+    ...demoMe,
+    level: `Lv.${stats.level}`,
+    xp: stats.levelXp,
+    xpMax: stats.xpMax,
+    nextTier: `Lv.${stats.level + 1}`,
+    toNextTier: stats.xpMax - stats.levelXp,
+    groups: demoMe.groups.map((g) => ({
+      ...g,
+      items: g.items.map((i) => ({
+        ...i,
+        desc: i.id === 'wall' ? `${stats.titles.length} 个已解锁称号` : i.desc,
+      })),
+    })),
+  }
   const ratio = me.xp / me.xpMax
 
   return (
