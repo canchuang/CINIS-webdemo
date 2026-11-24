@@ -60,3 +60,9 @@
 .is-dragging .case-map-selection{transition:none}
 @media(max-width:1279px){.case-map{--map-open-width:148px}}
 @media(prefers-reduced-motion:reduce){.case-map,.case-map-panel,.case-map-icon,.case-map-selection{transition:none!important;filter:none!important}}
+
+/* Scroll the strip normally; only a deliberate long press activates live scrubbing. */
+.case-map-list{touch-action:none;-webkit-touch-callout:none}
+.case-map-item{cursor:pointer!important}
+.is-dragging .case-map-item{cursor:grabbing!important}
+.case-map-selection{z-index:5}

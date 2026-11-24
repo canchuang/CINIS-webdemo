@@ -12,7 +12,8 @@ const catalog = {"cinis": [{"id": "case-cover", "zh": "作品封面", "en": "Pro
   const counter=el('span','case-map-toggle-text');toggle.append(icon,counter);panel.append(nav);root.append(panel,toggle);document.body.append(root);
   const selection=el('span','case-map-selection');selection.setAttribute('aria-hidden','true');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)'),desktop=matchMedia('(min-width:1280px)');
-  let active=0,expanded=desktop.matches,raf=0,manualUntil=0,pending=null,drag=null,dragFrame=0,suppressClick=0,previewTimer=0,closeTimer=0,hideTimer=0;
+  let active=0,expanded=desktop.matches,raf=0,manualUntil=0,pending=null,drag=null,dragFrame=0,suppressClick=0,previewTimer=0,hideTimer=0;
+  let holdTimer=0,inertiaFrame=0,browsing=false,selectionMade=false,programmaticNavUntil=0,outsidePointer=null,outsideTouch=null;
   let box={x:0,y:0,width:0,height:0};
   const english=()=>document.documentElement.lang==='en';
   const title=c=>english()?c.en:c.zh;
@@ -26,22 +27,22 @@ const catalog = {"cinis": [{"id": "case-cover", "zh": "作品封面", "en": "Pro
     });
     return link;
   });
-  nav.append(selection);
+  panel.append(selection);
   function label(i){
     counter.textContent=String(i+1).padStart(2,'0')+'/'+String(chapters.length).padStart(2,'0');
     toggle.setAttribute('aria-label',(english()?'Chapter preview, current: ':'章节预览，当前：')+title(chapters[i]));
   }
   function position(i,freeY){
     if(!expanded)return;
-    const n=nav.getBoundingClientRect(),t=links[i].querySelector('.case-map-thumb').getBoundingClientRect();
-    box={x:t.left-n.left-4,y:freeY??(t.top-n.top+nav.scrollTop-4),width:t.width+8,height:t.height+8};
+    const n=panel.getBoundingClientRect(),t=links[i].querySelector('.case-map-thumb').getBoundingClientRect();
+    box={x:t.left-n.left-4,y:freeY??(t.top-n.top-4),width:t.width+8,height:t.height+8};
     selection.style.width=box.width+'px';selection.style.height=box.height+'px';
     selection.style.transform='translate3d('+box.x+'px,'+box.y+'px,0)';
   }
   function follow(i){
-    if(!expanded||performance.now()<manualUntil)return;
+    if(!expanded||browsing||performance.now()<manualUntil)return;
     const link=links[i],top=link.offsetTop;
-    if(top<nav.scrollTop+5||top+link.offsetHeight>nav.scrollTop+nav.clientHeight-5)nav.scrollTop=Math.max(0,top-nav.clientHeight/2+link.offsetHeight/2);
+    if(top<nav.scrollTop+5||top+link.offsetHeight>nav.scrollTop+nav.clientHeight-5){programmaticNavUntil=performance.now()+100;nav.scrollTop=Math.max(0,top-nav.clientHeight/2+link.offsetHeight/2);}
   }
   function show(i){label(i);follow(i);position(i);}
   function localize(){
@@ -77,12 +78,14 @@ const catalog = {"cinis": [{"id": "case-cover", "zh": "作品封面", "en": "Pro
       preview.style.width=width+'px';preview.style.transform='scale('+scale+')';
       thumb.replaceChildren(preview);
     });
-    position(pending?.index??active);
+    if(!browsing&&!drag)position(pending?.index??active);
   }
   function queuePreviews(){clearTimeout(previewTimer);previewTimer=setTimeout(renderPreviews,80);}
   function setExpanded(value){
-    clearTimeout(closeTimer);clearTimeout(hideTimer);
-    expanded=value;toggle.setAttribute('aria-expanded',String(value));
+    clearTimeout(hideTimer);clearTimeout(holdTimer);cancelAnimationFrame(inertiaFrame);
+    expanded=value;
+    if(value){selectionMade=false;browsing=false;manualUntil=0;root.classList.remove('is-browsing');}
+    toggle.setAttribute('aria-expanded',String(value));
     panel.setAttribute('aria-hidden',String(!value));panel.inert=!value;
     if(value){
       panel.hidden=false;
@@ -97,14 +100,12 @@ const catalog = {"cinis": [{"id": "case-cover", "zh": "作品封面", "en": "Pro
     }
   }
   function navigate(index){
-    clearTimeout(closeTimer);manualUntil=0;
+    clearTimeout(holdTimer);cancelAnimationFrame(inertiaFrame);manualUntil=0;browsing=false;selectionMade=true;root.classList.remove('is-browsing');
     pending={index,until:performance.now()+2000};show(index);
     const target=chapters[index].target,offset=(document.querySelector('.site-nav')?.getBoundingClientRect().height||76)+20;
     target.setAttribute('tabindex','-1');target.focus({preventScroll:true});
     const url=new URL(location.href);url.hash=target.id;history.pushState(null,'',url);
     window.scrollTo({top:Math.max(0,target.getBoundingClientRect().top+scrollY-offset),behavior:reduce.matches?'instant':'smooth'});
-    // Leave the moving frame visible before dismissing the mobile menu.
-    if(!desktop.matches)closeTimer=setTimeout(()=>setExpanded(false),reduce.matches?0:480);
     schedule();
   }
   function update(){
@@ -113,47 +114,106 @@ const catalog = {"cinis": [{"id": "case-cover", "zh": "作品封面", "en": "Pro
     const changed=active!==index;active=index;
     links.forEach((n,i)=>{if(i===active)n.setAttribute('aria-current','location');else n.removeAttribute('aria-current');});
     if(pending&&(pending.index===active||performance.now()>pending.until))pending=null;
-    if(!drag&&(changed||pending))show(pending?.index??active);
+    if(!drag&&!browsing&&(changed||pending))show(pending?.index??active);
   }
   function schedule(){if(!raf)raf=requestAnimationFrame(update);}
   function nearest(y){let best=0,distance=Infinity;links.forEach((n,i)=>{const d=Math.abs(n.offsetTop+n.offsetHeight/2-y);if(d<distance){distance=d;best=i;}});return best;}
+  function showLiveChapter(index){
+    const target=chapters[index].target,offset=(document.querySelector('.site-nav')?.getBoundingClientRect().height||76)+20;
+    pending=null;selectionMade=true;
+    // Live scrubbing must not trail the finger behind a smooth-scroll animation.
+    window.scrollTo({top:Math.max(0,target.getBoundingClientRect().top+scrollY-offset),behavior:'instant'});
+    active=index;links.forEach((link,i)=>{if(i===index)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});
+  }
   function dragTick(){
-    dragFrame=0;if(!drag?.moved)return;
-    const r=nav.getBoundingClientRect(),local=drag.y-r.top;
+    dragFrame=0;if(drag?.mode!=='scrub')return;
+    const r=nav.getBoundingClientRect(),p=panel.getBoundingClientRect(),local=drag.y-r.top;
     const edge=local<28?-Math.min(10,(28-local)/3):local>r.height-28?Math.min(10,(local-r.height+28)/3):0;
     if(edge)nav.scrollTop+=edge;
-    const y=Math.max(1,Math.min(nav.scrollHeight-box.height-1,nav.scrollTop+local-box.height/2));
-    const index=nearest(y+box.height/2);drag.index=index;label(index);position(index,y);
+    const y=Math.max(r.top-p.top+1,Math.min(r.bottom-p.top-box.height-1,drag.y-p.top-box.height/2));
+    const index=nearest(nav.scrollTop+local);
+    if(drag.liveIndex!==index){showLiveChapter(index);drag.liveIndex=index;}
+    drag.index=index;label(index);position(index,y);
     dragFrame=requestAnimationFrame(dragTick);
   }
+  function beginScrub(){
+    if(drag?.mode!=='pending')return;
+    drag.mode='scrub';drag.liveIndex=-1;browsing=false;pending=null;
+    root.classList.remove('is-browsing');root.classList.add('is-dragging');
+    dragTick();
+  }
+  function startInertia(velocity){
+    if(reduce.matches||Math.abs(velocity)<.12)return;
+    let last=performance.now();
+    function tick(now){
+      const dt=Math.min(32,now-last);last=now;
+      const before=nav.scrollTop;nav.scrollTop-=velocity*dt;
+      velocity*=Math.pow(.92,dt/16);
+      if(Math.abs(velocity)>.025&&Math.abs(nav.scrollTop-before)>.1)inertiaFrame=requestAnimationFrame(tick);
+    }
+    inertiaFrame=requestAnimationFrame(tick);
+  }
   nav.addEventListener('dragstart',event=>event.preventDefault());
+  nav.addEventListener('contextmenu',event=>event.preventDefault());
   nav.addEventListener('pointerdown',event=>{
     if(event.button!==0||event.metaKey||event.ctrlKey||event.altKey||event.shiftKey)return;
     const link=event.target.closest('.case-map-item');if(!link)return;
-    clearTimeout(closeTimer);pending=null;manualUntil=performance.now()+4000;
-    drag={id:event.pointerId,start:event.clientY,y:event.clientY,index:links.indexOf(link),moved:false};
+    cancelAnimationFrame(inertiaFrame);clearTimeout(holdTimer);pending=null;
+    manualUntil=Infinity;
+    drag={id:event.pointerId,start:event.clientY,y:event.clientY,lastY:event.clientY,lastTime:performance.now(),velocity:0,scrollStart:nav.scrollTop,index:links.indexOf(link),mode:'pending'};
     nav.setPointerCapture(event.pointerId);
+    holdTimer=setTimeout(beginScrub,360);
   });
   nav.addEventListener('pointermove',event=>{
-    if(!drag||drag.id!==event.pointerId)return;drag.y=event.clientY;
-    if(!drag.moved&&Math.abs(drag.y-drag.start)>5){drag.moved=true;root.classList.add('is-dragging');if(!dragFrame)dragFrame=requestAnimationFrame(dragTick);}
+    if(!drag||drag.id!==event.pointerId)return;
+    const now=performance.now();drag.y=event.clientY;
+    if(drag.mode==='pending'&&Math.abs(drag.y-drag.start)>8){
+      clearTimeout(holdTimer);drag.mode='browse';browsing=true;root.classList.add('is-browsing');
+    }
+    if(drag.mode==='browse'){
+      const delta=drag.y-drag.lastY,dt=Math.max(1,now-drag.lastTime);
+      drag.velocity=drag.velocity*.3+(delta/dt)*.7;
+      nav.scrollTop=drag.scrollStart-(drag.y-drag.start);
+    }
+    drag.lastY=drag.y;drag.lastTime=now;
   });
   function endDrag(event,cancelled){
     if(!drag||drag.id!==event.pointerId)return;
-    const index=drag.index;drag=null;cancelAnimationFrame(dragFrame);dragFrame=0;
-    root.classList.remove('is-dragging');suppressClick=performance.now()+350;
+    clearTimeout(holdTimer);cancelAnimationFrame(dragFrame);dragFrame=0;
+    const finished=drag;drag=null;root.classList.remove('is-dragging');
+    suppressClick=performance.now()+400;
     if(nav.hasPointerCapture(event.pointerId))nav.releasePointerCapture(event.pointerId);
-    if(cancelled){show(active);return;}
-    event.preventDefault();navigate(index);
+    if(cancelled){if(finished.mode!=='browse'){manualUntil=0;position(active);}return;}
+    event.preventDefault();
+    if(finished.mode==='pending'){navigate(finished.index);return;}
+    if(finished.mode==='browse'){
+      startInertia(performance.now()-finished.lastTime<90?finished.velocity:0);return;
+    }
+    // A scrub already updated the main page while held. Only settle the frame and URL here.
+    browsing=false;manualUntil=0;selectionMade=true;show(finished.index);
+    const url=new URL(location.href);url.hash=chapters[finished.index].id;history.pushState(null,'',url);
+    chapters[finished.index].target.setAttribute('tabindex','-1');chapters[finished.index].target.focus({preventScroll:true});
   }
   nav.addEventListener('pointerup',e=>endDrag(e,false));nav.addEventListener('pointercancel',e=>endDrag(e,true));
-  nav.addEventListener('wheel',()=>{manualUntil=performance.now()+4000;},{passive:true});
-  nav.addEventListener('scroll',()=>{if(!drag)position(pending?.index??active);},{passive:true});
+  nav.addEventListener('wheel',()=>{clearTimeout(holdTimer);if(drag?.mode==='pending')drag.mode='browse';pending=null;browsing=true;manualUntil=Infinity;root.classList.add('is-browsing');},{passive:true});
+  nav.addEventListener('scroll',()=>{
+    if(!drag&&performance.now()>programmaticNavUntil){browsing=true;manualUntil=Infinity;root.classList.add('is-browsing');}
+    // The frame is on the panel, outside the scrolling strip: browsing never moves it.
+  },{passive:true});
   toggle.addEventListener('click',()=>setExpanded(!expanded));
   root.addEventListener('keydown',e=>{if(e.key==='Escape'&&expanded){setExpanded(false);toggle.focus();e.preventDefault();}});
   addEventListener('scroll',schedule,{passive:true});addEventListener('resize',()=>{queuePreviews();schedule();},{passive:true});
-  addEventListener('wheel',e=>{if(!root.contains(e.target))pending=null;},{passive:true});
-  addEventListener('pointerdown',e=>{if(!root.contains(e.target)){pending=null;show(active);}},{passive:true});
+  function outsideSlide(){
+    if(expanded&&selectionMade){pending=null;setExpanded(false);}
+  }
+  addEventListener('wheel',event=>{if(!root.contains(event.target)&&Math.abs(event.deltaY)>1)outsideSlide();},{passive:true});
+  addEventListener('pointerdown',event=>{if(!root.contains(event.target))outsidePointer={id:event.pointerId,y:event.clientY};},{passive:true});
+  addEventListener('pointermove',event=>{if(outsidePointer?.id===event.pointerId&&Math.abs(event.clientY-outsidePointer.y)>10)outsideSlide();},{passive:true});
+  ['pointerup','pointercancel'].forEach(type=>addEventListener(type,()=>{outsidePointer=null;},{passive:true}));
+  addEventListener('touchstart',event=>{outsideTouch=!root.contains(event.target)?event.touches[0]?.clientY:null;},{passive:true});
+  addEventListener('touchmove',event=>{if(outsideTouch!=null&&Math.abs(event.touches[0].clientY-outsideTouch)>10)outsideSlide();},{passive:true});
+  addEventListener('touchend',()=>{outsideTouch=null;},{passive:true});
+  addEventListener('keydown',event=>{if(!root.contains(event.target)&&['ArrowDown','ArrowUp','PageDown','PageUp',' '].includes(event.key))outsideSlide();});
   new ResizeObserver(schedule).observe(main);
   new MutationObserver(localize).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   main.querySelectorAll('img').forEach(image=>image.addEventListener('load',()=>{queuePreviews();schedule();},{once:true}));
@@ -163,8 +223,8 @@ const catalog = {"cinis": [{"id": "case-cover", "zh": "作品封面", "en": "Pro
     const width=main.clientWidth;
     links.forEach(link=>{const thumb=link.querySelector('.case-map-thumb'),copy=thumb.firstElementChild;if(copy)copy.style.transform='scale('+(thumb.clientWidth/width)+')';});
     root.style.setProperty('--map-height',(nav.getBoundingClientRect().height+46)+'px');
-    if(!drag)position(pending?.index??active);
+    if(!drag&&!browsing)position(pending?.index??active);
   }).observe(nav);
-  root.addEventListener('transitionend',e=>{if(e.target===root&&e.propertyName==='height'&&expanded){renderPreviews();position(pending?.index??active);}});
+  root.addEventListener('transitionend',e=>{if(e.target===root&&e.propertyName==='height'&&expanded){renderPreviews();if(!browsing&&!drag)position(pending?.index??active);}});
   localize();setExpanded(expanded);update();show(active);
 })();
