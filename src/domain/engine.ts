@@ -222,7 +222,7 @@ export function roundStats(s: State, mode: Mode, start: string, end: string) {
     done = records.length,
     rate = total ? done / total : 0
   const earnedSoul = records.reduce((n, c) => n + c.task.soul, 0)
-  const passed = total > 0 && rate >= RULES[mode].threshold
+  const passed = total > 0 && done > 0 && rate >= RULES[mode].threshold
   const bankedSoul = Math.floor(
     earnedSoul * (passed ? 1 : 1 - RULES[mode].loss),
   )

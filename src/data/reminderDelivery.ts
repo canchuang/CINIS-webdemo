@@ -9,7 +9,8 @@ export function startReminderDelivery() {
     if (
       typeof Notification === 'undefined' ||
       Notification.permission !== 'granted' ||
-      !reminderDue(r, now)
+      !reminderDue(r, now) ||
+      !appStore.tasks().some((task) => !appStore.done(task.id))
     )
       return
     try {

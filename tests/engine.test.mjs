@@ -277,3 +277,11 @@ test('quick completion cannot bypass an ongoing focus', () => {
   assert.throws(() => complete(s, t, 'quick', start + 1), /退出/)
   assert.equal(growth(s).xp, 0)
 })
+test('an inactive traveler round awards no successful-round title', () => {
+  const s = setup('traveler')
+  reconcile(s, start + 7 * 86400000)
+  assert.equal(s.rounds.length, 1)
+  assert.equal(s.rounds[0].passed, false)
+  assert.equal(growth(s).passed, 0)
+  assert.deepEqual(growth(s).titles, [])
+})
