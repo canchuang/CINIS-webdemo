@@ -18,12 +18,12 @@
   const observer = new MutationObserver(() => { if (!pending) { pending = true; queueMicrotask(() => { pending = false; apply(); }); } });
   function apply() {
     observer.disconnect();
-    document.documentElement.lang = language;
+    if (document.documentElement.lang !== language) document.documentElement.lang = language;
     document.querySelector('meta[property="og:locale"]')?.setAttribute('content', language === 'en' ? 'en_US' : 'zh_CN');
     const walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT);
     let node;
     while ((node = walker.nextNode())) {
-      if (node.parentElement?.closest('script,style,.language-toggle')) continue;
+      if (node.parentElement?.closest('script,style,.language-toggle,.case-map')) continue;
       let record = originals.get(node);
       if (!record || node.nodeValue !== record.last) record = {source:node.nodeValue};
       const source = record.source, trimmed = source.trim();
@@ -33,6 +33,7 @@
       record.last = value; originals.set(node,record);
     }
     document.querySelectorAll('[aria-label],img[alt],meta[name="description"],meta[property="og:title"],meta[property="og:description"]').forEach(el => {
+      if (el.closest('.case-map')) return;
       const attr = el.tagName === 'IMG' ? 'alt' : el.tagName === 'META' ? 'content' : 'aria-label';
       let saved = attributes.get(el); const current = el.getAttribute(attr);
       if (!saved || current !== saved.last) saved = {source:current};

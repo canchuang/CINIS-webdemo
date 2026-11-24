@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="editorial-refresh.css">
 <link rel="stylesheet" href="rhythm.css">
 <link rel="stylesheet" href="site-theme.css">
+<link rel="stylesheet" href="case-minimap.css">
 </head>
 <body data-page="cinis">
 <header class="site-nav">
@@ -37,7 +38,7 @@
 
 <main class="page-fade cs cs-cinis">
 <!-- COVER -->
-<section class="cs-cover inner-aurora">
+<section class="cs-cover inner-aurora" id="case-cover">
   <div class="inner-aurora-layer" aria-hidden="true"></div>
   <div class="wrap">
     <div class="kick"><span class="en">案例 01 / 03</span><span class="en">UI/UX · 产品设计</span><span class="en">原型 23 屏</span></div>
@@ -132,7 +133,7 @@
     <p class="note">源：项目原始角色素材（1472×1472 透明 PNG）。仅旅者具备明确 Lv1–Lv3 阶段图；骑士 / 深渊对应阶段图未提供，暂不接入。</p>
   </div>
 
-  <div class="cs-marker"><h2 class="zh">失败分支 <span class="en">Failure Branches</span></h2><span class="mono">05b</span></div>
+  <div class="cs-marker" id="chapter-extra-1"><h2 class="zh">失败分支 <span class="en">Failure Branches</span></h2><span class="mono">05b</span></div>
   <p class="zh-body">三模式各自独立的中断处理：<b>终止</b>（记录本轮结果）、<b>重燃</b>（选择如何回归）、<b>回归</b>（久未开始后的重启）——均保留永久成长，只处理本轮魂火。</p>
   <div class="screens rv" style="align-items:start">
     <figure class="shot" style="grid-column:span 4"><div class="frame"><img src="assets/screen-terminal.png" alt="终止 · 本轮无损失"></div><figcaption><b>终止（旅者）</b>本轮没有任何损失，魂火全额结算、记录照常入历史。</figcaption></figure>
@@ -233,7 +234,7 @@
   </div>
   <p class="note">未抓取状态（角色确立 / 完成反馈 / 阶段结算 / 失败分支等）保留待补，不用相似页面伪造。</p>
 
-  <div class="cs-marker"><h2 class="zh">原型体验 <span class="en">Prototype</span></h2><span class="mono">10b</span></div>
+  <div class="cs-marker" id="chapter-extra-2"><h2 class="zh">原型体验 <span class="en">Prototype</span></h2><span class="mono">10b</span></div>
   <p class="zh-body">真实可运行原型（无需依赖内嵌即可理解本页）：优先 GitHub Pages 独立地址，Netlify 作镜像备用。</p>
   <div class="link-list rv">
     <a class="figlink" href="https://canchuang.github.io/CINIS-webdemo/" target="_blank" rel="noopener"><span class="t">GitHub Pages 原型<small>主入口 · canchuang.github.io/CINIS-webdemo</small></span><span class="go">打开 ↗</span></a>
@@ -265,5 +266,6 @@
 <script src="project-motion.js"></script>
 <script src="i18n-data.js"></script>
 <script src="site-language.js"></script>
+<script src="case-minimap.js"></script>
 </body>
 </html>
