@@ -1,40 +1,42 @@
 import styles from './TerminalPage.module.css'
 import { PageHeader } from '../components/PageHeader'
-import { terminalInfo } from '../data/content'
-
-type Props = { onBack: () => void; onChangeMode: () => void; onContinue: () => void }
-
-/** P16 终止（旅者：无损失） */
-export function TerminalPage({ onBack, onChangeMode, onContinue }: Props) {
-  const t = terminalInfo
+import { useAppState } from '../data/appStore'
+import { RULES, growth, type Mode } from '../domain/engine'
+export function TerminalPage({
+  mode = 'traveler',
+  onBack,
+  onChangeMode,
+  onContinue,
+}: {
+  mode?: Mode
+  onBack: () => void
+  onChangeMode: () => void
+  onContinue: () => void
+}) {
+  const s = useAppState(),
+    g = growth(s),
+    rule = RULES[mode]
   return (
     <div className={styles.page}>
-      <PageHeader title="进度停在这里" onBack={onBack} backLabel="今日" size="lg" />
-
+      <PageHeader title="暂歇之后，还能再出发" onBack={onBack} />
       <div className={styles.card}>
-        <p className={styles.cardTitle}>{t.card.title}</p>
-        <p className={styles.cardSub}>{t.card.sub}</p>
+        <p className={styles.cardTitle}>本次专注未完成</p>
+        <p className={styles.cardSub}>本次不发放奖励。任务仍可重新安排专注。</p>
       </div>
-
-      <div className={styles.keepHead}>
-        <span className={styles.keepLabel}>{t.keepLabel}</span>
-        <span className={styles.keepHint}>{t.keepHint}</span>
-      </div>
-      <ul className={styles.rows}>
-        {t.rows.map((r) => (
-          <li key={r.label} className={styles.row}>
-            <span className={styles.rowLabel}>{r.label}</span>
-            <span className={styles.rowValue}>{r.value}</span>
-          </li>
-        ))}
-      </ul>
-
+      <p>
+        {rule.label}阶段门槛：
+        {rule.threshold ? `${rule.threshold * 100}%` : '无门槛'}
+        。阶段结束时，未达标会损失 {rule.loss * 100}% 暂存魂火。
+      </p>
+      <p>
+        已保留 {g.xp} XP、{g.titles.length} 个称号和全部历史记录。
+      </p>
       <div className={styles.actions}>
-        <button type="button" className={styles.btnSecondary} onClick={onChangeMode}>
-          {t.secondary}
+        <button className={styles.btnSecondary} onClick={onChangeMode}>
+          换个模式
         </button>
-        <button type="button" className={styles.btnPrimary} onClick={onContinue}>
-          {t.primary}
+        <button className={styles.btnPrimary} onClick={onContinue}>
+          回到今天
         </button>
       </div>
     </div>

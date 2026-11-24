@@ -1,4 +1,4 @@
-import styles from './SplashPage.module.css'
+﻿import styles from './SplashPage.module.css'
 import { onboardingInfo } from '../data/content'
 
 type Props = { onStart: () => void }
@@ -8,6 +8,9 @@ export function SplashPage({ onStart }: Props) {
   const s = onboardingInfo.splash
   return (
     <button type="button" className={styles.screen} onClick={onStart} aria-label="进入 CINIS">
+      <span className={styles.watermark} aria-hidden="true">
+        烬
+      </span>
       <span className={styles.glow} aria-hidden="true" />
       <span className={styles.ember} aria-hidden="true">
         🔥
@@ -23,3 +26,4 @@ export function SplashPage({ onStart }: Props) {
     </button>
   )
 }
+

@@ -1,0 +1,30 @@
+name: Verify CINIS source
+on:
+  pull_request:
+    branches: [main, feature/traveler-theme]
+  push:
+    branches: [fix/cinis-state-consistency]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm test:ui
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e
+      - run: pnpm build
+        env:
+          BASE_PATH: /CINIS-webdemo/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cinis-${{ github.sha }}
+          path: dist

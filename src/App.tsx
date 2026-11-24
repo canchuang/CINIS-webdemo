@@ -1,13 +1,11 @@
-﻿import { useCallback, useEffect, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react'
 import styles from './App.module.css'
 import { BottomNav } from './components/BottomNav'
 import { Screen } from './components/Screen'
 import type { RouteKey } from './data/routes'
 import { TABS, type TabKey } from './data/tabs'
-import type { GameMode } from './data/content'
+
 import { AchievementsPage } from './pages/AchievementsPage'
-import { AbyssRestartPage } from './pages/AbyssRestartPage'
-import { AbyssTerminalPage } from './pages/AbyssTerminalPage'
 import { CharacterFilePage } from './pages/CharacterFilePage'
 import { ChooseModeSheet } from './pages/ChooseModeSheet'
 import { FocusPage } from './pages/FocusPage'
@@ -16,16 +14,16 @@ import { GoalEditPage } from './pages/GoalEditPage'
 import { GoalsPage } from './pages/GoalsPage'
 import { GrowthPage } from './pages/GrowthPage'
 import { HistoryPage } from './pages/HistoryPage'
-import { KnightRecoverPage } from './pages/KnightRecoverPage'
-import { KnightTerminalPage } from './pages/KnightTerminalPage'
 import { MePage } from './pages/MePage'
 import { OnboardingPage } from './pages/OnboardingPage'
 import { PrivacyPage } from './pages/PrivacyPage'
-import EditorPage from './pages/EditorPage'
+const EditorPage = lazy(() => import('./pages/EditorPage'))
 import { TrialConfirmPage } from './pages/TrialConfirmPage'
 import { NewGoalPage } from './pages/NewGoalPage'
 import { taskStore } from './data/taskStore'
-import { RekindlePage } from './pages/RekindlePage'
+import { appStore, useAppState, startStateLifecycle } from './data/appStore'
+import { startReminderDelivery } from './data/reminderDelivery'
+import type { GoalDraft } from './domain/engine'
 import { ReminderPage } from './pages/ReminderPage'
 import { RoleSelectPage } from './pages/RoleSelectPage'
 import { SettlePage } from './pages/SettlePage'
@@ -33,7 +31,17 @@ import { SplashPage } from './pages/SplashPage'
 import { TaskDonePage } from './pages/TaskDonePage'
 import { StageProgressPage } from './pages/StageProgressPage'
 import { ComebackPage } from './pages/ComebackPage'
-import ModalBgEditorPage from './pages/ModalBgEditorPage'
+const ModalBgEditorPage = lazy(() => import('./pages/ModalBgEditorPage'))
+const NavBarEditorPage = lazy(() => import('./pages/NavBarEditorPage'))
+const CardFxEditorPage = lazy(() => import('./pages/CardFxEditorPage'))
+const CharSizeEditorPage = lazy(() => import('./pages/CharSizeEditorPage'))
+
+/** 各模式强调色（按钮/选中态） */
+const MODE_ACCENT: Record<import('./domain/engine').Mode, string> = {
+  traveler: '#2E7D5B',
+  knight: '#3B6FF5',
+  abyss: '#7C3AED',
+}
 import { TerminalPage } from './pages/TerminalPage'
 import { TodayPage } from './pages/TodayPage'
 
@@ -53,22 +61,70 @@ export default function App() {
   const initial = (): RouteKey => {
     const h = window.location.hash.replace('#', '')
     const allowed: RouteKey[] = [
-      'splash', 'roles', 'onboarding', 'today', 'goals', 'goalDetail', 'goalEdit',
-      'growth', 'me', 'taskDetail', 'focus', 'taskDone', 'settle', 'terminal',
-      'rekindle', 'achievements', 'characterFile', 'history', 'reminderSettings', 'privacy', 'trialConfirm', 'newGoal', 'stageProgress', 'comeback', 'modalBgEditor', 'editor',
+      'splash',
+      'roles',
+      'onboarding',
+      'today',
+      'goals',
+      'goalDetail',
+      'goalEdit',
+      'growth',
+      'me',
+      'taskDetail',
+      'focus',
+      'taskDone',
+      'settle',
+      'terminal',
+      'rekindle',
+      'achievements',
+      'characterFile',
+      'history',
+      'reminderSettings',
+      'privacy',
+      'trialConfirm',
+      'newGoal',
+      'stageProgress',
+      'comeback',
+      'modalBgEditor',
+      'navBarEditor',
+      'cardFxEditor',
+      'charSizeEditor',
+      'editor',
     ]
     return (allowed as string[]).includes(h) ? (h as RouteKey) : 'splash'
   }
   const [route, setRoute] = useState<RouteKey>(initial)
   const [sheet, setSheet] = useState(false)
   const [, setStack] = useState<RouteKey[]>([])
-  const [mode, setMode] = useState<GameMode>('traveler')
+  const state = useAppState()
+  const mode = state.mode
+  const [goalId, setGoalId] = useState<string | null>(() => {
+    try {
+      return sessionStorage.getItem('cinis:selected-goal')
+    } catch {
+      return null
+    }
+  })
+  const [draft, setDraft] = useState<GoalDraft | null>(null)
+  const [notice, setNotice] = useState('')
+  useEffect(() => {
+    const stop = startStateLifecycle()
+    const reminders = startReminderDelivery()
+    return () => {
+      stop()
+      reminders()
+    }
+  }, [])
 
-  const go = useCallback((next: RouteKey) => {
-    setStack((prev) => [...prev, route])
-    setSheet(false)
-    setRoute(next)
-  }, [route])
+  const go = useCallback(
+    (next: RouteKey) => {
+      setStack((prev) => [...prev, route])
+      setSheet(false)
+      window.history.pushState(null, '', `#${next}`)
+      setRoute(next)
+    },
+    [route],
+  )
 
   const back = useCallback(() => {
     setStack((prev) => {
@@ -84,35 +140,71 @@ export default function App() {
     setSheet(false)
   }, [])
 
-  // 浏览器返回键支持
+  // Browser location changes select a route; they must not also pop the in-app stack.
   useEffect(() => {
-    const onPop = (e: PopStateEvent) => {
-      e.preventDefault()
-      back()
+    const onLocation = () => {
+      const h = window.location.hash.slice(1) as RouteKey
+      if (h) {
+        setRoute(h)
+        setSheet(false)
+      }
     }
-    window.addEventListener('popstate', onPop)
-    return () => window.removeEventListener('popstate', onPop)
-  }, [back])
-
-  // 监听 hash 变化，支持用 #route 直接跳转/刷新某页
-  useEffect(() => {
-    const onHash = () => {
-      const h = window.location.hash.replace('#', '') as RouteKey
-      if (h) setRoute(h)
+    window.addEventListener('popstate', onLocation)
+    window.addEventListener('hashchange', onLocation)
+    return () => {
+      window.removeEventListener('popstate', onLocation)
+      window.removeEventListener('hashchange', onLocation)
     }
-    window.addEventListener('hashchange', onHash)
-    onHash()
-    return () => window.removeEventListener('hashchange', onHash)
   }, [])
+
+  useEffect(() => {
+    window.history.replaceState(null, '', `#${route}`)
+  }, [route])
+  useEffect(() => {
+    try {
+      if (goalId) sessionStorage.setItem('cinis:selected-goal', goalId)
+    } catch {
+      /* Optional navigation memory. */
+    }
+  }, [goalId])
 
   const tab = TAB_OF[route] ?? 'today'
 
   // 全屏独立页（编辑器），不套手机外壳
   if (route === 'editor') {
-    return <EditorPage />
+    return (
+      <Suspense fallback={<p>正在打开编辑器…</p>}>
+        <EditorPage />
+      </Suspense>
+    )
   }
   if (route === 'modalBgEditor') {
-    return <ModalBgEditorPage />
+    return (
+      <Suspense fallback={<p>正在打开编辑器…</p>}>
+        <ModalBgEditorPage />
+      </Suspense>
+    )
+  }
+  if (route === 'navBarEditor') {
+    return (
+      <Suspense fallback={<p>正在打开编辑器…</p>}>
+        <NavBarEditorPage />
+      </Suspense>
+    )
+  }
+  if (route === 'cardFxEditor') {
+    return (
+      <Suspense fallback={<p>正在打开编辑器…</p>}>
+        <CardFxEditorPage />
+      </Suspense>
+    )
+  }
+  if (route === 'charSizeEditor') {
+    return (
+      <Suspense fallback={<p>正在打开编辑器…</p>}>
+        <CharSizeEditorPage />
+      </Suspense>
+    )
   }
 
   const renderPage = () => {
@@ -123,8 +215,12 @@ export default function App() {
         return (
           <RoleSelectPage
             onConfirm={(picked) => {
-              setMode(picked)
-              go('newGoal')
+              try {
+                appStore.setMode(picked)
+                go('today')
+              } catch (e) {
+                setNotice((e as Error).message)
+              }
             }}
           />
         )
@@ -136,26 +232,59 @@ export default function App() {
             mode={mode}
             onStartTask={(taskId) => {
               taskStore.setFocusing(taskId)
-              setSheet(true)
+              if (
+                state.session?.task.id === taskId &&
+                ['running', 'paused', 'due'].includes(state.session.status)
+              )
+                go('focus')
+              else setSheet(true)
             }}
             onSwitchMode={() => go('roles')}
           />
         )
       case 'goals':
-        return <GoalsPage onOpen={() => go('goalDetail')} onNew={() => go('newGoal')} />
+        return (
+          <GoalsPage
+            onOpen={(id) => {
+              const goal = state.goals.find((g) => g.id === id)
+              if (goal) {
+                try {
+                  appStore.setMode(goal.mode)
+                  setGoalId(id)
+                  go('goalDetail')
+                } catch (e) {
+                  setNotice((e as Error).message)
+                }
+              }
+            }}
+            onNew={() => go('newGoal')}
+          />
+        )
       case 'goalDetail':
         return (
           <GoalDetailPage
+            goalId={goalId}
             onBack={back}
             onEdit={() => go('goalEdit')}
-            onEnter={() => go('focus')}
+            onEnter={(id) => {
+              taskStore.setFocusing(id)
+              go('today')
+              setSheet(true)
+            }}
           />
         )
       case 'goalEdit':
-        return <GoalEditPage onBack={back} onSave={back} />
+        return (
+          <GoalEditPage
+            goalId={goalId}
+            onBack={back}
+            onSave={() => go('goals')}
+          />
+        )
       case 'growth':
         return (
           <GrowthPage
+            mode={mode}
             onOpenCharacter={() => go('characterFile')}
             onOpenAchievements={() => go('achievements')}
           />
@@ -168,12 +297,16 @@ export default function App() {
             mode={mode}
             onBack={back}
             onFinish={() => {
-              const id = taskStore.getFocusing()
-              if (id) taskStore.markDone(mode, id)
-              // 结束并结算 -> 阶段结算页
-              go('settle')
+              if (appStore.settle()) go('taskDone')
+              else {
+                setNotice('本次会话已处理，不会重复结算。')
+                go('today')
+              }
             }}
-            onGiveUp={() => go('terminal')}
+            onGiveUp={() => {
+              appStore.abandon()
+              go('terminal')
+            }}
           />
         )
       case 'taskDone':
@@ -195,61 +328,19 @@ export default function App() {
           />
         )
       case 'terminal':
-        if (mode === 'knight') {
-          return (
-            <KnightTerminalPage
-              onBack={back}
-              onChangeMode={() => go('roles')}
-              onRecover={() => go('rekindle')}
-            />
-          )
-        }
-        if (mode === 'abyss') {
-          return (
-            <AbyssTerminalPage
-              onBack={back}
-              onChangeMode={() => go('roles')}
-              onRestart={() => go('rekindle')}
-            />
-          )
-        }
+      case 'rekindle':
         return (
           <TerminalPage
-            onBack={back}
+            mode={mode}
+            onBack={() => setRoute('today')}
             onChangeMode={() => go('roles')}
             onContinue={() => setRoute('today')}
-          />
-        )
-      case 'rekindle':
-        if (mode === 'knight') {
-          return (
-            <KnightRecoverPage
-              onBack={back}
-              onRest={() => setRoute('today')}
-              onAccept={() => setRoute('today')}
-            />
-          )
-        }
-        if (mode === 'abyss') {
-          return (
-            <AbyssRestartPage
-              onBack={back}
-              onAnother={() => setRoute('today')}
-              onFromAshes={() => setRoute('today')}
-            />
-          )
-        }
-        return (
-          <RekindlePage
-            onBack={back}
-            onChangeMode={() => go('roles')}
-            onIgnite={() => setRoute('today')}
           />
         )
       case 'achievements':
         return <AchievementsPage onBack={back} />
       case 'characterFile':
-        return <CharacterFilePage onBack={back} />
+        return <CharacterFilePage mode={mode} onBack={back} />
       case 'history':
         return <HistoryPage onBack={back} />
       case 'reminderSettings':
@@ -257,13 +348,15 @@ export default function App() {
       case 'privacy':
         return <PrivacyPage onBack={back} />
       case 'comeback':
-        return <ComebackPage onBack={back} onRestart={() => setRoute('today')} />
+        return (
+          <ComebackPage onBack={back} onRestart={() => setRoute('today')} />
+        )
       case 'stageProgress':
         return (
           <StageProgressPage
             mode={mode}
             onBack={back}
-            onSettings={() => go('goalEdit')}
+            onSettings={() => go('goals')}
             onGoTasks={() => setRoute('today')}
           />
         )
@@ -271,16 +364,31 @@ export default function App() {
         return (
           <TrialConfirmPage
             mode={mode}
+            draft={draft}
             onBack={back}
             onChangeMode={() => go('roles')}
-            onConfirm={() => setRoute('today')}
+            onConfirm={() => {
+              if (draft) {
+                try {
+                  appStore.createGoal(draft)
+                  setDraft(null)
+                  setRoute('today')
+                } catch (e) {
+                  setNotice((e as Error).message)
+                }
+              } else setRoute('today')
+            }}
           />
         )
       case 'newGoal':
         return (
           <NewGoalPage
+            mode={mode}
             onBack={back}
-            onNext={() => go('trialConfirm')}
+            onNext={(value) => {
+              setDraft(value)
+              go('trialConfirm')
+            }}
             onOpenReminder={() => go('reminderSettings')}
           />
         )
@@ -301,7 +409,15 @@ export default function App() {
 
   return (
     <div className={styles.stage}>
-      <div className={`${styles.phone} ${isImmersive ? styles.immersive : ''}`}>
+      {(notice || appStore.getError()) && (
+        <div className="appNotice" role="status" onClick={() => setNotice('')}>
+          {notice || appStore.getError()}
+        </div>
+      )}
+      <div
+        className={`${styles.phone} ${isImmersive ? styles.immersive : ''}`}
+        style={{ ['--mode-accent' as string]: MODE_ACCENT[mode] }}
+      >
         {isImmersive ? (
           <div key={route} className={styles.fullBleed}>
             {renderPage()}
@@ -318,10 +434,27 @@ export default function App() {
               <ChooseModeSheet
                 mode={mode}
                 onClose={() => setSheet(false)}
-                onFocus={() => go('focus')}
+                onFocus={() => {
+                  const id = taskStore.getFocusing()
+                  if (id) {
+                    try {
+                      appStore.start(id)
+                      go('focus')
+                    } catch (e) {
+                      setNotice((e as Error).message)
+                      setSheet(false)
+                    }
+                  }
+                }}
                 onQuick={() => {
                   const id = taskStore.getFocusing()
-                  if (id) taskStore.quickCheckin(mode, id)
+                  if (id) {
+                    try {
+                      appStore.check(id, 'quick')
+                    } catch (e) {
+                      setNotice((e as Error).message)
+                    }
+                  }
                   setSheet(false)
                   setRoute('today')
                 }}
@@ -336,15 +469,3 @@ export default function App() {
 
 // 暴露给 TABS 的类型使用，避免未使用告警
 void TABS
-
-
-
-
-
-
-
-
-
-
-
-

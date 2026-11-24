@@ -1,0 +1,19 @@
+{
+  "sourceBase": "e6c8523dcc88bd7d169adb7d3867a413a03c6399",
+  "publishedReference": "ba1bc7ee818a9cf1441ded433dbfdbc7586114d8",
+  "method": "Reconstructed readable implementations from source and observed published behavior; not a byte-for-byte recovery of missing source.",
+  "referenceFiles": {
+    "assets/index-B2CLaMTe.js": {
+      "sha256": "a948d38d8a26b7e41eb4ad2db6c53c65f6276bdf6c955dfa4bddc130957a159a",
+      "bytes": 1485064
+    },
+    "assets/index-B9wK_1XY.css": {
+      "sha256": "7ac356036fa22d3568537fad7df4b34009b374c80917651c709343d919fdc289",
+      "bytes": 165507
+    },
+    "assets/traveler-resting-scene.png": {
+      "sha256": "2715f674b595da2819d3bdbf31b5e7482033db9d5061f0f64927b42fb22603fe",
+      "bytes": 235210
+    }
+  }
+}

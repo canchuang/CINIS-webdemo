@@ -1,9 +1,23 @@
-import { useEffect, useReducer, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './TodayPage.module.css'
-import { modeTasks, modeChallenges, type GameMode } from '../data/content'
+import { modeChallenges, type GameMode } from '../data/content'
 import { modeThemes } from '../styles/tokens'
-import { TiltCard } from './TiltCard'
-import { taskStore } from '../data/taskStore'
+import { HologramCard } from '../components/HologramCard'
+import {
+  defaultCharSize,
+  loadCharSize,
+  type CharSizeConfig,
+} from '../data/charSize'
+import { appStore, useAppState } from '../data/appStore'
+import {
+  growth,
+  localDay,
+  isDone,
+  roundStats,
+  shiftDay,
+  RULES,
+  type Task,
+} from '../domain/engine'
 import { CheckinToast } from '../components/CheckinToast'
 
 type Props = {
@@ -12,70 +26,56 @@ type Props = {
   onSwitchMode?: () => void
 }
 
-export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Props) {
-  const challenge = modeChallenges[mode]
-  const [tasks, setTasks] = useState(() => modeTasks[mode].map((t) => ({ ...t })))
+export function TodayPage({
+  mode = 'traveler',
+  onStartTask,
+  onSwitchMode,
+}: Props) {
+  const state = useAppState(),
+    stats = growth(state),
+    challenge = modeChallenges[mode]
   const theme = modeThemes[mode]
-  // 订阅跨页任务状态：专注结算后会触发重渲染
-  const [, forceUpdate] = useReducer((x: number) => x + 1, 0)
-  // 打卡成功弹窗
-  const [toast, setToast] = useState<{ title: string; duration: string; xp: number; soul: number } | null>(
-    null,
-  )
-  // 本次会话内通过「勾选」完成的任务 -> 其魂火（用于进度条增长）
-  const [claims, setClaims] = useState<Record<string, number>>({})
-
+  const [toast, setToast] = useState<{
+    title: string
+    duration: string
+    xp: number
+    soul: number
+  } | null>(null)
+  const [charSize, setCharSize] = useState<CharSizeConfig>(defaultCharSize)
   useEffect(() => {
-    const unsub = taskStore.subscribe(() => {
-      // 快速打卡产生的结果 -> 弹窗
-      const ci = taskStore.takeCheckin()
-      if (ci && ci.mode === mode) {
-        const t = modeTasks[mode].find((x) => x.id === ci.id)
-        if (t) setToast({ title: t.title, duration: t.duration, xp: t.xp, soul: t.soul })
-      }
-      forceUpdate()
-    })
-    return unsub
-  }, [mode])
-
-  // 切换模式时重置任务列表，否则会沿用上一个模式的任务
-  useEffect(() => {
-    setTasks(modeTasks[mode].map((t) => ({ ...t })))
-    setClaims({})
-  }, [mode])
-
-  // 合并 store 里记录的完成态（来自专注结算）
+    const load = () => setCharSize(loadCharSize())
+    load()
+    window.addEventListener('focus', load)
+    window.addEventListener('storage', load)
+    return () => {
+      window.removeEventListener('focus', load)
+      window.removeEventListener('storage', load)
+    }
+  }, [])
+  const tasks = appStore.tasks(mode)
   const merged = tasks.map((t) => ({
     ...t,
-    done: t.done || taskStore.isDone(mode, t.id),
+    duration: `${t.durationMin} 分钟`,
+    done: isDone(state, t.id),
   }))
-
-  const doneCount = merged.filter((t) => t.done).length
-  const remaining = merged.length - doneCount
-  // 魂火：基础值 + 本次会话新完成任务的魂火（预置为已完成的任务不计），封顶 soulMax
-  const storeGain = modeTasks[mode]
-    .filter((t) => taskStore.isDone(mode, t.id))
-    .reduce((sum, t) => sum + t.soul, 0)
-  const claimGain = Object.values(claims).reduce((a, b) => a + b, 0)
-  const soulNow = Math.min(challenge.soulMax, challenge.soul + storeGain + claimGain)
-  const soulRatio = soulNow / challenge.soulMax
-
-  const toggle = (task: { id: string; title: string; duration: string; xp: number; soul: number; done: boolean }) => {
-    if (taskStore.isDone(mode, task.id)) return // 专注完成的不可反勾
-    setTasks((prev) => prev.map((t) => (t.id === task.id ? { ...t, done: !t.done } : t)))
-    if (!task.done) {
-      // 勾选（而非取消）：计入魂火增长 + 弹出打卡成功
-      setClaims((prev) => ({ ...prev, [task.id]: task.soul }))
-      setToast({ title: task.title, duration: task.duration, xp: task.xp, soul: task.soul })
-    } else {
-      setClaims((prev) => {
-        const next = { ...prev }
-        delete next[task.id]
-        return next
+  const doneCount = merged.filter((t) => t.done).length,
+    remaining = merged.length - doneCount
+  const start = state.stages[mode] ?? localDay(),
+    end = shiftDay(start, RULES[mode].days - 1)
+  const progress = roundStats(state, mode, start, end)
+  const soulNow = progress.earnedSoul,
+    soulMax = Math.max(1, progress.total * 10),
+    soulRatio = soulNow / soulMax
+  const toggle = (task: Task) => {
+    if (isDone(state, task.id)) return
+    if (appStore.check(task.id, 'check'))
+      setToast({
+        title: task.title,
+        duration: '快速记录 · 不计专注时长',
+        xp: task.xp,
+        soul: task.soul,
       })
-    }
   }
-
   const cardStyle = {
     '--card-bg': theme.card,
     '--card-text': theme.text,
@@ -85,31 +85,54 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
     '--card-glow': theme.glow,
   } as React.CSSProperties
 
+  // 各模式强调色（旅者绿 / 骑士蓝 / 深渊紫）
+  const accent =
+    mode === 'traveler' ? '#2E7D5B' : mode === 'abyss' ? '#7C3AED' : '#3B6FF5'
+  // 勾选成功图标：随模式色系（旅者绿 / 骑士金 / 深渊紫）
+  const checkColor =
+    mode === 'traveler' ? '#2E9E82' : mode === 'knight' ? '#E0B45C' : '#7C3AED'
+
   return (
-    <div className={styles.page}>
+    <div
+      className={styles.page}
+      style={{ ['--today-accent' as string]: accent }}
+    >
       <header className={styles.header}>
         <div>
-          <h1 className={styles.title}>3 月 12 日 · 周三</h1>
+          <h1 className={styles.title}>
+            {new Intl.DateTimeFormat('zh-CN', {
+              month: 'long',
+              day: 'numeric',
+              weekday: 'long',
+            }).format(new Date())}
+          </h1>
           <p className={styles.level}>
-            <strong>Lv.08</strong>
-            <span className={styles.xp}>680 / 800 XP · 微光段位</span>
+            <strong>Lv.{stats.level}</strong>
+            <span className={styles.xp}>
+              {stats.levelXp} / {stats.xpMax} XP · 持续成长
+            </span>
           </p>
         </div>
-        <button type="button" className={styles.switchBtn} onClick={onSwitchMode}>
+        <button
+          type="button"
+          className={styles.switchBtn}
+          onClick={onSwitchMode}
+        >
           ⇄ 换模式
         </button>
       </header>
 
       <div className={styles.xpTrack} aria-hidden="true">
-        <div className={styles.xpFill} style={{ width: '85%' }} />
+        <div
+          className={styles.xpFill}
+          style={{ width: `${(stats.levelXp / stats.xpMax) * 100}%` }}
+        />
       </div>
 
-      <TiltCard className={styles.card} style={cardStyle}>
+      <HologramCard className={styles.card} style={cardStyle}>
         <div className={styles.cardTop}>
-          <span className={styles.cardStage}>
-            {challenge.label} · {challenge.stage}
-          </span>
-          <span className={styles.cardDay}>{challenge.day}</span>
+          <span className={styles.cardStage}>{challenge.label} · 本轮挑战</span>
+          <span className={styles.cardDay}>{localDay()}</span>
         </div>
         <h2 className={styles.cardQuote}>{challenge.quote}</h2>
 
@@ -117,20 +140,23 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
           <span className={styles.soulLabel}>魂火</span>
           <span className={styles.soulValue}>
             {soulNow}
-            <em>/ {challenge.soulMax}</em>
+            <em>/ {progress.total * 10}</em>
           </span>
           <span className={styles.threshold}>{challenge.gate}</span>
         </div>
 
         <div className={styles.soulTrack} aria-hidden="true">
-          <div className={styles.soulFill} style={{ width: `${soulRatio * 100}%` }} />
+          <div
+            className={styles.soulFill}
+            style={{ width: `${soulRatio * 100}%` }}
+          />
         </div>
 
         <div className={styles.cardFoot}>
           <span>
             今日 {doneCount} / {merged.length}
           </span>
-          <span>{challenge.day}</span>
+          <span>{localDay()}</span>
         </div>
 
         <div className={styles.character}>
@@ -139,12 +165,30 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
             className={styles.charImg}
             src={challenge.character}
             alt={`${challenge.label}角色`}
+            style={{ width: `${(128 * charSize[mode]) / 100}px` }}
           />
           {/* 眨眼：一块与背景同色的盖片，周期性压下模拟眼皮 */}
           <span className={styles.blink} aria-hidden="true" />
         </div>
-      </TiltCard>
+      </HologramCard>
 
+      <button
+        className="resumeSession"
+        onClick={() => {
+          window.location.hash = 'stageProgress'
+        }}
+      >
+        查看阶段进度
+      </button>
+      {state.rounds.some((r) => r.mode === mode) && (
+        <button
+          onClick={() => {
+            window.location.hash = 'settle'
+          }}
+        >
+          查看最近结算 ›
+        </button>
+      )}
       <div className={styles.sectionHead}>
         <h2 className={styles.sectionTitle}>今日任务</h2>
         <span className={styles.sectionMeta}>
@@ -152,19 +196,51 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
         </span>
       </div>
 
+      {state.session &&
+        ['running', 'paused', 'due'].includes(state.session.status) && (
+          <button
+            className="resumeSession"
+            onClick={() => onStartTask(state.session!.task.id)}
+          >
+            恢复专注 · {state.session.task.title}
+          </button>
+        )}
+      {merged.length === 0 && (
+        <p className={styles.sectionMeta}>
+          今天没有计划任务。可以休息，或到目标页新建目标。
+        </p>
+      )}
       <ul className={styles.tasks}>
         {merged.map((task) => (
-          <li key={task.id} className={`${styles.task} ${task.done ? styles.taskDone : ''}`}>
+          <li
+            key={task.id}
+            className={`${styles.task} ${task.done ? styles.taskDone : ''}`}
+          >
             <button
               type="button"
               className={styles.check}
               onClick={() => toggle(task)}
+              disabled={
+                task.done ||
+                (state.session?.task.id === task.id &&
+                  ['running', 'paused', 'due'].includes(state.session.status))
+              }
               aria-pressed={task.done}
-              aria-label={`${task.done ? '取消完成' : '完成'}：${task.title}`}
-              style={task.done ? { background: '#2E9E82', borderColor: 'transparent' } : undefined}
+              aria-label={`${task.done ? '已完成' : '完成'}：${task.title}`}
+              style={
+                task.done
+                  ? { background: checkColor, borderColor: 'transparent' }
+                  : undefined
+              }
             >
               {task.done && (
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  aria-hidden="true"
+                >
                   <path
                     d="M2.5 7.4 5.5 10.4 11.5 3.9"
                     stroke="#fff"
@@ -205,8 +281,3 @@ export function TodayPage({ mode = 'traveler', onStartTask, onSwitchMode }: Prop
     </div>
   )
 }
-
-
-
-
-

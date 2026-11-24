@@ -5,8 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "build": "node scripts/build.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "test:e2e": "playwright test",
+    "format": "prettier --write src/domain src/data/appStore.ts src/data/reminderDelivery.ts tests scripts playwright.config.ts vitest.config.ts",
+    "test:ui": "vitest run"
   },
   "dependencies": {
     "grapesjs": "^0.23.9",
@@ -14,10 +18,17 @@
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.13",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.3.0",
+    "jsdom": "^31.0.1",
+    "prettier": "^3.10.1",
     "typescript": "^7.0.2",
-    "vite": "^8.3.8"
-  }
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1"
+  },
+  "packageManager": "pnpm@12.23.0"
 }

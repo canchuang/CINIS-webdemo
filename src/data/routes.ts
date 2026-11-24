@@ -28,9 +28,15 @@ export type RouteKey =
   | 'stageProgress'
   | 'comeback'
   | 'modalBgEditor'
+  | 'navBarEditor'
+  | 'cardFxEditor'
+  | 'charSizeEditor'
   | 'trialConfirm'
   | 'newGoal'
   | 'editor'
+
+
+
 
 
 

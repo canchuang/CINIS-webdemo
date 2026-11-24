@@ -1,99 +1,141 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './FocusPage.module.css'
-import { focusState, modeChallenges, type GameMode } from '../data/content'
+import { modeChallenges, type GameMode } from '../data/content'
 import { modeThemes } from '../styles/tokens'
+import { appStore, useAppState } from '../data/appStore'
+import { RULES } from '../domain/engine'
 
-type Props = { mode?: GameMode; onFinish: () => void; onGiveUp: () => void; onBack: () => void }
-
-/** P13 / P20 / P27 专注计时：真实倒计时 */
-export function FocusPage({ mode = 'traveler', onFinish, onGiveUp, onBack }: Props) {
-  const total = 25 * 60
-  const [left, setLeft] = useState(12 * 60 + 48)
-  const [paused, setPaused] = useState(false)
-  const timer = useRef<number | null>(null)
-  const challenge = modeChallenges[mode]
-  const theme = modeThemes[mode]
-
+type Props = {
+  mode?: GameMode
+  onFinish: () => void
+  onGiveUp: () => void
+  onBack: () => void
+}
+export function FocusPage({
+  mode = 'traveler',
+  onFinish,
+  onGiveUp,
+  onBack,
+}: Props) {
+  const state = useAppState(),
+    q = state.session
+  const [now, setNow] = useState(Date.now()),
+    [message, setMessage] = useState('')
   useEffect(() => {
-    if (paused) return
-    timer.current = window.setInterval(() => {
-      setLeft((v) => {
-        if (v <= 1) {
-          window.clearInterval(timer.current!)
-          return 0
-        }
-        return v - 1
-      })
-    }, 1000)
-    return () => {
-      if (timer.current) window.clearInterval(timer.current)
+    const t = window.setInterval(() => {
+      appStore.reconcile()
+      setNow(Date.now())
+    }, 250)
+    return () => window.clearInterval(t)
+  }, [])
+  if (!q)
+    return (
+      <div className={styles.screen}>
+        <h1 className={styles.task}>没有正在进行的专注</h1>
+        <button onClick={onBack}>返回今日任务</button>
+      </div>
+    )
+  const activeMode = q.task.mode ?? mode,
+    theme = modeThemes[activeMode],
+    challenge = modeChallenges[activeMode],
+    rules = RULES[activeMode]
+  const paused = q.status === 'paused',
+    due = q.status === 'due',
+    failed = ['interrupted', 'abandoned'].includes(q.status)
+  const left =
+    due || failed ? 0 : paused ? q.remainingMs : Math.max(0, q.deadlineAt - now)
+  const sec = Math.ceil(left / 1000),
+    mm = String(Math.floor(sec / 60)).padStart(2, '0'),
+    ss = String(sec % 60).padStart(2, '0')
+  const act = (fn: () => void) => {
+    try {
+      fn()
+      setMessage('')
+    } catch (e) {
+      setMessage((e as Error).message)
     }
-  }, [paused])
-
-  const mm = String(Math.floor(left / 60)).padStart(2, '0')
-  const ss = String(left % 60).padStart(2, '0')
-  const ratio = 1 - left / total
-
+  }
   return (
     <div className={styles.screen}>
       <div className={styles.topBar}>
-        <button type="button" className={styles.back} onClick={onBack} aria-label="返回">
+        <button
+          className={styles.back}
+          onClick={onBack}
+          aria-label="返回今日页，保留专注"
+        >
           ‹
         </button>
         <span className={styles.status} style={{ color: theme.accent }}>
-          <span className={styles.statusDot} style={{ background: theme.accent }} aria-hidden="true" />
-          {challenge.label} · 专注中
+          {challenge.label} ·{' '}
+          {due ? '待结算' : failed ? '已中断' : paused ? '休息中' : '专注中'}
         </span>
       </div>
-
-      <div className={styles.progress} aria-hidden="true">
+      <div className={styles.progress}>
         <div
           className={styles.progressFill}
-          style={{ width: `${ratio * 100}%`, background: theme.accent }}
+          style={{
+            width: `${Math.min(100, (1 - left / (q.task.durationMin * 60_000)) * 100)}%`,
+            background: theme.accent,
+          }}
         />
       </div>
-
-      <h1 className={styles.task}>{mode === 'abyss' ? '整理错题本' : focusState.taskTitle}</h1>
-
-      <div className={`${styles.character} ${paused ? styles.relax : styles.alert}`}>
-        <span className={styles.aura} aria-hidden="true" />
+      <h1 className={styles.task}>{q.task.title}</h1>
+      <p className={styles.state}>{rules.focusRule}</p>
+      <div
+        className={`${styles.character} ${paused ? styles.relax : styles.alert}`}
+      >
+        <span className={styles.aura} />
         <img
-          className={`${styles.figure} ${styles.figureBattle} ${paused ? styles.hide : ''}`}
-          src={challenge.character}
-          alt={`${challenge.label}战斗`}
+          className={styles.figure}
+          src={paused ? challenge.restCharacter : challenge.character}
+          alt={`${challenge.label}${paused ? '休息' : '专注'}`}
         />
-        <img
-          className={`${styles.figure} ${styles.figureRest} ${paused ? '' : styles.hide}`}
-          src={challenge.restCharacter}
-          alt={`${challenge.label}休息`}
-        />
-        <span className={styles.mood}>{paused ? 'z z Z' : '·  ·'}</span>
       </div>
-
-      <p className={styles.state} style={{ color: theme.accent }}>
-        {paused ? '休息中 · 角色在调整呼吸' : '探索战斗 · 角色在守护这一轮'}
-      </p>
-
-      <div className={styles.clock} role="timer" aria-live="off">
+      <div className={styles.clock} role="timer">
         <span className={styles.time}>
           {mm}:{ss}
         </span>
       </div>
-
-      <button type="button" className={styles.pause} onClick={() => setPaused((p) => !p)}>
-        {paused ? '继续' : '暂停'}
-      </button>
-
+      <p className={styles.state} role="status">
+        {message ||
+          (failed
+            ? q.reason
+            : due
+              ? '时间已到，确认后记录一次完成'
+              : `计划 ${q.task.durationMin} 分钟 · 已暂停 ${q.pauses} 次`)}
+      </p>
+      {rules.pauses > 0 && !due && !failed && (
+        <button
+          className={styles.pause}
+          disabled={!paused && q.pauses >= rules.pauses}
+          onClick={() => act(paused ? appStore.resume : appStore.pause)}
+        >
+          {paused ? '继续' : '暂停'}
+        </button>
+      )}
       <div className={styles.bottom}>
         <button
-          type="button"
           className={styles.finish}
           style={{ background: theme.accent }}
+          disabled={!due}
           onClick={onFinish}
         >
-          结束并结算
+          {due
+            ? '确认完成'
+            : failed
+              ? '本次未完成，不发放奖励'
+              : '计时完成后结算'}
         </button>
-        <button type="button" className={styles.giveUp} onClick={onGiveUp}>
+        <button
+          className={styles.giveUp}
+          onClick={() => {
+            if (
+              failed ||
+              window.confirm('退出本次专注？已完成的记录与永久经验会保留。')
+            )
+              onGiveUp()
+          }}
+        >
           退出专注
         </button>
       </div>

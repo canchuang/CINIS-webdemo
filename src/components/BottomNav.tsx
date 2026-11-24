@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+﻿import { useCallback, useEffect, useRef, useState } from 'react'
 import styles from './BottomNav.module.css'
 import { TABS, type TabKey } from '../data/tabs'
+import { defaultNavBar, loadNavBar, navBarStyle, type NavBarConfig } from '../data/navBar'
 
 type Props = {
   active: TabKey
@@ -14,6 +15,17 @@ type Props = {
 export function BottomNav({ active, onChange }: Props) {
   const listRef = useRef<HTMLDivElement>(null)
   const [indicator, setIndicator] = useState({ x: 0, width: 0 })
+  const [navBg, setNavBg] = useState<NavBarConfig>(defaultNavBar)
+  useEffect(() => {
+    setNavBg(loadNavBar())
+    const onStorage = () => setNavBg(loadNavBar())
+    window.addEventListener('storage', onStorage)
+    window.addEventListener('focus', onStorage)
+    return () => {
+      window.removeEventListener('storage', onStorage)
+      window.removeEventListener('focus', onStorage)
+    }
+  }, [])
 
   const measure = useCallback(() => {
     const list = listRef.current
@@ -44,13 +56,13 @@ export function BottomNav({ active, onChange }: Props) {
     if (popTimer.current) window.clearTimeout(popTimer.current)
     requestAnimationFrame(() => {
       setPopping(true)
-      popTimer.current = window.setTimeout(() => setPopping(false), 740)
+      popTimer.current = window.setTimeout(() => setPopping(false), 460)
     })
     onChange(key)
   }
 
   return (
-    <nav className={styles.nav} aria-label="主导航">
+    <nav className={styles.nav} style={navBarStyle(navBg)} aria-label="主导航">
       <div className={styles.list} ref={listRef}>
         <span
           className={`${styles.indicator} ${popping ? styles.pop : ''}`}
@@ -82,3 +94,5 @@ export function BottomNav({ active, onChange }: Props) {
     </nav>
   )
 }
+
+

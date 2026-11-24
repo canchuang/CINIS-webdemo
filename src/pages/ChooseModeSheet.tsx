@@ -2,25 +2,37 @@ import { useEffect, useState, type CSSProperties } from 'react'
 import styles from './ChooseModeSheet.module.css'
 import { chooseModeInfo, type GameMode } from '../data/content'
 import { ModalBackdrop } from '../components/ModalBackdrop'
-import { defaultModalBg, loadModalBg, type ModalBgConfig } from '../data/modalBg'
+import {
+  defaultModalBg,
+  loadModalBg,
+  type ModalBgConfig,
+} from '../data/modalBg'
 import { sheetFxStyle } from '../components/sheetFx'
+import { appStore } from '../data/appStore'
+import { RULES } from '../domain/engine'
+import { taskStore } from '../data/taskStore'
 
-type Props = { mode: GameMode; onClose: () => void; onFocus: () => void; onQuick: () => void }
+type Props = {
+  mode: GameMode
+  onClose: () => void
+  onFocus: () => void
+  onQuick: () => void
+}
 
 /** 各模式的弹窗配色（对齐设计稿 11A/18A/25A） */
 const SHEET_PALETTE: Record<GameMode, Record<string, string>> = {
   traveler: {
-    '--sheet-ink': '#16181D',
-    '--sheet-sub': '#7C8798',
-    '--sheet-grabber': '#9AA5B5',
-    '--sheet-main-bg': '#E6F2ED',
-    '--sheet-main-text': '#1F6B53',
-    '--sheet-main-rule': '#5E8C7A',
-    '--sheet-quick-bg': '#F1F2F5',
-    '--sheet-quick-text': '#16181D',
-    '--sheet-quick-desc': '#98A2B3',
-    '--sheet-cancel-bg': '#EDEFF4',
-    '--sheet-cancel-text': '#5F6773',
+    '--sheet-ink': '#16211C',
+    '--sheet-sub': '#6F8177',
+    '--sheet-grabber': '#2E7D5B',
+    '--sheet-main-bg': '#2E7D5B',
+    '--sheet-main-text': '#FFFFFF',
+    '--sheet-main-rule': '#CFE8DC',
+    '--sheet-quick-bg': '#F2F7F2',
+    '--sheet-quick-text': '#1B2A22',
+    '--sheet-quick-desc': '#7E9187',
+    '--sheet-cancel-bg': '#CDE9DC',
+    '--sheet-cancel-text': '#17452F',
   },
   knight: {
     '--sheet-ink': '#1C1710',
@@ -36,26 +48,33 @@ const SHEET_PALETTE: Record<GameMode, Record<string, string>> = {
     '--sheet-cancel-text': '#241A05',
   },
   abyss: {
-    '--sheet-ink': '#1F1A2B',
-    '--sheet-sub': '#7A6F8C',
-    '--sheet-grabber': '#6B6280',
-    '--sheet-main-bg': '#EFE7FA',
-    '--sheet-main-text': '#4C2C86',
-    '--sheet-main-rule': '#7A5FA8',
-    '--sheet-quick-bg': '#F4F1FA',
-    '--sheet-quick-text': '#2A2238',
-    '--sheet-quick-desc': '#8D82A3',
-    '--sheet-cancel-bg': '#E7DEFA',
-    '--sheet-cancel-text': '#3E2A62',
+    '--sheet-ink': '#F4F0FA',
+    '--sheet-sub': '#A79FC0',
+    '--sheet-grabber': '#8B7FB0',
+    '--sheet-main-bg': '#6342AE',
+    '--sheet-main-text': '#FFFFFF',
+    '--sheet-main-rule': '#D9CCF5',
+    '--sheet-quick-bg': '#3A3150',
+    '--sheet-quick-text': '#F1ECFA',
+    '--sheet-quick-desc': '#A79FC0',
+    '--sheet-cancel-bg': '#4E4269',
+    '--sheet-cancel-text': '#EDE7F8',
   },
 }
 
-/** 各模式「点火专注」下的规则文案 */
-const FOCUS_RULE: Record<GameMode, string> = {
-  traveler: '随时可暂停 · 无次数限制',
-  knight: '本轮可暂停 1 次 · 每次 ≤ 10 分钟',
-  abyss: '无暂停 · 中断即判负',
+/** 各模式的弹窗面板底色（覆盖编辑器里的全局面板色） */
+const SHEET_BG: Partial<Record<GameMode, string>> = {
+  traveler: '#CCE0CE',
+  abyss: 'linear-gradient(to bottom, #382F4C 0%, #241E33 100%)',
 }
+
+/** 各模式边缘光晕颜色 */
+const GLOW_COLOR: Partial<Record<GameMode, string>> = {
+  traveler: '#43A47F',
+  abyss: '#7C3AED',
+}
+
+/** 各模式「点火专注」下的规则文案 */
 
 /** 11A / 18A / 25A 完成方式弹层 */
 export function ChooseModeSheet({ mode, onClose, onFocus, onQuick }: Props) {
@@ -66,14 +85,37 @@ export function ChooseModeSheet({ mode, onClose, onFocus, onQuick }: Props) {
   }, [])
   const fx = sheetFxStyle(bg)
 
+  // 当前被点击的任务（决定弹窗头部与专注卡信息）
+  const focusingId = taskStore.getFocusing()
+  const task =
+    appStore.tasks(mode).find((t) => t.id === focusingId) ??
+    appStore.tasks(mode).find((t) => !appStore.done(t.id)) ??
+    appStore.tasks(mode)[0]
+  const headerTitle = task?.title ?? c.task
+  const headerMeta = task
+    ? `${task.durationMin} 分钟 · +${task.xp} XP · +${task.soul} 魂火`
+    : c.meta
+  const focusMeta = task
+    ? `⏱ ${`${task.durationMin} min`} · +${task.xp} XP`
+    : `⏱ ${c.focus.meta}`
+
   const style = { ...(SHEET_PALETTE[mode] as CSSProperties), ...fx.style }
+  // 面板底色按模式覆盖（旅者浅绿 / 深渊深紫；骑士沿用编辑器奶油色）
+  const bgOverride = SHEET_BG[mode]
+  if (bgOverride) {
+    ;(style as Record<string, string>)['--sheet-bg'] = bgOverride
+  }
 
   return (
     <div className={styles.overlay} role="presentation">
-      <ModalBackdrop config={bg} onClick={onClose} />
+      <ModalBackdrop
+        config={bg}
+        onClick={onClose}
+        glowColorOverride={GLOW_COLOR[mode]}
+      />
 
       <div
-        className={`${styles.sheet} ${fx.className}`}
+        className={`${styles.sheet} ${fx.className} ${mode === 'abyss' ? styles.sheetDark : ''}`}
         style={style}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
@@ -84,8 +126,8 @@ export function ChooseModeSheet({ mode, onClose, onFocus, onQuick }: Props) {
 
         <div className={styles.head}>
           <div>
-            <p className={styles.task}>{c.task}</p>
-            <p className={styles.meta}>{c.meta}</p>
+            <p className={styles.task}>{headerTitle}</p>
+            <p className={styles.meta}>{headerMeta}</p>
           </div>
           <button type="button" className={styles.cancel} onClick={onClose}>
             取消
@@ -94,8 +136,8 @@ export function ChooseModeSheet({ mode, onClose, onFocus, onQuick }: Props) {
 
         <button type="button" className={styles.main} onClick={onFocus}>
           <span className={styles.mainTitle}>{c.focus.title}</span>
-          <span className={styles.mainMeta}>⏱ {c.focus.meta}</span>
-          <span className={styles.mainRule}>{FOCUS_RULE[mode]}</span>
+          <span className={styles.mainMeta}>{focusMeta}</span>
+          <span className={styles.mainRule}>{RULES[mode].focusRule}</span>
           <span className={styles.mainArrow} aria-hidden="true">
             ›
           </span>

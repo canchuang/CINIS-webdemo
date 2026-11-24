@@ -1,7 +1,13 @@
-import { useState } from 'react'
+import { assetUrl } from '../data/assets'
+import { useEffect, useState } from 'react'
 import styles from './RoleSelectPage.module.css'
 import { onboardingInfo } from '../data/content'
 import type { GameMode } from '../data/content'
+import {
+  defaultCharSize,
+  loadCharSize,
+  type CharSizeConfig,
+} from '../data/charSize'
 
 const CARD_MODES: GameMode[] = ['traveler', 'knight', 'abyss']
 
@@ -11,6 +17,10 @@ type Props = { onConfirm: (mode: GameMode) => void }
 export function RoleSelectPage({ onConfirm }: Props) {
   const r = onboardingInfo.roles
   const [picked, setPicked] = useState(2) // 默认深渊，与稿一致
+  const [charSize, setCharSize] = useState<CharSizeConfig>(defaultCharSize)
+  useEffect(() => {
+    setCharSize(loadCharSize())
+  }, [])
 
   const current = r.cards[picked]
 
@@ -37,7 +47,19 @@ export function RoleSelectPage({ onConfirm }: Props) {
             >
               <span className={styles.numeral}>{card.numeral}</span>
               <span className={styles.figure} aria-hidden="true">
-                <img src={['/assets/character-traveler.png', '/assets/character-knight.png', '/assets/character-abyss.png'][i]} alt="" />
+                <img
+                  src={
+                    [
+                      assetUrl(`/assets/character-traveler.png`),
+                      assetUrl(`/assets/character-knight.png`),
+                      assetUrl(`/assets/character-abyss.png`),
+                    ][i]
+                  }
+                  alt=""
+                  style={{
+                    transform: `scale(${CARD_MODES[i] ? charSize[CARD_MODES[i]] / 100 : 1})`,
+                  }}
+                />
               </span>
               <span className={styles.cardName}>{card.name}</span>
               <span className={styles.cardEn}>{card.en}</span>
@@ -55,7 +77,11 @@ export function RoleSelectPage({ onConfirm }: Props) {
         <p className={styles.quoteText}>{current.quote}</p>
       </div>
 
-      <button type="button" className={styles.cta} onClick={() => onConfirm(CARD_MODES[picked])}>
+      <button
+        type="button"
+        className={styles.cta}
+        onClick={() => onConfirm(CARD_MODES[picked])}
+      >
         {r.cta}
       </button>
       <p className={styles.footer}>{r.footer}</p>

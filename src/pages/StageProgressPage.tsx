@@ -1,97 +1,63 @@
 import styles from './StageProgressPage.module.css'
 import { PageHeader } from '../components/PageHeader'
-import { stageProgressData, type GameMode } from '../data/content'
-
-type Props = {
-  mode: GameMode
+import { useAppState } from '../data/appStore'
+import {
+  RULES,
+  localDay,
+  shiftDay,
+  dayDistance,
+  roundStats,
+  type Mode,
+} from '../domain/engine'
+export function StageProgressPage({
+  mode,
+  onBack,
+  onSettings,
+  onGoTasks,
+}: {
+  mode: Mode
   onBack: () => void
   onSettings?: () => void
   onGoTasks: () => void
-}
-
-/** 阶段进度（P14/P21/P28，三模式） */
-export function StageProgressPage({ mode, onBack, onSettings, onGoTasks }: Props) {
-  const d = stageProgressData[mode]
-  const pct = Math.round((d.done / d.total) * 100)
-
+}) {
+  const s = useAppState(),
+    start = s.stages[mode] ?? localDay(),
+    end = shiftDay(start, RULES[mode].days - 1),
+    p = roundStats(s, mode, start, end),
+    day = Math.max(1, dayDistance(start, localDay()) + 1)
   return (
     <div className={styles.page}>
-      <PageHeader
-        title="阶段进度"
-        onBack={onBack}
-        backLabel="今日"
-        size="lg"
-        right={
-          <button type="button" className={styles.settings} onClick={onSettings}>
-            挑战设置
-          </button>
-        }
-      />
-
-      {/* 天点阵 */}
-      <div className={styles.dots}>
-        {d.days.map((day) => (
-          <div key={day.label} className={styles.dotCol}>
-            <span
-              className={`${styles.dot} ${day.state === 'done' ? styles.dotDone : ''} ${
-                day.state === 'current' ? styles.dotCurrent : ''
-              }`}
-              style={
-                day.state === 'done' || day.state === 'current'
-                  ? { background: d.accent, borderColor: d.accent }
-                  : undefined
-              }
-            />
-            <span className={styles.dotLabel}>{day.label}</span>
-          </div>
-        ))}
-      </div>
-      <p className={styles.dayHint}>
-        第 {d.days.findIndex((x) => x.state === 'current') + 1} 天
+      <PageHeader title="阶段进度" onBack={onBack} />
+      <p>
+        {RULES[mode].label} · 第 {day} / {RULES[mode].days} 天
       </p>
-
-      {/* 大数字 + 进度条 */}
+      <p>
+        {start} — {end}
+      </p>
       <div className={styles.bigRow}>
         <span className={styles.big}>
-          {d.done} <em>/ {d.total}</em>
+          {p.done}
+          <em> / {p.total}</em>
         </span>
-        <span className={styles.rateBlock}>
-          <span className={styles.rate}>{d.rate}</span>
-          <span className={styles.remain}>{d.remainHint}</span>
-        </span>
+        <span>已生成任务完成率 {Math.round(p.rate * 100)}%</span>
       </div>
-      <div className={styles.track} aria-hidden="true">
-        <div className={styles.fill} style={{ width: `${pct}%`, background: d.accent }} />
+      <div className={styles.track}>
+        <div className={styles.fill} style={{ width: `${p.rate * 100}%` }} />
       </div>
-
-      <h3 className={styles.section}>本轮数据</h3>
-      <ul className={styles.rows}>
-        {d.rows.map((r) => (
-          <li key={r.label} className={styles.row}>
-            <span className={styles.rowLabel}>{r.label}</span>
-            <span className={styles.rowValue}>{r.value}</span>
-          </li>
-        ))}
-      </ul>
-
-      <h3 className={styles.section}>按日</h3>
-      <ul className={styles.rows}>
-        {d.daily.map((r) => (
-          <li key={r.label} className={styles.row}>
-            <span className={styles.rowLabel}>{r.label}</span>
-            <span className={`${styles.rowValue} ${r.muted ? styles.rowMuted : ''}`}>{r.value}</span>
-          </li>
-        ))}
-      </ul>
-
-      <button
-        type="button"
-        className={styles.cta}
-        style={{ background: d.accent }}
-        onClick={onGoTasks}
-      >
-        {d.cta}
+      <p>
+        {RULES[mode].threshold
+          ? `阶段门槛 ${RULES[mode].threshold * 100}%`
+          : '无门槛 · 按实际完成结算'}
+      </p>
+      <p>
+        暂存魂火 {p.earnedSoul} · 有效专注 {Math.floor(p.focusedMs / 60000)}{' '}
+        分钟
+      </p>
+      <p>后续执行日的任务会逐日生成，休息日不计入任务总数。</p>
+      <button className="primaryAction" onClick={onGoTasks}>
+        去完成今天的任务
       </button>
+      {onSettings && <button onClick={onSettings}>查看目标设置</button>}
     </div>
   )
 }
