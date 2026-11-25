@@ -1,4 +1,15 @@
 /* Aurora / Grainient CSS fallbacks; WebGL canvases replace these when available. */
+/* Light-effect design tokens (reference colors — NOT page background). Mirrors BG in hero-bg-canvas.js. */
+:root{
+  --bgfx-mist:#A99BD4;   /* 雾紫 */
+  --bgfx-cool:#92ADD2;   /* 冷蓝 */
+  --bgfx-teal:#95BDB9;   /* 灰青 */
+  --bgfx-pink:#C7A4BF;   /* 淡粉 */
+  --bgfx-warm:#E5DFD6;   /* 柔和暖白 */
+  --bgfx-base:#F2F4F7;
+  --bgfx-flow-period:28s;     /* 流光 24–32s */
+  --bgfx-curtain-period:42s;  /* 光幕 36–48s */
+}
 .hero-v2x{position:relative;overflow:hidden}
 .hero-v2x>.wrap{position:relative;z-index:2}
 
@@ -9,9 +20,9 @@
 .bg-aurora{
   opacity:.94;
   background:
-    radial-gradient(54% 66% at 18% 12%, #C8B8F6 0%, rgba(200,184,246,0) 70%),
-    radial-gradient(50% 62% at 79% 10%, #B7D5F1 0%, rgba(183,213,241,0) 72%),
-    radial-gradient(52% 50% at 56% 42%, #DED7F8 0%, rgba(222,215,248,0) 72%);
+    radial-gradient(54% 66% at 18% 12%, rgba(169,155,212,.9) 0%, rgba(169,155,212,0) 70%),
+    radial-gradient(50% 62% at 79% 10%, rgba(146,173,210,.9) 0%, rgba(146,173,210,0) 72%),
+    radial-gradient(52% 50% at 56% 42%, rgba(149,189,185,.85) 0%, rgba(149,189,185,0) 72%);
   filter:blur(16px) saturate(112%);
   animation:auroraDrift 14s ease-in-out infinite alternate;
   will-change:transform;
@@ -26,9 +37,9 @@
 .bg-grainient{
   opacity:0;
   background:
-    radial-gradient(60% 70% at 20% 10%, #D0C2F4 0%, rgba(208,194,244,0) 68%),
-    radial-gradient(55% 65% at 80% 30%, #BED8F3 0%, rgba(190,216,243,0) 68%),
-    linear-gradient(120deg,#F1F3F8 0%,#E3DDF5 45%,#D7E5F4 100%);
+    radial-gradient(60% 70% at 20% 10%, rgba(169,155,212,.85) 0%, rgba(169,155,212,0) 68%),
+    radial-gradient(55% 65% at 80% 30%, rgba(146,173,210,.85) 0%, rgba(146,173,210,0) 68%),
+    linear-gradient(120deg,var(--bgfx-base) 0%,rgba(199,164,191,.5) 45%,rgba(149,189,185,.55) 100%);
   background-size:200% 200%,200% 200%,200% 200%;
   animation:grainFlow 18s ease-in-out infinite alternate;
 }
