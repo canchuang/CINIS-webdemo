@@ -73,13 +73,12 @@ p,.zh-body,.desc,.lede,.intro p,.cs p,.feature .info p,.dup p,li,dd,blockquote{
   html[lang="zh-CN"]{ scroll-behavior:auto; }
 }
 
-/* ===== Detail pages: remove left/right margins (full-bleed content) ===== */
-.cs .cs-cover .wrap,
+/* ===== Detail pages: side margins match home/about/contact (.wrap) ===== */
 .cs .cs-body{
-  max-width:none !important;
-  margin-left:0 !important; margin-right:0 !important;
-  padding-left:0 !important; padding-right:0 !important;
-  width:auto !important;
+  max-width: var(--wrap) !important;
+  margin-left: auto !important; margin-right: auto !important;
+  padding-left: var(--gutter) !important; padding-right: var(--gutter) !important;
+  width: auto !important;
 }
 /* ===== Case-study footer "继续看作品": single-column vertical ===== */
 .next-work-grid,

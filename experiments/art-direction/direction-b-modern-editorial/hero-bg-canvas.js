@@ -269,12 +269,10 @@ function boot() {
   const inten = pageIntensity();
   const hero = document.querySelector('.hero-v2x');
   const aLayer = hero?.querySelector('.bg-aurora');
-  const gLayer = hero?.querySelector('.bg-grainient');
   /* Homepage 光幕: use the ported FLOW gradient loop (Iridescent cloud). Falls back to Aurora. */
   const a = aLayer
     ? (window.FLOW_GRADIENT ? window.FLOW_GRADIENT.attach(aLayer) : initAurora(aLayer, { opacity: BG.curtainOpacity, brightness: 1.16 }, { cycle: true }))
     : null;
-  const g = gLayer ? initGrainient(gLayer, { cycle: true }) : null;
   /* Inner pages: same React Bits Aurora component, same global palette/period, intensity scaled per page */
   const innerLayer = document.querySelector('.inner-aurora-layer');
   const inner = innerLayer ? initAurora(innerLayer, {
@@ -282,7 +280,7 @@ function boot() {
     scale: .8, glow: .6, brightness: 1.02 + .12 * inten, layers: 2,
     opacity: clamp(BG.curtainOpacity * inten, .34, .95)
   }, { cycle: true }) : null;
-  document.addEventListener('visibilitychange', () => { if (a && a.wake) a.wake(); if (g && g.wake) g.wake(); if (inner && inner.wake) inner.wake(); });
+  document.addEventListener('visibilitychange', () => { if (a && a.wake) a.wake(); if (inner && inner.wake) inner.wake(); });
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 /* Expose for the background editor (local customization tool) — reuses the same React Bits shader ports */

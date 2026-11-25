@@ -1,5 +1,6 @@
-/* Aurora / Grainient CSS fallbacks; WebGL canvases replace these when available. */
-/* Light-effect design tokens (reference colors — NOT page background). Mirrors BG in hero-bg-canvas.js. */
+/* Hero background — React Bits 光幕 only.
+   Homepage renders the FLOW loop (flow-gradient.js); inner pages use the Aurora shader.
+   Former 光幕/流光 mode switch removed — brand signature now occupies that spot. */
 :root{
   --bgfx-nebula:#9876DA;  /* 星云紫（品牌） */
   --bgfx-fog:#7199DB;     /* 雾蓝 */
@@ -7,9 +8,8 @@
   --bgfx-blush:#CF8FBE;   /* 霞粉 */
   --bgfx-gold:#DFBD87;    /* 暖金 */
   --bgfx-base:#F2F4F7;
-  --bgfx-flow-period:20s;     /* 流光 18–24s */
-  --bgfx-curtain-period:32s;  /* 光幕 28–36s（非同步） */
-  /* 页面光效强度（首页=1.0）：由 body[data-page] 在 CSS 侧亦可调 */
+  --bgfx-flow-period:20s;
+  --bgfx-curtain-period:32s;
   --bgfx-i-index:1; --bgfx-i-works:.85; --bgfx-i-about:.75; --bgfx-i-contact:.78;
   --bgfx-i-cinis:.6; --bgfx-i-mova:.6; --bgfx-i-pes:.6;
 }
@@ -19,7 +19,7 @@
 .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .hero-bg .bg-layer{position:absolute;inset:0;transition:opacity .6s ease}
 
-/* Aurora — luminous pastel curtains with enough travel to read as motion. */
+/* 光幕 CSS fallback — luminous pastel curtains. */
 .bg-aurora{
   opacity:.94;
   background:
@@ -36,67 +36,52 @@
   100%{transform:translate3d(5%,-1%,0) scale(1.05)}
 }
 
-/* Grainient CSS fallback: visible lilac/blue bands and restrained film grain. */
-.bg-grainient{
-  opacity:0;
-  background:
-    radial-gradient(60% 70% at 20% 10%, rgba(152,118,218,.85) 0%, rgba(152,118,218,0) 68%),
-    radial-gradient(55% 65% at 80% 30%, rgba(113,153,219,.85) 0%, rgba(113,153,219,0) 68%),
-    linear-gradient(120deg,var(--bgfx-base) 0%,rgba(207,143,190,.55) 45%,rgba(114,196,190,.55) 100%);
-  background-size:200% 200%,200% 200%,200% 200%;
-  animation:grainFlow 18s ease-in-out infinite alternate;
+/* Real canvases (2D flow / WebGL aurora) fill the layer. */
+.aurora-canvas,.flow-canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
+.bg-aurora.has-canvas{background:none!important;filter:none!important;animation:none!important}
+
+/* Brand signature — replaces the old background-mode switch. No card/border/bg. */
+.brand-signature{
+  display:flex;align-items:center;justify-content:flex-end;gap:14px;
+  margin:0 0 14px;color:var(--ink);
 }
-@keyframes grainFlow{
-  0%{background-position:0% 0%,100% 20%,0% 0%}
-  100%{background-position:20% 15%,80% 40%,100% 100%}
+.brand-sym{width:52px;height:52px;flex:0 0 auto;overflow:visible;color:currentColor}
+.brand-sym .orbit{transform-origin:28px 28px;animation:brandSpin 32s linear infinite}
+.brand-sym ellipse{
+  fill:none;stroke:currentColor;stroke-width:.9;vector-effect:non-scaling-stroke;
+  transform-origin:28px 28px;animation:brandWarp 16s ease-in-out infinite alternate;
 }
-.bg-grain{
-  position:absolute;inset:0;opacity:0;pointer-events:none;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
-  background-size:140px 140px;
+.brand-sym ellipse:nth-child(2){animation-duration:19s;animation-delay:-4s}
+.brand-sym ellipse:nth-child(3){animation-duration:22s;animation-delay:-9s}
+.brand-sym ellipse:nth-child(4){animation-duration:17s;animation-delay:-13s}
+.brand-manifesto{
+  font-family:var(--font-body);font-size:11px;font-weight:500;line-height:1.4;
+  letter-spacing:.08em;text-transform:uppercase;text-align:right;color:var(--ink);opacity:.92;
+}
+.brand-manifesto span{display:block}
+@keyframes brandSpin{to{transform:rotate(360deg)}}
+@keyframes brandWarp{
+  0%{rx:20.2px;ry:7.0px}
+  50%{rx:22.6px;ry:8.6px}
+  100%{rx:20.8px;ry:7.6px}
 }
 
-/* mutually exclusive states */
-.hero-v2x[data-bg="grainient"] .bg-aurora{opacity:0}
-.hero-v2x[data-bg="grainient"] .bg-grainient{opacity:1}
-.hero-v2x[data-bg="grainient"] .bg-grain{opacity:.075}
-
-/* small scheme switch (kept out of the way, above content) */
-.bg-switch{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin:0 0 12px;
-  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
-.bg-switch .lbl{color:#414955;margin-right:2px}
-.bg-switch button{font:inherit;letter-spacing:inherit;padding:6px 11px;border:1px solid var(--line);
-  background:rgba(255,255,255,.6);color:var(--text2);cursor:pointer;border-radius:999px;
-  transition:background .25s,color .25s,border-color .25s}
-.bg-switch button[aria-pressed="true"]{background:var(--ink);color:var(--base);border-color:var(--ink)}
-.bg-switch button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-
-/* Darker small copy remains legible over the stronger pastel fields. */
+/* Small copy stays legible over the pastel fields. */
 .hero-v2x .hx-top .en,.hero-v2x .hx-foot .lede,.hero-v2x .hx-foot .meta{color:#414955}
 
-/* reduced motion: static gradients, no grain, no animation */
-@media (prefers-reduced-motion: reduce){
-  .bg-aurora,.bg-grainient{animation:none}
-  .bg-aurora{opacity:.8}
-  .bg-grain{display:none}
-  .hero-v2x[data-bg="grainient"] .bg-grain{display:none}
-}
-
-/* mobile: cheaper blur/shorter visuals, no horizontal overflow */
-@media (max-width:640px){
-  .bg-aurora{filter:blur(14px) saturate(108%);opacity:.84}
-  .bg-grainient{animation-duration:22s}
-  .bg-switch{margin-bottom:14px}
-}
-
-/* Phase 24 — real WebGL canvases (official shaders) */
-.aurora-canvas,.grainient-canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
-.bg-aurora.has-canvas{background:none!important;filter:none!important;animation:none!important}
-.bg-grainient.has-canvas{background:none!important;animation:none!important}
-.bg-grain{display:none!important}
-
-/* 首页光幕 (Untitled blend FLOW): light scrim behind bottom text for legibility only */
+/* Light scrim behind bottom text only (homepage 光幕). */
 .hero-v2x[data-bg="aurora"] .hero-bg::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(247,248,250,0) 34%,rgba(247,248,250,.30) 60%,rgba(247,248,250,.60) 100%);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .bg-aurora{animation:none;opacity:.8}
+  .brand-sym .orbit,.brand-sym ellipse{animation:none}
+}
+@media (max-width:640px){
+  .bg-aurora{filter:blur(14px) saturate(108%);opacity:.84}
+  .brand-signature{gap:12px;margin-bottom:14px}
+  .brand-sym{width:44px;height:44px}
+  .brand-manifesto{font-size:10px}
 }
