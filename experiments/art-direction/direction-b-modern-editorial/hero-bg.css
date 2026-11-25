@@ -40,23 +40,24 @@
 .aurora-canvas,.flow-canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
 .bg-aurora.has-canvas{background:none!important;filter:none!important;animation:none!important}
 
-/* Brand signature — replaces the old background-mode switch. No card/border/bg. */
+/* Brand signature — aligned to the identity block's top edge; no card/border/bg. */
 .brand-signature{
+  position:absolute;top:28px;right:var(--gutter);z-index:3;
   display:flex;align-items:center;justify-content:flex-end;gap:14px;
-  margin:0 0 14px;color:var(--ink);
+  margin:0;color:var(--ink);
 }
-.brand-sym{width:52px;height:52px;flex:0 0 auto;overflow:visible;color:currentColor}
+.brand-sym{width:56px;height:56px;flex:0 0 auto;overflow:visible;color:currentColor}
 .brand-sym .orbit{transform-origin:28px 28px;animation:brandSpin 32s linear infinite}
 .brand-sym ellipse{
-  fill:none;stroke:currentColor;stroke-width:.9;vector-effect:non-scaling-stroke;
+  fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke;
   transform-origin:28px 28px;animation:brandWarp 16s ease-in-out infinite alternate;
 }
 .brand-sym ellipse:nth-child(2){animation-duration:19s;animation-delay:-4s}
 .brand-sym ellipse:nth-child(3){animation-duration:22s;animation-delay:-9s}
 .brand-sym ellipse:nth-child(4){animation-duration:17s;animation-delay:-13s}
 .brand-manifesto{
-  font-family:var(--font-body);font-size:11px;font-weight:500;line-height:1.4;
-  letter-spacing:.08em;text-transform:uppercase;text-align:right;color:var(--ink);opacity:.92;
+  font-family:var(--font-body);font-size:12px;font-weight:600;line-height:1.4;
+  letter-spacing:.08em;text-transform:uppercase;text-align:right;color:var(--ink);opacity:.95;
 }
 .brand-manifesto span{display:block}
 @keyframes brandSpin{to{transform:rotate(360deg)}}
@@ -81,7 +82,7 @@
 }
 @media (max-width:640px){
   .bg-aurora{filter:blur(14px) saturate(108%);opacity:.84}
-  .brand-signature{gap:12px;margin-bottom:14px}
-  .brand-sym{width:44px;height:44px}
-  .brand-manifesto{font-size:10px}
+  .brand-signature{gap:12px}
+  .brand-sym{width:46px;height:46px}
+  .brand-manifesto{font-size:11px;font-weight:600}
 }
