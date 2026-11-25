@@ -46,7 +46,7 @@
   display:flex;align-items:center;justify-content:flex-end;gap:14px;
   margin:0;color:var(--ink);
 }
-.brand-sym{width:56px;height:56px;flex:0 0 auto;overflow:visible;color:currentColor}
+.brand-sym{width:60px;height:60px;flex:0 0 auto;overflow:visible;color:currentColor}
 .brand-sym .orbit{transform-origin:28px 28px;animation:brandSpin 32s linear infinite}
 .brand-sym ellipse{
   fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke;
@@ -56,7 +56,7 @@
 .brand-sym ellipse:nth-child(3){animation-duration:22s;animation-delay:-9s}
 .brand-sym ellipse:nth-child(4){animation-duration:17s;animation-delay:-13s}
 .brand-manifesto{
-  font-family:var(--font-body);font-size:12px;font-weight:600;line-height:1.4;
+  font-family:var(--font-body);font-size:13px;font-weight:600;line-height:1.4;
   letter-spacing:.08em;text-transform:uppercase;text-align:right;color:var(--ink);opacity:.95;
 }
 .brand-manifesto span{display:block}
@@ -83,6 +83,6 @@
 @media (max-width:640px){
   .bg-aurora{filter:blur(14px) saturate(108%);opacity:.84}
   .brand-signature{gap:12px}
-  .brand-sym{width:46px;height:46px}
-  .brand-manifesto{font-size:11px;font-weight:600}
+  .brand-sym{width:50px;height:50px}
+  .brand-manifesto{font-size:12px;font-weight:600}
 }
