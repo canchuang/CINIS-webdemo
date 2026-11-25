@@ -1,0 +1,116 @@
+/* ============================================================
+   V2 — Global design tokens · Chinese typography · Works layout
+   （全站共享；禁止各页重复硬编码同一套视觉参数）
+   ============================================================ */
+:root{
+  /* 动态背景（与 hero-bg-canvas.js / hero-bg.css 同步） */
+  --bgfx-nebula:#9876DA; --bgfx-fog:#7199DB; --bgfx-jade:#72C4BE; --bgfx-blush:#CF8FBE; --bgfx-gold:#DFBD87;
+  --bgfx-flow-period:20s; --bgfx-curtain-period:32s;
+  --bgfx-strength-index:1; --bgfx-strength-works:.85; --bgfx-strength-about:.75;
+  --bgfx-strength-contact:.78; --bgfx-strength-detail:.6;
+  /* 版式尺度 */
+  --content-max:1180px;
+  --measure:38ch;
+  --project-gap:88px;
+  --proj-gap-mobile:52px;
+  /* 中文排版 */
+  --zh-line-body:1.85;
+  --zh-line-head:1.2;
+}
+/* 页面光效强度令牌（供 CSS 侧遮罩/内容衬底引用） */
+body[data-page="index"]{--bgfx-strength:var(--bgfx-strength-index)}
+body[data-page="works"]{--bgfx-strength:var(--bgfx-strength-works)}
+body[data-page="about"]{--bgfx-strength:var(--bgfx-strength-about)}
+body[data-page="contact"]{--bgfx-strength:var(--bgfx-strength-contact)}
+body[data-page="cinis"],body[data-page="mova"],body[data-page="pes"]{--bgfx-strength:var(--bgfx-strength-detail)}
+
+/* ---------- 中文排版规则 ---------- */
+html[lang="zh-CN"]{ line-break: strict; }
+html, body{ overflow-x: hidden; }
+/* 标题：均衡断行（不支持则回退正常换行）+ 行尾标点悬挂，避免标点落行首 */
+h1,h2,h3,.zh-h1,.zh-h2,.hx-title,.sec-head h2,.cs-marker h2,.works-hero h1,.cta h2{
+  text-wrap: balance;
+  hanging-punctuation: allow-end;
+  line-height: var(--zh-line-head);
+}
+/* 正文：pretty 断行（回退正常），只在词边界断，避免孤字/断词 */
+p,.zh-body,.desc,.lede,.intro p,.cs p,.feature .info p,.dup p,li,dd,blockquote{
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-height: var(--zh-line-body);
+}
+/* 关键短语/短标题不可拆分（语义化分组） */
+.nowrap-phrase{ white-space: nowrap; }
+/* 避免超长英文/URL 撑破容器，但不改中文正常断行 */
+:where(a,code,.en){ overflow-wrap: anywhere; }
+/* 阅读测量宽度更舒适（正文类容器） */
+.cs-body{ max-width: 760px; }
+
+/* ---------- 精选作品页：单列纵向编辑式布局 ---------- */
+.wgrid{ display:block !important; padding: 40px 0 90px; }
+.wgrid > .wcard{
+  display:block; width:100% !important; max-width:none !important;
+  grid-column:auto !important; margin: 0 0 var(--project-gap);
+}
+/* 保证筛选（inline display:none）仍生效：不对 display 使用 !important */
+.wgrid > .wcard:last-child{ margin-bottom:0; }
+.wgrid > .wcard .frame{ aspect-ratio: 16/9 !important; }
+.wgrid > .wcard .cap{ margin-top:18px; }
+.wgrid > .wcard .desc{ max-width: 52ch; }
+@media (max-width: 768px){
+  .wgrid > .wcard{ margin-bottom: var(--proj-gap-mobile); }
+  .wgrid > .wcard .frame{ aspect-ratio: 4/3 !important; }
+}
+
+/* ---------- 详情页：内容衬底，保证原始素材色彩准确 & 可读 ---------- */
+.cs .cs-body{ position:relative; z-index:1; }
+.cs .screens .frame,.cs .longshot,.cs .swatches,.cs .modes .fig{ background:#fff; }
+/* 作品详情页背景强度仅用于顶部 hero 区域，正文默认在页底，不受混色污染 */
+
+/* ---------- prefers-reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  html[lang="zh-CN"]{ scroll-behavior:auto; }
+}
+
+/* ===== Detail pages: remove left/right margins (full-bleed content) ===== */
+.cs .cs-cover .wrap,
+.cs .cs-body{
+  max-width:none !important;
+  margin-left:0 !important; margin-right:0 !important;
+  padding-left:0 !important; padding-right:0 !important;
+  width:auto !important;
+}
+/* ===== Case-study footer "继续看作品": single-column vertical ===== */
+.next-work-grid,
+.next-work-grid:has(.next-work-card:is(:hover,:focus-visible)),
+.next-work-grid:has(.next-work-all:is(:hover,:focus-visible)){
+  grid-template-columns: minmax(0,1fr) !important;
+}
+.next-work-grid{ gap:24px !important; }
+
+/* ============================================================
+   V2 Fonts — ALL English text uses local Space Grotesk
+   (source: Downloads/Space_Grotesk, OFL — see fonts/space-grotesk/OFL.txt)
+   Chinese keeps MiSans via --font-zh fallthrough.
+   ============================================================ */
+@font-face{
+  font-family:"Space Grotesk Local";
+  src:url("fonts/space-grotesk/SpaceGrotesk-VariableFont_wght.ttf") format("truetype-variations"),
+      url("fonts/space-grotesk/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
+  font-weight:300 700; font-style:normal; font-display:swap;
+}
+@font-face{font-family:"Space Grotesk Local";src:url("fonts/space-grotesk/static/SpaceGrotesk-Light.ttf") format("truetype");font-weight:300;font-display:swap}
+@font-face{font-family:"Space Grotesk Local";src:url("fonts/space-grotesk/static/SpaceGrotesk-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Space Grotesk Local";src:url("fonts/space-grotesk/static/SpaceGrotesk-Medium.ttf") format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"Space Grotesk Local";src:url("fonts/space-grotesk/static/SpaceGrotesk-SemiBold.ttf") format("truetype");font-weight:600;font-display:swap}
+@font-face{font-family:"Space Grotesk Local";src:url("fonts/space-grotesk/static/SpaceGrotesk-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+
+:root{
+  /* 英文全部走本地 Space Grotesk；中文经 fallthrough 用 MiSans */
+  --font-heading:"Space Grotesk Local","Space Grotesk","MiSans VF","Noto Sans SC",sans-serif;
+  --font-body:"Space Grotesk Local","Space Grotesk","MiSans VF","Noto Sans SC",sans-serif;
+  --font-mono:"Space Grotesk Local","Space Grotesk","MiSans VF",ui-monospace,monospace;
+  --sans:var(--font-body); --mono:var(--font-mono);
+  --grotesk:"Space Grotesk Local","MiSans VF",sans-serif;
+}

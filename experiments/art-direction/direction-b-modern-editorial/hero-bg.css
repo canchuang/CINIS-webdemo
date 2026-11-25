@@ -1,14 +1,17 @@
 /* Aurora / Grainient CSS fallbacks; WebGL canvases replace these when available. */
 /* Light-effect design tokens (reference colors — NOT page background). Mirrors BG in hero-bg-canvas.js. */
 :root{
-  --bgfx-mist:#A99BD4;   /* 雾紫 */
-  --bgfx-cool:#92ADD2;   /* 冷蓝 */
-  --bgfx-teal:#95BDB9;   /* 灰青 */
-  --bgfx-pink:#C7A4BF;   /* 淡粉 */
-  --bgfx-warm:#E5DFD6;   /* 柔和暖白 */
+  --bgfx-nebula:#9876DA;  /* 星云紫（品牌） */
+  --bgfx-fog:#7199DB;     /* 雾蓝 */
+  --bgfx-jade:#72C4BE;    /* 青绿 */
+  --bgfx-blush:#CF8FBE;   /* 霞粉 */
+  --bgfx-gold:#DFBD87;    /* 暖金 */
   --bgfx-base:#F2F4F7;
-  --bgfx-flow-period:28s;     /* 流光 24–32s */
-  --bgfx-curtain-period:42s;  /* 光幕 36–48s */
+  --bgfx-flow-period:20s;     /* 流光 18–24s */
+  --bgfx-curtain-period:32s;  /* 光幕 28–36s（非同步） */
+  /* 页面光效强度（首页=1.0）：由 body[data-page] 在 CSS 侧亦可调 */
+  --bgfx-i-index:1; --bgfx-i-works:.85; --bgfx-i-about:.75; --bgfx-i-contact:.78;
+  --bgfx-i-cinis:.6; --bgfx-i-mova:.6; --bgfx-i-pes:.6;
 }
 .hero-v2x{position:relative;overflow:hidden}
 .hero-v2x>.wrap{position:relative;z-index:2}
@@ -20,9 +23,9 @@
 .bg-aurora{
   opacity:.94;
   background:
-    radial-gradient(54% 66% at 18% 12%, rgba(169,155,212,.9) 0%, rgba(169,155,212,0) 70%),
-    radial-gradient(50% 62% at 79% 10%, rgba(146,173,210,.9) 0%, rgba(146,173,210,0) 72%),
-    radial-gradient(52% 50% at 56% 42%, rgba(149,189,185,.85) 0%, rgba(149,189,185,0) 72%);
+    radial-gradient(54% 66% at 18% 12%, rgba(152,118,218,.92) 0%, rgba(152,118,218,0) 70%),
+    radial-gradient(50% 62% at 79% 10%, rgba(113,153,219,.92) 0%, rgba(113,153,219,0) 72%),
+    radial-gradient(52% 50% at 56% 42%, rgba(114,196,190,.85) 0%, rgba(114,196,190,0) 72%);
   filter:blur(16px) saturate(112%);
   animation:auroraDrift 14s ease-in-out infinite alternate;
   will-change:transform;
@@ -37,9 +40,9 @@
 .bg-grainient{
   opacity:0;
   background:
-    radial-gradient(60% 70% at 20% 10%, rgba(169,155,212,.85) 0%, rgba(169,155,212,0) 68%),
-    radial-gradient(55% 65% at 80% 30%, rgba(146,173,210,.85) 0%, rgba(146,173,210,0) 68%),
-    linear-gradient(120deg,var(--bgfx-base) 0%,rgba(199,164,191,.5) 45%,rgba(149,189,185,.55) 100%);
+    radial-gradient(60% 70% at 20% 10%, rgba(152,118,218,.85) 0%, rgba(152,118,218,0) 68%),
+    radial-gradient(55% 65% at 80% 30%, rgba(113,153,219,.85) 0%, rgba(113,153,219,0) 68%),
+    linear-gradient(120deg,var(--bgfx-base) 0%,rgba(207,143,190,.55) 45%,rgba(114,196,190,.55) 100%);
   background-size:200% 200%,200% 200%,200% 200%;
   animation:grainFlow 18s ease-in-out infinite alternate;
 }
@@ -91,3 +94,9 @@
 .bg-aurora.has-canvas{background:none!important;filter:none!important;animation:none!important}
 .bg-grainient.has-canvas{background:none!important;animation:none!important}
 .bg-grain{display:none!important}
+
+/* 首页光幕 (Untitled blend FLOW): light scrim behind bottom text for legibility only */
+.hero-v2x[data-bg="aurora"] .hero-bg::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(247,248,250,0) 34%,rgba(247,248,250,.30) 60%,rgba(247,248,250,.60) 100%);
+}
