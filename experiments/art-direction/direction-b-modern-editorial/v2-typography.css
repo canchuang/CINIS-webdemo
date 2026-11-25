@@ -26,7 +26,7 @@ body[data-page="cinis"],body[data-page="mova"],body[data-page="pes"]{--bgfx-stre
 
 /* ---------- 中文排版规则 ---------- */
 html[lang="zh-CN"]{ line-break: strict; }
-html, body{ overflow-x: hidden; }
+html, body{ overflow-x: clip; }
 /* 标题：均衡断行（不支持则回退正常换行）+ 行尾标点悬挂，避免标点落行首 */
 h1,h2,h3,.zh-h1,.zh-h2,.hx-title,.sec-head h2,.cs-marker h2,.works-hero h1,.cta h2{
   text-wrap: balance;
@@ -112,4 +112,16 @@ p,.zh-body,.desc,.lede,.intro p,.cs p,.feature .info p,.dup p,li,dd,blockquote{
   --font-mono:"Space Grotesk Local","Space Grotesk","MiSans VF",ui-monospace,monospace;
   --sans:var(--font-body); --mono:var(--font-mono);
   --grotesk:"Space Grotesk Local","MiSans VF",sans-serif;
+}
+
+/* ---------- Fixed frosted top navigation (all pages) ---------- */
+.site-nav{
+  position:sticky !important; top:0 !important; z-index:900 !important;
+  background:rgba(247,248,250,.62) !important;
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
+  backdrop-filter:blur(16px) saturate(160%);
+  border-bottom:1px solid rgba(17,21,27,.08) !important;
+}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  .site-nav{ background:rgba(247,248,250,.94) !important; }
 }
